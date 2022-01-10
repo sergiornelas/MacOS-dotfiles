@@ -27,8 +27,8 @@ cmd + ctrl - a : yabai -m window --resize right:-70:0
 cmd + ctrl - r : yabai -m space --rotate 90
 
 # FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
-#cmd + ctrl - t : yabai -m window --toggle float;\
-          #yabai -m window --grid 4:4:1:1:2:2
+cmd + ctrl - t : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
 
 # REEPLACE WINDOWS AXIS
 cmd + ctrl - y : yabai -m space --mirror y-axis
@@ -52,7 +52,6 @@ cmd + ctrl - 4  : yabai -m window --space 4; yabai -m display --focus 4
 
 # FULL SCREEN
 cmd + ctrl - o : yabai -m window --toggle zoom-fullscreen
-
 
 #==========================================================================================
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
