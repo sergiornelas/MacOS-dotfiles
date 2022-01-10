@@ -1,0 +1,70 @@
+# MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH DESKTOPS
+cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
+cmd + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
+cmd + ctrl - k : yabai -m window --focus north || yabai -m display --focus north 
+cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east 
+
+# SWAPING WINDOWS
+cmd + ctrl + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + ctrl + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + ctrl + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# GO TO RECENT WINDOW (wildcard)
+ctrl - space : yabai -m window --focus recent || yabai -m display --focus recent
+
+# DRAG WINDOWS
+cmd + ctrl - i : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + ctrl - p : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# RESIZE WINDOWS
+cmd + ctrl - f : yabai -m window --resize left:70:0
+cmd + ctrl - s : yabai -m window --resize bottom:0:-70
+cmd + ctrl - d : yabai -m window --resize top:0:70
+cmd + ctrl - a : yabai -m window --resize right:-70:0
+
+# ROTATE
+cmd + ctrl - r : yabai -m space --rotate 90
+
+# FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
+#cmd + ctrl - t : yabai -m window --toggle float;\
+          #yabai -m window --grid 4:4:1:1:2:2
+
+# REEPLACE WINDOWS AXIS
+cmd + ctrl - y : yabai -m space --mirror y-axis
+cmd + ctrl - x : yabai -m space --mirror x-axis
+
+# MOVE WINDOW THROUGH DESKTOPS
+#cmd + ctrl - 1  : yabai -m window --space 1; yabai -m window --focus recent
+#cmd + ctrl - 2  : yabai -m window --space 2; yabai -m window --focus recent 
+#cmd + ctrl - 3  : yabai -m window --space 3; yabai -m window --focus recent 
+#cmd + ctrl - 4  : yabai -m window --space 4; yabai -m window --focus recent 
+
+cmd + ctrl - 1  : yabai -m window --space 1; yabai -m display --focus 1
+cmd + ctrl - 2  : yabai -m window --space 2; yabai -m display --focus 2
+cmd + ctrl - 3  : yabai -m window --space 3; yabai -m display --focus 3
+cmd + ctrl - 4  : yabai -m window --space 4; yabai -m display --focus 4
+
+  #cmd + ctrl - 1  : yabai -m window --display prev; yabai -m display --focus 1
+  #cmd + ctrl - 2  : yabai -m window --display next; yabai -m display --focus 2
+  #cmd + ctrl - 3  : yabai -m window --display prev; yabai -m display --focus 3
+  #cmd + ctrl - 4  : yabai -m window --display next; yabai -m display --focus 4
+
+# FULL SCREEN
+cmd + ctrl - o : yabai -m window --toggle zoom-fullscreen
+
+
+#==========================================================================================
+# NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
+#ctrl - space : yabai -m window --focus next \
+  #|| ((yabai -m display --focus next || yabai -m display --focus first) \
+  #&& yabai -m window --focus first) 
+
+# OPENS BROKEN KITTY
+#ctrl + cmd - t : /Applications/kitty.app/Contents/MacOS/kitty
+
+# focus window after active space changes
+#yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
+# focus window after active display changes
+#yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
