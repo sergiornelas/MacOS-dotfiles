@@ -20,11 +20,11 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  2
-yabai -m config bottom_padding               2
-yabai -m config left_padding                 2
-yabai -m config right_padding                2
-yabai -m config window_gap                   5
+yabai -m config top_padding                  10
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 10
+yabai -m config right_padding                10
+yabai -m config window_gap                   10
 
 # border (broken in Monterey)
 # yabai -m config window_border on
@@ -43,6 +43,7 @@ yabai -m config window_gap                   5
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Calculator$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
