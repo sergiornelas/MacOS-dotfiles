@@ -1,6 +1,6 @@
 # MacOS dot files
 
-<img width="1450" alt="image" src="maocs.png">
+<img width="1450" alt="image" src="macos.png">
 
 ## Apps added:
 
