@@ -8,3 +8,4 @@
 - Keyboard shortcuts: skhd
 - Configure keystrokes: Karabiner
 - Terminal: Kitty
+- Keyboard web browsing: Surfingkeys
