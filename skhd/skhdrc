@@ -1,4 +1,4 @@
-#- - - - - - U - - -
+#- - - - - - - - - -
  #- - - - - - - - -
   #Z - C - B N M
 
@@ -31,10 +31,10 @@ cmd + ctrl - s : yabai -m window --resize top:0:70
 cmd + ctrl - a : yabai -m window --resize right:-70:0
 
 # ROTATE
-cmd + ctrl - t : yabai -m space --rotate 90
+cmd + ctrl - v : yabai -m space --rotate 90
 
 # FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
-cmd + ctrl - v : yabai -m window --toggle float;\
+cmd + ctrl - u : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # REEPLACE WINDOWS AXIS
@@ -42,20 +42,20 @@ cmd + ctrl - y : yabai -m space --mirror y-axis
 cmd + ctrl - x : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
+cmd + ctrl - 1  : yabai -m window --space 1; yabai -m display --focus 1
+cmd + ctrl - 2  : yabai -m window --space 2; yabai -m display --focus 2
+cmd + ctrl - 3  : yabai -m window --space 3; yabai -m display --focus 3
+cmd + ctrl - 4  : yabai -m window --space 4; yabai -m display --focus 4
+
 #cmd + ctrl - 1  : yabai -m window --space 1; yabai -m window --focus recent
 #cmd + ctrl - 2  : yabai -m window --space 2; yabai -m window --focus recent 
 #cmd + ctrl - 3  : yabai -m window --space 3; yabai -m window --focus recent 
 #cmd + ctrl - 4  : yabai -m window --space 4; yabai -m window --focus recent 
 
-  #cmd + ctrl - 1  : yabai -m window --display prev; yabai -m display --focus 1
-  #cmd + ctrl - 2  : yabai -m window --display next; yabai -m display --focus 2
-  #cmd + ctrl - 3  : yabai -m window --display prev; yabai -m display --focus 3
-  #cmd + ctrl - 4  : yabai -m window --display next; yabai -m display --focus 4
-
-cmd + ctrl - 1  : yabai -m window --space 1; yabai -m display --focus 1
-cmd + ctrl - 2  : yabai -m window --space 2; yabai -m display --focus 2
-cmd + ctrl - 3  : yabai -m window --space 3; yabai -m display --focus 3
-cmd + ctrl - 4  : yabai -m window --space 4; yabai -m display --focus 4
+#cmd + ctrl - 1  : yabai -m window --display prev; yabai -m display --focus 1
+#cmd + ctrl - 2  : yabai -m window --display next; yabai -m display --focus 2
+#cmd + ctrl - 3  : yabai -m window --display prev; yabai -m display --focus 3
+#cmd + ctrl - 4  : yabai -m window --display next; yabai -m display --focus 4
 
 # --------------------------STACK------------------------------------------
 # stack next window onto current window
@@ -65,10 +65,8 @@ cmd + ctrl + shift - k : window=$(yabai -m query --windows --window | jq -r '.id
 cmd + ctrl + shift - l : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 
 # Focus window up/down in stack
-# Toggle focus on a stack
-#cmd + ctrl - n : yabai -m window --focus stack.next
-#cmd + ctrl - m : yabai -m window --focus stack.prev
 cmd + ctrl - g: yabai -m window --focus stack.next || yabai -m window --focus stack.first
+cmd + ctrl - t: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 #==========================================================================================
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
