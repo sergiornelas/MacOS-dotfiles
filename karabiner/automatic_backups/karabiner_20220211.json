@@ -192,16 +192,6 @@
                             "key_code": "caps_lock"
                         }
                     ]
-                },
-                {
-                    "from": {
-                        "key_code": "left_command"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_option"
-                        }
-                    ]
                 }
             ],
             "virtual_hid_keyboard": {
