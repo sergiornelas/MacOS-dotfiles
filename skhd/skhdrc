@@ -2,17 +2,11 @@
  #- - - - - - - - -
   #Z - C - B N M
 
-# MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH DESKTOPS
+# MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
 cmd + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
 cmd + ctrl - k : yabai -m window --focus north || yabai -m display --focus north 
 cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east 
-
-# SWAPING WINDOWS
-cmd + ctrl - q : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
-cmd + ctrl - w : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
-cmd + ctrl - e : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
-cmd + ctrl - r : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) 
 
 # GO TO RECENT WINDOW (wildcard)
 ctrl - space : yabai -m window --focus recent || yabai -m display --focus recent
@@ -42,33 +36,29 @@ cmd + ctrl - y : yabai -m space --mirror y-axis
 cmd + ctrl - x : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
-cmd + ctrl - 1  : yabai -m window --space 1; yabai -m display --focus 1
-cmd + ctrl - 2  : yabai -m window --space 2; yabai -m display --focus 2
-cmd + ctrl - 3  : yabai -m window --space 3; yabai -m display --focus 3
-cmd + ctrl - 4  : yabai -m window --space 4; yabai -m display --focus 4
+cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
+cmd + ctrl - 2 : yabai -m window --space 2; yabai -m display --focus 2
+cmd + ctrl - 3 : yabai -m window --space 3; yabai -m display --focus 3
+cmd + ctrl - 4 : yabai -m window --space 4; yabai -m display --focus 4
 
-#cmd + ctrl - 1  : yabai -m window --space 1; yabai -m window --focus recent
-#cmd + ctrl - 2  : yabai -m window --space 2; yabai -m window --focus recent 
-#cmd + ctrl - 3  : yabai -m window --space 3; yabai -m window --focus recent 
-#cmd + ctrl - 4  : yabai -m window --space 4; yabai -m window --focus recent 
-
-#cmd + ctrl - 1  : yabai -m window --display prev; yabai -m display --focus 1
-#cmd + ctrl - 2  : yabai -m window --display next; yabai -m display --focus 2
-#cmd + ctrl - 3  : yabai -m window --display prev; yabai -m display --focus 3
-#cmd + ctrl - 4  : yabai -m window --display next; yabai -m display --focus 4
-
+#cmd + ctrl - 1 : yabai -m window --space 1; yabai -m window --focus recent #not consistent
 # --------------------------STACK------------------------------------------
-# stack next window onto current window
-cmd + ctrl + shift - h : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
-cmd + ctrl + shift - j : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window south --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
-cmd + ctrl + shift - k : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window north --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
-cmd + ctrl + shift - l : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+cmd + ctrl - q : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+cmd + ctrl - w : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window south --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+cmd + ctrl - e : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window north --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+cmd + ctrl - r : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 
 # Focus window up/down in stack
 cmd + ctrl - g: yabai -m window --focus stack.next || yabai -m window --focus stack.first
 cmd + ctrl - t: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 #==========================================================================================
+# SWAPING WINDOWS
+cmd + ctrl + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
+cmd + ctrl + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
+cmd + ctrl + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
+cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) 
+
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
 #ctrl - space : yabai -m window --focus next \
   #|| ((yabai -m display --focus next || yabai -m display --focus first) \
