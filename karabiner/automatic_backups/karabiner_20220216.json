@@ -195,7 +195,7 @@
                 },
                 {
                     "from": {
-                        "key_code": "left_control"
+                        "key_code": "left_command"
                     },
                     "to": [
                         {

@@ -1,6 +1,6 @@
 #- - - - - - - - - -
  #- - - - - - - - -
-  #Z - C - B N M
+  #Z X C - B _ M
 
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
@@ -33,7 +33,7 @@ cmd + ctrl - u : yabai -m window --toggle float;\
 
 # REEPLACE WINDOWS AXIS
 cmd + ctrl - y : yabai -m space --mirror y-axis
-cmd + ctrl - x : yabai -m space --mirror x-axis
+cmd + ctrl - n : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
 cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
