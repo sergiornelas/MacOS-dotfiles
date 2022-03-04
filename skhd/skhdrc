@@ -1,6 +1,6 @@
 #- - - - - - - - - -
  #- - - - - - - - -
-  #Z X C - B _ M
+  #Z _ C - B _ _  (N, M mapped as next, prev tab in kitty)
 
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
@@ -33,7 +33,7 @@ cmd + ctrl - u : yabai -m window --toggle float;\
 
 # REEPLACE WINDOWS AXIS
 cmd + ctrl - y : yabai -m space --mirror y-axis
-cmd + ctrl - n : yabai -m space --mirror x-axis
+cmd + ctrl - x : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
 cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
@@ -49,8 +49,8 @@ cmd + ctrl - e : window=$(yabai -m query --windows --window | jq -r '.id') && ya
 cmd + ctrl - r : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 
 # Focus window up/down in stack
-cmd + ctrl - g: yabai -m window --focus stack.next || yabai -m window --focus stack.first
-cmd + ctrl - t: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+cmd + ctrl - g : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+cmd + ctrl - t : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 #==========================================================================================
 # SWAPING WINDOWS
