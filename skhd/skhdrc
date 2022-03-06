@@ -9,7 +9,7 @@ cmd + ctrl - k : yabai -m window --focus north || yabai -m display --focus north
 cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east
 
 # GO TO RECENT WINDOW (wildcard)
-backspace : yabai -m window --focus recent || yabai -m display --focus recent
+ctrl - space : yabai -m window --focus recent || yabai -m display --focus recent
 
 # DRAG WINDOWS
 cmd + ctrl - i : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
