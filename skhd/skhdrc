@@ -5,11 +5,11 @@
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
 cmd + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
-cmd + ctrl - k : yabai -m window --focus north || yabai -m display --focus north 
-cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east 
+cmd + ctrl - k : yabai -m window --focus north || yabai -m display --focus north
+cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east
 
 # GO TO RECENT WINDOW (wildcard)
-ctrl - space : yabai -m window --focus recent || yabai -m display --focus recent
+backspace : yabai -m window --focus recent || yabai -m display --focus recent
 
 # DRAG WINDOWS
 cmd + ctrl - i : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
