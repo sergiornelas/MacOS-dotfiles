@@ -1,6 +1,6 @@
 #- - - - - - - - - -
  #- - - - - - - - -
-  #Z X _ _ _ _ _  (N, M mapped as next, prev tab in kitty)
+  #Z _ _ _ _ _ _  (N, M mapped as next, prev tab in kitty)
 
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
@@ -28,12 +28,12 @@ cmd + ctrl - a : yabai -m window --resize right:-70:0
 cmd + ctrl - v : yabai -m space --rotate 90
 
 # FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
-cmd + ctrl - u : yabai -m window --toggle float;\
+cmd + ctrl - x : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # REEPLACE WINDOWS AXIS
 cmd + ctrl - y : yabai -m space --mirror y-axis
-cmd + ctrl - c : yabai -m space --mirror x-axis
+cmd + ctrl - u : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
 cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
@@ -41,7 +41,6 @@ cmd + ctrl - 2 : yabai -m window --space 2; yabai -m display --focus 2
 cmd + ctrl - 3 : yabai -m window --space 3; yabai -m display --focus 3
 cmd + ctrl - 4 : yabai -m window --space 4; yabai -m display --focus 4
 
-#cmd + ctrl - 1 : yabai -m window --space 1; yabai -m window --focus recent #not consistent
 # --------------------------STACK------------------------------------------
 cmd + ctrl - q : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 cmd + ctrl - w : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window south --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
@@ -62,13 +61,15 @@ cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --disp
 # RESTART YABAI
 cmd + ctrl - b : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
+# OPEN KITTY
+cmd + ctrl - c : open -na /Applications/kitty.app 
+
+#cmd + ctrl - 1 : yabai -m window --space 1; yabai -m window --focus recent #not consistent
+
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
 #ctrl - space : yabai -m window --focus next \
   #|| ((yabai -m display --focus next || yabai -m display --focus first) \
   #&& yabai -m window --focus first) 
-
-# OPENS BROKEN KITTY
-#ctrl + cmd - t : /Applications/kitty.app/Contents/MacOS/kitty
 
 # focus window after active space changes
 #yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
