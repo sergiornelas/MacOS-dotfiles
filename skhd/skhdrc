@@ -1,6 +1,6 @@
 #- - - - - - - - - -
  #- - - - - - - - -
-  #Z _ C - B _ _  (N, M mapped as next, prev tab in kitty)
+  #Z X _ _ _ _ _  (N, M mapped as next, prev tab in kitty)
 
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
@@ -33,7 +33,7 @@ cmd + ctrl - u : yabai -m window --toggle float;\
 
 # REEPLACE WINDOWS AXIS
 cmd + ctrl - y : yabai -m space --mirror y-axis
-cmd + ctrl - x : yabai -m space --mirror x-axis
+cmd + ctrl - c : yabai -m space --mirror x-axis
 
 # MOVE WINDOW THROUGH DESKTOPS
 cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
@@ -58,6 +58,9 @@ cmd + ctrl + shift - h : yabai -m window --swap west || $(yabai -m window --disp
 cmd + ctrl + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
 cmd + ctrl + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
 cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) 
+
+# RESTART YABAI
+cmd + ctrl - b : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
 #ctrl - space : yabai -m window --focus next \
