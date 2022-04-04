@@ -26,10 +26,11 @@ yabai -m config left_padding                 10
 yabai -m config right_padding                10
 yabai -m config window_gap                   10
 
-# border (broken in Monterey)
+# border
 yabai -m config window_border on
-yabai -m config window_border_width 9
-yabai -m config active_window_border_color 0xFF40FF00
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xFF003E00F
+
 yabai -m config normal_window_border_color 0x00FFFFFF
 yabai -m config insert_feedback_color        0xffd75f5f
 
