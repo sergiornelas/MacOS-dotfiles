@@ -19,8 +19,10 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
 # general space settings
-yabai -m config layout                       bsp
-yabai -m config top_padding                  10
+yabai -m config layout                       bsp #This is what tells yabai to balance windows using its binary space
+                                                 #partitioning algorithm. The rest of the configuration provide the 
+                                                 #gaps between windows and desktop borders.
+yabai -m config top_padding                  30
 yabai -m config bottom_padding               10
 yabai -m config left_padding                 10
 yabai -m config right_padding                10
@@ -28,7 +30,7 @@ yabai -m config window_gap                   10
 
 # border
 yabai -m config window_border on
-yabai -m config window_border_width 2
+yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xFF003E00F
 
 yabai -m config normal_window_border_color 0x00FFFFFF
@@ -43,6 +45,9 @@ yabai -m config insert_feedback_color        0xffd75f5f
 
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on layer=above manage=off
+yabai -m rule --add app="^(Brave|Google\ Chrome)$" space=1
+yabai -m rule --add app="^Kitty$" space=2
+yabai -m rule --add app="^KeePassXC$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Calculator$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off

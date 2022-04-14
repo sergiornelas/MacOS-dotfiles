@@ -9,3 +9,4 @@
 - Configure keystrokes: Karabiner
 - Terminal: Kitty
 - Keyboard web browsing: Surfingkeys
+- Header status bar: Spacebar

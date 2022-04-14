@@ -26,6 +26,7 @@ cmd + ctrl - u : yabai -m window --resize right:-70:0
 
 # ROTATE
 cmd + ctrl - v : yabai -m space --rotate 90
+cmd + ctrl + shift - v : yabai -m space --rotate 270
 
 # FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
 cmd + ctrl - x : yabai -m window --toggle float;\
@@ -65,6 +66,9 @@ cmd + ctrl - b : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 cmd + ctrl - c : open -na /Applications/kitty.app 
 
 #cmd + ctrl - 1 : yabai -m window --space 1; yabai -m window --focus recent #not consistent
+
+#In order to switch between bsp and stack mode, I made a nifty little key-binding.
+cmd + ctrl - z : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')"
 
 # NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
 #ctrl - space : yabai -m window --focus next \
