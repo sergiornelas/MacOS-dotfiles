@@ -9,11 +9,9 @@ spacebar -m config power                on
 spacebar -m config padding_left         60
 spacebar -m config padding_right        60
 spacebar -m config spacing_left         25
-spacebar -m config spacing_right        15
-spacebar -m config text_font            "Iosevka:Bold:13"
+spacebar -m config spacing_right        30
+spacebar -m config text_font            "Iosevka:Bold:14"
 spacebar -m config icon_font            "Font Awesome 6 Free:Solid:12.0"
-
-/Users/sergioornelas/.local/share/fonts/NerdFonts
 spacebar -m config background_color     0xff202020
 spacebar -m config foreground_color     0xffa8a8a8
 spacebar -m config space_icon_color     0xff458588
@@ -27,8 +25,8 @@ spacebar -m config space_icon           
 spacebar -m config clock_icon           
 spacebar -m config dnd_icon             
 spacebar -m config clock_format         "%d/%m/%y %R"
-spacebar -m config right_shell          on
-spacebar -m config right_shell_icon     
+spacebar -m config right_shell          off
+spacebar -m config right_shell_icon      
 spacebar -m config right_shell_command  "whoami"
 
 echo "spacebar configuration loaded.."

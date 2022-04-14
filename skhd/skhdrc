@@ -2,6 +2,7 @@
  #- - - - - - - - -
   #Z _ _ _ _ _ _  (N, M mapped as next, prev tab in kitty)
 
+#==================================WINDOWS==========================================
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
 cmd + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
@@ -12,11 +13,11 @@ cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east
 ctrl - space : yabai -m window --focus recent || yabai -m display --focus recent
 
 # DRAG WINDOWS
-cmd + ctrl - s : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
-cmd + ctrl - d : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
+cmd + ctrl - c : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + ctrl - v : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
 
 # FULL SCREEN
-cmd + ctrl - f : yabai -m window --toggle zoom-fullscreen
+cmd + ctrl - d : yabai -m window --toggle zoom-fullscreen
 
 # RESIZE WINDOWS
 cmd + ctrl - p : yabai -m window --resize left:70:0
@@ -24,59 +25,50 @@ cmd + ctrl - o : yabai -m window --resize bottom:0:-70
 cmd + ctrl - i : yabai -m window --resize top:0:70
 cmd + ctrl - u : yabai -m window --resize right:-70:0
 
-# ROTATE
-cmd + ctrl - v : yabai -m space --rotate 90
-cmd + ctrl + shift - v : yabai -m space --rotate 270
+# ROTATE WINDOWS
+cmd + ctrl - a : yabai -m space --rotate 90
+cmd + ctrl + shift - a : yabai -m space --rotate 270
 
-# FLOAT / UNFLOAT WINDOW AND CENTER ON SCREEN
-cmd + ctrl - x : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+# FLOAT WINDOW
+cmd + ctrl - y : yabai -m window --toggle float;\
+  yabai -m window --grid 4:4:1:1:2:2
 
-# REEPLACE WINDOWS AXIS
-cmd + ctrl - y : yabai -m space --mirror y-axis
-cmd + ctrl - a : yabai -m space --mirror x-axis
+#======================================AXIS===============================================
+cmd + ctrl - s : yabai -m space --mirror y-axis
+cmd + ctrl - t : yabai -m space --mirror x-axis #replacable
 
-# MOVE WINDOW THROUGH DESKTOPS
-cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
-cmd + ctrl - 2 : yabai -m window --space 2; yabai -m display --focus 2
-cmd + ctrl - 3 : yabai -m window --space 3; yabai -m display --focus 3
-cmd + ctrl - 4 : yabai -m window --space 4; yabai -m display --focus 4
-
-# --------------------------STACK------------------------------------------
+#======================================STACK==============================================
 cmd + ctrl - q : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 cmd + ctrl - w : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window south --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 cmd + ctrl - e : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window north --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 cmd + ctrl - r : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 
 # Focus window up/down in stack
-cmd + ctrl - g : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-cmd + ctrl - t : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+cmd + ctrl - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+cmd + ctrl - g : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
-#==========================================================================================
-# SWAPING WINDOWS
+#======================================SWAP================================================
 cmd + ctrl + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
 cmd + ctrl + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
 cmd + ctrl + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
 cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) 
 
+#======================================DESKTOPS===========================================
+cmd + ctrl - 1 : yabai -m window --space 1; yabai -m display --focus 1
+cmd + ctrl - 2 : yabai -m window --space 2; yabai -m display --focus 2
+cmd + ctrl - 3 : yabai -m window --space 3; yabai -m display --focus 3
+cmd + ctrl - 4 : yabai -m window --space 4; yabai -m display --focus 4
+
+# MOVE THROUGH DESKTOPS WITHOUT DISABLING SIP
+#cmd + ctrl - s : index=1; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')" 
+#cmd + ctrl - d : index=2; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')" 
+
+#======================================MISC================================================
 # RESTART YABAI
 cmd + ctrl - b : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-# OPEN KITTY
-cmd + ctrl - c : open -na /Applications/kitty.app 
+# SWITCH BETWEEN BSP AND STACK MODE
+cmd + ctrl - x : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')"
 
-#cmd + ctrl - 1 : yabai -m window --space 1; yabai -m window --focus recent #not consistent
-
-#In order to switch between bsp and stack mode, I made a nifty little key-binding.
-cmd + ctrl - z : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')"
-
-# NAVIGATE THROUGH NEXT WINDOWS AND SPACES (buggy)
-#ctrl - space : yabai -m window --focus next \
-  #|| ((yabai -m display --focus next || yabai -m display --focus first) \
-  #&& yabai -m window --focus first) 
-
-# focus window after active space changes
-#yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
-
-# focus window after active display changes
-#yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# OPEN APPS
+# cmd + ctrl - c : open -na /Applications/kitty.app 
