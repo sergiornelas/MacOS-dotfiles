@@ -2,6 +2,7 @@
  #- - - - - - - - -
   #_ _ _ _ _ _ _  (N, M mapped as next, prev tab in kitty)
 
+## HYPER == SHIFT + CMD + ALT + OPTION
 #==================================WINDOWS==========================================
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
