@@ -61,7 +61,33 @@
             ]
           },
           {
-            "description": "Left command to numbers",
+            "description": "Ctrl + command + [key] = Ctrl + space + [key]",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": {
+                    "mandatory": "left_control"
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "modifiers": ["right_command"]
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "spacebar",
+                    "modifiers": ["left_control"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Left command to numbers and symbols",
             "manipulators": [
               {
                 "from": {
