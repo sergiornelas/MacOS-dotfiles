@@ -41,32 +41,6 @@
             ]
           },
           {
-            "description": "Ctrl + command + [key] = Ctrl + space + [key]",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "spacebar",
-                  "modifiers": {
-                    "mandatory": "left_control"
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_control",
-                    "modifiers": ["right_command"]
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["left_control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Left command + hjkl to arrow keys Vim",
             "manipulators": [
               {
@@ -125,31 +99,6 @@
                 "to": [
                   {
                     "key_code": "right_arrow"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Change spacebar to left_shift. (Post spacebar if pressed alone)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "spacebar",
-                  "modifiers": {
-                    "mandatory": ["right_command"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_shift",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "spacebar"
                   }
                 ],
                 "type": "basic"
