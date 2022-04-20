@@ -683,7 +683,7 @@
                 "to": [
                   {
                     "key_code": "1",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -698,7 +698,7 @@
                 "to": [
                   {
                     "key_code": "2",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -713,7 +713,7 @@
                 "to": [
                   {
                     "key_code": "3",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -728,7 +728,7 @@
                 "to": [
                   {
                     "key_code": "4",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -743,7 +743,7 @@
                 "to": [
                   {
                     "key_code": "5",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -758,7 +758,7 @@
                 "to": [
                   {
                     "key_code": "6",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -773,7 +773,7 @@
                 "to": [
                   {
                     "key_code": "7",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -788,7 +788,7 @@
                 "to": [
                   {
                     "key_code": "8",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -803,7 +803,7 @@
                 "to": [
                   {
                     "key_code": "9",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -818,7 +818,7 @@
                 "to": [
                   {
                     "key_code": "0",
-                    "mandatory": ["left_command"]
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
