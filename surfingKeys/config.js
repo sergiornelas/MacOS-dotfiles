@@ -60,8 +60,8 @@ api.mapkey("<Ctrl-y>", "Show me the money", function () {
   console.log("sergio es grande");
 });
 
-api.map("<Ctrl-j>", "E");
-api.map("<Ctrl-k>", "R");
+// api.map("<Ctrl-j>", "E"); //not necessary, I mapped ctrl+j to ctrl+shift in Karabiner
+// api.map("<Ctrl-k>", "R");
 api.map("<Ctrl-t>", "T");
 api.map("J", "S");
 api.map("K", "D");
