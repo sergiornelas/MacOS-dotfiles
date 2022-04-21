@@ -63,16 +63,6 @@
             "description": "Ctrl + j/k to ctrl-tab/shift-ctrl-tab in Browsers",
             "manipulators": [
               {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com.google.Chrome",
-                      "^com.brave.Browser",
-                      "^org.mozilla.firefox"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
                 "from": {
                   "key_code": "j",
                   "modifiers": {
@@ -85,19 +75,19 @@
                     "modifiers": ["left_control", "left_shift"]
                   }
                 ],
-                "type": "basic"
-              },
-              {
                 "conditions": [
                   {
+                    "type": "frontmost_application_if",
                     "bundle_identifiers": [
                       "^com.google.Chrome",
                       "^com.brave.Browser",
                       "^org.mozilla.firefox"
-                    ],
-                    "type": "frontmost_application_if"
+                    ]
                   }
                 ],
+                "type": "basic"
+              },
+              {
                 "from": {
                   "key_code": "k",
                   "modifiers": {
@@ -108,6 +98,16 @@
                   {
                     "key_code": "tab",
                     "modifiers": ["left_control"]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ]
                   }
                 ],
                 "type": "basic"
@@ -816,16 +816,6 @@
               "to": [
                 {
                   "key_code": "right_command"
-                }
-              ]
-            },
-            {
-              "from": {
-                "pointing_button": "button3"
-              },
-              "to": [
-                {
-                  "key_code": "vk_none"
                 }
               ]
             }
