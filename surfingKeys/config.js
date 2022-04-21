@@ -63,6 +63,7 @@ api.mapkey("<Ctrl-y>", "Show me the money", function () {
 // api.map("<Ctrl-j>", "E"); //not necessary, I mapped ctrl+j to ctrl+shift in Karabiner
 // api.map("<Ctrl-k>", "R");
 api.map("<Ctrl-t>", "T");
+api.map("<Ctrl-5>", "<Ctrl-6>");
 api.map("J", "S");
 api.map("K", "D");
 api.map("F", "C");

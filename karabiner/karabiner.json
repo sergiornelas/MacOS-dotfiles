@@ -243,6 +243,27 @@
             ]
           },
           {
+            "description": "Solo alt right as Esc",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_command"
+                },
+                "to": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Right_command to numbers and symbols layer",
             "manipulators": [
               {
@@ -596,7 +617,7 @@
             ]
           },
           {
-            "description": "Both commands to alt-numbers",
+            "description": "Both commands to alt-numbers/ctrl-numbers",
             "manipulators": [
               {
                 "from": {
@@ -744,6 +765,156 @@
                   {
                     "key_code": "0",
                     "modifiers": ["left_command"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "q",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "1",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "2",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "3",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "4",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "5",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "y",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "6",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "7",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "8",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["left_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": ["right_command", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "0",
+                    "modifiers": ["left_control"]
                   }
                 ],
                 "type": "basic"
