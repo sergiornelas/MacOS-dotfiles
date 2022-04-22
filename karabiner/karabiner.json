@@ -16,7 +16,7 @@
         },
         "rules": [
           {
-            "description": "Post Esc if Caps is tapped, Control if held.",
+            "description": "Post Esc if Caps is tapped, Control if held (no more escape).",
             "manipulators": [
               {
                 "from": {
@@ -29,11 +29,6 @@
                   {
                     "key_code": "left_control",
                     "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
                   }
                 ],
                 "type": "basic"
@@ -953,6 +948,16 @@
               "to": [
                 {
                   "apple_vendor_top_case_key_code": "keyboard_fn"
+                }
+              ]
+            },
+            {
+              "from": {
+                "key_code": "grave_accent_and_tilde"
+              },
+              "to": [
+                {
+                  "key_code": "left_shift"
                 }
               ]
             }
