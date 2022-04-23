@@ -19,13 +19,7 @@
             "description": "Right_shift x2 to mission_control",
             "manipulators": [
               {
-                "conditions": [
-                  {
-                    "name": "right_shift pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
+                "type": "basic",
                 "from": {
                   "key_code": "right_shift",
                   "modifiers": {
@@ -37,9 +31,16 @@
                     "key_code": "mission_control"
                   }
                 ],
-                "type": "basic"
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "right_shift pressed",
+                    "value": 1
+                  }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "right_shift",
                   "modifiers": {
@@ -58,14 +59,6 @@
                   }
                 ],
                 "to_delayed_action": {
-                  "to_if_canceled": [
-                    {
-                      "set_variable": {
-                        "name": "right_shift pressed",
-                        "value": 0
-                      }
-                    }
-                  ],
                   "to_if_invoked": [
                     {
                       "set_variable": {
@@ -73,9 +66,16 @@
                         "value": 0
                       }
                     }
+                  ],
+                  "to_if_canceled": [
+                    {
+                      "set_variable": {
+                        "name": "right_shift pressed",
+                        "value": 0
+                      }
+                    }
                   ]
-                },
-                "type": "basic"
+                }
               }
             ]
           },
@@ -83,10 +83,8 @@
             "description": "Equal+Delete to forward_delete",
             "manipulators": [
               {
+                "type": "basic",
                 "from": {
-                  "modifiers": {
-                    "optional": ["any"]
-                  },
                   "simultaneous": [
                     {
                       "key_code": "h",
@@ -97,19 +95,21 @@
                     {
                       "key_code": "left_shift"
                     }
-                  ]
+                  ],
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
                 },
                 "to": [
                   {
                     "key_code": "delete_forward"
                   }
-                ],
-                "type": "basic"
+                ]
               }
             ]
           },
           {
-            "description": "Post Esc if Caps is tapped, Control if held",
+            "description": "Post Esc if Caps is tapped, Control if held (no more escape).",
             "manipulators": [
               {
                 "from": {
@@ -1062,16 +1062,6 @@
             },
             {
               "from": {
-                "key_code": "grave_accent_and_tilde"
-              },
-              "to": [
-                {
-                  "key_code": "left_shift"
-                }
-              ]
-            },
-            {
-              "from": {
                 "key_code": "left_control"
               },
               "to": [
@@ -1082,11 +1072,11 @@
             },
             {
               "from": {
-                "key_code": "right_option"
+                "key_code": "grave_accent_and_tilde"
               },
               "to": [
                 {
-                  "key_code": "right_command"
+                  "key_code": "left_shift"
                 }
               ]
             }
@@ -1131,16 +1121,6 @@
               "to": [
                 {
                   "key_code": "vk_none"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "print_screen"
-              },
-              "to": [
-                {
-                  "key_code": "right_command"
                 }
               ]
             }
