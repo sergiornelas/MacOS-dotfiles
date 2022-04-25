@@ -518,24 +518,8 @@
             ]
           },
           {
-            "description": "Right_command to esc, numbers and symbols layer",
+            "description": "Right_command to numbers and symbols layer",
             "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_command"
-                },
-                "to": [
-                  {
-                    "key_code": "right_command"
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              },
               {
                 "from": {
                   "key_code": "a",
@@ -1044,6 +1028,27 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Solo alt right as Esc",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_command"
+                },
+                "to": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -1075,11 +1080,6 @@
                 "key_code": "grave_accent_and_tilde"
               },
               "to": [
-                {
-                  "sticky_modifier": {
-                    "left_shift": "toggle"
-                  }
-                },
                 {
                   "key_code": "left_shift"
                 }
@@ -1332,7 +1332,7 @@
         },
         {
           "from": {
-            "key_code": "right_shift"
+            "key_code": "up_arrow"
           },
           "to": [
             {
@@ -1349,7 +1349,7 @@
       ],
       "virtual_hid_keyboard": {
         "country_code": 0,
-        "indicate_sticky_modifier_keys_state": false,
+        "indicate_sticky_modifier_keys_state": true,
         "mouse_key_xy_scale": 100
       }
     }

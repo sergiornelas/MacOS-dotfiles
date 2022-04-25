@@ -187,8 +187,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_command",
-                    "modifiers": ["right_command"],
+                    "key_code": "left_control",
                     "repeat": true
                   }
                 ],
@@ -203,8 +202,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_command",
-                    "modifiers": ["right_command"],
+                    "key_code": "left_control",
                     "repeat": true
                   }
                 ],
@@ -518,24 +516,8 @@
             ]
           },
           {
-            "description": "Right_command to esc, numbers and symbols layer",
+            "description": "Right_command to numbers and symbols layer",
             "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_command"
-                },
-                "to": [
-                  {
-                    "key_code": "right_command"
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              },
               {
                 "from": {
                   "key_code": "a",
@@ -1044,6 +1026,27 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Solo alt right as Esc",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_command"
+                },
+                "to": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -1075,11 +1078,6 @@
                 "key_code": "grave_accent_and_tilde"
               },
               "to": [
-                {
-                  "sticky_modifier": {
-                    "left_shift": "toggle"
-                  }
-                },
                 {
                   "key_code": "left_shift"
                 }
@@ -1134,11 +1132,6 @@
                 "key_code": "print_screen"
               },
               "to": [
-                {
-                  "sticky_modifier": {
-                    "right_shift": "toggle"
-                  }
-                },
                 {
                   "key_code": "right_shift"
                 }
@@ -1314,42 +1307,11 @@
               "key_code": "left_option"
             }
           ]
-        },
-        {
-          "from": {
-            "key_code": "left_shift"
-          },
-          "to": [
-            {
-              "sticky_modifier": {
-                "left_shift": "toggle"
-              }
-            },
-            {
-              "key_code": "left_shift"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "right_shift"
-          },
-          "to": [
-            {
-              "software_function": {
-                "set_mouse_cursor_position": {
-                  "screen": 0,
-                  "x": "50%",
-                  "y": "50%"
-                }
-              }
-            }
-          ]
         }
       ],
       "virtual_hid_keyboard": {
         "country_code": 0,
-        "indicate_sticky_modifier_keys_state": false,
+        "indicate_sticky_modifier_keys_state": true,
         "mouse_key_xy_scale": 100
       }
     }
