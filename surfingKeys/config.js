@@ -62,7 +62,17 @@ api.mapkey("<Ctrl-y>", "Show me the money", function () {
 
 // api.map("<Ctrl-j>", "E"); //not necessary, I mapped ctrl+j to ctrl+shift in Karabiner
 // api.map("<Ctrl-k>", "R");
-api.map("<Ctrl-t>", "T");
+// api.map("<Ctrl-t>", "T");
+api.map("t", "T");
 api.map("J", "S");
 api.map("K", "D");
 api.map("F", "C");
+api.map("<Alt-p>", "<Command-p>"); //pin/unpin?
+
+// cf open multiple links in a new tab
+// on open new tab
+// g$ go last tab
+// g0 go first tab
+// zi zoom in
+// zo zoom out
+// zr zoom reset
