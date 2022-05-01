@@ -16,31 +16,6 @@
         },
         "rules": [
           {
-            "description": "RIGHT_COMMAND to <Right_Control> if held, to <Esc> if it's tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_command",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_control",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "CAPS to HYPER when held, ESC when tap",
             "manipulators": [
               {
@@ -66,121 +41,24 @@
             ]
           },
           {
-            "description": "TAB layer",
+            "description": "RIGHT_COMMAND to <Right_Control> if held, to <Esc> if it's tapped",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "tab"
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
                 },
                 "to": [
                   {
-                    "set_variable": {
-                      "name": "layer-2",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "layer-2",
-                      "value": 0
-                    }
+                    "key_code": "right_control",
+                    "lazy": true
                   }
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "tab"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "layer-2",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "h"
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "layer-2",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "k"
-                },
-                "to": [
-                  {
-                    "key_code": "down_arrow"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "layer-2",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "l"
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "layer-2",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "semicolon"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "layer-2",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "j"
-                },
-                "to": [
-                  {
-                    "key_code": "return_or_enter"
+                    "key_code": "escape"
                   }
                 ],
                 "type": "basic"
@@ -726,6 +604,128 @@
                   {
                     "key_code": "m",
                     "modifiers": ["right_control", "right_command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "TAB layer",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "tab"
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "layer-2",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "layer-2",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "tab"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "h"
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "k"
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "l"
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "semicolon"
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "j"
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter"
                   }
                 ],
                 "type": "basic"
@@ -1300,7 +1300,12 @@
               },
               "to": [
                 {
-                  "key_code": "left_command"
+                  "sticky_modifier": {
+                    "right_shift": "toggle"
+                  }
+                },
+                {
+                  "key_code": "right_shift"
                 }
               ]
             }
@@ -1521,6 +1526,21 @@
             },
             {
               "key_code": "left_shift"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "right_shift"
+          },
+          "to": [
+            {
+              "sticky_modifier": {
+                "right_shift": "toggle"
+              }
+            },
+            {
+              "key_code": "right_shift"
             }
           ]
         }

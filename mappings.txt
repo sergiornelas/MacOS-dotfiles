@@ -1,0 +1,76 @@
+LMHHHHLHMMLLLHMMHH  MLLL (Prioridad del efecto vim)
+MLLLMLMLHHHMMHHHHH  MMLL (Prioridad de escritura)
+!@#$%^&*()-_+=[]{}  `~\|
+
+Debemos hacer un trueque. aplicar el efecto prioritario 
+en la escritura prioritaria.
+Ejemplo:
+  l    h/m
+ --------
+  ^ -> (
+  # -> )
+  $ -> & 
+...................................................
+
+!@#$%^&*()-_+=[]{}  `~\|
+xxxxxxxxxxxxxxxxxx  xxxx
+
+FIRST ROW
+
+^#{$}=%*0   vim effect
+(){}-+=*0   escritura (layer)   los que estan cambiando efecto: (), }, =
+asdfghjkl   escritura
+
+ Hay simbolos que estan switchenado un super poder diferente del que ya tienen
+ (), }, =.                                     
+ Hay simbolos que solo ganan super poder y ya: - (}), + (=).
+
+SECOND ROW
+
+  ()        vim effect
+!^%_#&@$    escritura (layer)
+zxcvbnm,    escritura
+
+  Agregemos el efecto perdido a: #, ^ (parentesis)
+
+CAPS MAPPING
+`|  \~
+;'  ,.
+
+123456789
+qwertyuio
+
+(){}-+=*0 
+asdfghjkl 
+
+!^%_#&@$ 
+zxcvbnm, 
+
+Before
+--------------+--------------+-----+
+    KEY       |   HOLD       | TAP |
+--------------+--------------+-----+
+Right Command |Right control | Esc |
+Caps Lock     |Right command | Esc |
+Semicolon     |Right command | ;   |
+--------------+--------------+-----+
+Right Command | Layer (123, !@#)   | (Caps)
+Tab           | Layer (arrow keys) |
+--------------+--------------------+
+
+Now
+--------------+---------------+--------------+
+     KEY      |    HOLD       | TAP          |
+--------------+---------------+--------------+
+Caps Lock     | Hyper         | Esc          | (Layer Yabai)
+Right Command | Right control | Sticky shift |
+Semicolon     | Right option  | Semicolon    | (Layer 123, !@#)
+Tab           | Layer         | Tab          | (Layer arrows)
+--------------+--------------+--------------+|
+
+grave_accent_and_tilde `
+close_bracket
+hyphen -
+equal_sign =
+quote '
+slash /
