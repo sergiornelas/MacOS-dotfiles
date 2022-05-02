@@ -58,15 +58,35 @@ Right Command | Layer (123, !@#)   | (Caps)
 Tab           | Layer (arrow keys) |
 --------------+--------------------+
 
-Now
---------------+---------------+--------------+
-     KEY      |    HOLD       | TAP          |
---------------+---------------+--------------+
-Caps Lock     | Hyper         | Esc          | (Layer Yabai)
-Right Command | Right control | Sticky shift |
-Semicolon     | Right option  | Semicolon    | (Layer 123, !@#)
-Tab           | Layer         | Tab          | (Layer arrows)
---------------+--------------+--------------+|
+General
++---------------+---------------+-------------- 
+|      KEY      |    HOLD       | TAP           
++---------------+---------------+-------------- 
+| Right Command | Right control | Esc                   (Map to right control because vim can not recognize Command key)
+| Caps Lock     | Hyper         | Sticky left command   (Layer Yabai, Layer `|)
+| Tab           | Layer 1       | Tab                   (Layer arrows)
+| Semicolon     | Layer 2       | Semicolon             (Layer 123, !@#)
+| Slash         | Right shift   | Slash             
+| Right ctrl+M  |               | Enter             
+|(Right_command)|               |
+| Both commands |               | Command+number, Ctrl+number 
+| + keys        |               | 
+| Right shift x2|               | Mission control             
+|                | Mission control             
++---------------+---------------+-------------- 
+| Tab           | Layer         | Tab                   (Layer arrows)
+
+Apple
+------------------------------------
+>< Symbols (grave_accent_...) -> Left Shift
+
+ThinkPad
+------------------------------------
+Left_command  -> Left_option (windows key)
+Left_alt      -> Left_command
+Center mouse  -> vk_none (disabled)
+Right_alt     -> Right_command
+Print_screen  -> Left_option 
 
 grave_accent_and_tilde `
 close_bracket
