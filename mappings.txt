@@ -1,3 +1,92 @@
+Definitive version
+==================
+No es posible mappear la barra espaciadora hold. ya que 
+muchas veces escribimos <spacebar>f,
+entonces SI O SI tenemos que esperar ciertos milisegundos
+para que aplique el segundo efecto, cosa que es limitante.
+
+no se puede mapear spacebar hold como shift tampoco
+por las mismas razones
+
+no se puede mapear spacebar + right_command para yabai
+porque la terminal no reconoce esos comandos como yabai
+y escribe codigo ascii. (lo mismo aplicara para caps + spacebar)
+en segundo lugar no se puede presionar en el orden
+spacebar > right_command porque spacebar no lo reconoce como
+un modifier (no es suficiente con el simultaneous),
+entonces se esta bien rigido.
+
+Por lo tanto Si o si tenemos que utilzar solo modifiers para yabai
+
+spacebar + right_command para Ctrl es mala idea porque
+son muchas teclas para realizar simples acciones.
+resulta mas facil usar simple caps, aunque se utilice el 
+menique.
+
+En conclusion no es posible de ninguna manera mapear
+el spacebar como modifier en tu caso porque escribes
+<leader>f casi casi inmediatamente, no hay un espacio de milisegundos
+para hacer distincion entre espacio-f o <triggerEvent>
+Descarta la idea de si en un futuro Karabiner agregara un feature
+para ello, puesto que eso no depende del software sino de
+la velocidad de tipeo del usuario.
+Como un software va a distinguir si presionaste:
+  <spacebar>... 15 milisegundos ... f
+  o
+  <spacebar>... 25 milisegundos ... f
+
+Para un mapeo eficiente para ctrl/layer necesitaria un teclado
+mecanico con un boton adicional, pero estos carecen de trackpoint,
+ademas que perderia skill en el teclado de la mac.
+Por lo tanto ya tengo definido el setting definitivo.
+
+1234567890`~
+qwertyuiop[]
+
+!@#$%^&*()
+
+!@#${}%*()\
+asdfghjkl;'
+
+-_|=+^&
+cvbnm<>
+
+Caps                         = Ctrl/Esc
+Right_command                = Primary Layer (1234, !@#$, =+)/Esc
+PrtSc                        = Right shift
+Right_command + space        = Alt + number, Ctrl + number layer
+Tab                          = Secondary Layer (arrows)
+
+=================================================================
+Otra alternativa despues del suenazo
+
+Caps                         = Hyper
+Right_command                = Ctrl/Esc
+; (hold)                     = Primary Layer (1234, !@#$, =+)
+  you are missing: 0, ), `, ~
+PrtSc                        = Right shift
+Left_command                 = Command
+p (hold)                     = Alt + number, Ctrl + number layer 
+  you are missing alt+0, ctrl+0
+Tab                          = Secondary Layer (arrows)
+
+*********one layer for caps and another one for semicolon
+move kity tab with tab key instead of <cmd><caps><n>
+
+semicolon as layer:
+  main layer
+  shift
+  yabai
+
+you could use semicolon + right command
+
+solo debe haber un layer?
+ 
+Propongo esto porque Caps se utiliza demasiado, mas que el layer principal.
+Entonces creo resultaria mas comodo Ctrl en Right_command.
+Ademas toma en cuenta que no se utilizaria Right_command en Yabai commands
+
+--------------------------------------------------
 LMHHHHLHMMLLLHMMHH  MLLL (Prioridad del efecto vim)
 MLLLMLMLHHHMMHHHHH  MMLL (Prioridad de escritura)
 !@#$%^&*()-_+=[]{}  `~\|
@@ -40,7 +129,7 @@ CAPS MAPPING
 123456789
 qwertyuio
 
-(){}-+=*0 
+(){}-+=*0
 asdfghjkl 
 
 !^%_#&@$ 
@@ -94,3 +183,180 @@ hyphen -
 equal_sign =
 quote '
 slash /
+
+-------------------------------------
+
+(){}-+=*0
+asdfghjkl
+
+!^%_#&@
+zxcvbnm
+
+qwertyui
+~`|\[]/?;
+
+(){}-+=*!^%_#&@~`|\[]/?;
+HHHHHMHMMLMMLMMLLLLMMHMM
+
+LLLLHMM
+~`|\/?;
+    xxx
+
+?;/  
+qwertyuio
+
++-*/%=`~\|
+(){}[]
+!@#$%^&_
+
+(){}
+
+--- ---------------------
+!@#$%^&*()~`_-+={}|\;/?
+
+~`!@#$%^&*()_-+={}|\;"?/     DEFINITIVO
+qwertyuiopasdfghjklzxcvbnm   DEFINITIVO (van a sobrar dos caracteres (X,C))
+
+ xWxxxxxxx
+  xSxxxxxxx
+   xxxVxxx
+
+prioridad:
+Se priorizo conservar el indice en su sitio. Se puso en baja prioridad aquellas que estan en
+la left hand puesto que hacerlo con la derecha es mucho mas facil por la libertad de la mano.
+Las incomodas o que requieren cierto consumo cognitivo (c-i) son baja prioridad.
+
+`~!@#$%^&*()-_=+{}|\/?;
+qwertyuioasdfghjklzxcvbnm
+
+XXXXXXXXXXXXXXXXXXXXXXX
+(){}-+=*!^%_#&@~`|\/?;$
+HMHMHMHMMLMMLMMLLLLHMML
+
+1)  F  - x
+2)  J  = x                                 THEY ARE COMPLETE! (add [], ")?
+3)  A  ( x                                 writing        vim effect         only vim effect changed
+4)  D  { x                                 
+5)  E  / x                                 &?/@* $^\      #?/@+ -()          #˙˙˙+ -()            
+6)  S  ; x                                 QWERT-UIO      QWERT-UIO          QWERT-UIO            
+7)  W  ? x                                  (;{-+#=})      ^;{}$=%&           ^˙˙}$=%&           
+8)  Z  ! x                                  ASDFGHJKL      ASDFGHJKL          ASDFGHJKL
+9)  Q  & x                                   ! _`%~|        | _`!~*            | ˙˙!˙*
+10) V  ` x                                   Z-CVBNM        Z-CVBNM            Z CVBNM
+11) G  + x
+12) R  @ x
+13) T  * x
+14) B  % x
+15) C  _ x
+
+16) O  \ x
+17) M  | x
+18) N  ~ x
+19) H  # x
+20) U  $ x
+21) I  ^ x
+22) X    descartada
+23) L  ) caso special
+24) K  } caso especial
+25) Y    descartada
+
+Por que quitaste la capa de numeros?
+1) Porque no habia espacio para tres iconos nuevos:
+    slash, question mark y semicolon.
+    Los shift deben estar aparte (el mismo caso como el spacebar)
+    y esos tres simbolos no habia lugar para pornerlos entonces
+    tuve que eliminar la capa de numeros.
+    Y estos simbolos necesitaban lugares prioritarios que los numeros
+    estaban ocupando.
+2) Ademas ya no voy a utilizar los simbolos extranios (con ctrl)
+    y las teclas super incomodas (;+, ;+x)
+3) Aparte, realmente usas demasiado los numeros?
+   na creo. No eres contador.
+
+REEMPLAZAR RIGHT_ALT por semicolon?
+No porque ctrl en vim se utiliza de sobremanera,
+y la tecla mas comoda y accesible es right_alt
+
+El pulgar esta en todo momento en right_alt.
+El menique esta en semicolon pero se mueve
+continuamente hacia right shift (/), P, quote,
+brackets.
+
+Ademas semicolon+hjkl es incomodo, y esas son
+las teclas mas utilizadas
+
+Lo he probado y es mas comodo trabajar con right_alt 
+que con semicolon.
+Con semicolon tus dedos de alguna manera tienen que 
+estar muy separados, estirandose cada vez que
+utilizas semicolon, cosa no muy optima comparandolo
+con right_alt que siempre esta disponible para tu
+pulgar.
+----------------------------
+CAPS como yabai porque si utilizas solo 1 browser
+y neovim, puedes navegar entre esas dos ventanas
+con right_alt + space, dejando por completo el
+movimiento brusco del menique.
+
+ESTAN TODOS!
+& = repeat :s
+? = goes back searching word
+/ = goes next searching word
+@ = play macro
+* = next match word
+$ = end of line
+^ = beggining line
+\ = free
+
+( = begin sentence
+; = repeat t/T/f/F
+{ = previous paragraph
+- = free (prev line)
++ = free (next line)
+# = previous match word
+= = adjust to correct tab
+} = next paragraph
+) = end sentence
+
+! = free (external filter)
+_ = free ("soft" bol down)
+` = go to mark
+% = goes to open/closing element [{()}]
+~ = free (toggle case)
+| = go to column, also works for 0
+
+++++++++++++++++++++++
+NAVIGATION
+asdfe jkl up gh
+x xxx xxx  x
+
+c-k = prevBuffer
+c-l = nextBuffer
+
+c-j = control e (uno abajo)
+c-e = control y (uno arriba)
+
+c-d = control d (medio abajo) - g
+c-p = control u (medio arriba)
+
+c-v = control f (full abajo)
+c-b = control b (full arriba)
+
+c-a = navigate through windows
+c-f = navigate through windows - s
+
+podria usar semicolon como enter
+
++++++++++++++++++++++++
+kl as buffer/browser tab
+  + one hand navigation
+  + a/f for go through window
+  + comfortable buffer navigation (d for navigation)
+  + good for switching to browser and change tab immediatly
+  - lose df buffer/tab browser navigation
+  - fingers jumps
+
+df as buffer/browser tab
+  + df is super confortable
+  - lose a/f through window
+  - uncomfortable buffer navitation (k/l/u for navigation)
