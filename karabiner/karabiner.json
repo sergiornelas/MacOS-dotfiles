@@ -471,7 +471,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "6",
+                    "key_code": "3",
                     "modifiers": "left_shift"
                   }
                 ],
@@ -490,7 +490,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "backslash"
+                    "key_code": "equal_sign",
+                    "modifiers": "left_shift"
                   }
                 ],
                 "type": "basic"
@@ -582,8 +583,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "equal_sign",
-                    "modifiers": "left_shift"
+                    "key_code": "open_bracket"
                   }
                 ],
                 "type": "basic"
@@ -601,8 +601,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "3",
-                    "modifiers": ["left_shift"]
+                    "key_code": "close_bracket"
                   }
                 ],
                 "type": "basic"
@@ -770,6 +769,49 @@
                 },
                 "to": [
                   {
+                    "key_code": "quote",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "STRANGE SYMBOLS",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "open_bracket"
+                },
+                "to": [
+                  {
+                    "key_code": "backslash"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "close_bracket"
+                },
+                "to": [
+                  {
+                    "key_code": "6",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "quote",
+                  "modifiers": {
+                    "mandatory": ["left_shift"]
+                  }
+                },
+                "to": [
+                  {
                     "key_code": "backslash",
                     "modifiers": ["left_shift"]
                   }
@@ -796,25 +838,6 @@
                 "to_if_alone": [
                   {
                     "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "C-m to enter, useful for all aplications",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["right_control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "return_or_enter"
                   }
                 ],
                 "type": "basic"
@@ -1127,7 +1150,7 @@
             ]
           },
           {
-            "description": "Right_shift x2 to mission_control",
+            "description": "Right_shift to mission_control",
             "manipulators": [
               {
                 "conditions": [
@@ -1168,24 +1191,6 @@
                     "key_code": "right_shift"
                   }
                 ],
-                "to_delayed_action": {
-                  "to_if_canceled": [
-                    {
-                      "set_variable": {
-                        "name": "right_shift pressed",
-                        "value": 0
-                      }
-                    }
-                  ],
-                  "to_if_invoked": [
-                    {
-                      "set_variable": {
-                        "name": "right_shift pressed",
-                        "value": 0
-                      }
-                    }
-                  ]
-                },
                 "type": "basic"
               }
             ]

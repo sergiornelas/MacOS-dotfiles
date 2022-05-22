@@ -233,16 +233,27 @@ XXXXXXXXXXXXXXXXXXXXXXX
 (){}-+=*!^%_#&@~`|\/?;$
 HMHMHMHMMLMMLMMLLLLHMML
 
+THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder than semicolon + u)
+
+writing        vim effect         only vim effect changed
+
+&?/@* $#+   \^   #?/@+ -()      #˙˙˙+ -()
+QWERT-UIO   []   QWERT-UIO      QWERT-UIO
+ (;{-[]=})  ˙|    ^;{}$=%&       ^˙˙}$=%&
+ ASDFGHJKL  '"    ASDFGHJKL      ASDFGHJKL
+  ! _`%~"          | _`!~*        | ˙˙!˙*
+  Z-CVBNM          Z-CVBNM        Z CVBNM
+
 1)  F  - x
-2)  J  = x                                 THEY ARE COMPLETE! (add [], ")?
-3)  A  ( x                                 writing        vim effect         only vim effect changed
+2)  J  = x                                 
+3)  A  ( x                                 
 4)  D  { x                                 
-5)  E  / x                                 &?/@* $^\      #?/@+ -()          #˙˙˙+ -()            
-6)  S  ; x                                 QWERT-UIO      QWERT-UIO          QWERT-UIO            
-7)  W  ? x                                  (;{-+#=})      ^;{}$=%&           ^˙˙}$=%&           
-8)  Z  ! x                                  ASDFGHJKL      ASDFGHJKL          ASDFGHJKL
-9)  Q  & x                                   ! _`%~|        | _`!~*            | ˙˙!˙*
-10) V  ` x                                   Z-CVBNM        Z-CVBNM            Z CVBNM
+5)  E  / x                                 
+6)  S  ; x                                 
+7)  W  ? x                                 
+8)  Z  ! x                                 
+9)  Q  & x                                 
+10) V  ` x                                 
 11) G  + x
 12) R  @ x
 13) T  * x
@@ -324,6 +335,9 @@ _ = free ("soft" bol down)
 % = goes to open/closing element [{()}]
 ~ = free (toggle case)
 | = go to column, also works for 0
+
+' = goes to mark line
+" = reg spec (not sure what does)
 
 ++++++++++++++++++++++
 NAVIGATION

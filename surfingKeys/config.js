@@ -67,6 +67,7 @@ api.map("t", "T");
 api.map("J", "S");
 api.map("K", "D");
 api.map("F", "C");
+api.map("p", "u");
 api.map("<Alt-p>", "<Command-p>"); //pin/unpin?
 
 // cf open multiple links in a new tab
