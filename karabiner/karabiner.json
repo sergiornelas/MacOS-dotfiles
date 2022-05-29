@@ -1196,7 +1196,7 @@
             ]
           },
           {
-            "description": "Browser mappings (j,k,l)",
+            "description": "Browser mappings (j,d,f)",
             "manipulators": [
               {
                 "conditions": [
@@ -1210,7 +1210,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "k",
+                  "key_code": "d",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -1235,7 +1235,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "l",
+                  "key_code": "f",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -1268,6 +1268,102 @@
                 "to": [
                   {
                     "key_code": "return_or_enter"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
                   }
                 ],
                 "type": "basic"
