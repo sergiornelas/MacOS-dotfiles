@@ -40,186 +40,12 @@ mecanico con un boton adicional, pero estos carecen de trackpoint,
 ademas que perderia skill en el teclado de la mac.
 Por lo tanto ya tengo definido el setting definitivo.
 
-1234567890`~
-qwertyuiop[]
-
-!@#$%^&*()
-
-!@#${}%*()\
-asdfghjkl;'
-
--_|=+^&
-cvbnm<>
-
-Caps                         = Ctrl/Esc
-Right_command                = Primary Layer (1234, !@#$, =+)/Esc
-PrtSc                        = Right shift
-Right_command + space        = Alt + number, Ctrl + number layer
-Tab                          = Secondary Layer (arrows)
-
-=================================================================
-Otra alternativa despues del suenazo
-
-Caps                         = Hyper
-Right_command                = Ctrl/Esc
-; (hold)                     = Primary Layer (1234, !@#$, =+)
-  you are missing: 0, ), `, ~
-PrtSc                        = Right shift
-Left_command                 = Command
-p (hold)                     = Alt + number, Ctrl + number layer 
-  you are missing alt+0, ctrl+0
-Tab                          = Secondary Layer (arrows)
-
-*********one layer for caps and another one for semicolon
-move kity tab with tab key instead of <cmd><caps><n>
-
-semicolon as layer:
-  main layer
-  shift
-  yabai
-
-you could use semicolon + right command
-
-solo debe haber un layer?
- 
-Propongo esto porque Caps se utiliza demasiado, mas que el layer principal.
-Entonces creo resultaria mas comodo Ctrl en Right_command.
-Ademas toma en cuenta que no se utilizaria Right_command en Yabai commands
-
---------------------------------------------------
-LMHHHHLHMMLLLHMMHH  MLLL (Prioridad del efecto vim)
-MLLLMLMLHHHMMHHHHH  MMLL (Prioridad de escritura)
-!@#$%^&*()-_+=[]{}  `~\|
-
-Debemos hacer un trueque. aplicar el efecto prioritario 
-en la escritura prioritaria.
-Ejemplo:
-  l    h/m
- --------
-  ^ -> (
-  # -> )
-  $ -> & 
-...................................................
-
-!@#$%^&*()-_+=[]{}  `~\|
-xxxxxxxxxxxxxxxxxx  xxxx
-
-FIRST ROW
-
-^#{$}=%*0   vim effect
-(){}-+=*0   escritura (layer)   los que estan cambiando efecto: (), }, =
-asdfghjkl   escritura
-
- Hay simbolos que estan switchenado un super poder diferente del que ya tienen
- (), }, =.                                     
- Hay simbolos que solo ganan super poder y ya: - (}), + (=).
-
-SECOND ROW
-
-  ()        vim effect
-!^%_#&@$    escritura (layer)
-zxcvbnm,    escritura
-
-  Agregemos el efecto perdido a: #, ^ (parentesis)
-
-CAPS MAPPING
-`|  \~
-;'  ,.
-
-123456789
-qwertyuio
-
-(){}-+=*0
-asdfghjkl 
-
-!^%_#&@$ 
-zxcvbnm, 
-
-Before
---------------+--------------+-----+
-    KEY       |   HOLD       | TAP |
---------------+--------------+-----+
-Right Command |Right control | Esc |
-Caps Lock     |Right command | Esc |
-Semicolon     |Right command | ;   |
---------------+--------------+-----+
-Right Command | Layer (123, !@#)   | (Caps)
-Tab           | Layer (arrow keys) |
---------------+--------------------+
-
-General
-+---------------+---------------+-------------- 
-|      KEY      |    HOLD       | TAP           
-+---------------+---------------+-------------- 
-| Right Command | Right control | Esc                   (Map to right control because vim can not recognize Command key)
-| Caps Lock     | Hyper         | Sticky left command   (Layer Yabai, Layer `|)
-| Tab           | Layer 1       | Tab                   (Layer arrows)
-| Semicolon     | Layer 2       | Semicolon             (Layer 123, !@#)
-| Slash         | Right shift   | Slash             
-| Right ctrl+M  |               | Enter             
-|(Right_command)|               |
-| Both commands |               | Command+number, Ctrl+number 
-| + keys        |               | 
-| Right shift x2|               | Mission control             
-|                | Mission control             
-+---------------+---------------+-------------- 
-| Tab           | Layer         | Tab                   (Layer arrows)
-
-Apple
-------------------------------------
->< Symbols (grave_accent_...) -> Left Shift
-
-ThinkPad
-------------------------------------
-Left_command  -> Left_option (windows key)
-Left_alt      -> Left_command
-Center mouse  -> vk_none (disabled)
-Right_alt     -> Right_command
-Print_screen  -> Left_option 
-
 grave_accent_and_tilde `
 close_bracket
 hyphen -
 equal_sign =
 quote '
 slash /
-
--------------------------------------
-
-(){}-+=*0
-asdfghjkl
-
-!^%_#&@
-zxcvbnm
-
-qwertyui
-~`|\[]/?;
-
-(){}-+=*!^%_#&@~`|\[]/?;
-HHHHHMHMMLMMLMMLLLLMMHMM
-
-LLLLHMM
-~`|\/?;
-    xxx
-
-?;/  
-qwertyuio
-
-+-*/%=`~\|
-(){}[]
-!@#$%^&_
-
-(){}
-
---- ---------------------
-!@#$%^&*()~`_-+={}|\;/?
-
-~`!@#$%^&*()_-+={}|\;"?/     DEFINITIVO
-qwertyuiopasdfghjklzxcvbnm   DEFINITIVO (van a sobrar dos caracteres (X,C))
-
- xWxxxxxxx
-  xSxxxxxxx
-   xxxVxxx
 
 prioridad:
 Se priorizo conservar el indice en su sitio. Se puso en baja prioridad aquellas que estan en
@@ -236,13 +62,17 @@ HMHMHMHMMLMMLMMLLLLHMML
 THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder than semicolon + u)
 
 writing        vim effect         only vim effect changed
-
-&?/@* $#+   \^   #?/@+ -()      #˙˙˙+ -()
+&?/+* $#@   \^   #?/@+ -()      #˙˙@+ -()
 QWERT-UIO   []   QWERT-UIO      QWERT-UIO
- (;{-[]=})  ˙|    ^;{}$=%&       ^˙˙}$=%&
+ (;{-[]=|~  ˙˙    ^;{}$=%&~      ^˙˙}$=%&
  ASDFGHJKL  '"    ASDFGHJKL      ASDFGHJKL
-  ! _`%~"          | _`!~*        | ˙˙!˙*
+  ! _`%})          | _`!~*        | ˙˙!~*
   Z-CVBNM          Z-CVBNM        Z CVBNM
+
+falta agregar corchetes effecto, pero recuerda match it
+
+aparte al abrir toggle term en modo side, desacomoda la 
+posicion de las ventanas
 
 1)  F  - x
 2)  J  = x                                 
@@ -338,39 +168,3 @@ _ = free ("soft" bol down)
 
 ' = goes to mark line
 " = reg spec (not sure what does)
-
-++++++++++++++++++++++
-NAVIGATION
-asdfe jkl up gh
-x xxx xxx  x
-
-c-k = prevBuffer
-c-l = nextBuffer
-
-c-j = control e (uno abajo)
-c-e = control y (uno arriba)
-
-c-d = control d (medio abajo) - g
-c-p = control u (medio arriba)
-
-c-v = control f (full abajo)
-c-b = control b (full arriba)
-
-c-a = navigate through windows
-c-f = navigate through windows - s
-
-podria usar semicolon como enter
-
-+++++++++++++++++++++++
-kl as buffer/browser tab
-  + one hand navigation
-  + a/f for go through window
-  + comfortable buffer navigation (d for navigation)
-  + good for switching to browser and change tab immediatly
-  - lose df buffer/tab browser navigation
-  - fingers jumps
-
-df as buffer/browser tab
-  + df is super confortable
-  - lose a/f through window
-  - uncomfortable buffer navitation (k/l/u for navigation)

@@ -414,7 +414,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "2",
+                    "key_code": "equal_sign",
                     "modifiers": "left_shift"
                   }
                 ],
@@ -490,7 +490,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "equal_sign",
+                    "key_code": "2",
                     "modifiers": "left_shift"
                   }
                 ],
@@ -637,7 +637,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "close_bracket",
+                    "key_code": "backslash",
                     "modifiers": ["left_shift"]
                   }
                 ],
@@ -656,7 +656,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "0",
+                    "key_code": "grave_accent_and_tilde",
                     "modifiers": "left_shift"
                   }
                 ],
@@ -750,7 +750,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "grave_accent_and_tilde",
+                    "key_code": "close_bracket",
                     "modifiers": ["left_shift"]
                   }
                 ],
@@ -769,7 +769,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "quote",
+                    "key_code": "0",
                     "modifiers": ["left_shift"]
                   }
                 ],
@@ -798,21 +798,6 @@
                 "to": [
                   {
                     "key_code": "6",
-                    "modifiers": ["left_shift"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "quote",
-                  "modifiers": {
-                    "mandatory": ["left_shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "backslash",
                     "modifiers": ["left_shift"]
                   }
                 ],

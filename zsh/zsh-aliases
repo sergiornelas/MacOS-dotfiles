@@ -1,9 +1,14 @@
 #!/bin/sh
 alias f='nvim'
+alias j='jobs'
 alias l='exa --icons -a -s=type'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
 alias ..='cd ../'
+alias ....='cd ../../'
+alias ......='cd ../../../'
+alias ........='cd ../../../../'
+alias ..........='cd ../../../../../'
 # alias l='ls -a'
 # alias j='z'
 # alias f='zi'

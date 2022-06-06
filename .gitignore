@@ -1,3 +1,7 @@
 /nvim
+/zsh/plugins
+/zsh/.zsh_history
+/zsh/.zcompcache
+/zsh/.zcompdump
 /.DS_Store
 /configstore
