@@ -26,7 +26,7 @@ yabai -m config top_padding                  28
 yabai -m config bottom_padding               3
 yabai -m config left_padding                 3
 yabai -m config right_padding                3
-yabai -m config window_gap                   4
+yabai -m config window_gap                   6
 
 # border
 yabai -m config window_border on

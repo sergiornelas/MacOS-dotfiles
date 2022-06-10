@@ -15,7 +15,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
-# Avoid using cd when changin directory
+# Avoid using cd when changing directory
 setopt autocd
 
 # Useful Functions
@@ -32,6 +32,7 @@ zsh_add_plugin "agkozak/zsh-z"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "lukechilds/zsh-nvm"
+zsh_add_plugin "zpm-zsh/pr-jobs"
 # zsh_add_plugin "hlissner/zsh-autopair"
 # gitstatus prompt is added in root
 # npm install --global trash-cli #delete without -rf
@@ -42,7 +43,9 @@ zsh_add_plugin "lukechilds/zsh-nvm"
 source ~/gitstatus/gitstatus.prompt.zsh
 zsh_add_file "zsh-prompt"
 PROMPT+=' $GITSTATUS_PROMPT '
-
+PROMPT+='%(1j.%j.)'
+PROMPT+='$pr_jobs '
+RPROMPT="%1(j.X.)"
 # zsh-z
 source ~/.config/zsh/plugins/zsh-z/zsh-z.plugin.zsh
 

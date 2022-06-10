@@ -1,5 +1,6 @@
 /nvim
 /zsh/plugins
+/zsh/.zsh_sessions
 /zsh/.zsh_history
 /zsh/.zcompcache
 /zsh/.zcompdump
