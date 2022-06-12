@@ -61,14 +61,14 @@ HMHMHMHMMLMMLMMLLLLHMML
 
 THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder than semicolon + u)
 
-WRITING            VIM EFFECT         ONLY VIM EFFECT CHANGED
-----------------------------------------------------------
-&?/+* #$%   \^       #?/@+ -()           #˙˙@+ -()
-QWERT˙UIO   []       QWERT˙UIO           QWERT˙UIO
-({;-[]=|~  ˙˙        ^;{}$=%&~           ^;{}$=%&˙
-ASDFGHJKL  '"        ASDFGHJKL           ASDFGHJKL
- ! _`@})              | _`!~*             | ˙˙!~*
- Z˙CVBNM              Z˙CVBNM             Z˙CVBNM
+WRITING            VIM EFFECT         
+------------------------------
+&?/+* #$%  \^      #;/@+ -()   
+QWERT˙UIO  []      QWERT˙UIO  
+({;-[]=|~  ˙˙      ^?{}$=%&~   
+ASDFGHJKL  '"      ASDFGHJKL   
+ ! _`@})            | _`!~*    
+ Z˙CVBNM            Z˙CVBNM  
 
 corchetes realmente en capa?
 falta agregar corchetes effecto, pero recuerda match it
@@ -170,3 +170,16 @@ _ = free ("soft" bol down)
 
 ' = goes to mark line
 " = reg spec (not sure what does)
+
+neovim 0.8
+  why not upgrade:
+    -lsp and null
+      problems with highlighting (install plugin)
+    /windbar
+      for files with long path bad idea
+    /globalstatusline
+      added in lualine
+    +searchselection
+      ONLY this is working
+  So I have to correct lsp and null for search selection
+  I think is a better idea to wait stable 0.8

@@ -59,16 +59,16 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # TMUX
 # Kill tmux sessions automatically
-alias tmuxn='tmux new-session -s $$'
-_trap_exit() { tmux kill-session -t $$; }
-trap _trap_exit EXIT
+# alias tmuxn='tmux new-session -s $$'
+# _trap_exit() { tmux kill-session -t $$; }
+# trap _trap_exit EXIT
 
 # Executes tmux once terminal runs
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  # tmux attach -t default || tmux new -s default
-  # tmux
-  tmuxn
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#   # tmux attach -t default || tmux new -s default
+#   # tmux
+#   tmuxn
+# fi
 
 # select-layout even-vertical
 

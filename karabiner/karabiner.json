@@ -1073,7 +1073,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "d",
+                  "key_code": "e",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -1195,7 +1195,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "w",
+                  "key_code": "i",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -1219,7 +1219,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "e",
+                  "key_code": "o",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
