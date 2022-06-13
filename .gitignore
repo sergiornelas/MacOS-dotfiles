@@ -4,5 +4,6 @@
 /zsh/.zsh_history
 /zsh/.zcompcache
 /zsh/.zcompdump
+/fish/fish_variables
 /.DS_Store
 /configstore
