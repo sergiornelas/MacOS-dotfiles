@@ -63,21 +63,20 @@ THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder t
 
 WRITING            VIM EFFECT         
 ------------------------------
-&?/+* #$%  \^      #;/@+ -()   
-QWERT˙UIO  []      QWERT˙UIO  
-({;-[]=|~  ˙˙      ^?{}$=%&~   
-ASDFGHJKL  '"      ASDFGHJKL   
- ! _`@})            | _`!~*    
- Z˙CVBNM            Z˙CVBNM  
+&?/+* #$%  \^      #;/@- +() [] (not added yet)
+QWERT˙UIO  []      QWERT˙UIO []
+({;-[]=|~  ˙˙      *?{}$=%&~
+ASDFGHJKL  '"      ASDFGHJKL
+ ! _`@})            ^ _`!~|
+ Z˙CVBNM            Z˙CVBNM
+
+&?/+*#$%({;-[]=|~!_`@})  \^
+************  *********  n*
 
 corchetes realmente en capa?
 falta agregar corchetes effecto, pero recuerda match it
 
-aparte al abrir toggle term en modo side, desacomoda la 
-posicion de las ventanas
-
-1) remap tmux prefix to c-a
-      do you really use tmux that much?
+mapear =/j writing for =/v or =/q
 
 2) usar a para { effect
 
@@ -210,3 +209,9 @@ neovim 0.8
 -- Osi and The Jupiter.
 -- Empty Moons
 -- Vevaki
+
+https://www.reddit.com/r/neovim/
+https://www.reddit.com/r/neovim/comments/vc75v7/cmdheight0_vimtpipeline_a_match_made_in_heaven/
+https://github.com/vimpostor/vim-tpipeline
+
+brave left command shit b hide bookmarks
