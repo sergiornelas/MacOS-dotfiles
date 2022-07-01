@@ -41,7 +41,7 @@
             ]
           },
           {
-            "description": "CAPS to HYPER when held, Sticky left_command when tap",
+            "description": "CAPS to HYPER when held, Ctrl+B (Tmux Prefix) when tap",
             "manipulators": [
               {
                 "from": {
@@ -58,12 +58,8 @@
                 ],
                 "to_if_alone": [
                   {
-                    "sticky_modifier": {
-                      "left_command": "toggle"
-                    }
-                  },
-                  {
-                    "key_code": "left_command"
+                    "key_code": "b",
+                    "modifiers": ["right_control"]
                   }
                 ],
                 "type": "basic"
@@ -1164,7 +1160,7 @@
             "manipulators": [
               {
                 "from": {
-                  "key_code": "m",
+                  "key_code": "d",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1184,7 +1180,7 @@
               },
               {
                 "from": {
-                  "key_code": "semicolon",
+                  "key_code": "k",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1224,7 +1220,7 @@
               },
               {
                 "from": {
-                  "key_code": "t",
+                  "key_code": "r",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1238,46 +1234,6 @@
                   {
                     "key_code": "down_arrow",
                     "modifiers": ["right_control"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "r",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_shift",
-                      "left_command",
-                      "left_control",
-                      "left_option"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": ["left_shift"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "g",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_shift",
-                      "left_command",
-                      "left_control",
-                      "left_option"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": ["right_shift"]
                   }
                 ],
                 "type": "basic"
@@ -1318,6 +1274,91 @@
                   {
                     "key_code": "down_arrow",
                     "modifiers": ["right_shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["right_shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "y",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": ["right_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Move Through desktops",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "2",
+                    "modifiers": ["right_control"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "1",
+                    "modifiers": ["right_control"]
                   }
                 ],
                 "type": "basic"

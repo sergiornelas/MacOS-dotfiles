@@ -1,35 +1,36 @@
-#__________
- #_________
-  #_X_____
+#_____Y____
+ #_________:
+  #_X__B__
 
-#full screen D
-#axis-y P
-#Stack N
-#Warp (move) QW
-#Swap A
-#recent window S
-#rotate windows 90 degrees B
-#restart Z
+#navigation                 JI
+#resize-horizontal          U
+#resize-vertical            T
+#next/prev stack            FE
+#desktop navigation         HL
+#full screen                O
+#rotate windows 90 degrees  M
+#axis-y                     P
+#Stack                      N
+#Warp (move)                QW
+#Swap                       A
+#recent window              S
+#restart                    Z
 
-#tmux new window T
-#tmux new horizontal pane R
-#tmux new vertical pane G
-#tmux next session C
-#tmux previous session V
+#tmux last session          R
+#tmux session navigation    CV
+#tmux window navigation     KD
+#tmux zoom                  SPACE
+#tmux vim mode terminal     G
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
 #==================================WINDOWS==========================================
 # MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
-hyper - h : yabai -m window --focus west
-hyper - j : yabai -m window --focus south
-hyper - k : yabai -m window --focus north
-hyper - l : yabai -m window --focus east
+hyper - j : yabai -m window --focus east || yabai -m window --focus west
+hyper - i : yabai -m window --focus south || yabai -m window --focus north
 
 # RESIZE WINDOWS
-hyper - o : yabai -m window --resize left:70:0
-hyper - i : yabai -m window --resize bottom:0:-70
-hyper - u : yabai -m window --resize top:0:70
-hyper - y : yabai -m window --resize right:-70:0
+hyper - u : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
+hyper - t : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
 
 #======================================AXIS===============================================
 hyper - p : yabai -m space --mirror y-axis
@@ -49,23 +50,24 @@ hyper - w : yabai -m window --warp east
 hyper - a : yabai -m window --swap recent
 
 #======================================DESKTOPS===========================================
-hyper - 1 : yabai -m window --space 1; yabai -m display --focus 1
-hyper - 2 : yabai -m window --space 2; yabai -m display --focus 2
-hyper - 3 : yabai -m window --space 3; yabai -m display --focus 3
-hyper - 4 : yabai -m window --space 4; yabai -m display --focus 4
+# Navigation between desktops not available
+# hyper h : first desktop (karabiner)
+# hyper l : second desktop (karabiner)
+hyper - 1 : yabai -m window --space 1
+hyper - 2 : yabai -m window --space 2
 
 #======================================MISC================================================
 # GO TO RECENT WINDOW (wildcard)
 hyper - s : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
-hyper - d : yabai -m window --toggle zoom-fullscreen
+hyper - o : yabai -m window --toggle zoom-fullscreen
 
 # ROTATE WINDOWS
-hyper - b : yabai -m space --rotate 90
+hyper - m : yabai -m space --rotate 90
 
 # RESTART YABAI
 hyper - z : brew services restart yabai
 
 # OPEN APPS
-# hyper - * : open -na /Applications/kitty.app 
+# hyper - * : open -na /Applications/kitty.app

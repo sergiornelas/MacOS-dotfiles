@@ -61,13 +61,13 @@ HMHMHMHMMLMMLMMLLLLHMML
 
 THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder than semicolon + u)
 
-WRITING            VIM EFFECT         
+WRITING            VIM EFFECT
 ------------------------------
-&?/+* #$%  \^      #;/@- +() [] (not added yet)
+&?/+* #$%  \^      #;/@- +() []
 QWERT˙UIO  []      QWERT˙UIO []
 ({;-[]=|~  ˙˙      *?{}$=%&~
 ASDFGHJKL  '"      ASDFGHJKL
- ! _`@})            ^ _`!~|
+ ! _`@})            | _`!~^
  Z˙CVBNM            Z˙CVBNM
 
 &?/+*#$%({;-[]=|~!_`@})  \^
@@ -89,15 +89,15 @@ mapear =/j writing for =/v or =/q
            Z˙CVBNM 
 
 1)  F  - x
-2)  J  = x                                 
-3)  A  ( x                                 
-4)  D  { x                                 
-5)  E  / x                                 
-6)  S  ; x                                 
-7)  W  ? x                                 
-8)  Z  ! x                                 
-9)  Q  & x                                 
-10) V  ` x                                 
+2)  J  = x
+3)  A  ( x
+4)  D  { x
+5)  E  / x
+6)  S  ; x
+7)  W  ? x
+8)  Z  ! x
+9)  Q  & x
+10) V  ` x
 11) G  + x
 12) R  @ x
 13) T  * x
@@ -211,7 +211,27 @@ neovim 0.8
 -- Vevaki
 
 https://www.reddit.com/r/neovim/
-https://www.reddit.com/r/neovim/comments/vc75v7/cmdheight0_vimtpipeline_a_match_made_in_heaven/
-https://github.com/vimpostor/vim-tpipeline
 
 brave left command shit b hide bookmarks
+
+ef -> one line
+jk -> buffer next/prev
+gt -> tmux window
+-----------------------
+du -> half page
+vp -> full page
+
+ra -> window next/prev
+
+l -> visual box selection
+
+h -> delete buffer ?
+
+c -> *
+s -> *
+x -> *
+n -> *
+m -> *
+b -> *
+
+z -> suspend

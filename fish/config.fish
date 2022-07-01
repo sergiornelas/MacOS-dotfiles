@@ -1,6 +1,6 @@
 if status is-interactive
 and not set -q TMUX
-    exec tmux
+  exec tmux
 end
 
 # Alias is just using eval to make a function anyway. It also
