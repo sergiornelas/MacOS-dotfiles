@@ -20,7 +20,8 @@ end
 set -gx EDITOR nvim
 
 # you have to open terminal twice to apply
-set --universal nvm_default_version 14
+# set --universal nvm_default_version 14
+# set --universal nvm_default_version system
 # set --universal nvm_default_version latest
 
 function _peco_change_directory
