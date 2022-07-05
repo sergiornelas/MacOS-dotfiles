@@ -2,20 +2,21 @@
  #_________:
   #_X__B__
 
+# YABAI
 #navigation                 JI
-#resize-horizontal          U
-#resize-vertical            T
+#resize-windows             UT
 #next/prev stack            FE
 #desktop navigation         HL
 #full screen                O
 #rotate windows 90 degrees  M
 #axis-y                     P
-#Stack                      N
-#Warp (move)                QW
-#Swap                       A
+#stack                      N
+#warp (move)                QW
+#swap                       A
 #recent window              S
 #restart                    Z
 
+# TMUX prefix
 #tmux last session          R
 #tmux session navigation    CV
 #tmux window navigation     KD
@@ -23,8 +24,7 @@
 #tmux vim mode terminal     G
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
-#==================================WINDOWS==========================================
-# MOVE AROUND WINDOWS (hjkl) AND GOES THROUGH WINDOWS
+#WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west
 hyper - i : yabai -m window --focus south || yabai -m window --focus north
 
@@ -32,31 +32,31 @@ hyper - i : yabai -m window --focus south || yabai -m window --focus north
 hyper - u : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
 hyper - t : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
 
-#======================================AXIS===============================================
+#AXIS =================================
 hyper - p : yabai -m space --mirror y-axis
 
-#======================================STACK==============================================
+#STACK ================================
 hyper - n : yabai -m window --stack recent
 
 # Focus window up/down in stack
 hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
-#======================================WARP==============================================
+#WARP =================================
 hyper - q : yabai -m window --warp west
 hyper - w : yabai -m window --warp east
 
-#======================================SWAP================================================
+#SWAP =================================
 hyper - a : yabai -m window --swap recent
 
-#======================================DESKTOPS===========================================
+#DESKTOPS =============================
 # Navigation between desktops not available
 # hyper h : first desktop (karabiner)
 # hyper l : second desktop (karabiner)
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 
-#======================================MISC================================================
+#MISC =================================
 # GO TO RECENT WINDOW (wildcard)
 hyper - s : yabai -m window --focus recent || yabai -m display --focus recent
 
