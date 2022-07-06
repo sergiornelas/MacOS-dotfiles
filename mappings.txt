@@ -63,30 +63,15 @@ THEY ARE COMPLETE! (possibly swap *$ (T, U) for [] (G, H) semicolon + i harder t
 
 WRITING            VIM EFFECT
 ------------------------------
-&?/+* #$%  \^      #;/@- +() []
+&?/+* #$%  \^      #?/{- +() []
 QWERT˙UIO  []      QWERT˙UIO []
-({;-[]=|~  ˙˙      *?{}$=%&~
+({;-[]=|~  ˙˙      *@;}$=%&~
 ASDFGHJKL  '"      ASDFGHJKL
  ! _`@})            | _`!~^
  Z˙CVBNM            Z˙CVBNM
 
 &?/+*#$%({;-[]=|~!_`@})  \^
 ************  *********  n*
-
-corchetes realmente en capa?
-falta agregar corchetes effecto, pero recuerda match it
-
-mapear =/j writing for =/v or =/q
-
-2) usar a para { effect
-
-    realmente utilizas la A (^)?
-          #;{@+ -()
-          QWERT˙UIO
-          *?/}$=%&~
-          ASDFGHJKL
-           | _`!~^ 
-           Z˙CVBNM 
 
 1)  F  - x
 2)  J  = x
@@ -225,7 +210,7 @@ ra -> window next/prev
 
 l -> visual box selection
 
-h -> delete buffer ?
+h -> delete buffer
 
 c -> *
 s -> *

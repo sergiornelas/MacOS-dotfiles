@@ -4,6 +4,10 @@
 /zsh/.zsh_history
 /zsh/.zcompcache
 /zsh/.zcompdump
-/fish/fish_variables
-/.DS_Store
 /configstore
+/fish/completions
+/fish/conf.d
+/fish/functions/tide
+/fish/~
+/fish/fish_variables
+/fish/fishd*
