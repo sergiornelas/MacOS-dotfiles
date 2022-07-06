@@ -1,9 +1,3 @@
-/nvim
-/zsh/plugins
-/zsh/.zsh_sessions
-/zsh/.zsh_history
-/zsh/.zcompcache
-/zsh/.zcompdump
 /configstore
 /fish/completions
 /fish/conf.d
@@ -11,3 +5,10 @@
 /fish/~
 /fish/fish_variables
 /fish/fishd*
+/karabiner/automatic_backups
+/nvim
+/zsh/plugins
+/zsh/.zsh_sessions
+/zsh/.zsh_history
+/zsh/.zcompcache
+/zsh/.zcompdump
