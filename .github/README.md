@@ -1,6 +1,6 @@
 # MacOS dot files
 
-<img width="1450" alt="image" src="macos.png">
+<img width="1450" alt="image" src="neofetch.png">
 
 ## Apps added:
 
