@@ -18,6 +18,7 @@ end
 
 # Default editor
 set -gx EDITOR nvim
+set -gx BROWSER brave
 
 # you have to open terminal twice to apply
 set --universal nvm_default_version 14
