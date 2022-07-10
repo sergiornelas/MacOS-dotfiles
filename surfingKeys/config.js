@@ -56,7 +56,6 @@ settings.scrollStepSize = 140;
 
 //settings.useNeovim = true;
 api.mapkey("<Ctrl-y>", "Show me the money", function () {
-  //Front.showPopup('a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).');
   console.log("sergio es grande");
 });
 
@@ -67,12 +66,3 @@ api.map("F", "C");
 api.map("p", "u");
 api.map("<Ctrl-j>", "<Ctrl-t>");
 api.map("<Alt-p>", "<Command-p>"); //pin/unpin?
-
-// USEFUL SHORTCUTS
-// cf open multiple links in a new tab
-// on open new tab
-// g$ go last tab
-// g0 go first tab
-// zi zoom in
-// zo zoom out
-// zr zoom reset

@@ -33,11 +33,6 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "lukechilds/zsh-nvm"
 zsh_add_plugin "zpm-zsh/pr-jobs"
-# zsh_add_plugin "hlissner/zsh-autopair"
-# gitstatus prompt is added in root
-# npm install --global trash-cli #delete without -rf
-# https://the.exa.website/install #exa for icons in ls -la
-# For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 
 # Prompt
 source ~/gitstatus/gitstatus.prompt.zsh
@@ -56,34 +51,3 @@ autoload -Uz compinit && compinit
 bindkey '^v' autosuggest-accept
 
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# TMUX
-# Kill tmux sessions automatically
-# alias tmuxn='tmux new-session -s $$'
-# _trap_exit() { tmux kill-session -t $$; }
-# trap _trap_exit EXIT
-
-# Executes tmux once terminal runs
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#   # tmux attach -t default || tmux new -s default
-#   # tmux
-#   tmuxn
-# fi
-
-# select-layout even-vertical
-
-# Completion
-# zsh_add_completion "esc/conda-zsh-completion" false
-# More completions https://github.com/zsh-users/zsh-completions
-
-# Key-bindings
-# bindkey "^p" up-line-or-beginning-search # Up
-# bindkey "^n" down-line-or-beginning-search # Down
-# bindkey "^k" up-line-or-beginning-search # Up
-# bindkey "^j" down-line-or-beginning-search # Down
-
-# ===============================
-# How to load .zshrc inside ~/.config?
-# In ~/.zprofile:
-#   export ZDOTDIR=$HOME/.config/zsh
-
