@@ -4,9 +4,12 @@
 
 ## Apps added:
 
-- Window tiling manager: Yabai
-- Keyboard shortcuts: skhd
 - Configure keystrokes: Karabiner
+- Keyboard shortcuts: Skhd
+- Window tiling manager: Yabai
 - Terminal: Kitty
+- Multiplexer: Tmux
+- Shell: Fish
+- Fuzzy searching Tool: Peco
 - Keyboard web browsing: Surfingkeys
 - Header status bar: Spacebar
