@@ -1,11 +1,18 @@
 {
   "Keymap": {
-    "M-v": "peco.ScrollPageUp",
+    "C-p": "peco.ScrollPageUp",
     "C-v": "peco.ScrollPageDown",
     "C-x,C-c": "peco.Cancel",
     "C-k": "peco.SelectDown",
     "C-l": "peco.SelectUp",
     "C-j": "peco.Finish"
   },
-  "Use256Color": true
+  "Use256Color": true,
+  "Style": {
+    "Basic": ["on_default", "default"],
+    "SavedSelection": ["bold", "on_yellow", "white"],
+    "Selected": ["underline", "on_cyan", "black"],
+    "Query": ["yellow", "bold"],
+    "Matched": ["red"]
+  }
 }

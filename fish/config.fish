@@ -6,24 +6,18 @@ end
 # Alias is just using eval to make a function anyway. It also
 # seems to call out to sed, so that might be why it's slow.
 # I tend to think alias should be removed from fish anyway.
-
 # For optimal startup time you should use functions and make them lazy-loaded
 # which you can do interactively with funced and funcsave,
 # or manually by saving each function in its own file
 # ~/.config/fish/functions/name-of-function.fish
 
-## eliminate fish_prompt:
-# set -U fish_greeting ""
-# fish_prompt
-
 # Default editor
 set -gx EDITOR nvim
+# Default browser
 set -gx BROWSER brave
 
-# you have to open terminal twice to apply
+# You have to open terminal twice to apply
 set --universal nvm_default_version 14
-# set --universal nvm_default_version system
-# set --universal nvm_default_version latest
 
 function _peco_change_directory
   if [ (count $argv) ]
@@ -64,13 +58,13 @@ function peco_select_history
   end
 end
 
+# brew install fd (styled find, optional)
 # brew install peco
 function fish_user_key_bindings
-    # bind \cr 'peco_select_history (commandline -b)'
-    # bind \co 'peco_change_directory' # Bind for peco change directory to Ctrl+F
+    bind \cr 'peco_select_history (commandline -b)'
+    bind \co 'peco_change_directory'
 end
 
-# brew install fzf (fuzzy finder)
-# brew install fd (styled fd)
-# brew install bat (smarter cat)
-# fisher install PatrickF1/fzf.fish
+## eliminate fish_prompt:
+# set -U fish_greeting ""
+# fish_prompt
