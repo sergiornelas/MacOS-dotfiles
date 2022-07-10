@@ -1459,6 +1459,59 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Kitty transparent toggle",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "a",
+                    "modifiers": ["left_shift", "right_control"],
+                    "hold_down_milliseconds": 100
+                  },
+                  {
+                    "key_code": "l"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "close_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "a",
+                    "modifiers": ["left_shift", "right_control"],
+                    "hold_down_milliseconds": 100
+                  },
+                  {
+                    "key_code": "m"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },

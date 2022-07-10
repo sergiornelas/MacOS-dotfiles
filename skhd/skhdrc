@@ -23,6 +23,10 @@
 #tmux zoom                  SPACE
 #tmux vim mode terminal     G
 
+# KITTY
+# Transparent up            \
+# Transparent down          ^
+
 ## HYPER == SHIFT + CMD + ALT + OPTION
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west

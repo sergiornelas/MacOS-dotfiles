@@ -1,6 +1,8 @@
 /configstore
 /fish/completions
 /fish/conf.d
+/fish/fishd*
+/fish/fish_variables
 /fish/functions/_autopair*
 /fish/functions/_nvm*
 /fish/functions/_tide*
@@ -14,8 +16,6 @@
 /fish/functions/tide.fish
 /fish/themes
 /fish/~
-/fish/fish_variables
-/fish/fishd*
 /karabiner/automatic_backups
 /nvim
 /tmux/plugins
