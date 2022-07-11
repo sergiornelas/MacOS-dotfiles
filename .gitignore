@@ -5,6 +5,8 @@
 /fish/fish_variables
 /fish/functions/_autopair*
 /fish/functions/_nvm*
+/fish/functions/_puffer*
+/fish/functions/_sponge*
 /fish/functions/_tide*
 /fish/functions/__z*
 /fish/functions/fisher.fish
@@ -14,6 +16,7 @@
 /fish/functions/nvm.fish
 /fish/functions/tide
 /fish/functions/tide.fish
+/fish/functions/sponge*
 /fish/themes
 /fish/~
 /karabiner/automatic_backups
