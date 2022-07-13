@@ -1,5 +1,5 @@
 #_____Y____
- #____G_____
+ #A_________
   #_X__B__
 
 # YABAI
@@ -12,8 +12,8 @@
 #axis-y                     P
 #stack                      N
 #warp (move)                QW
-#swap                       A
-#recent window              S
+#swap                       S
+#recent window              G
 #restart                    Z
 
 # TMUX prefix
@@ -51,7 +51,7 @@ hyper - q : yabai -m window --warp west
 hyper - w : yabai -m window --warp east
 
 #SWAP =================================
-hyper - a : yabai -m window --swap recent
+hyper - s : yabai -m window --swap recent
 
 #DESKTOPS =============================
 # Navigation between desktops not available
@@ -61,8 +61,8 @@ hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 
 #MISC =================================
-# GO TO RECENT WINDOW (wildcard)
-hyper - s : yabai -m window --focus recent || yabai -m display --focus recent
+# GO TO RECENT WINDOW
+hyper - g : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
 hyper - o : yabai -m window --toggle zoom-fullscreen
