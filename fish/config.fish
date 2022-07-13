@@ -11,6 +11,9 @@ end
 # or manually by saving each function in its own file
 # ~/.config/fish/functions/name-of-function.fish
 
+# FZF
+export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept --layout=reverse'
+
 # Default editor
 set -gx EDITOR nvim
 # Default browser

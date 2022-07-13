@@ -669,7 +669,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "k",
+                  "key_code": "i",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -693,7 +693,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "l",
+                  "key_code": "o",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -717,7 +717,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "i",
+                  "key_code": "k",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -741,7 +741,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "o",
+                  "key_code": "l",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
@@ -1375,7 +1375,7 @@
               },
               {
                 "from": {
-                  "key_code": "g",
+                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",

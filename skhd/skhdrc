@@ -1,5 +1,5 @@
 #_____Y____
- #_________:
+ #____G_____
   #_X__B__
 
 # YABAI
@@ -21,7 +21,7 @@
 #tmux session navigation    CV
 #tmux window navigation     KD
 #tmux zoom                  SPACE
-#tmux vim mode terminal     G
+#tmux vim mode terminal     :
 
 # KITTY
 # Transparent up            \
