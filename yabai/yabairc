@@ -30,7 +30,7 @@ yabai -m config window_gap                   6
 
 # border
 yabai -m config window_border on
-yabai -m config window_border_width 2
+yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xFF003E00F
 
 yabai -m config normal_window_border_color 0x00FFFFFF

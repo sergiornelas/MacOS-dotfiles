@@ -1251,6 +1251,26 @@
             ]
           },
           {
+            "description": "Shift + Enter",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["right_control", "left_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Shortcuts for TMUX",
             "manipulators": [
               {

@@ -59,6 +59,7 @@ hyper - s : yabai -m window --swap recent
 # hyper l : second desktop (karabiner)
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
+hyper - 3 : yabai -m window --space 3
 
 #MISC =================================
 # GO TO RECENT WINDOW

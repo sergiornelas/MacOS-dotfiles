@@ -3,8 +3,8 @@
     "C-p": "peco.ScrollPageUp",
     "C-v": "peco.ScrollPageDown",
     "C-x,C-c": "peco.Cancel",
-    "C-k": "peco.SelectDown",
-    "C-l": "peco.SelectUp",
+    "C-i": "peco.SelectDown",
+    "C-o": "peco.SelectUp",
     "C-j": "peco.Finish"
   },
   "Use256Color": true,
