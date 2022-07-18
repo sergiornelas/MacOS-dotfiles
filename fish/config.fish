@@ -1,6 +1,6 @@
 if status is-interactive
-and not set -q TMUX
-  exec tmux
+    and not set -q TMUX
+    exec tmux
 end
 
 # FZF
@@ -15,49 +15,49 @@ set -gx BROWSER brave
 set --universal nvm_default_version 14
 
 function _peco_change_directory
-  if [ (count $argv) ]
-    peco --layout=top-down --query "$argv "|perl -pe 's/([ ()])/\\\\$1/g'|read foo
-  else
-    peco --layout=bottom-up |perl -pe 's/([ ()])/\\\\$1/g'|read foo
-  end
-  if [ $foo ]
-    builtin cd $foo
-    commandline -r ''
-    commandline -f repaint
-  else
-    commandline ''
-  end
+    if [ (count $argv) ]
+        peco --layout=top-down --query "$argv " | perl -pe 's/([ ()])/\\\\$1/g' | read foo
+    else
+        peco --layout=bottom-up | perl -pe 's/([ ()])/\\\\$1/g' | read foo
+    end
+    if [ $foo ]
+        builtin cd $foo
+        commandline -r ''
+        commandline -f repaint
+    else
+        commandline ''
+    end
 end
 
 function peco_change_directory
-  begin
-    echo $HOME/.config
-    # ghq list -p
-    ls -ad */|perl -pe "s#^#$PWD/#"|grep -v \.git
-    # ls -ad $HOME/Developments/*/* |grep -v \.git
-    ls -ad $HOME/* |grep -v \.git
-  end | sed -e 's/\/$//' | awk '!a[$0]++' | _peco_change_directory $argv
+    begin
+        echo $HOME/.config
+        # ghq list -p
+        ls -ad */ | perl -pe "s#^#$PWD/#" | grep -v \.git
+        # ls -ad $HOME/Developments/*/* |grep -v \.git
+        ls -ad $HOME/* | grep -v \.git
+    end | sed -e 's/\/$//' | awk '!a[$0]++' | _peco_change_directory $argv
 end
 
 function peco_select_history
-  if test (count $argv) = 0
-    set peco_flags --layout=bottom-up
-  else
-    set peco_flags --layout=top-down --query "$argv"
-  end
-  history|peco $peco_flags|read foo
-  if [ $foo ]
-    commandline $foo
-  else
-    commandline ''
-  end
+    if test (count $argv) = 0
+        set peco_flags --layout=bottom-up
+    else
+        set peco_flags --layout=top-down --query "$argv"
+    end
+    history | peco $peco_flags | read foo
+    if [ $foo ]
+        commandline $foo
+    else
+        commandline ''
+    end
 end
 
 # brew install fd (styled find, optional)
 # brew install peco
 function fish_user_key_bindings
     bind \cr 'peco_select_history (commandline -b)'
-    bind \co 'peco_change_directory'
+    bind \co peco_change_directory
 end
 
 ## eliminate fish_prompt:

@@ -7,7 +7,7 @@
 - Configure keystrokes: Karabiner
 - Keyboard shortcuts: Skhd
 - Window tiling manager: Yabai
-- Terminal: WezTerm
+- Terminal: Kitty
 - Multiplexer: Tmux
 - Shell: Fish
 - Fuzzy searching Tool: Peco
