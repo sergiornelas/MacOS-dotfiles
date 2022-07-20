@@ -1275,7 +1275,7 @@
             "manipulators": [
               {
                 "from": {
-                  "key_code": "d",
+                  "key_code": "a",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1295,7 +1295,7 @@
               },
               {
                 "from": {
-                  "key_code": "k",
+                  "key_code": "r",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1335,7 +1335,7 @@
               },
               {
                 "from": {
-                  "key_code": "r",
+                  "key_code": "k",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1412,10 +1412,15 @@
                   }
                 ],
                 "type": "basic"
-              },
+              }
+            ]
+          },
+          {
+            "description": "Move Through desktops",
+            "manipulators": [
               {
                 "from": {
-                  "key_code": "y",
+                  "key_code": "i",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1427,20 +1432,15 @@
                 },
                 "to": [
                   {
-                    "key_code": "right_arrow",
-                    "modifiers": ["right_shift"]
+                    "key_code": "1",
+                    "modifiers": ["right_control", "left_shift"]
                   }
                 ],
                 "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Move Through desktops",
-            "manipulators": [
+              },
               {
                 "from": {
-                  "key_code": "l",
+                  "key_code": "o",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1460,7 +1460,7 @@
               },
               {
                 "from": {
-                  "key_code": "h",
+                  "key_code": "p",
                   "modifiers": {
                     "mandatory": [
                       "left_shift",
@@ -1472,7 +1472,27 @@
                 },
                 "to": [
                   {
-                    "key_code": "1",
+                    "key_code": "3",
+                    "modifiers": ["right_control", "left_shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "4",
                     "modifiers": ["right_control", "left_shift"]
                   }
                 ],

@@ -1,46 +1,48 @@
-#_____Y____
- #A_________
-  #_X__B__
+# DEFINITIVE KEYBINDS
+#____________
+ #__________
+  #_X__B__,.
 
-# YABAI
-#navigation                 JI
-#resize-windows             UT
-#next/prev stack            FE
-#desktop navigation         HL
-#full screen                O
-#rotate windows 90 degrees  M
-#axis-y                     P
-#stack                      N
-#warp (move)                QW
-#swap                       S
-#recent window              G
-#restart                    Z
+# MACOS -------------------
+# Desktops navigation  UIOP
 
-# TMUX prefix
-#tmux last session          R
-#tmux session navigation    CV
-#tmux window navigation     KD
-#tmux zoom                  SPACE
-#tmux vim mode terminal     :
+# YABAI -------------------
+# Window navigation   JD
+# Resize window       MN
+# Next/Prev stack     FE
+# Warp                QW
+# Full screen         L
+# Axis-y              G
+# Stack               T
+# Swap                S
+# Rotate 90 grades    Y
+# Recent window       H
+# Restart             Z
 
-# KITTY
-# Transparent up            \
-# Transparent down          ^
+# TMUX --------------------
+# Zoom                SPACE
+# Session navigation  CV
+# Window navigation   RA
+# Last session        K
+# Vim mode            :
+
+# KITTY -------------------
+# Transparency        \^
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west
-hyper - i : yabai -m window --focus south || yabai -m window --focus north
+hyper - d : yabai -m window --focus south || yabai -m window --focus north
 
 # RESIZE WINDOWS
-hyper - u : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
-hyper - t : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
+hyper - m : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
+hyper - n : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
 
 #AXIS =================================
-hyper - p : yabai -m space --mirror y-axis
+hyper - g : yabai -m space --mirror y-axis
 
 #STACK ================================
-hyper - n : yabai -m window --stack recent
+hyper - t : yabai -m window --stack recent
 
 # Focus window up/down in stack
 hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
@@ -60,16 +62,17 @@ hyper - s : yabai -m window --swap recent
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 hyper - 3 : yabai -m window --space 3
+hyper - 4 : yabai -m window --space 4
 
 #MISC =================================
 # GO TO RECENT WINDOW
-hyper - g : yabai -m window --focus recent || yabai -m display --focus recent
+hyper - h : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
-hyper - o : yabai -m window --toggle zoom-fullscreen
+hyper - l : yabai -m window --toggle zoom-fullscreen
 
 # ROTATE WINDOWS
-hyper - m : yabai -m space --rotate 90
+hyper - y : yabai -m space --rotate 90
 
 # RESTART YABAI
 hyper - z : brew services restart yabai
