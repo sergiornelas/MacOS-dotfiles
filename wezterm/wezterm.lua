@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 return {
 	font_size = 18, --major number = bigger chars
-	-- window_background_opacity = 0.6, -- major number = darker
+	window_background_opacity = 0.4, -- major number = darker
 	-- Gruvbox theme
 	-- colors = {
 	-- 	-- The default text color
