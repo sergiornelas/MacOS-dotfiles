@@ -20,7 +20,7 @@
 # Restart             Z
 
 # TMUX --------------------
-# Zoom                SPACE
+# Session selection   SPACE
 # Session navigation  CV
 # Window navigation   RA
 # Last session        K

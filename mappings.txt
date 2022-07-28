@@ -1,8 +1,8 @@
 Definitive version of SEMICOLON LAYER
 =====================================
 
-WRITING            VIM EFFECT
-------------------------------
+  WRITING           VIM EFFECT
+-------------------------------
 &?/+* #$%  \^      #?/{- +() []
 QWERT˙UIO  []      QWERT˙UIO []
 ({;-[]=|~  ˙˙      *@;}$=%&~
@@ -36,3 +36,6 @@ _ = free ("soft" bol down)
 ~ = free (toggle case)
 | = go to column, also works for 0
 ' = goes to mark line
+
+Mac OS Key-Repeat Tester
+https://mac-key-repeat.zaymon.dev/

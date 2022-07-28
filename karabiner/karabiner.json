@@ -1190,7 +1190,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "q",
+                  "key_code": "d",
                   "modifiers": {
                     "mandatory": ["right_control"]
                   }
