@@ -1,14 +1,14 @@
 # DEFINITIVE KEYBINDS
 #____________
  #__________
-  #_X__B__,.
+  #_X_____,.
 
 # MACOS -------------------
 # Desktops navigation  UIOP
 
 # YABAI -------------------
 # Window navigation   JD
-# Resize window       MN
+# Resize window       MH
 # Next/Prev stack     FE
 # Warp                QW
 # Full screen         L
@@ -16,13 +16,14 @@
 # Stack               T
 # Swap                S
 # Rotate 90 grades    Y
-# Recent window       H
+# Recent window       B
 # Restart             Z
 
 # TMUX --------------------
 # Session selection   SPACE
 # Session navigation  CV
 # Window navigation   RA
+# Zoom                N
 # Last session        K
 # Vim mode            :
 
