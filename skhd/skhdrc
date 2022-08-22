@@ -1,7 +1,7 @@
 # DEFINITIVE KEYBINDS
 #____________
  #__________
-  #_X_____,.
+  #_______
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
 
@@ -18,7 +18,8 @@
 # Axis-y              H
 # Stack               T
 # Swap                S
-# Rotate 90 grades    Y
+# Full screen native  Y
+# Rotate 90 grades    X
 # Recent window       Z
 # Restart             B
 
@@ -31,7 +32,7 @@
 # Zoom                :
 
 # KITTY -------------------
-# Transparency        \^
+# Transparency        []
 
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west
@@ -60,8 +61,7 @@ hyper - s : yabai -m window --swap recent
 
 #DESKTOPS =============================
 # Navigation between desktops not available
-# hyper h : first desktop (karabiner)
-# hyper l : second desktop (karabiner)
+# Move window to certain desktop
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 hyper - 3 : yabai -m window --space 3
@@ -73,9 +73,10 @@ hyper - z : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
 hyper - l : yabai -m window --toggle zoom-fullscreen
+hyper - y : yabai -m window --toggle native-fullscreen
 
 # ROTATE WINDOWS
-hyper - y : yabai -m space --rotate 90
+hyper - x : yabai -m space --rotate 90
 
 # RESTART YABAI
 hyper - b : brew services restart yabai

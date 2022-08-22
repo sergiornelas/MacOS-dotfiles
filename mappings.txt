@@ -1,14 +1,19 @@
 Definitive version of SEMICOLON LAYER
 =====================================
 
-  WRITING           VIM EFFECT
+ WRITING            VIM EFFECT
 -------------------------------
-&?/+* #$%  \^      #?/{- +() []
-QWERT˙UIO  []      QWERT˙UIO []
-({;-[]=|~  ˙˙      *@;}$=%&~
-ASDFGHJKL  '"      ASDFGHJKL
- ! _`@})            | _`!~^
+&?/+* #$%  \^      #?/{   () \^
+QWERT˙UIO          QWER˙˙˙IO
+({;-[]=|~          ^;*}$=%&~
+ASDFGHJKL          ASDFGHJKL
+ ! _`@})            | _`!~@
  Z˙CVBNM            Z˙CVBNM
+
++-[] missing vim effect
+~^ are available for mapping vim effect (~ repeated in N)
+\ is already mapped for move through diagnostics and go to head element
+TU are used by Tree-climber
 
 & = repeat :s
 ? = goes back searching word
