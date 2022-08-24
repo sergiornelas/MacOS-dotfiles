@@ -1,6 +1,6 @@
 # DEFINITIVE KEYBINDS
 #____________
- #__________
+ #_________:
   #_______
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
@@ -14,7 +14,7 @@
 # Resize window       MN
 # Next/Prev stack     FE
 # Warp                QW
-# Full screen         L
+# Full screen         K
 # Axis-y              H
 # Stack               T
 # Swap                S
@@ -23,16 +23,14 @@
 # Recent window       Z
 # Restart             B
 
-# TMUX --------------------
-# Session selection   SPACE
-# Session navigation  CV
-# Window navigation   RA
-# Vim mode            G
-# Last session        K
-# Zoom                :
-
 # KITTY -------------------
+# Rotate layout       SPACE
 # Transparency        []
+# Scroll up/down      CV
+# New window          R
+# New tab             G
+# Toggle last layout  L
+# Open browser link   A
 
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west
@@ -60,7 +58,7 @@ hyper - w : yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 
 #DESKTOPS =============================
-# Navigation between desktops not available
+# Navigation between desktops not available. That was mapped with macos + karabiner
 # Move window to certain desktop
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
@@ -72,7 +70,7 @@ hyper - 4 : yabai -m window --space 4
 hyper - z : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
-hyper - l : yabai -m window --toggle zoom-fullscreen
+hyper - k : yabai -m window --toggle zoom-fullscreen
 hyper - y : yabai -m window --toggle native-fullscreen
 
 # ROTATE WINDOWS

@@ -1,8 +1,3 @@
-if status is-interactive
-    and not set -q TMUX
-    exec tmux
-end
-
 # FZF
 export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept --layout=reverse'
 
