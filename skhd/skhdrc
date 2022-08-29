@@ -1,6 +1,6 @@
 # DEFINITIVE KEYBINDS
 #____________
- #_________:
+ #__________
   #_______
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
@@ -11,34 +11,35 @@
 
 # YABAI -------------------
 # Window navigation   JD
-# Resize window       MN
+# Resize window       BN
 # Next/Prev stack     FE
 # Warp                QW
-# Full screen         K
+# Full screen         L
 # Axis-y              H
 # Stack               T
 # Swap                S
+# Recent window       A
 # Full screen native  Y
 # Rotate 90 grades    X
-# Recent window       Z
-# Restart             B
+# Restart             Z
 
 # KITTY -------------------
-# Rotate layout       SPACE
-# Transparency        []
-# Scroll up/down      CV
-# New window          R
-# New tab             G
-# Toggle last layout  L
-# Open browser link   A
+# Toggle zoom layout  SPACE
+# Transparency        \^
+# Next/Prev tab       MK
+# Rename tab          R
+# New window          :
+# Change layout       G
+# Close window        C
+# Close tab           V
 
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west
 hyper - d : yabai -m window --focus south || yabai -m window --focus north
 
 # RESIZE WINDOWS
-hyper - m : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
-hyper - n : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
+hyper - n : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
+hyper - b : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
 
 #AXIS =================================
 hyper - h : yabai -m space --mirror y-axis
@@ -67,17 +68,17 @@ hyper - 4 : yabai -m window --space 4
 
 #MISC =================================
 # GO TO RECENT WINDOW
-hyper - z : yabai -m window --focus recent || yabai -m display --focus recent
+hyper - a : yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
-hyper - k : yabai -m window --toggle zoom-fullscreen
+hyper - l : yabai -m window --toggle zoom-fullscreen
 hyper - y : yabai -m window --toggle native-fullscreen
 
 # ROTATE WINDOWS
 hyper - x : yabai -m space --rotate 90
 
 # RESTART YABAI
-hyper - b : brew services restart yabai
+hyper - z : brew services restart yabai
 
 # OPEN APPS
 # hyper - * : open -na /Applications/kitty.app
