@@ -7,31 +7,31 @@
 
 # HYPER mappings:
 # MACOS -------------------
-# Desktops navigation  UIOP
+# Desktops navigation UIOP
 
 # YABAI -------------------
-# Window navigation   JD
-# Resize window       BN
-# Next/Prev stack     FE
-# Warp                QW
-# Full screen         L
-# Axis-y              H
-# Stack               T
-# Swap                S
-# Recent window       A
-# Full screen native  Y
-# Rotate 90 grades    X
-# Restart             Z
+# Window navigation JD
+# Resize window     BN
+# Next/Prev stack   FE
+# Warp              QW
+# Full screen        L
+# Axis-y             H
+# Stack              T
+# Swap               S
+# Recent window      A
+# Full screen native Y
+# Rotate 90 grades   X
+# Restart            Z
 
 # KITTY -------------------
-# Toggle zoom layout  SPACE
-# Transparency        \^
-# Next/Prev tab       MK
-# Rename tab          R
-# New window          :
-# Change layout       G
-# Close window        C
-# Close tab           V
+# Next layout SPACE
+# Transparency   []
+# Next/Prev tab  MK
+# Create tab      G
+# Rename tab      R
+# Close tab       V
+# New window      :
+# Close window    C
 
 #WINDOWS ==============================
 hyper - j : yabai -m window --focus east || yabai -m window --focus west

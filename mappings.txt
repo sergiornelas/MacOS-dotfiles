@@ -1,19 +1,21 @@
-Definitive version of SEMICOLON LAYER
-=====================================
+COMMAND SUBSTITUTION
+Decided to change vim default navigation keymaps because sometimes they are a pain in the ass.
+Writing layer uses semicolon (;), it's managed by Karabiner:
+https://github.com/sergiornelas/MacOS-Dotfiles/blob/main/karabiner/karabiner.json#L68-L529
 
- WRITING            VIM EFFECT
+ WRITING           VIM EFFECT
 -------------------------------
-&?/+* #$%  \^      #?/{   () \^
+&?/+* #$% \^       #?/{   () \^
 QWERT˙UIO          QWER˙˙˙IO
-({;-[]=|~          ^;*}$=%&~
-ASDFGHJKL          ASDFGHJKL
- ! _`@})            | _`!~@
- Z˙CVBNM            Z˙CVBNM
+ );(-[]=|~          ^;*}$=%&~
+ ASDFGHJKL          ASDFGHJKL
+  ! _{@`}            @ _`!~|
+  Z˙CVBNM            Z˙CVBNM
 
-+-[] missing vim effect
-~^ are available for mapping vim effect (~ repeated in N)
++]-[ missing vim effect
+~^ are available for mapping (~ repeated in N)
+T and U are already mapped by Treesitter climber
 \ is already mapped for move through diagnostics and go to head element
-TU are used by Tree-climber
 
 & = repeat :s
 ? = goes back searching word

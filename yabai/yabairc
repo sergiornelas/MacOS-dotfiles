@@ -7,7 +7,7 @@ yabai -m config window_topmost               off
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                on
-yabai -m config window_border                on 
+yabai -m config window_border                on
 yabai -m config window_border_width          4
 
 yabai -m config active_window_opacity        1.0
@@ -20,7 +20,7 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp #This is what tells yabai to balance windows using its binary space
-                                                 #partitioning algorithm. The rest of the configuration provide the 
+                                                 #partitioning algorithm. The rest of the configuration provide the
                                                  #gaps between windows and desktop borders.
 yabai -m config top_padding                  28
 yabai -m config bottom_padding               3
@@ -54,7 +54,7 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^TeamViewer$" sticky=off layer=above manage=off
 yabai -m rule --add app="Fantastical" manage=off
-yabai -m rule --add app="^Spotify$" sticky=off layer=above manage=off 
+yabai -m rule --add app="^Spotify$" sticky=off layer=above manage=off
 yabai -m rule --add app="^iTerm2$" manage=off
 yabai -m rule --add app="^Flux$" manage=off
 yabai -m rule --add app="^Time Out$" manage=off
