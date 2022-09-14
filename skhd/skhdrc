@@ -1,6 +1,6 @@
 # DEFINITIVE KEYBINDS
 #____________
- #__________
+ #A_________
   #_______
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
@@ -18,7 +18,7 @@
 # Axis-y             H
 # Stack              T
 # Swap               S
-# Recent window      A
+# Recent window      _
 # Full screen native Y
 # Rotate 90 grades   X
 # Restart            Z
@@ -68,7 +68,7 @@ hyper - 4 : yabai -m window --space 4
 
 #MISC =================================
 # GO TO RECENT WINDOW
-hyper - a : yabai -m window --focus recent || yabai -m display --focus recent
+hyper - up: yabai -m window --focus recent || yabai -m display --focus recent
 
 # FULL SCREEN
 hyper - l : yabai -m window --toggle zoom-fullscreen

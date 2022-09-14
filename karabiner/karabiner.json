@@ -41,7 +41,7 @@
             ]
           },
           {
-            "description": "Caps to HYPER when held, Esc when tap",
+            "description": "Caps to HYPER when held, Recent window when tap",
             "manipulators": [
               {
                 "from": {
@@ -58,7 +58,13 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "escape"
+                    "key_code": "up_arrow",
+                    "modifiers": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
                   }
                 ],
                 "type": "basic"
