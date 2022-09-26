@@ -1,84 +1,65 @@
-# DEFINITIVE KEYBINDS
-#____________
- #A_________
-  #_______
+# Hyper mappings:
+# Yabai ------------------
+# Desktop navigation UIOP
+# Window navigation    JD
+# Resize window        BN
+# Next/Prev stack      FE
+# Warp                 QW
+# Full screen           L
+# Axis-y                H
+# Stack                 T
+# Balance               A
+# Swap                  S
+# Toggle sticky         Y
+# Rotate 90 grades      X
+# Restart               Z
+# Recent window         _
+# Kitty ------------------
+# Next layout       SPACE
+# Transparency         []
+# Next/Prev tab        MK
+# Create tab            G
+# Rename tab            R
+# Close tab             V
+# Close window          C
+# New window            :
 
-## HYPER == SHIFT + CMD + ALT + OPTION
+# Desktops ------------
+hyper - i : yabai -m space --focus 1 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
+hyper - o : yabai -m space --focus 2 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
+hyper - p : yabai -m space --focus 3 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
+hyper - u : yabai -m space --focus 4 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
 
-# HYPER mappings:
-# MACOS -------------------
-# Desktops navigation UIOP
+hyper - a : yabai -m space --balance
 
-# YABAI -------------------
-# Window navigation JD
-# Resize window     BN
-# Next/Prev stack   FE
-# Warp              QW
-# Full screen        L
-# Axis-y             H
-# Stack              T
-# Swap               S
-# Recent window      _
-# Full screen native Y
-# Rotate 90 grades   X
-# Restart            Z
-
-# KITTY -------------------
-# Next layout SPACE
-# Transparency   []
-# Next/Prev tab  MK
-# Create tab      G
-# Rename tab      R
-# Close tab       V
-# New window      :
-# Close window    C
-
-#WINDOWS ==============================
-hyper - j : yabai -m window --focus east || yabai -m window --focus west
-hyper - d : yabai -m window --focus south || yabai -m window --focus north
-
-# RESIZE WINDOWS
-hyper - n : yabai -m window --resize left:70:0 || yabai -m window --resize right:-70:0
-hyper - b : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
-
-#AXIS =================================
 hyper - h : yabai -m space --mirror y-axis
 
-#STACK ================================
-hyper - t : yabai -m window --stack recent
+hyper - x : yabai -m space --rotate 90
 
-# Focus window up/down in stack
+# Windows -------------
+hyper - j : yabai -m window --focus east       || yabai -m window --focus west
+hyper - d : yabai -m window --focus south      || yabai -m window --focus north
+hyper - up : yabai -m window --focus recent    || yabai -m display --focus recent
 hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
-#WARP =================================
+hyper - s : yabai -m window --swap recent
+
 hyper - q : yabai -m window --warp west
 hyper - w : yabai -m window --warp east
 
-#SWAP =================================
-hyper - s : yabai -m window --swap recent
+hyper - t : yabai -m window --stack recent
 
-#DESKTOPS =============================
-# Navigation between desktops not available. That was mapped with macos + karabiner
-# Move window to certain desktop
+hyper - n : yabai -m window --resize left:70:0    || yabai -m window --resize right:-70:0
+hyper - b : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
+
+hyper - y : yabai -m window --toggle sticky
+hyper - l : yabai -m window --toggle zoom-fullscreen
+
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 hyper - 3 : yabai -m window --space 3
 hyper - 4 : yabai -m window --space 4
 
-#MISC =================================
-# GO TO RECENT WINDOW
-hyper - up: yabai -m window --focus recent || yabai -m display --focus recent
-
-# FULL SCREEN
-hyper - l : yabai -m window --toggle zoom-fullscreen
-hyper - y : yabai -m window --toggle native-fullscreen
-
-# ROTATE WINDOWS
-hyper - x : yabai -m space --rotate 90
-
-# RESTART YABAI
+# Misc ----------------
 hyper - z : brew services restart yabai
-
-# OPEN APPS
-# hyper - * : open -na /Applications/kitty.app
