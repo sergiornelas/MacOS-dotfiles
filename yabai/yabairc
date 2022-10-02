@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
 
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
 # Global settings
 yabai -m config \
   external_bar               all:25:0     \
@@ -8,7 +11,7 @@ yabai -m config \
   focus_follows_mouse        off          \
   window_origin_display      default      \
   window_placement           second_child \
-  window_topmost             on           \
+  window_topmost             off          \
   window_shadow              on           \
   window_opacity             on           \
   window_opacity_duration    0.0          \
@@ -23,7 +26,7 @@ yabai -m config \
   active_window_border_color 0xFF003E00F  \
   split_ratio                0.50         \
   split_type                 auto         \
-  auto_balance               on
+  auto_balance               off
 
 # Space settings
 yabai -m config \
@@ -47,5 +50,7 @@ yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Slack$" space=2
 yabai -m rule --add app="^System Information$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
+# yabai -m rule --add app="^(Brave|Google\ Chrome)$" layer=below
+# yabai -m rule --add app="^kitty$" layer=above
 
 echo "yabai configuration loaded.."

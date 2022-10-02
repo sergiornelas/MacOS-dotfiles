@@ -4,13 +4,14 @@
 # Window navigation    JD
 # Resize window        BN
 # Next/Prev stack      FE
-# Warp                 QW
+# Warp                  W
 # Full screen           L
 # Axis-y                H
 # Stack                 T
 # Balance               A
 # Swap                  S
 # Toggle sticky         Y
+# Toggle float          Q
 # Rotate 90 grades      X
 # Restart               Z
 # Recent window         _
@@ -45,14 +46,14 @@ hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.
 
 hyper - s : yabai -m window --swap recent
 
-hyper - q : yabai -m window --warp west
-hyper - w : yabai -m window --warp east
+hyper - w : yabai -m window --warp west || yabai -m window --warp east
 
 hyper - t : yabai -m window --stack recent
 
 hyper - n : yabai -m window --resize left:70:0    || yabai -m window --resize right:-70:0
 hyper - b : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
 
+hyper - q : yabai -m window --toggle float
 hyper - y : yabai -m window --toggle sticky
 hyper - l : yabai -m window --toggle zoom-fullscreen
 
