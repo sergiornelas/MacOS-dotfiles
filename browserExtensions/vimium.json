@@ -1,0 +1,27 @@
+{
+  "name": "Vimium C",
+  "@time": "10/7/2022, 5:48:24 PM",
+  "time": 1665182904621,
+  "environment": {
+    "extension": "1.99.3",
+    "platform": "mac",
+    "chromium": "105"
+  },
+  "keyLayout": 2,
+  "keyMappings": [
+    "#!no-check",
+    "unmap H",
+    "unmap J",
+    "unmap K",
+    "unmap L",
+    "map H moveTabLeft",
+    "map L moveTabRight",
+    "map J goBack",
+    "map K goForward",
+    "map e Vomnibar.activateTabs",
+    ""
+  ],
+  "linkHintCharacters": "jioewafklqps",
+  "smoothScroll": false,
+  "vimSync": true
+}
