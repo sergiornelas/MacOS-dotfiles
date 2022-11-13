@@ -62,5 +62,7 @@ hyper - 2 : yabai -m window --space 2
 hyper - 3 : yabai -m window --space 3
 hyper - 4 : yabai -m window --space 4
 
+# cmd - q : yabai -m window --close && yabai -m window --focus recent
+
 # Misc ----------------
 hyper - z : brew services restart yabai

@@ -1,21 +1,21 @@
 COMMAND SUBSTITUTION
-Decided to change vim default navigation keymaps because sometimes they are a pain in the ass.
-Writing layer uses semicolon (;), it's managed by Karabiner:
+Decided to change vim default navigation keymaps because sometimes they are a pain in
+the ass. Writing layer uses semicolon (;), it's managed by Karabiner:
 https://github.com/sergiornelas/MacOS-Dotfiles/blob/main/karabiner/karabiner.json#L74-L535
 
  WRITING       VIM EFFECT
 ---------------------------
-&?/+* #$% \^   #?/{   () \^
-QWERT˙UIO      QWER˙˙˙IO
+&?/+* #$% \^   #?/{  #() \^
+QWERT˙UIO      QWER˙˙UIO
  );(-[]=|~      ^;*}$|%&~
  ASDFGHJKL      ASDFGHJKL
-  ! _{@`}        @ _`!~=
-  Z˙CVBNM        Z˙CVBNM
+  ! _{@`}        @ _`! =
+  Z˙CVBNM        Z˙CVB˙M
 
-+]-[ missing vim effect
-~^ are available for mapping (~ repeated in N)
-T and U are already mapped by Treesitter climber
-\ is already mapped for move through diagnostics and go to head element
++]-[ missing vim effect.
+#^ are available for mapping
+T and N are mapped by Illuminate
+\ is already mapped by multiple plugins
 
 & = repeat :s
 ? = goes back searching word

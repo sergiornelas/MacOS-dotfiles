@@ -38,19 +38,26 @@ yabai -m config \
   window_gap     0
 
 # Rule
-yabai -m rule --add app="^Activity Monitor$" manage=off
-yabai -m rule --add app="^Calculator$" manage=off
-yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on manage=off
-yabai -m rule --add app="^Disk Utility$" manage=off
-yabai -m rule --add app="^Finder$" manage=off
-yabai -m rule --add app="^Karabiner-Elements$" manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
-yabai -m rule --add app="^KeePassXC$" manage=off
-yabai -m rule --add app="^Path Finder$" manage=off
-yabai -m rule --add app="^Slack$" space=2
-yabai -m rule --add app="^System Information$" manage=off
-yabai -m rule --add app="^System Preferences$" manage=off
-# yabai -m rule --add app="^(Brave|Google\ Chrome)$" layer=below
-# yabai -m rule --add app="^kitty$" layer=above
+alias yr='yabai -m rule --add'
+yr app="^Activity Monitor$" manage=off
+yr app="^Calculator$" manage=off
+yr app="^Cisco AnyConnect Secure Mobility Client$" sticky=on manage=off
+yr app="^Disk Utility$" manage=off
+yr app="^Finder$" manage=off
+yr app="^Karabiner-Elements$" manage=off
+yr app="^Karabiner-EventViewer$" manage=off
+yr app="^KeePassXC$" manage=off
+yr app="^Path Finder$" manage=off
+yr app="^QuickTime Player$" manage=off
+yr app="^Slack$" space=2
+yr app="^Spotify$" space=4
+yr app="^System Information$" manage=off
+yr app="^System Preferences$" manage=off
+# yr app="^(Brave|Google\ Chrome)$" layer=below
+# yr app="^kitty$" layer=above
+
+# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+# yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 echo "yabai configuration loaded.."
+# open -na Spotify
