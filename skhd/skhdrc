@@ -40,7 +40,7 @@ hyper - x : yabai -m space --rotate 90
 # Windows -------------
 hyper - j : yabai -m window --focus east       || yabai -m window --focus west
 hyper - d : yabai -m window --focus south      || yabai -m window --focus north
-hyper - up : yabai -m window --focus recent    || yabai -m display --focus recent
+hyper - up : yabai -m window --focus recent    || yabai -m display --focus recent # managed by Karabiner
 hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 

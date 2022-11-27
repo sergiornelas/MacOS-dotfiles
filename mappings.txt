@@ -7,13 +7,13 @@ https://github.com/sergiornelas/MacOS-Dotfiles/blob/main/karabiner/karabiner.jso
 ---------------------------
 &?/+* #$% \^   #?/{  #() \^
 QWERT˙UIO      QWER˙˙UIO
- );(-[]=|~      ^;*}$|%&~
+ );(-[]=|~      ^~*}$|%&~
  ASDFGHJKL      ASDFGHJKL
   ! _{@`}        @ _`! =
   Z˙CVBNM        Z˙CVB˙M
 
 +]-[ missing vim effect.
-#^ are available for mapping
+#^~ are available for mapping (~ is repeated in S)
 T and N are mapped by Illuminate
 \ is already mapped by multiple plugins
 
