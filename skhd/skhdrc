@@ -31,10 +31,10 @@
 # Restart Yabai             Y
 
 # Space navigation
-hyper - i : yabai -m space --focus 1 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
-hyper - o : yabai -m space --focus 2 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
-hyper - p : yabai -m space --focus 3 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
-hyper - u : yabai -m space --focus 4 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
+hyper - i : yabai -m space --focus 1
+hyper - o : yabai -m space --focus 2
+hyper - p : yabai -m space --focus 3
+hyper - u : yabai -m space --focus 4
 
 # Move window to space
 hyper - 1 : yabai -m window --space 1

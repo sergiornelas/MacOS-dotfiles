@@ -1,0 +1,10 @@
+/*
+~/Library/KeyBindings/DefaultKeyBinding.Dict
+*/
+
+"^v" = "paste:";
+"^c" = "copy:";
+"^x" = "cut:";
+"^z" = "undo:";
+"^u" = "deleteToBeginningOfLine:";
+"^e" = "moveToEndOfLine:";
