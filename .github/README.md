@@ -5,11 +5,11 @@
 ## Apps added:
 
 - Configure keystrokes: Karabiner
-- Keyboard shortcuts: Skhd
+- Create keyboard shortcuts: Skhd
 - Window tiling manager: Yabai
 - Terminal: Kitty
-- Multiplexer: Tmux
+- Multiplexer: Tmux (not using it anymore)
 - Shell: Fish
-- Fuzzy searching Tool: Peco
-- Keyboard web browsing: Surfingkeys
+- Fuzzy searching Tool: Fzf
+- Keyboard web browsing: Vimium C
 - Header status bar: Spacebar
