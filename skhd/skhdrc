@@ -1,67 +1,75 @@
-# HYPER availability
+# Hyper availability
 # __________
 #  _________
-#   ZX_____
+#   _X_____
 
 # Hyper mappings:
-# Yabai ------------------
-# Desktop navigation UIOP
-# Window navigation    JK
-# Resize window        NM
-# Next/Prev stack      FE
-# Full screen           L
-# Axis-y                H
-# Stack                 T
-# Warp                  W
-# Balance               B
-# Swap                  S
-# Restart               Y
-# Recent window         _
-# ---- not as useful:
-# Rotate 90 grades      D
-# Toggle sticky         A
-# Toggle float          Q
-# Kitty ------------------
-# Transparency         \^
-# New tab               G
-# Rename tab            R
-# Close tab             V
-# Close window          C
-# New window        Enter
+# Yabai =====================
+# Desktop navigation     UIOP
+# Window focus             JK
+# Resize window horizontal NM
+# Resize window vertical   QA
+# Next/Prev stack          FE
+# Full screen               L
+# Axis-y                    H
+# Stack                     G
+# Warp                      W
+# Balance                   B
+# Swap                      S
+# Rotate 90 grades          D
+# Toggle sticky             Z
+# Kitty =====================
+# Transparency             \^
+# New tab                   T
+# Rename tab                R
+# Close window              V
+# New window                ;
+# Karabiner =================
+# Recent window             _
+# Close app                 C
+# Misc ======================
+# Restart Yabai             Y
 
-# Desktops ------------
+# Space navigation
 hyper - i : yabai -m space --focus 1 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
 hyper - o : yabai -m space --focus 2 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
 hyper - p : yabai -m space --focus 3 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
 hyper - u : yabai -m space --focus 4 && yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)
 
-hyper - h : yabai -m space --mirror y-axis
-hyper - b : yabai -m space --balance
-hyper - d : yabai -m space --rotate 90
-
-# Windows -------------
-hyper - j : yabai -m window --focus east       || yabai -m window --focus west
-hyper - k : yabai -m window --focus south      || yabai -m window --focus north
-
-hyper - n : yabai -m window --resize bottom:0:-70 || yabai -m window --resize top:0:70
-hyper - m : yabai -m window --resize left:70:0    || yabai -m window --resize right:-70:0
-
-hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-
-hyper - l : yabai -m window --toggle zoom-fullscreen
-hyper - t : yabai -m window --stack recent && yabai -m window --focus mouse
-hyper - w : yabai -m window --warp west || yabai -m window --warp east
-hyper - s : yabai -m window --swap recent
-hyper - a : yabai -m window --toggle sticky
-hyper - q : yabai -m window --toggle float
-
+# Move window to space
 hyper - 1 : yabai -m window --space 1
 hyper - 2 : yabai -m window --space 2
 hyper - 3 : yabai -m window --space 3
 hyper - 4 : yabai -m window --space 4
 
-hyper - up : yabai -m window --focus recent    || yabai -m display --focus recent # managed by Karabiner
+# Space manipulation
+hyper - h : yabai -m space --mirror y-axis
+hyper - b : yabai -m space --balance
+hyper - d : yabai -m space --rotate 90
 
-# Misc ----------------
+# Windows navigation
+hyper - j : yabai -m window --focus east  || yabai -m window --focus west
+hyper - k : yabai -m window --focus south || yabai -m window --focus north
+
+# Resize windows
+hyper - n : yabai -m window --resize left:-55:0   || yabai -m window --resize right:-55:0
+hyper - m : yabai -m window --resize left:55:0    || yabai -m window --resize right:55:0
+hyper - q : yabai -m window --resize bottom:0:-55 || yabai -m window --resize top:0:-55
+hyper - a : yabai -m window --resize bottom:0:55  || yabai -m window --resize top:0:55
+
+# Stack windows
+hyper - g : yabai -m window --stack recent && yabai -m window --focus mouse
+hyper - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+
+# Window utilities
+hyper - l : yabai -m window --toggle zoom-fullscreen
+hyper - w : yabai -m window --warp west || yabai -m window --warp east
+hyper - s : yabai -m window --swap recent
+hyper - z : yabai -m window --toggle sticky
+
+# Tap Hyper (managed by Karabiner)
+hyper - up : yabai -m window --focus recent || yabai -m display --focus recent
+
+# Misc
 hyper - y : brew services restart yabai
