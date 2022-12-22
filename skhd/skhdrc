@@ -20,7 +20,7 @@
 # Toggle sticky             Z
 # Kitty =====================
 # Transparency             \^
-# New tab                   T
+# Close tab                 T
 # Rename tab                R
 # Close window              V
 # New window                ;
@@ -68,7 +68,7 @@ hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 hyper - z : yabai -m window --toggle sticky
 
-# Tap Hyper (managed by Karabiner)
+# Recent window (managed by Karabiner)
 hyper - up : yabai -m window --focus recent || yabai -m display --focus recent
 
 # Misc
