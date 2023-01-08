@@ -51,7 +51,8 @@
     "map zr zoomReset",
     "map <[:v> <$>",
     "map <):v> <(>",
-    "map <q:v> <y>"
+    "map <q:v> <y>",
+    "map <O:v> <o>"
   ],
   "linkHintCharacters": "jioewafklqps",
   "smoothScroll": false,

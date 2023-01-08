@@ -1,22 +1,16 @@
-# This is Git's per-user configuration file.
 [user]
-	name = sergiornelas
-	email = sergio.ornelas@nextiva.com
-	name = Sergio
-# Please adapt and uncomment the following lines:
-#	name = sergiornelas
-#	email = sergio.ornelas@outlook.com
+  name = Sergio Ornelas
+  email = sergio.ornelas@nextiva.com
 [core]
 	editor = nvim
 	excludesfile = /Users/sergioornelas/.gitignore
-	; pager = diff-so-fancy | less --tabs=4 -RFX
   pager = delta
 [interactive]
-	; diffFilter = diff-so-fancy --patch
   diffFilter = delta --color-only
 [delta]
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
 [merge]
   conflictstyle = diff3
 [diff]

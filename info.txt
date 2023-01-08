@@ -1,0 +1,14 @@
+Default shell in macOS
+Best way: System Settings/Users & Groups/{your user} advanced options/Login shell
+Or:
+Terminal/Preferences/General/Shells open with: Command (complete path):
+/usr/local/bin/fish
+
+Mac OS Key-Repeat Tester
+https://mac-key-repeat.zaymon.dev/
+defaults write -g InitialKeyRepeat -int 14
+defaults write -g KeyRepeat -int 1
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+Install Nerd Fonts
+https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
