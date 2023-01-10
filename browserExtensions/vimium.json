@@ -49,6 +49,8 @@
     "map zi zoomIn",
     "map zo zoomOut",
     "map zr zoomReset",
+    "map <c-e> previousTab",
+    "map <c-f> nextTab",
     "map <[:v> <$>",
     "map <):v> <(>",
     "map <q:v> <y>",

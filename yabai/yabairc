@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
 
-# Whenever you update Yabai:
+# Whenever you update Yabai, add again the script addition for --load-sa when boot:
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
