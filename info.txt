@@ -12,7 +12,3 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 Install Nerd Fonts
 https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
-
-Decided to create <c-_> browser mappings in Karabiner instead of vimium-c because
-I have the sensation that is more responsive than a Javascript extension,
-<c-e/f> map stop usage if you are inside an input or inside a new tab.

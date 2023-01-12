@@ -1,5 +1,5 @@
 [user]
-  name = Sergio Ornelas
+  name = Sergio Ornelas <sergio.ornelas@nextiva.com>
   email = sergio.ornelas@nextiva.com
 [core]
 	editor = nvim
