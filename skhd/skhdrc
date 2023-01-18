@@ -29,6 +29,7 @@
 # Close app                 C
 # Misc ======================
 # Restart Yabai             Y
+# Switch application    Space
 
 # Space navigation
 hyper - i : yabai -m space --focus 1
