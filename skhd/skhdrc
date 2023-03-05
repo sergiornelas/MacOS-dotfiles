@@ -1,7 +1,7 @@
 # Hyper availability
-# __________
+# ____T_____
 #  _________
-#   _X_____
+#   _X__B__
 
 # Hyper mappings:
 # Yabai =====================
@@ -11,25 +11,23 @@
 # Resize window vertical   QA
 # Next/Prev stack          FE
 # Full screen               L
+# Balance                   V
 # Axis-y                    H
 # Stack                     G
 # Warp                      W
-# Balance                   B
 # Swap                      S
 # Rotate 90 grades          D
 # Toggle sticky             Z
 # Kitty =====================
 # Transparency             \^
-# Close tab                 T
-# Close window              V
 # Rename tab                R
 # New window                ;
 # Karabiner =================
+# Spotlight Search      Space
 # Recent window             _
 # Close app                 C
 # Misc ======================
 # Restart Yabai             Y
-# Switch application    Space
 
 # Space navigation
 hyper - i : yabai -m space --focus 1
@@ -45,7 +43,7 @@ hyper - 4 : yabai -m window --space 4
 
 # Space manipulation
 hyper - h : yabai -m space --mirror y-axis
-hyper - b : yabai -m space --balance
+hyper - v : yabai -m space --balance
 hyper - d : yabai -m space --rotate 90
 
 # Windows navigation
@@ -69,7 +67,7 @@ hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 hyper - z : yabai -m window --toggle sticky
 
-# Recent window (managed by Karabiner)
+# Karabiner (recent window)
 hyper - up : yabai -m window --focus recent || yabai -m display --focus recent
 
 # Misc
