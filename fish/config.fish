@@ -13,6 +13,9 @@ set --universal nvm_default_version 14
 # Fish_prompt:
 set -U fish_greeting ""
 
+# Rust
+set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
+
 # FEATURE            |  MNEMONIC KEY SEQUENCE        |  CORRESPONDING OPTION
 # Search directory   |  Ctrl+Alt+F (F for file)      |  --directory
 # Search git log     |  Ctrl+Alt+L (L for log)       |  --git_log
