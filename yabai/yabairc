@@ -36,11 +36,11 @@ yabai -m config \
 # Space settings
 yabai -m config \
   layout         bsp \
-  top_padding    0   \
-  bottom_padding 0   \
-  left_padding   0   \
-  right_padding  0   \
-  window_gap     0
+  top_padding    11   \
+  bottom_padding 11   \
+  left_padding   11   \
+  right_padding  11   \
+  window_gap     11
 
 # Rule
 alias yr='yabai -m rule --add'
