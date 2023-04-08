@@ -7,7 +7,7 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 ## Apps added:
 
 - [karabiner](https://karabiner-elements.pqrs.org/): A powerful and stable keyboard customizer
-- [skhd](https://github.com/koekeishiya/yabai): Create keyboard shortcuts
+- [skhd](https://github.com/koekeishiya/skhd): Create keyboard shortcuts
 - [yabai](https://github.com/koekeishiya/yabai): Tiling window management for Mac
 - [kitty](https://sw.kovidgoyal.net/kitty/): Terminal emulator
 - [tmux](https://github.com/tmux/tmux/): Terminal multiplexer (not using it anymore)
