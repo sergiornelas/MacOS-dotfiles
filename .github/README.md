@@ -6,12 +6,15 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 
 ## Apps added:
 
-- Configure keystrokes: Karabiner
-- Create keyboard shortcuts: Skhd
-- Window tiling manager: Yabai
-- Terminal: Kitty
-- Multiplexer: Tmux (not using it anymore)
-- Shell: Fish
-- Fuzzy searching Tool: Fzf
-- Keyboard web browsing: Vimium C
-- Header status bar: Spacebar
+- [karabiner](https://karabiner-elements.pqrs.org/): A powerful and stable keyboard customizer
+- [skhd](https://github.com/koekeishiya/yabai): Create keyboard shortcuts
+- [yabai](https://github.com/koekeishiya/yabai): Tiling window management for Mac
+- [kitty](https://sw.kovidgoyal.net/kitty/): Terminal emulator
+- [tmux](https://github.com/tmux/tmux/): Terminal multiplexer (not using it anymore)
+- [fish](https://fishshell.com/): The best shell
+- [fzf](https://github.com/junegunn/fzf/): Fuzzy search
+- [vimiumc](https://chrome.google.com/webstore/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg?hl=en): Vim bindings for the browser
+- [fd](https://github.com/sharkdp/fd): Better find
+- [ripgrep](https://github.com/BurntSushi/ripgrep/): Better grep
+- [spacebar](https://github.com/cmacrae/spacebar): Header status bar
+- And more.
