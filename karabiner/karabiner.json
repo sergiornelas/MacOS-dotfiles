@@ -1234,6 +1234,31 @@
                   }
                 ],
                 "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "q",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "a",
+                    "modifiers": ["left_command"]
+                  }
+                ],
+                "type": "basic"
               }
             ]
           },
