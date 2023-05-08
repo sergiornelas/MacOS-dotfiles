@@ -12,6 +12,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 Install Nerd Fonts
 https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
+https://www.youtube.com/watch?v=mQdB_kHyZn8
 
 How to fix Homebrew: Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins
 >> mkdir -p /Applications/Docker.app/Contents/Resources/cli-plugins
