@@ -1263,6 +1263,32 @@
             ]
           },
           {
+            "description": "Kitty mappings",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^net\\.kovidgoyal\\.kitty$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["left_shift", "right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "s",
+                    "modifiers": ["left_shift", "right_control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Preview mappings",
             "manipulators": [
               {
