@@ -5,6 +5,7 @@
 # Whenever you update Yabai, add again the script addition for --load-sa when boot:
 # sudo visudo -f /private/etc/sudoers.d/yabai
 # segioornelas ALL=(root) NOPASSWD: sha256:6f316734a0dec66b04d8de5aab7e5e65703b6013836d379df10d127d70d2c0a8 /usr/local/bin/yabai --load-sa
+# (only update hash)
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa

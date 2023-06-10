@@ -8,7 +8,7 @@ fzf_configure_bindings --variables
 set -gx EDITOR nvim
 
 # Node default version (you have to open terminal twice to apply)
-set --universal nvm_default_version 14
+set --universal nvm_default_version 18.16.0
 
 # Fish_prompt:
 set -U fish_greeting ""
