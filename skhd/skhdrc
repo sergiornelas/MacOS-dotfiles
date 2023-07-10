@@ -1,5 +1,5 @@
 # Hyper availability
-# ____T_____
+# __________
 #  _________
 #   _X__B__
 
@@ -71,4 +71,21 @@ hyper - z : yabai -m window --toggle sticky
 hyper - up : yabai -m window --focus recent || yabai -m display --focus recent
 
 # Misc
-hyper - y : brew services restart yabai
+hyper - y : yabai --restart-service
+
+# toggle window float
+hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# change focus between external displays (left and right)
+# alt - s: yabai -m display --focus west
+# alt - g: yabai -m display --focus east
+# my creation:
+# alt - g: yabai -m display --focus east || yabai -m display --focus east
+
+# move window to display left and right
+# shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
+# shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
+# my creation:
+# shift + alt - g : yabai -m window --display east; yabai -m display --focus east; || yabai -m window --display west; yabai -m display --focus west;
+
+# Displays have separate Spaces looks interesting (on macos system preferences)...

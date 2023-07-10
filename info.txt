@@ -20,3 +20,6 @@ How to fix Homebrew: Error: Permission denied @ apply2files - /usr/local/lib/doc
 
 Install gSwitch for toggling between battery dynamic switching and gpu power mode:
 https://github.com/CodySchrank/gSwitch
+
+Don't forget to turn off Automatically rearrange Spaces based on most recent use when implementing Yabai:
+System settings / Desktop & Dock / Automatically rearrange Spaces based on most recent use (at the bottom)
