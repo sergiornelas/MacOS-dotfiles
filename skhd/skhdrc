@@ -1,7 +1,7 @@
 # Hyper availability
 # __________
 #  _________
-#   _X__B__
+#   _______
 
 # Hyper mappings:
 # Yabai =====================
@@ -10,6 +10,7 @@
 # Resize window horizontal NM
 # Resize window vertical   QA
 # Next/Prev stack          FE
+# Window focus further     RT
 # Full screen               L
 # Balance                   V
 # Axis-y                    H
@@ -17,11 +18,11 @@
 # Warp                      W
 # Swap                      S
 # Rotate 90 grades          D
+# Toggle float              B
 # Toggle sticky             Z
 # Kitty =====================
 # Transparency             \^
-# Rename tab                R
-# New window                ;
+# New tab                   ;
 # Karabiner =================
 # Spotlight Search      Space
 # Recent window             _
@@ -49,6 +50,9 @@ hyper - d : yabai -m space --rotate 90
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - k : yabai -m window --focus south || yabai -m window --focus north
+hyper - r : yabai -m window --focus west || yabai -m display --focus west
+hyper - t : yabai -m window --focus east || yabai -m display --focus east
+hyper - x : yabai -m window --display east || yabai -m display --focus east || yabai -m window --display west || yabai -m display --focus west
 
 # Resize windows
 hyper - n : yabai -m window --resize left:-55:0   || yabai -m window --resize right:-55:0
@@ -66,26 +70,10 @@ hyper - l : yabai -m window --toggle zoom-fullscreen
 hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 hyper - z : yabai -m window --toggle sticky
+hyper - b : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # Karabiner (recent window)
 hyper - up : yabai -m window --focus recent || yabai -m display --focus recent
 
 # Misc
 hyper - y : yabai --restart-service
-
-# toggle window float
-hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-
-# change focus between external displays (left and right)
-# alt - s: yabai -m display --focus west
-# alt - g: yabai -m display --focus east
-# my creation:
-# alt - g: yabai -m display --focus east || yabai -m display --focus east
-
-# move window to display left and right
-# shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
-# shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
-# my creation:
-# shift + alt - g : yabai -m window --display east; yabai -m display --focus east; || yabai -m window --display west; yabai -m display --focus west;
-
-# Displays have separate Spaces looks interesting (on macos system preferences)...
