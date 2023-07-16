@@ -17,4 +17,5 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 - [fd](https://github.com/sharkdp/fd): Better find
 - [ripgrep](https://github.com/BurntSushi/ripgrep/): Better grep
 - [spacebar](https://github.com/cmacrae/spacebar): Header status bar
+- [lazygit](https://github.com/jesseduffield/lazygit): Terminal UI for git
 - And more.
