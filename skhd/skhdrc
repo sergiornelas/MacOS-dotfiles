@@ -1,7 +1,7 @@
 # Hyper availability
 # __________
 #  _________
-#   _______
+#   ZX_____
 
 # Hyper mappings:
 # Yabai =====================
@@ -10,23 +10,22 @@
 # Resize window horizontal NM
 # Resize window vertical   QA
 # Next/Prev stack          FE
-# Window focus further     RT
+# Window focus further     CV
 # Full screen               L
-# Balance                   V
+# Balance               Space
 # Axis-y                    H
 # Stack                     G
 # Warp                      W
 # Swap                      S
-# Rotate 90 grades          D
-# Toggle float              B
-# Toggle sticky             Z
+# Toggle float              T
+# Move window to display    D
+# Rotate 90 grades          R
+# Toggle sticky             B
 # Kitty =====================
 # Transparency             \^
 # New tab                   ;
 # Karabiner =================
-# Spotlight Search      Space
-# Recent window             _
-# Close app                 C
+# Recent window      Just tap
 # Misc ======================
 # Restart Yabai             Y
 
@@ -44,15 +43,15 @@ hyper - 4 : yabai -m window --space 4
 
 # Space manipulation
 hyper - h : yabai -m space --mirror y-axis
-hyper - v : yabai -m space --balance
-hyper - d : yabai -m space --rotate 90
+hyper - space : yabai -m space --balance
+hyper - r : yabai -m space --rotate 90
 
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - k : yabai -m window --focus south || yabai -m window --focus north
-hyper - r : yabai -m window --focus west || yabai -m display --focus west
-hyper - t : yabai -m window --focus east || yabai -m display --focus east
-hyper - x : yabai -m window --display east || yabai -m display --focus east || yabai -m window --display west || yabai -m display --focus west
+hyper - c : yabai -m window --focus west || yabai -m display --focus west
+hyper - v : yabai -m window --focus east || yabai -m display --focus east
+hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus|| yabai -m display --focus west
 
 # Resize windows
 hyper - n : yabai -m window --resize left:-55:0   || yabai -m window --resize right:-55:0
@@ -69,8 +68,8 @@ hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.
 hyper - l : yabai -m window --toggle zoom-fullscreen
 hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
-hyper - z : yabai -m window --toggle sticky
-hyper - b : yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - b : yabai -m window --toggle sticky
 
 # Karabiner (recent window)
 hyper - up : yabai -m window --focus recent || yabai -m display --focus recent

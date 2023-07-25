@@ -74,24 +74,19 @@
             ]
           },
           {
-            "description": "HYPER and space to Spotlight search",
+            "description": "Simulate alt + tab as Windows",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "spacebar",
+                  "key_code": "tab",
                   "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_control",
-                      "left_option",
-                      "left_shift"
-                    ]
+                    "mandatory": ["right_control"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "spacebar",
-                    "modifiers": ["left_command"]
+                    "key_code": "tab",
+                    "modifiers": "left_command"
                   }
                 ],
                 "type": "basic"
@@ -99,24 +94,44 @@
             ]
           },
           {
-            "description": "HYPER and C to close app",
+            "description": "Tab and Quote key layers to left command",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "c",
+                  "key_code": "tab",
                   "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_control",
-                      "left_option",
-                      "left_shift"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "q",
-                    "modifiers": ["left_command"]
+                    "key_code": "left_command",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "tab"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "quote",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "quote"
                   }
                 ],
                 "type": "basic"
@@ -579,6 +594,25 @@
                 "to": [
                   {
                     "key_code": "grave_accent_and_tilde"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "layer-2",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "spacebar"
+                },
+                "to": [
+                  {
+                    "key_code": "spacebar",
+                    "modifiers": ["left_command"]
                   }
                 ],
                 "type": "basic"
@@ -1344,6 +1378,26 @@
                   }
                 ],
                 "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["slack"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
                   "key_code": "k",
                   "modifiers": {
                     "mandatory": ["right_control"]
@@ -1496,26 +1550,6 @@
                   {
                     "key_code": "up_arrow",
                     "modifiers": "left_shift"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Simulate alt + tab as Windows",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "tab",
-                  "modifiers": {
-                    "mandatory": ["right_control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "tab",
-                    "modifiers": "left_command"
                   }
                 ],
                 "type": "basic"
