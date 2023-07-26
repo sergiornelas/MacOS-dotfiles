@@ -23,3 +23,6 @@ https://github.com/CodySchrank/gSwitch
 
 Don't forget to turn off Automatically rearrange Spaces based on most recent use when implementing Yabai:
 System settings / Desktop & Dock / Automatically rearrange Spaces based on most recent use (at the bottom)
+
+Change/add chromium extension keymaps:
+chrome://extensions/shortcuts

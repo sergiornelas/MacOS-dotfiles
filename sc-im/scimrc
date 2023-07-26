@@ -1,0 +1,91 @@
+#:format "d%d/%m/%Y"
+#:format "###,###.##"
+#:cellcolor "fg=CYAN bg=DEFAULT_COLOR"
+# remember to use 2023, no 23 year on date before format
+
+# (=)
+# Al momento de poner una celda solo equal sin digitos (=) la formula que necesitaba esa celda se rompe.
+# Se arregla:
+# - undo (u)
+# - Reescribiendo la formula.
+# - Haciendo dd y rescribiendo el numero pero ten en cuenta que se borra el cellcolor y formato.
+
+# plot options:
+# line, scatter, bar, pie
+
+# Options
+set half_page_scroll=1
+set overlap=1
+set underline_grid=0
+set ignorecase=1
+set truncate=0
+set input_bar_bottom=0
+set autowrap=0
+set copy_to_clipboard_delimited_tab=1
+
+# Mappings
+nnoremap "gk" "^"
+vnoremap "gk" "^"
+nnoremap "gj" "#"
+vnoremap "gj" "#"
+nnoremap "[" "$"
+vnoremap "[" "$"
+nnoremap "(" "g0"
+vnoremap "(" "g0"
+nnoremap "gm" "gM"
+vnoremap "gm" "gM"
+nnoremap "<C-i>" "gl"
+vnoremap "<C-i>" "gl"
+nnoremap "qq" "yy"
+vnoremap "q" "y"
+nnoremap "qr" "yr"
+vnoremap "qr" "yr"
+nnoremap "qc" "yc"
+vnoremap "qc" "yc"
+nnoremap "U" "<C-r>"
+nnoremap "a" "\"
+
+# Mappings commands
+nnoremap "<Space>0" "=0<cr>"
+nnoremap "<C-q>" ":quit<cr>"
+nnoremap "<Space>f" ":w<cr>"
+nnoremap "<Space>Q" ":q!<cr>"
+nnoremap "J" ":prevsheet<cr>"
+nnoremap "K" ":nextsheet<cr>"
+nnoremap "<Space><Space>" ":ccopy<cr>"
+vnoremap "<Space><Space>" ":ccopy<cr>"
+
+# Mappings cell style
+nnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
+vnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
+nnoremap "<C-p>" ":cellcolor \"bold=0\"<cr>"
+vnoremap "<C-p>" ":cellcolor \"bold=0\"<cr>"
+nnoremap "<C-s>" ":cellcolor \"underline=1\"<cr>"
+vnoremap "<C-s>" ":cellcolor \"underline=1\"<cr>"
+nnoremap "<C-x>" ":cellcolor \"underline=0\"<cr>"
+vnoremap "<C-x>" ":cellcolor \"underline=0\"<cr>"
+
+# Mappings insert/command
+inoremap "<C-h>" "<BS>"
+inoremap "<C-u>" "<LEFT>"
+inoremap "<C-f>" "<RIGHT>"
+inoremap "<C-e>" "<END>"
+inoremap "<C-a>" "<HOME>"
+cnoremap "<C-h>" "<BS>"
+cnoremap "<C-u>" "<LEFT>"
+cnoremap "<C-f>" "<RIGHT>"
+cnoremap "<C-e>" "<END>"
+cnoremap "<C-a>" "<HOME>"
+
+# Colors
+DEFINE_COLOR "comment" 164 160 148
+DEFINE_COLOR "negative_number" 183 73 73
+REDEFINE_COLOR "RED" 183 73 73
+color "type=STRG fg=comment bg=DEFAULT_COLOR bold=0 italic=0"
+color "type=NUMB fg=CYAN bg=DEFAULT_COLOR"
+color "type=CELL_NEGATIVE fg=negative_number bg=DEFAULT_COLOR bold=0"
+color "type=EXPRESSION fg=BLUE bg=DEFAULT_COLOR bold=0"
+color "type=HEADINGS fg=WHITE bg=BLACK bold=0"
+color "type=HEADINGS_ODD fg=BLACK bg=WHITE bold=0"
+color "type=CELL_SELECTION fg=BLACK bg=YELLOW bold=1"
+color "type=CELL_SELECTION_SC fg=BLACK bg=YELLOW bold=1"
