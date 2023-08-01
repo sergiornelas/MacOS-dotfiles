@@ -18,5 +18,5 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 - [ripgrep](https://github.com/BurntSushi/ripgrep/): Better grep
 - [spacebar](https://github.com/cmacrae/spacebar): Header status bar
 - [lazygit](https://github.com/jesseduffield/lazygit): Terminal UI for git
-- [Excel on terminal](https://github.com/andmarti1424/sc-im): Use Excel spreadsheet on terminal
+- [sc-im](https://github.com/andmarti1424/sc-im): Use Excel spreadsheet on terminal
 - And more.

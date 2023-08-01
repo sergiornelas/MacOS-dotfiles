@@ -10,16 +10,16 @@
 # Resize window horizontal NM
 # Resize window vertical   QA
 # Next/Prev stack          FE
-# Window focus further     CV
+# Window focus further     RT
 # Full screen               L
 # Balance               Space
 # Axis-y                    H
 # Stack                     G
 # Warp                      W
 # Swap                      S
-# Toggle float              T
 # Move window to display    D
-# Rotate 90 grades          R
+# Toggle float              C
+# Rotate 90 grades          V
 # Toggle sticky             B
 # Kitty =====================
 # Transparency             \^
@@ -44,13 +44,13 @@ hyper - 4 : yabai -m window --space 4
 # Space manipulation
 hyper - h : yabai -m space --mirror y-axis
 hyper - space : yabai -m space --balance
-hyper - r : yabai -m space --rotate 90
+hyper - v : yabai -m space --rotate 90
 
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - k : yabai -m window --focus south || yabai -m window --focus north
-hyper - c : yabai -m window --focus west || yabai -m display --focus west
-hyper - v : yabai -m window --focus east || yabai -m display --focus east
+hyper - r : yabai -m window --focus west || yabai -m display --focus west
+hyper - t : yabai -m window --focus east || yabai -m display --focus east
 hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus|| yabai -m display --focus west
 
 # Resize windows
@@ -68,7 +68,7 @@ hyper - e : yabai -m window --focus stack.prev || yabai -m window --focus stack.
 hyper - l : yabai -m window --toggle zoom-fullscreen
 hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
-hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - c : yabai -m window --toggle float --grid 4:4:1:1:2:2
 hyper - b : yabai -m window --toggle sticky
 
 # Karabiner (recent window)

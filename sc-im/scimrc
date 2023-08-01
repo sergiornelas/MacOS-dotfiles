@@ -43,10 +43,10 @@ vnoremap "qr" "yr"
 nnoremap "qc" "yc"
 vnoremap "qc" "yc"
 nnoremap "U" "<C-r>"
-nnoremap "a" "\"
+nnoremap "a" "="
 
 # Mappings commands
-nnoremap "<Space>0" "=0<cr>"
+nnoremap "<Space>e" "=0<cr>"
 nnoremap "<C-q>" ":quit<cr>"
 nnoremap "<Space>f" ":w<cr>"
 nnoremap "<Space>Q" ":q!<cr>"
