@@ -26,3 +26,6 @@ System settings / Desktop & Dock / Automatically rearrange Spaces based on most 
 
 Change/add chromium extension keymaps:
 chrome://extensions/shortcuts
+
+Kitty yank vim mode
+https://github.com/yurikhan/kitty_grab
