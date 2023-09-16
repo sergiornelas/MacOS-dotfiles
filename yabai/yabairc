@@ -1,11 +1,17 @@
 #!/usr/bin/env sh
 # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
 
-# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
+# Updated restart service command
+# yabai --restart-service
+
 # Whenever you update Yabai, add again the script addition for --load-sa when boot:
-# sudo visudo -f /private/etc/sudoers.d/yabai
-# segioornelas ALL=(root) NOPASSWD: sha256:6f316734a0dec66b04d8de5aab7e5e65703b6013836d379df10d127d70d2c0a8 /usr/local/bin/yabai --load-sa
-# (only update hash)
+# 1) Execute this command:
+#    echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
+# 2) Paste the result into this file (replace current line):
+#    sudo visudo -f /private/etc/sudoers.d/yabai
+#    (the only updated value is the hash)
+# For reference:
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
