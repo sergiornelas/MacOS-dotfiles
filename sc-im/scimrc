@@ -1,7 +1,11 @@
+# https://raw.githubusercontent.com/andmarti1424/sc-im/freeze/src/doc
 #:format "d%d/%m/%Y"
 #:format "###,###.##"
 #:cellcolor "fg=CYAN bg=DEFAULT_COLOR"
 # remember to use 2023, no 23 year on date before format
+
+#fh = decrement column width
+#fl = increment column width
 
 # (=)
 # Al momento de poner una celda solo equal sin digitos (=) la formula que necesitaba esa celda se rompe.
@@ -28,32 +32,23 @@ nnoremap "gk" "^"
 vnoremap "gk" "^"
 nnoremap "gj" "#"
 vnoremap "gj" "#"
-nnoremap "[" "$"
-vnoremap "[" "$"
-nnoremap "(" "g0"
-vnoremap "(" "g0"
-nnoremap "gm" "gM"
-vnoremap "gm" "gM"
-nnoremap "<C-i>" "gl"
-vnoremap "<C-i>" "gl"
-nnoremap "qq" "yy"
-vnoremap "q" "y"
-nnoremap "qr" "yr"
-vnoremap "qr" "yr"
-nnoremap "qc" "yc"
-vnoremap "qc" "yc"
-nnoremap "U" "<C-r>"
+nnoremap "^" "g0"
+vnoremap "^" "g0"
+nnoremap "_" "g0"
+vnoremap "_" "g0"
+nnoremap "<C-o>" "gl"
+vnoremap "<C-o>" "gl"
 nnoremap "a" "="
+nnoremap "yl" "yy"
+vnoremap "yl" "yy"
 
 # Mappings commands
-nnoremap "<Space>e" "=0<cr>"
+nnoremap "<Space>0" "=0<cr>"
 nnoremap "<C-q>" ":quit<cr>"
 nnoremap "<Space>f" ":w<cr>"
-nnoremap "<Space>Q" ":q!<cr>"
-nnoremap "J" ":prevsheet<cr>"
-nnoremap "K" ":nextsheet<cr>"
-nnoremap "<Space><Space>" ":ccopy<cr>"
-vnoremap "<Space><Space>" ":ccopy<cr>"
+nnoremap "ZQ" ":q!<cr>"
+nnoremap "<Space>y" ":ccopy<cr>"
+vnoremap "<Space>y" ":ccopy<cr>"
 
 # Mappings cell style
 nnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
