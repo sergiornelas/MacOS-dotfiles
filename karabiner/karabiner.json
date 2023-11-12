@@ -339,6 +339,54 @@
                   }
                 ],
                 "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com.google.Chrome",
+                      "^com.brave.Browser",
+                      "^org.mozilla.firefox"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
                   "key_code": "h",
                   "modifiers": {
                     "mandatory": ["right_control", "left_shift"]
