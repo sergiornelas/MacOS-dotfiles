@@ -7,6 +7,11 @@
 #fh = decrement column width
 #fl = increment column width
 
+# dr = delete row (use p for paste row)
+
+# rl = lock row
+# ru = unlock row
+
 # (=)
 # Al momento de poner una celda solo equal sin digitos (=) la formula que necesitaba esa celda se rompe.
 # Se arregla:
@@ -47,8 +52,8 @@ nnoremap "<Space>0" "=0<cr>"
 nnoremap "<C-q>" ":quit<cr>"
 nnoremap "<Space>f" ":w<cr>"
 nnoremap "ZQ" ":q!<cr>"
-nnoremap "<Space>y" ":ccopy<cr>"
-vnoremap "<Space>y" ":ccopy<cr>"
+nnoremap "y<Space>" ":ccopy<cr>"
+vnoremap "y<Space>" ":ccopy<cr>"
 
 # Mappings cell style
 nnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
