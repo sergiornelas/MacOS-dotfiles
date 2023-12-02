@@ -135,7 +135,7 @@
                 "from": {
                   "key_code": "g",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -160,7 +160,7 @@
                 "from": {
                   "key_code": "t",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
