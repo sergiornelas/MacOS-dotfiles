@@ -480,7 +480,7 @@
                 "from": {
                   "key_code": "1",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -505,7 +505,7 @@
                 "from": {
                   "key_code": "2",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -530,7 +530,7 @@
                 "from": {
                   "key_code": "3",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -555,7 +555,7 @@
                 "from": {
                   "key_code": "4",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -580,7 +580,7 @@
                 "from": {
                   "key_code": "5",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -605,7 +605,7 @@
                 "from": {
                   "key_code": "6",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -630,7 +630,7 @@
                 "from": {
                   "key_code": "7",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -655,7 +655,7 @@
                 "from": {
                   "key_code": "8",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
@@ -680,7 +680,7 @@
                 "from": {
                   "key_code": "9",
                   "modifiers": {
-                    "mandatory": ["right_control"]
+                    "mandatory": ["control"]
                   }
                 },
                 "to": [
