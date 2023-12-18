@@ -50,7 +50,7 @@ vnoremap "yl" "yy"
 # Mappings commands
 nnoremap "<Space>0" "=0<cr>"
 nnoremap "<C-q>" ":quit<cr>"
-nnoremap "<Space>f" ":w<cr>"
+nnoremap "<Space>w" ":w<cr>"
 nnoremap "ZQ" ":q!<cr>"
 nnoremap "y<Space>" ":ccopy<cr>"
 vnoremap "y<Space>" ":ccopy<cr>"
