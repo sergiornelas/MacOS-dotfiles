@@ -52,8 +52,8 @@ nnoremap "<Space>0" "=0<cr>"
 nnoremap "<C-q>" ":quit<cr>"
 nnoremap "<Space>w" ":w<cr>"
 nnoremap "ZQ" ":q!<cr>"
-nnoremap "y<Space>" ":ccopy<cr>"
-vnoremap "y<Space>" ":ccopy<cr>"
+nnoremap "<Space>y" ":ccopy<cr>"
+vnoremap "<Space>y" ":ccopy<cr>"
 
 # Mappings cell style
 nnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"

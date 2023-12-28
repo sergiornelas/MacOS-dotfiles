@@ -1,5 +1,5 @@
 # FZF
-export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept,ctrl-n:toggle+down,ctrl-p:toggle+up,ctrl-m:preview-down,ctrl-k:preview-up  --layout=reverse'
+export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept,ctrl-n:toggle+down,ctrl-p:toggle+up,ctrl-m:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-z:next-history,ctrl-x:prev-history --layout=reverse'
 
 # FZF fish
 fzf_configure_bindings --variables

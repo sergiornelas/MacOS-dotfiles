@@ -1,7 +1,7 @@
-# Hyper availability
-# __________
-#  _________;'Enter
-#   ZX_____,./
+# Hyper availability:
+# ____________
+#  __________'Enter
+#   _______,._
 
 # Hyper mappings:
 # Yabai =====================
@@ -9,24 +9,27 @@
 # Window switch focus      JK
 # Resize window horizontal NM
 # Resize window vertical   QA
-# Next/Prev stack          FV
+# Next/Prev stack window   FV
 # Window focus further     ER
 # Full screen               L
-# Balance               Space
+# Balance                   B
 # Axis-y                    H
 # Stack                     G
 # Warp                      W
 # Swap                      S
 # Move window to display    D
-# Toggle float              B
-# Rotate 90 grades          C
-# Toggle sticky             T
+# Toggle float              T
+# Rotate 90 grades          X
+# Toggle sticky             Z
+# Restart Yabai             Y
+# Karabiner =================
+# Recent window           Tap
+# Cmd + tab          spacebar
+# Close app                 C
+# ñ spanish symbol          ;
+# ¿ spanish symbol          /
 # Kitty =====================
 # Transparency             \^
-# Karabiner =================
-# Recent window      Just tap
-# Misc ======================
-# Restart Yabai             Y
 
 # Space navigation
 hyper - i : yabai -m space --focus 1
@@ -42,8 +45,8 @@ hyper - 4 : yabai -m window --space 4
 
 # Space manipulation
 hyper - h : yabai -m space --mirror y-axis
-hyper - space : yabai -m space --balance
-hyper - c : yabai -m space --rotate 90
+hyper - b : yabai -m space --balance
+hyper - x : yabai -m space --rotate 90
 
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
@@ -67,11 +70,11 @@ hyper - v : yabai -m window --focus stack.prev || yabai -m window --focus stack.
 hyper - l : yabai -m window --toggle zoom-fullscreen
 hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
-hyper - b : yabai -m window --toggle float --grid 4:4:1:1:2:2
-hyper - t : yabai -m window --toggle sticky
+hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - z : yabai -m window --toggle sticky
 
 # Karabiner (recent window)
-hyper - up : yabai -m window --focus recent || yabai -m display --focus recent #managed by karabiner
+hyper - up : yabai -m window --focus recent || yabai -m display --focus recent #managed by Karabiner
 
 # Misc
 hyper - y : yabai --restart-service
