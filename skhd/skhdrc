@@ -23,11 +23,11 @@
 # Toggle sticky             Z
 # Restart Yabai             Y
 # Karabiner =================
-# Recent window           Tap
-# Cmd + tab          spacebar
+# Cmd + tab switch   spacebar
 # Close app                 C
 # ñ spanish symbol          ;
 # ¿ spanish symbol          /
+# Spanish accent        (tap)
 # Kitty =====================
 # Transparency             \^
 
@@ -72,9 +72,6 @@ hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 hyper - z : yabai -m window --toggle sticky
-
-# Karabiner (recent window)
-hyper - up : yabai -m window --focus recent || yabai -m display --focus recent #managed by Karabiner
 
 # Misc
 hyper - y : yabai --restart-service

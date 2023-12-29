@@ -43,7 +43,7 @@
             ]
           },
           {
-            "description": "Caps to HYPER when held, Recent window when tap (yabai)",
+            "description": "Caps to HYPER when held, Spanish accent when tap",
             "manipulators": [
               {
                 "from": {
@@ -60,55 +60,11 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "up_arrow",
-                    "modifiers": [
-                      "left_shift",
-                      "left_command",
-                      "left_control",
-                      "left_option"
-                    ]
+                    "key_code": "e",
+                    "modifiers": ["left_alt"]
                   }
                 ],
                 "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Shift tap to Spanish accent",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "left_shift"
-                },
-                "to": [
-                  {
-                    "key_code": "left_shift"
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "e",
-                    "modifiers": ["left_alt"]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "right_shift"
-                },
-                "to": [
-                  {
-                    "key_code": "right_shift"
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "e",
-                    "modifiers": ["left_alt"]
-                  }
-                ]
               }
             ]
           },
@@ -253,6 +209,41 @@
                 "to_if_alone": [
                   {
                     "key_code": "tab"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Both shifts to caps_lock",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "mandatory": ["right_shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "caps_lock"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "mandatory": ["left_shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "caps_lock"
                   }
                 ],
                 "type": "basic"
@@ -1100,6 +1091,29 @@
                 "to": [
                   {
                     "key_code": "return_or_enter"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.runningwithcrayons\\.Alfred$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow",
+                    "modifiers": ["right_control"]
                   }
                 ],
                 "type": "basic"
