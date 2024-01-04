@@ -130,7 +130,8 @@
                       "left_command",
                       "left_option",
                       "left_control"
-                    ]
+                    ],
+                    "optional": ["right_shift"]
                   }
                 },
                 "to": [

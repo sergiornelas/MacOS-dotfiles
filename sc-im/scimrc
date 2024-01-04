@@ -46,6 +46,8 @@ vnoremap "<C-o>" "gl"
 nnoremap "a" "="
 nnoremap "yl" "yy"
 vnoremap "yl" "yy"
+nnoremap "J" ":prevsheet<cr>"
+nnoremap "K" ":nextsheet<cr>"
 
 # Mappings commands
 nnoremap "<Space>0" "=0<cr>"
