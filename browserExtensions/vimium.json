@@ -3,7 +3,7 @@
   "autoDarkMode": 1,
   "keyLayout": 2,
   "keyMappings": [
-    "map <c-q> visitPreviousTab",
+    "map <c-f> visitPreviousTab",
     "map ' Marks.activate",
     "map a focusInput",
     "map e LinkHints.activateOpenInNewTab",
