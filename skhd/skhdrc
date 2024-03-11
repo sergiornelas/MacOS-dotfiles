@@ -10,7 +10,7 @@
 # Resize window horizontal NM
 # Resize window vertical   QA
 # Next/Prev stack window   FV
-# Window focus further     ER
+# Display focus            ER
 # Full screen               L
 # Balance                   B
 # Axis-y                    H
@@ -51,9 +51,9 @@ hyper - x : yabai -m space --rotate 90
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - k : yabai -m window --focus south || yabai -m window --focus north
-hyper - e : yabai -m window --focus west || yabai -m display --focus west
-hyper - r : yabai -m window --focus east || yabai -m display --focus east
-hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus|| yabai -m display --focus west
+hyper - e : yabai -m display --focus west
+hyper - r : yabai -m display --focus east
+hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus || yabai -m display --focus west
 
 # Resize windows
 hyper - n : yabai -m window --resize left:-110:0   || yabai -m window --resize right:-110:0

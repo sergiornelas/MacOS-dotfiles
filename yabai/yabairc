@@ -78,3 +78,5 @@ yr app="^System Settings$" manage=off
 
 echo "yabai configuration loaded.."
 # open -na Spotify
+
+borders active_color=0xFF003E00F inactive_color=0xff494d64 width=4.0 &

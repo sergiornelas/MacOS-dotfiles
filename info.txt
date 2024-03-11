@@ -33,3 +33,6 @@ chrome://extensions/shortcuts
 
 Kitty yank vim mode
 https://github.com/yurikhan/kitty_grab
+
+Yabai borders
+https://github.com/FelixKratz/JankyBorders

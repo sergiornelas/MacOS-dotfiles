@@ -8,7 +8,7 @@ set -gx EDITOR nvim
 bind \co 'up-or-search'
 
 # Node default version (you have to open terminal twice to apply)
-set --universal nvm_default_version 18.16.0
+set --universal nvm_default_version 18.19.1
 
 # Fish_prompt:
 set -U fish_greeting ""
