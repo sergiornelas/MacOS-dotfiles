@@ -1,4 +1,5 @@
 Default shell in macOS
+If fish updates:
 Best way: System Settings/Users & Groups/{your user} advanced options/Login shell
 Or:
 Terminal/Preferences/General/Shells open with: Command (complete path):

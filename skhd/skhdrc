@@ -6,13 +6,13 @@
 # Hyper mappings:
 # Yabai =====================
 # Desktop navigation     UIOP
-# Window switch focus      JK
+# Window switch focus      JB
 # Resize window horizontal NM
 # Resize window vertical   QA
 # Next/Prev stack window   FV
-# Display focus            ER
+# Display switch focus      K
 # Full screen               L
-# Balance                   B
+# Balance            Spacebar
 # Axis-y                    H
 # Stack                     G
 # Warp                      W
@@ -23,7 +23,7 @@
 # Toggle sticky             Z
 # Restart Yabai             Y
 # Karabiner =================
-# Cmd + tab switch   spacebar
+# Cmd + tab switch         ER
 # Close app                 C
 # ñ spanish symbol          ;
 # ¿ spanish symbol          /
@@ -45,14 +45,13 @@ hyper - 4 : yabai -m window --space 4
 
 # Space manipulation
 hyper - h : yabai -m space --mirror y-axis
-hyper - b : yabai -m space --balance
+hyper - space : yabai -m space --balance
 hyper - x : yabai -m space --rotate 90
 
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
-hyper - k : yabai -m window --focus south || yabai -m window --focus north
-hyper - e : yabai -m display --focus west
-hyper - r : yabai -m display --focus east
+hyper - b : yabai -m window --focus south || yabai -m window --focus north
+hyper - k : yabai -m display --focus east || yabai -m display --focus west
 hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus || yabai -m display --focus west
 
 # Resize windows
