@@ -73,10 +73,11 @@ yr app="^System Settings$" manage=off
 # yr app="^(Brave|Google\ Chrome)$" layer=below
 # yr app="^kitty$" layer=above
 
+yabai -m signal --add event=display_changed action="yabai -m config mouse_follows_focus off"
 # yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 # yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 echo "yabai configuration loaded.."
 # open -na Spotify
 
-borders active_color=0xFF003E00F inactive_color=0xff494d64 width=4.0 &
+borders active_color=0xFF003E00F inactive_color=0xff494d64 width=5.0 &

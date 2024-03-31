@@ -51,12 +51,12 @@ hyper - x : yabai -m space --rotate 90
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - b : yabai -m window --focus south || yabai -m window --focus north
-hyper - k : yabai -m display --focus east || yabai -m display --focus west
+hyper - k : yabai -m config mouse_follows_focus on && yabai -m display --focus east || yabai -m display --focus west
 hyper - d : yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus || yabai -m display --focus west
 
 # Resize windows
-hyper - n : yabai -m window --resize left:-110:0   || yabai -m window --resize right:-110:0
-hyper - m : yabai -m window --resize left:110:0    || yabai -m window --resize right:110:0
+hyper - n : yabai -m window --resize left:-220:0   || yabai -m window --resize right:-220:0
+hyper - m : yabai -m window --resize left:220:0    || yabai -m window --resize right:220:0
 hyper - q : yabai -m window --resize bottom:0:-55 || yabai -m window --resize top:0:-55
 hyper - a : yabai -m window --resize bottom:0:55  || yabai -m window --resize top:0:55
 
