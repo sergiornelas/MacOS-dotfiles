@@ -37,3 +37,11 @@ https://github.com/yurikhan/kitty_grab
 
 Yabai borders
 https://github.com/FelixKratz/JankyBorders
+
+Custom cursor
+1) https://github.com/alexzielenski/Mousecape/releases
+download Mousecape_1813.zip
+2) select cursor
+http://www.rw-designer.com/gallery?search=&by=
+3) tests cursor here
+https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor
