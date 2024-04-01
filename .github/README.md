@@ -6,17 +6,18 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 
 ## Apps added:
 
-- [karabiner](https://karabiner-elements.pqrs.org/): A powerful and stable keyboard customizer
-- [skhd](https://github.com/koekeishiya/skhd): Create keyboard shortcuts
-- [yabai](https://github.com/koekeishiya/yabai): Tiling window management for Mac
-- [kitty](https://sw.kovidgoyal.net/kitty/): Terminal emulator
-- [tmux](https://github.com/tmux/tmux/): Terminal multiplexer (not using it anymore)
-- [fish](https://fishshell.com/): The best shell
-- [fzf](https://github.com/junegunn/fzf/): Fuzzy search
-- [vimiumc](https://chrome.google.com/webstore/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg?hl=en): Vim bindings for the browser
+- [Karabiner](https://karabiner-elements.pqrs.org/): A powerful and stable keyboard customizer
+- [Skhd](https://github.com/koekeishiya/skhd): Create keyboard shortcuts
+- [Yabai](https://github.com/koekeishiya/yabai): Tiling window management for Mac
+- [Kitty](https://sw.kovidgoyal.net/kitty/): Terminal emulator
+- [Tmux](https://github.com/tmux/tmux/): Terminal multiplexer (not using it anymore)
+- [Fish](https://fishshell.com/): The best shell
+- [Fzf](https://github.com/junegunn/fzf/): Fuzzy search
+- [Vimiumc](https://chrome.google.com/webstore/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg?hl=en): Vim bindings for the browser
 - [fd](https://github.com/sharkdp/fd): Better find
-- [ripgrep](https://github.com/BurntSushi/ripgrep/): Better grep
-- [spacebar](https://github.com/cmacrae/spacebar): Header status bar
-- [lazygit](https://github.com/jesseduffield/lazygit): Terminal UI for git
-- [sc-im](https://github.com/andmarti1424/sc-im): Use Excel spreadsheet on terminal
+- [Ripgrep](https://github.com/BurntSushi/ripgrep/): Better grep
+- [Spacebar](https://github.com/cmacrae/spacebar): Header status bar
+- [Lazygit](https://github.com/jesseduffield/lazygit): Terminal UI for git
+- [Sc-im](https://github.com/andmarti1424/sc-im): Use Excel spreadsheet on terminal
+- [Mousecape](https://github.com/alexzielenski/Mousecape): A free cursor manager for Mac OS
 - And more.
