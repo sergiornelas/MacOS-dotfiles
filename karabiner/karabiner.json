@@ -1147,7 +1147,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "spacebar",
+                    "key_code": "escape",
                     "modifiers": ["left_command"]
                   }
                 ],
