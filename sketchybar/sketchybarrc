@@ -70,11 +70,11 @@ done
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add event window_focus \
-              --add event title_change
+           --add event title_change
 
 sketchybar --add item title center \
-              --set title script="$PLUGIN_DIR/window_title.sh" background.color=0xff282828 background.border_width=2 \
-              --subscribe title window_focus front_app_switched space_change title_change
+           --set title script="$PLUGIN_DIR/window_title.sh" background.color=0xff282828 background.border_width=2 \
+           --subscribe title window_focus front_app_switched space_change title_change
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
