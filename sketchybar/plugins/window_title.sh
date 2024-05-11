@@ -3,7 +3,7 @@
 WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
 
 if [[ $WINDOW_TITLE = "" ]]; then
-  WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.app')
+  WINDOW_TITLE="אנשים שלא חושבים על איך הם רוצים לחיות בסופו של דבר יחיו כמו שהם חושבים"
 fi
 
 if [[ ${#WINDOW_TITLE} -gt 121 ]]; then

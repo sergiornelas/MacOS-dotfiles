@@ -25,9 +25,10 @@ sketchybar --bar position=top height=25 blur_radius=30 color=0xFF302D27 padding_
 default=(
   padding_left=2
   padding_right=2
-  icon.font="JetBrainsMono Nerd Font:Bold:17.0"
-  # label.font="Iosevka:Bold:15.0"
+  # brew install --cask font-bigblue-terminal-nerd-font
+  icon.font="BigBlueTermPlus Nerd Font:Regular:16"
   label.font="BigBlueTermPlus Nerd Font:Regular:13.5"
+  # label.font="Iosevka:Bold:15.0"
   icon.color=0xFFEBDBB2
   label.color=0xFFEBDBB2
   icon.padding_left=4
@@ -72,7 +73,7 @@ sketchybar --add event window_focus \
               --add event title_change
 
 sketchybar --add item title center \
-              --set title script="$PLUGIN_DIR/window_title.sh" \
+              --set title script="$PLUGIN_DIR/window_title.sh" background.color=0xff282828 background.border_color=0xff928374 background.border_width=2 \
               --subscribe title window_focus front_app_switched space_change title_change
 
 ##### Adding Right Items #####
