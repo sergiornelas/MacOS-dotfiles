@@ -1,5 +1,5 @@
-* Info configuration
-** Default shell in macOS
+# Info configuration
+## Default shell in macOS
    If fish updates:
    Best way: System Settings/Users & Groups/{your user} advanced options/Login
    shell. Or:
@@ -12,38 +12,38 @@
    /usr/local/Cellar/fish/3.6.1/bin/fish ->
    /usr/local/Cellar/fish/3.6.4/bin/fish
 
-** Mac OS Key-Repeat Tester
+## Mac OS Key-Repeat Tester
    https://mac-key-repeat.zaymon.dev/
    defaults write -g InitialKeyRepeat -int 14
    defaults write -g KeyRepeat -int 1
    defaults write -g ApplePressAndHoldEnabled -bool false
 
-** Install Nerd Fonts
+## Install Nerd Fonts
    https://www.geekbits.io/how-to-install-nerd-fonts-on-mac/
    https://www.youtube.com/watch?v=mQdB_kHyZn8
 
-** How to fix Homebrew:
+## How to fix Homebrew:
    Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins
    >> mkdir -p /Applications/Docker.app/Contents/Resources/cli-plugins
    >> brew cleanup
 
-** Install gSwitch for toggling between battery dynamic and gpu power mode:
+## Install gSwitch for toggling between battery dynamic and gpu power mode:
    https://github.com/CodySchrank/gSwitch
 
-** Don't forget to turn off Automatically rearrange Spaces based on most recent use when implementing Yabai:
+## Don't forget to turn off Automatically rearrange Spaces based on most recent use when implementing Yabai:
    System settings / Desktop & Dock / Automatically rearrange Spaces based on
    most recent use (at the bottom)
 
-** Change/add chromium extension keymaps:
+## Change/add chromium extension keymaps:
    chrome://extensions/shortcuts
 
-** Kitty yank vim mode
+## Kitty yank vim mode
    https://github.com/yurikhan/kitty_grab
 
-** Yabai borders
+## Yabai borders
    https://github.com/FelixKratz/JankyBorders
 
-** Custom cursor
+## Custom cursor
    1) Restore the cursor:
    System settings > Accessibility > display > Scroll down to pointer and
    click reset colors
@@ -54,5 +54,5 @@
    4) tests cursor here
    https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor
 
-** Keyboard-only operation of macOS apps
+## Keyboard-only operation of macOS apps
    https://shortcat.app/
