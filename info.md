@@ -69,3 +69,13 @@ https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor
 ## Keyboard-only operation of macOS apps
 
 https://shortcat.app/
+
+## Add personal git user as owner in the PR's in my repos
+
+📁.git/config
+At bottom:
+```gitconfig
+[user]
+	name = sergiornelas
+	email = sergio.ornelas.92@outlook.com
+```
