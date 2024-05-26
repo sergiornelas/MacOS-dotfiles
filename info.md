@@ -1,5 +1,4 @@
-Info configuration
-==================
+# Info configuration
 
 ## Default shell in macOS
 
