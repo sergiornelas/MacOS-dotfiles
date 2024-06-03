@@ -54,7 +54,7 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
+    # pager: diff-so-fancy
     # pager: delta side-by-side=false
   commit:
     signOff: false

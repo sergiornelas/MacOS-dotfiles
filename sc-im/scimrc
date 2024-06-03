@@ -4,6 +4,7 @@
 #:cellcolor "fg=CYAN bg=DEFAULT_COLOR"
 # remember to use 2023, no 23 year on date before format
 # =@sum(B1:B52)
+# center the content (justify): '{' '}'
 
 #fh = decrement column width
 #fl = increment column width
