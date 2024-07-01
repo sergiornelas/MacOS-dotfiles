@@ -78,3 +78,7 @@ At bottom:
 	name = sergiornelas
 	email = sergio.ornelas.92@outlook.com
 ```
+
+## Rich oldschool fonts
+
+https://int10h.org/oldschool-pc-fonts/fontlist/
