@@ -1,10 +1,29 @@
+// an example to create a new mapping `ctrl-y`
+api.mapkey("<ctrl-y>", "Show me the money", function () {
+  Front.showPopup(
+    "a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).",
+  );
+});
+
+// an example to replace `T` with `gt`, click `Default mappings` to see how `T` works.
+api.map("gt", "T");
+
+// an example to remove mapkey `Ctrl-i`
+api.iunmap("<Ctrl-f>");
+
+api.map("<Ctrl-f>", "<Ctrl-6>");
+
+// multiple sites:
+// settings.blocklistPattern = /(youtube|udemy).com/i;
+settings.blocklistPattern = /(codesandbox).io/i;
+
 // set theme
 settings.theme = `
 .sk_theme {
     font-family: Input Sans Condensed, Charcoal, sans-serif;
-    font-size: 10pt;
-    background: #24272e;
-    color: #abb2bf;
+    font-size: 13pt;
+    background: #191A1F;
+    color: #D1D1D1;
 }
 .sk_theme tbody {
     color: #fff;
@@ -28,7 +47,7 @@ settings.theme = `
     color: #98c379;
 }
 .sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
-    background: #303030;
+    background: #24272e;
 }
 .sk_theme #sk_omnibarSearchResult ul li.focused {
     background: #3e4452;
@@ -36,72 +55,21 @@ settings.theme = `
 #sk_status, #sk_find {
     font-size: 20pt;
 }`;
+// click `Save` button to make above settings to take effect.</ctrl-i></ctrl-y>
 
+// ====================================
+api.Hints.style(
+  "font-family: Arial; font-size: 13px; background: initial; background-color: #D4B122;",
+);
+settings.tabsThreshold = 0;
+settings.smoothScroll = false;
+settings.scrollStepSize = 140;
+settings.hintAlign = "left";
+// ====================================
+// Consideration:
+api.Hints.setCharacters("ioewafqpsdvm");
 api.map("J", "S");
 api.map("K", "D");
 api.map("e", "T");
 api.map("F", "C");
 api.map("C", "cf");
-
-api.Hints.setCharacters("ioewafqpsdvm");
-settings.scrollStepSize = 140;
-settings.smoothScroll = false;
-settings.tabsThreshold = 0;
-
-// -----------------------------------------------
-// an example to create a new mapping `ctrl-y`
-// api.mapkey('<ctrl-y>', 'Show me the money', function() {
-//    Front.showPopup('a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).');
-// });
-
-// an example to replace `T` with `gt`, click `Default mappings` to see how `T` works.
-// api.map('gt', 'T');
-
-// an example to remove mapkey `Ctrl-i`
-// api.unmap('<ctrl-i>');
-
-// -----------------------------------------------
-// OMNIBAR
-// t      | to search bookmarks/history
-// b      | bookmarks
-// og     | search on google
-//    ctrl+enter | multiple searches (omnibar doesn't close)
-//    ctrl+,/.   | show results next/prev page
-// ab     | add bookmark
-
-// MARKS
-// ma | create mark a
-// 'a | go to mark a
-// om | check all marks
-
-// SESSION
-// ZZ | will save all current tabs into a session named LAST then quit
-// ZR | will restore the session named LAST
-// ZQ | will just quit
-// :  | createSession work
-// :  | openSession work
-// :  | listSession
-// :  | deleteSession work
-
-// URL
-// ;u | open vim editor to edit current URL
-// yy | copy url
-
-// TAB
-// gp | go to playing tab
-// gU | Go to root of current URL hierarchy
-
-// MISC
-// af     | open new link and direct to new link
-// q      | click on an image or a button
-// :      | commands you can run calculator there
-// V      | selection line block. f,zz works
-// sg     | google result registered text
-// ctrl-b | insert mode move on char prev
-// 3<<    | move tab 3 pages prev (numbers work!)
-// I      | input vim mode
-// ;e     | open settings editor
-// ;pm    | markdown preview
-// yg     | copy image
-// /      | remember you transform to caret mode
-//    ctrl+enter | find exact whole word

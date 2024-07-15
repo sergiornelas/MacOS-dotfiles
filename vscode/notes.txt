@@ -1,0 +1,5 @@
+Instrucciones instalar vim settings.json a vscode/codesandbox
+
+cmd + ,
+look for settings.json
+paste the settings.
