@@ -1,3 +1,11 @@
+// ====================
+// 15/07/2024
+// I decided to ditch Surfing Keys for this annoying bug:
+// If you click on a YouTube video and then scroll using j/k d/u, the scroll will be stuck in that frame.
+// You have to click outside the frame and then scroll again.
+// Also, Vimium-c is way more maintained, and I'm not losing any interesting features from Surfing Keys.
+// ====================
+
 // an example to create a new mapping `ctrl-y`
 api.mapkey("<ctrl-y>", "Show me the money", function () {
   Front.showPopup(
@@ -67,9 +75,9 @@ settings.scrollStepSize = 140;
 settings.hintAlign = "left";
 // ====================================
 // Consideration:
-api.Hints.setCharacters("ioewafqpsdvm");
-api.map("J", "S");
-api.map("K", "D");
-api.map("e", "T");
-api.map("F", "C");
-api.map("C", "cf");
+// api.Hints.setCharacters("ioewafqpsdvm");
+// api.map("J", "S");
+// api.map("K", "D");
+// api.map("e", "T");
+// api.map("F", "C");
+// api.map("C", "cf");

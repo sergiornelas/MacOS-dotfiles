@@ -4,12 +4,25 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["]", "b"],
+      "commands": [":bn"]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": [":bp"]
+    },
+    {
       "before": ["<leader>", "w"],
       "commands": [":w"]
     },
     {
       "before": ["K"],
       "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }]
+    },
+    {
+      "before": ["g", "l"],
+      "commands": ["editor.action.sourceAction"],
+      "silent": true
     },
     {
       "before": ["]", "d"],
@@ -19,6 +32,16 @@
     {
       "before": ["[", "d"],
       "commands": ["editor.action.marker.prevInFiles"],
+      "silent": true
+    },
+    {
+      "before": ["[", "f"],
+      "commands": ["editor.action.wordHighlight.prev"],
+      "silent": true
+    },
+    {
+      "before": ["]", "f"],
+      "commands": ["editor.action.wordHighlight.next"],
       "silent": true
     }
   ],

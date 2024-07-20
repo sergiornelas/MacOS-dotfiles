@@ -1,3 +1,3 @@
-function llt --wraps='ll --tree' --wraps='exa --long --header --git --tree' --description 'alias llt=exa --long --header --git --tree'
-  exa --long --header --git --tree $argv; 
+function llt --wraps='ll --tree' --wraps='eza --long --header --git --tree' --description 'alias llt=eza --long --header --git --tree'
+  eza --long --header --git --tree $argv;
 end

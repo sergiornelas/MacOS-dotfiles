@@ -45,6 +45,11 @@ most recent use (at the bottom)
 
 chrome://extensions/shortcuts
 
+## Chrome extension that enables changing the new tab site
+
+New Tab Redirect
+https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna
+
 ## Kitty yank vim mode
 
 https://github.com/yurikhan/kitty_grab

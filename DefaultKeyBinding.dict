@@ -1,10 +1,9 @@
 /*
 ~/Library/KeyBindings/DefaultKeyBinding.Dict
+https://gist.github.com/trusktr/1e5e516df4e8032cbc3d
 */
 
-"^v" = "paste:";
 "^c" = "copy:";
-"^x" = "cut:";
-"^z" = "undo:";
+"^v" = "paste:";
+"^w" = "deleteWordBackward:";
 "^u" = "deleteToBeginningOfLine:";
-"^e" = "moveToEndOfLine:";

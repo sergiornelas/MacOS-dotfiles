@@ -1,3 +1,3 @@
-function f --wraps='exa --icons -a -s=type' --description 'alias f=exa --icons -a -s=type'
-  exa --icons -a -s=type $argv;
+function f --wraps='eza --icons -a -s=type' --description 'alias f=eza --icons -a -s=type'
+  eza --icons -a -s=type $argv;
 end
