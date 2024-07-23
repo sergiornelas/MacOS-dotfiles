@@ -3,11 +3,12 @@
   "autoDarkMode": 1,
   "keyLayout": 2,
   "keyMappings": [
+    "map w removeTab",
     "map <c-f> visitPreviousTab",
     "map ' Marks.activate",
     "map a focusInput",
     "map e LinkHints.activateOpenInNewTab",
-    "map F LinkHints.activateOpenInNewForegroundTab",
+    "map F visitPreviousTab",
     "map q LinkHints.activateWithQueue",
     "map s LinkHints.activateSelect",
     "map ga LinkHints.activateEdit",
@@ -22,7 +23,9 @@
     "map J goBack",
     "map K goForward",
     "map H moveTabLeft",
-    "map L moveTabRight"
+    "map L moveTabRight",
+    "map E previousTab",
+    "map R nextTab"
   ],
   "linkHintCharacters": "jiofewapklqs",
   "smoothScroll": false,
