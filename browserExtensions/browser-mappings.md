@@ -7,7 +7,7 @@
 > output directo: ("map <c-j> <down>")
 > Por lo tanto no podemos obtener el efecto de arrow keys desde estas
 > extensiones. Es necesario hacerlo directamente desde Karabiner:
-> (<ctrl-shift-h/j/k/l>).
+> (<ctrl-n/p/f/b>).
 
 ## Ctrl+shift+key
 
@@ -24,48 +24,53 @@ v   | Selects visual to very bottom
 
 ### Karabiner mapped
 
-[h,j,k,l]     -> Arrow keys
-[spacebar]    -> Dev tools
+[j]           -> Enter + shift
 [t]           -> Reopen tab
-[m]           -> Enter + shift
+[spacebar]    -> Dev tools
+[]          -> Visual next/prev word
 
 ## Ctrl+key
 
 ### Normal mode:
 
 Some sites have defined mappings, for example outlook ctrl-r/p/,/.
+c   | Copy (mapped in DefaultKeyBinding.Dict)
 
 ### Insert mode:
 
 e,a | Move end/start of line
-f,b | Move move one char
-n,p | Move up/down of line
-v   | Goes to the last bottom (lost it for c-v in DefaultKeyBinding.Dict)
+f,b | Move move one char *
+n,p | Move up/down of line *
+v   | Goes to the last bottom * (DefaultKeyBinding.Dict)
 ----+-------------------
-t   | Inverts next chat (lost it for karabiner)
-y   | Does some shit ?? Research what it does
+c   | _Copy_                      (DefaultKeyBinding.Dict)
+w   | _Delete word left_          (DefaultKeyBinding.Dict)
+u   | _Delete all left_           (DefaultKeyBinding.Dict)
+t   | Inverts next chat *
+y   | Emacs kill ring
 k   | Deletes right text
 h   | Deletes one char left
 d   | Deletes one char right
-o   | Moves one char left (like b)
+o   | Moves one char left *
 
 ### Karabiner mapped
 
-[spacebar]          -> New tab
-[t,g]               -> Next/prev tab
+[f,b,n,p]           -> Arrow keys
+[t]                 -> New tab
+[i,o]               -> Next/prev tab
+[r]                 -> Refresh tab
+[l]                 -> Close tab
 [,.]                -> Move tab left/right
-[]                -> Next/prev history
-[l]                 -> Refresh tab
-[q]                 -> Close tab
-[s]                 -> Find word
 [j]                 -> Enter
+[s]                 -> Search word
 [z]                 -> Undo (cmd+z)
+[]                -> Next/prev word
+[spacebar]          -> Open native tab navigation (?)
 
 ## Ctrl+number
 
 [1,2,3,4,5,6,7,8,9] -> Go to # tab
 
->> Open a link in new background tab - ⌘ + Click a link
 >> Total karabiner browser mappings: 29
 
 ## Thinks that are interestig in surfing keys
@@ -80,74 +85,24 @@ o   | Moves one char left (like b)
 - Omnibar: om check all marks
 - ;u url using vim menu
 
-## ReDo AGAIN
-
-T
----------------
-c = previous match
-i = move tab insert mode
-w = top window
-
-G
----------------
-c = next match
-
-R
----------------
-n = undo
-
-L
----------------
-w = right window
-console clean (⌘ + k solves it)
-
-;
--------
-LIBRE
-
-Z
--------
-undo
-
-X
--------
-n = decrease number
-
-M
--------
-n = move below and keep align
-Q -------
-w = close window
-
----
-
 ## Score
 
-prev tab     <c-t/g>  | <cmd-i/o>  ❌
-new tab      <c-space>| ⌘ + t      ❌
-
-reload       <c-l>    | ⌘ + r      ❌
-close tab    <c-q>    | ⌘ + w      ❌
-
-find word    <c-s>    | ⌘ + f      ❌
-
-back history <c-\[>   | ⌘ + \]
-forward hist <c-]>    | ⌘ + [
-re-open tab  <c-s-t>  | ⌘ + s + t
-
-ganas all ctrl insert              ✅✅
+prev tab     <c-i/o>  | ⌘-i/o      =
+new tab      <c-t>    | ⌘ + t      =
+reload       <c-r>    | ⌘ + r      =
+close tab    <c-l>    | ⌘ + w     +1
+find word    <c-s>    | ⌘ + f     -1
+back/for history JK*  | ⌘ + []    -1
+re-open tab  <c-s-t>  | ⌘ + s + t  =
+ganas all ctrl insert             +3
 u, w, c, v
 y el resto...
 f,b,a,e
+compatiblidad con neovim/terminal +2
+pierdes codesandbox               -1
+select all   <c-s-a>    | ⌘ + a   -1
 
-compatiblidad con neovim/terminal  ✅
-
-ganas codesandbox                  ✅
-
-select all   <c-s-a>    | ⌘ + a    ❌
-
-TODO: use native browser go for tab (cmd+shift+a)?
-TODO: c-l global map | unable it in
+Result = +2 win ✅
 
 ---
 
@@ -211,7 +166,7 @@ m       | minimize
 
 I use the terminal and neovim extensively, so if I return to native command I
 will have a conflict between the terminal and the browser using the ctrl
-commands: (e, f, n, y, k, h, d, u, w, a, b, p).
+commands: (e, f, n, k, h, d, u, w, a, b, p).
 That's why I decided to keep using right cmd as control.
 *Alfred* and *Slack* use ctrl commands quite often.
 
@@ -223,51 +178,36 @@ if you found an interesting project that you want to work on.
 - Gain better maps for browser navigation and more keymaps available.
 - I barely use codesandbox, so it's not a big deal.
 
-q___________
- ____g____;
-  ______m__
-  spacebar
+---
 
-TODO: Try <c-i/o> for next/prev tab, check if feels confortable
-if not: - <c-g/t> for next/prev tab
-        - spacebar for new tab
-        - c-i/o will be free
+03/08/2024
 
-TODO: Add the remaining mappings to karabiner
+Q____Y____
+ ____G____;
+  _X____M__
+  Spacebar
 
-My map   |Default⌘ | Action
----------|---------|-------
-✅ c-i/o | []      | next/prev tab
-✅ c-s-t | t       | reopen closed tab
-         | a       | select tab from list (good)
-         | g       | jump to previous match
-         | c       | dev tools select element
-✅ c-#   | numbers | switch to # tab
-✅ c-0   | 0       | reset font size
-✅ -/+   | -/+     | zoom in/out
-✅ c-l   | w       | close tab
-✅ c-r   | r       | reload page
-✅ c-t   | t       | new tab
-✅ c-[]  | []      | next,previous tab history
-         | d       | bookmark add
-✅ c-s   | f       | find
-         | g       | find next
-         | l       | jump to address bar
+## REMAINING (and interesting)
+0       | reset font size
+-/+     | zoom in/out
+d       | bookmark add
+l       | open location url
+tab/s-tb| Browse clickable items moving forward/back
+a       | select all
 
-✅ c-z   | z       | undo
-✅ c-x   | x       | cut
-✅ c-c   | c       | copy
-✅ c-v   | v       | paste
+## Vimium C discoveries
 
-✅ c-u   | c-return| delete all text left
-✅ c-w   | opt-del | delete prev word
-✅ c-j   | enter   | return or enter
-✅ c-,   | c-s-PgUp| move tab right
-✅ c-.   | c-s-PgDw| move tab left
-✅c-s-spa| ⌘+Optn+i| developer tools
-         | space   | Scroll down a webpage, a screen at a time
-         | S+Space | Scroll up a webpage, a screen at a time
+### Caret mode
 
-Also move next/backward word?
-Option + Left arrow
-Option + Right arrow
+when you are in visual mode, press c
+
+### Link hints
+
+If you type the hints in upper case, the link will open in a new tab.
+
+### Activate link hints with digits
+
+- [x] Use the link's name and characters for link-hint filtering
+
+is more similiat to flash, you type the word then enter
+
