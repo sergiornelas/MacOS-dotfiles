@@ -1,4 +1,7 @@
+# HERE ==============================================================================
 # /Users/segioornelas/Library/Application Support/lazygit
+# ===================================================================================
+
 gui:
   # stuff relating to the UI
   windowSize: 'normal' # one of 'normal' | 'half' | 'full' default is 'normal'
@@ -54,8 +57,7 @@ gui:
 git:
   paging:
     colorArg: always
-    # pager: diff-so-fancy
-    # pager: delta side-by-side=false
+    pager: delta --dark --paging=never
   commit:
     signOff: false
   merging:
