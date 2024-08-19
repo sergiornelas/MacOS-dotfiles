@@ -87,3 +87,13 @@ At bottom:
 ## Rich oldschool fonts
 
 https://int10h.org/oldschool-pc-fonts/fontlist/
+
+## Doom in terminal
+
+1. >> brew install zig
+2. Clone this repo: https://github.com/cryptocode/terminal-doom
+3. Move into the repo's directory (terminal-doom)
+4. Execute the building and run commmands in the repo's README:
+>> zig build -Doptimize=ReleaseFast
+>> zig-out/bin/terminal-doom
+

@@ -70,23 +70,24 @@ podrias crear un f para links y uno para inputs, asi reducimos las opciones.
 @@ Marks.clearGlobal: "Remove all global marks",                         (useless)
 @@ Marks.clearLocal: "Remove all local marks for this site",             (useless)
 
-Vomnibar.activate: "Open URL, bookmark, or history entry",
-Vomnibar.activateBookmarks: "Open a bookmark",
-Vomnibar.activateBookmarksInNewTab: "Open a bookmark in a new tab",
-Vomnibar.activateEditUrl: "Edit the current URL",
-Vomnibar.activateEditUrlInNewTab: "Edit the current URL and open in a new tab",
-Vomnibar.activateHistory: "Open a history",
-Vomnibar.activateHistoryInNewTab: "Open a history in a new tab",
-Vomnibar.activateInNewTab: "Open URL, history, … in a new tab",
-Vomnibar.activateTabs: "Search through your open tabs",
-addBookmark: "Add tabs into a bookmark folder",
-autoCopy: "Copy selected text or current frame's title or URL",
-autoOpen: "Open selected or copied text in a new tab",
-blank: "Do nothing",
-captureTab: "Capture visible area of current tab",
-clearContentSettings: "Clear extension's content settings",
-clearFindHistory: "Clear find mode history",
-closeDownloadBar: "Close the bottom download bar elegantly",
+@@ Vomnibar.activate: "Open URL, bookmark, or history entry"              (regular-o)
+@@ Vomnibar.activateBookmarks: "Open a bookmark",                         (regular-b)
+@@ Vomnibar.activateBookmarksInNewTab: "Open a bookmark in a new tab",    (regular-B)
+@@ Vomnibar.activateEditUrl: "Edit the current URL",                      (regular-ge)
+@@ Vomnibar.activateEditUrlInNewTab: "Edit the current URL and open in a new tab", (regular-gE)
+@@ Vomnibar.activateHistory: "Open a history"                             (gH)
+@@ Vomnibar.activateHistoryInNewTab: "Open a history in a new tab",       (gh)
+@@ Vomnibar.activateInNewTab: "Open URL, history, … in a new tab",        (regular-O)
+@@ Vomnibar.activateTabs: "Search through your open tabs",                (regular-T)
+@@ addBookmark: "Add tabs into a bookmark folder",                        (useless)
+@@ autoCopy: "Copy selected text or current frame's title or URL",        (Y)
+@@ autoOpen: "Open selected or copied text in a new tab",                 (yo)
+@@ blank: "Do nothing",                                                   (useless)
+@@ captureTab: "Capture visible area of current tab",                     (useless)
+@@ clearContentSettings: "Clear extension's content settings",            (useless)
+@@ clearFindHistory: "Clear find mode history",                           (useless)
+@@ closeDownloadBar: "Close the bottom download bar elegantly",           (useless)
+
 closeOtherTabs: "Close all other tabs",
 closeSomeOtherTabs: "Close other tabs",
 closeTabsOnLeft: "Close all tabs on the left",
@@ -125,7 +126,7 @@ moveTabToNewWindow: "Move N tabs to new window",
 moveTabToNextWindow: "Move tab to next window",
 nextFrame: "Cycle forward to the next frame on the page",
 nextTab: "Go one tab right",
-openBookmark: "Open a bookmark (folder)",
+@@ openBookmark: "Open a bookmark (folder)",                             (useless)
 openCopiedUrlInCurrentTab: "Open the clipboard's URL in the current tab",
 openCopiedUrlInNewTab: "Open the clipboard's URL in N new tabs",
 openUrl: "Open URL",

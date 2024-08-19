@@ -10,8 +10,12 @@
 [delta]
     features = decorations
 	  side-by-side = true
+    tabs=2
     line-numbers = false
     light = false
+    ; plus-style = "syntax #034703"
+    ; minus-emph-style = "syntax #FF4500"
+    ; plus-emph-style = "syntax #208a20"
 [delta "interactive"]
     keep-plus-minus-markers = false
 [delta "decorations"]
