@@ -1,3 +1,3 @@
-function v --wraps='sc-im' --description 'alias x=sc-im'
-  sc-im ~/notes/data/finances.sc
+function v --wraps=nvim --description 'alias v=nvim'
+  nvim $argv; 
 end

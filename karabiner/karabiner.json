@@ -1429,7 +1429,7 @@
             ]
           },
           {
-            "description": "Kitty mappings",
+            "description": "Kitty mappings (tmux)",
             "manipulators": [
               {
                 "conditions": [
@@ -1439,15 +1439,15 @@
                   }
                 ],
                 "from": {
-                  "key_code": "j",
+                  "key_code": "spacebar",
                   "modifiers": {
                     "mandatory": ["left_shift", "right_control"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "open_bracket",
-                    "modifiers": ["left_command"]
+                    "key_code": "z",
+                    "modifiers": ["left_shift", "right_control"]
                   }
                 ],
                 "type": "basic"

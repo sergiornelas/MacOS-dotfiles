@@ -1,5 +1,5 @@
 # https://raw.githubusercontent.com/andmarti1424/sc-im/freeze/src/doc
-#:format "d%d/%m/%Y"
+#:format "%d/%m/%Y"
 #:format "###,###.##"
 #:cellcolor "fg=CYAN bg=DEFAULT_COLOR"
 # remember to use 2023, no 23 year on date before format

@@ -6,6 +6,10 @@ if [[ $WINDOW_TITLE = "" ]]; then
   WINDOW_TITLE="אנשים שלא חושבים על איך הם רוצים לחיות בסופו של דבר יחיו כמו שהם חושבים"
 fi
 
+if [[ $WINDOW_TITLE = "fish" ]]; then
+  WINDOW_TITLE="Vim"
+fi
+
 if [[ ${#WINDOW_TITLE} -gt 121 ]]; then
   WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-120)
   sketchybar --set title label="$WINDOW_TITLE"…

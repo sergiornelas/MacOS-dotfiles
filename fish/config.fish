@@ -1,3 +1,13 @@
+# Start tmux
+if status is-interactive
+  and not set -q TMUX
+  if tmux has-session -t main
+    exec tmux attach-session -t main
+  else
+    exec tmux new-session -s main
+  end
+end
+
 # FZF
 export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept,ctrl-n:toggle+down,ctrl-p:toggle+up,ctrl-m:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-z:next-history,ctrl-x:prev-history --layout=reverse'
 
