@@ -4,13 +4,13 @@ This is my actual dotfiles that I use all day long for all kind of stuff, for wo
 
 <img width="1450" alt="image" src="gruvboxKing.png">
 
-## Apps added:
+## Apps added
 
 - [Karabiner](https://karabiner-elements.pqrs.org/): A powerful and stable keyboard customizer
 - [Skhd](https://github.com/koekeishiya/skhd): Create keyboard shortcuts
 - [Yabai](https://github.com/koekeishiya/yabai): Tiling window management for Mac
 - [Kitty](https://sw.kovidgoyal.net/kitty/): Terminal emulator
-- [Tmux](https://github.com/tmux/tmux/): Terminal multiplexer (not using it anymore)
+- [Tmux](https://github.com/tmux/tmux/): Terminal multiplexer
 - [Fish](https://fishshell.com/): The best shell
 - [Fzf](https://github.com/junegunn/fzf/): Fuzzy search
 - [Vimiumc](https://chrome.google.com/webstore/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg?hl=en): Vim bindings for the browser

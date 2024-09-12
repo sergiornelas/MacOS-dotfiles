@@ -60,8 +60,8 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "e",
-                    "modifiers": ["left_alt"]
+                    "key_code": "backslash",
+                    "modifiers": ["control"]
                   }
                 ],
                 "type": "basic"
