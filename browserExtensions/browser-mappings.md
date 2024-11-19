@@ -145,7 +145,7 @@ y       | history
 o       | open file
 p       | print
 []      | next,previous tab history
-a       | select all
+a       | select all (good)
 s       | save in finder page
 d       | bookmark add
 f       | find
@@ -157,7 +157,7 @@ z       | undo
 x       | cut
 c       | copy
 v       | paste
-b       | leo chat (brave)
+b       | leo chat (brave) (good)
 n       | new window
 m       | minimize
 ,       | settings

@@ -15,7 +15,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=25 blur_radius=30 color=0xFF302D27 padding_left=10 padding_right=0
+sketchybar --bar position=top height=33 blur_radius=30 color=0xFF302D27 padding_left=10 padding_right=0
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -25,10 +25,8 @@ sketchybar --bar position=top height=25 blur_radius=30 color=0xFF302D27 padding_
 default=(
   padding_left=2
   padding_right=2
-  # brew install --cask font-bigblue-terminal-nerd-font
-  icon.font="BigBlueTermPlus Nerd Font:Regular:16"
-  label.font="BigBlueTermPlus Nerd Font:Regular:13.5"
-  # label.font="Iosevka:Bold:15.0"
+  icon.font="Iosevka:Bold:15.0"
+  label.font="Iosevka:Bold:14.5"
   icon.color=0xFFEBDBB2
   label.color=0xFFEBDBB2
   icon.padding_left=4
@@ -58,7 +56,7 @@ do
     background.corner_radius=0
     background.height=25
     label.drawing=off
-    icon.font="BigBlueTermPlus Nerd Font:Regular:14.5"
+    icon.font="Iosevka:Bold:14.5"
     script="$PLUGIN_DIR/space.sh"
     click_script="yabai -m space --focus $sid"
   )
@@ -70,10 +68,9 @@ done
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add event window_focus \
-           --add event title_change
-
-sketchybar --add item title center \
-           --set title script="$PLUGIN_DIR/window_title.sh" background.color=0xff282828 background.border_width=2 \
+           --add event title_change \
+           --add item title left \
+           --set title script="$PLUGIN_DIR/window_title.sh"\
            --subscribe title window_focus front_app_switched space_change title_change
 
 ##### Adding Right Items #####
@@ -87,12 +84,7 @@ sketchybar --add item title center \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add event bluetooth_change "com.apple.bluetooth.status" \
-           --add item headphones left \
-           --set headphones icon=🎧 icon.y_offset=3 script="$PLUGIN_DIR/airpods_battery.sh" \
-           --subscribe headphones bluetooth_change \
-           \
-           --add item  ip_address right                              \
+sketchybar --add item  ip_address right                              \
            --set       ip_address script="$PLUGIN_DIR/ip_address.sh" \
            --subscribe ip_address wifi_change                        \
            \
@@ -105,7 +97,12 @@ sketchybar --add event bluetooth_change "com.apple.bluetooth.status" \
            \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" icon.color=0xffb8bb26 click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+           \
+           --add event bluetooth_change "com.apple.bluetooth.status" \
+           --add item headphones right \
+           --set headphones icon=🎧 icon.y_offset=3 script="$PLUGIN_DIR/airpods_battery.sh" \
+           --subscribe headphones bluetooth_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

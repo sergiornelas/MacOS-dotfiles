@@ -20,6 +20,9 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# Get the names of all running applications
+# yabai -m query --windows | jq -r '.[].app'
+
 # Global settings
 yabai -m config \
   external_bar               all:25:0     \
