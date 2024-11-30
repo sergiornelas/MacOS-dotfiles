@@ -1,6 +1,6 @@
 [user]
-  name = Sergio Ornelas <sergio.ornelas@nextiva.com>
-  email = sergio.ornelas@nextiva.com
+  name = Sergio Ornelas <sergio.ornelas.92@outlook.com>
+  email = sergio.ornelas.92@outlook.com
 [core]
 	editor = nvim
 	excludesfile = /Users/sergioornelas/.gitignore

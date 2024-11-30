@@ -25,8 +25,7 @@ sketchybar --bar position=top height=33 blur_radius=30 color=0xFF302D27 padding_
 default=(
   padding_left=2
   padding_right=2
-  icon.font="Iosevka:Bold:15.0"
-  label.font="Iosevka:Bold:14.5"
+  label.font="Iosevka:Bold:15.5"
   icon.color=0xFFEBDBB2
   label.color=0xFFEBDBB2
   icon.padding_left=4
@@ -56,7 +55,7 @@ do
     background.corner_radius=0
     background.height=25
     label.drawing=off
-    icon.font="Iosevka:Bold:14.5"
+    icon.font="Iosevka:Bold:15.5"
     script="$PLUGIN_DIR/space.sh"
     click_script="yabai -m space --focus $sid"
   )

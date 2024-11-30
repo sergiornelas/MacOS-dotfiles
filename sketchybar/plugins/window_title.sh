@@ -15,8 +15,9 @@ if [[ $WINDOW_TITLE = "fish" ]]; then
   WINDOW_TITLE="Vim"
 fi
 
-if [[ ${#WINDOW_TITLE} -gt 76 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-75)
+# verifica el tema de las mayusculas
+if [[ ${#WINDOW_TITLE} -gt 86 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-85)
   sketchybar --set title label="$WINDOW_TITLE"…
   exit 0
 fi

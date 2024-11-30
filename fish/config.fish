@@ -1,12 +1,12 @@
 # Start tmux
-if status is-interactive
-  and not set -q TMUX
-  if tmux has-session -t main
-    exec tmux attach-session -t main
-  else
-    exec tmux new-session -s main
-  end
-end
+# if status is-interactive
+#   and not set -q TMUX
+#   if tmux has-session -t main
+#     exec tmux attach-session -t main
+#   else
+#     exec tmux new-session -s main
+#   end
+# end
 
 # FZF
 export FZF_DEFAULT_OPTS='--bind ctrl-o:up,ctrl-i:down,ctrl-j:accept,ctrl-n:toggle+down,ctrl-p:toggle+up,ctrl-m:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-z:next-history,ctrl-x:prev-history --layout=reverse'
@@ -18,7 +18,7 @@ set -gx EDITOR nvim
 bind \co 'up-or-search'
 
 # Node default version (you have to open terminal twice to apply)
-set --universal nvm_default_version 18.19.1
+set --universal nvm_default_version latest
 
 # Fish_prompt:
 set -U fish_greeting ""

@@ -4,7 +4,7 @@
   "keyLayout": 2,
   "keyMappings": [
     "map w removeTab",
-    "map <c-f> visitPreviousTab",
+    "map <c-g> visitPreviousTab",
     "map ' Marks.activate",
     "map a focusInput",
     "map e LinkHints.activateOpenInNewTab",
@@ -22,6 +22,8 @@
     "map zr zoomReset",
     "map J goBack",
     "map K goForward",
+    "map S goBack",
+    "map D goForward",
     "map H moveTabLeft",
     "map L moveTabRight",
     "map E previousTab",
