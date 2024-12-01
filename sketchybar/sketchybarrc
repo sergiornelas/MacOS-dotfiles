@@ -15,7 +15,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=33 blur_radius=30 color=0xFF302D27 padding_left=10 padding_right=0
+sketchybar --bar position=top height=33 blur_radius=30 padding_left=10 padding_right=0 color=0x80302D27
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -23,17 +23,18 @@ sketchybar --bar position=top height=33 blur_radius=30 color=0xFF302D27 padding_
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=2
-  padding_right=2
+  padding_left=4
+  padding_right=4
   label.font="Iosevka:Bold:15.5"
   icon.color=0xFFEBDBB2
   label.color=0xFFEBDBB2
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-  background.border_color=0xff928374
-  background.border_width=2
+  icon.padding_left=8
+  icon.padding_right=2
+  label.padding_left=2
+  label.padding_right=8
+  background.color=0xC0302D27
+  background.border_color=0xFFFABD2F
+  background.border_width=0
 )
 sketchybar --default "${default[@]}"
 
@@ -69,7 +70,7 @@ done
 sketchybar --add event window_focus \
            --add event title_change \
            --add item title left \
-           --set title script="$PLUGIN_DIR/window_title.sh"\
+           --set title script="$PLUGIN_DIR/window_title.sh" label.color=0xFFECC364 \
            --subscribe title window_focus front_app_switched space_change title_change
 
 ##### Adding Right Items #####
@@ -88,7 +89,7 @@ sketchybar --add item  ip_address right                              \
            --subscribe ip_address wifi_change                        \
            \
            --add item clock right \
-           --set clock update_freq=10 icon=⏳ script="$PLUGIN_DIR/clock.sh" icon.y_offset=2 \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" icon.color=0xFF458588 \
            \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" icon.color=0xFFFABD2F \
@@ -100,7 +101,7 @@ sketchybar --add item  ip_address right                              \
            \
            --add event bluetooth_change "com.apple.bluetooth.status" \
            --add item headphones right \
-           --set headphones icon=🎧 icon.y_offset=3 script="$PLUGIN_DIR/airpods_battery.sh" \
+           --set headphones icon=  script="$PLUGIN_DIR/airpods_battery.sh" icon.color=0xFFB16286 \
            --subscribe headphones bluetooth_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####

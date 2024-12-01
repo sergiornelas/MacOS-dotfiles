@@ -23,6 +23,9 @@ sudo yabai --load-sa
 # Get the names of all running applications
 # yabai -m query --windows | jq -r '.[].app'
 
+# Get the name of current focused app
+# yabai -m query --windows --window | jq -r '.app'
+
 # Global settings
 yabai -m config \
   external_bar               all:25:0     \

@@ -1,6 +1,6 @@
 # Cursor position
 
-## Arror (plateglove.cur)
+## Arrow (plateglove.cur)
 
 Hot spot: 0, 0
 Size: 30, 30

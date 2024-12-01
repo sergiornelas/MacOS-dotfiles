@@ -14,4 +14,4 @@ else
 	ICON=󱚼
 fi
 
-sketchybar --set $NAME icon.color=$COLOR icon.y_offset=2 icon=$ICON
+sketchybar --set $NAME icon.color=$COLOR icon=$ICON

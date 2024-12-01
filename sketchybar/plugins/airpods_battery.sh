@@ -23,5 +23,5 @@ else
     exit 0
   fi
 
-  sketchybar -m --set $NAME label="$left $right $case"
+  sketchybar -m --set $NAME label="$left $right 󰋌 $case"
 fi
