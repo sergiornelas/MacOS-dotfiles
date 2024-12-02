@@ -45,6 +45,12 @@ Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins
 System settings / Desktop & Dock / Automatically rearrange Spaces based on
 most recent use (at the bottom)
 
+## Yabai doesn't work if you disable Displays have separate Spaces!
+
+Desktop & Dock > At the bottom
+This option makes the displays (builting and external) combine into just big one
+Has conflicts with Yabai (M4)
+
 ## Change/add chromium extension keymaps
 
 chrome://extensions/shortcuts
@@ -73,6 +79,11 @@ download Mousecape_1813.zip
 <http://www.rw-designer.com/gallery?search=&by=>
 4. tests cursor here
 <https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor>
+5. For adding Mousecape in the Background:
+Open mousecape app -> Install helper tool -> Sweet
+A pop up must show.
+If that doesn't work, go to System Settings, Privacy & Security, Accessibility
+Then plus sign and add Mousecape
 
 ## Keyboard-only operation of macOS apps
 
