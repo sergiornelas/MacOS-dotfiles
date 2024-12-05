@@ -70,6 +70,7 @@ yr app="^Karabiner-Elements$" manage=off
 yr app="^Karabiner-EventViewer$" manage=off
 yr app="^KeePassXC$" manage=off
 yr app="^Path Finder$" manage=off
+yr app="^Preview$" manage=off
 yr app="^QuickTime Player$" manage=off
 yr app="^Slack$" space=2
 yr app="^Spotify$" space=4
@@ -79,15 +80,10 @@ yr app="^System Settings$" manage=off
 # yr app="^(Brave|Google\ Chrome)$" layer=below
 # yr app="^kitty$" layer=above
 
-yabai -m signal --add event=display_changed action="yabai -m config mouse_follows_focus off"
-yabai -m signal --add event=display_removed action="yabai -m config mouse_follows_focus off"
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 # Sketchybar:
 yabai -m signal --add event=window_focused action="sketchybar -m --trigger window_focus &> /dev/null"
 yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger title_change &> /dev/null"
-
-echo "yabai configuration loaded.."
-# open -na Spotify
 
 borders active_color=0xFF003E00F inactive_color=0xff494d64 width=5.0 &

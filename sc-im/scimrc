@@ -82,12 +82,12 @@ cnoremap "<C-e>" "<END>"
 cnoremap "<C-a>" "<HOME>"
 
 # Colors
-# DEFINE_COLOR "comment" 164 160 148
-# DEFINE_COLOR "negative_number" 183 73 73
+DEFINE_COLOR "comment" 164 160 148
+DEFINE_COLOR "negative_number" 183 73 73
 REDEFINE_COLOR "RED" 183 73 73
-# color "type=STRG fg=comment bg=DEFAULT_COLOR bold=0 italic=0"
+color "type=STRG fg=comment bg=DEFAULT_COLOR bold=0 italic=0"
 color "type=NUMB fg=CYAN bg=DEFAULT_COLOR"
-# color "type=CELL_NEGATIVE fg=negative_number bg=DEFAULT_COLOR bold=0"
+color "type=CELL_NEGATIVE fg=negative_number bg=DEFAULT_COLOR bold=0"
 color "type=EXPRESSION fg=BLUE bg=DEFAULT_COLOR bold=0"
 color "type=HEADINGS fg=WHITE bg=BLACK bold=0"
 color "type=HEADINGS_ODD fg=BLACK bg=WHITE bold=0"

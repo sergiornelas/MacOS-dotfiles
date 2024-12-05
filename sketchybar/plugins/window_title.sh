@@ -26,26 +26,26 @@ else
 fi
 
 # Adjust the title based on the number of spaces
-if [[ "$SPACES" -eq 1 && ${#WINDOW_TITLE} -gt 90 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-89)
+if [[ "$SPACES" -eq 1 && ${#WINDOW_TITLE} -gt 88 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-87)
   sketchybar --set title label="$WINDOW_TITLE"…
   exit 0
 fi
 
-if [[ "$SPACES" -eq 2 && ${#WINDOW_TITLE} -gt 85 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-84)
+if [[ "$SPACES" -eq 2 && ${#WINDOW_TITLE} -gt 83 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-82)
   sketchybar --set title label="$WINDOW_TITLE"…
   exit 0
 fi
 
-if [[ "$SPACES" -eq 3 && ${#WINDOW_TITLE} -gt 79 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-78)
+if [[ "$SPACES" -eq 3 && ${#WINDOW_TITLE} -gt 77 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-76)
   sketchybar --set title label="$WINDOW_TITLE"…
   exit 0
 fi
 
-if [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 73 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-72)
+if [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 71 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-70)
   sketchybar --set title label="$WINDOW_TITLE"…
   exit 0
 fi

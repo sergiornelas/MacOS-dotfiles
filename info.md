@@ -100,6 +100,14 @@ At bottom:
  email = sergio.ornelas.92@outlook.com
 ```
 
+## Global gitignore
+
+<https://www.squash.io/how-to-git-ignore-node-modules-folder-everywhere>
+
+touch ~/.gitignore_global
+Add: node_modules/
+git config --global core.excludesfile ~/.gitignore_global
+
 ## Rich oldschool fonts
 
 <https://int10h.org/oldschool-pc-fonts/fontlist/>
@@ -113,3 +121,8 @@ At bottom:
 
 >> zig build -Doptimize=ReleaseFast
 >> zig-out/bin/terminal-doom
+
+## Alfred karabiner mappings make it work:
+
+Alfred Preferences > Appearance > Options > Focusing to "Compatibility Mode"
+

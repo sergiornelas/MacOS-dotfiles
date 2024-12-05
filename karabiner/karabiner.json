@@ -24,7 +24,7 @@
             ]
           },
           {
-            "description": "Caps to Hyper when held, Spanish accent when tap",
+            "description": "Caps to Hyper when held, last visited app when tap",
             "manipulators": [
               {
                 "from": {
@@ -39,8 +39,13 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "backslash",
-                    "modifiers": ["control"]
+                    "key_code": "j",
+                    "modifiers": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ]
                   }
                 ],
                 "type": "basic"
@@ -96,7 +101,7 @@
             ]
           },
           {
-            "description": "Hyper cmd + tab simulation",
+            "description": "Hyper to cmd + tab simulation",
             "manipulators": [
               {
                 "from": {
@@ -196,7 +201,7 @@
             ]
           },
           {
-            "description": "Both shifts to Caps Lock",
+            "description": "Both shifts to Caps Lock, one shift to accent",
             "manipulators": [
               {
                 "from": {
@@ -218,6 +223,32 @@
                   }
                 },
                 "to": [{ "key_code": "caps_lock" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_shift"
+                },
+                "to": [{ "key_code": "right_shift" }],
+                "to_if_alone": [
+                  {
+                    "key_code": "e",
+                    "modifiers": ["left_option"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "left_shift"
+                },
+                "to": [{ "key_code": "left_shift" }],
+                "to_if_alone": [
+                  {
+                    "key_code": "e",
+                    "modifiers": ["left_option"]
+                  }
+                ],
                 "type": "basic"
               }
             ]
