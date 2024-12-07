@@ -77,6 +77,7 @@ yr app="^Spotify$" space=4
 yr app="^System Information$" manage=off
 yr app="^System Preferences$" manage=off
 yr app="^System Settings$" manage=off
+yr app="^Mousecape$" manage=off
 # yr app="^(Brave|Google\ Chrome)$" layer=below
 # yr app="^kitty$" layer=above
 

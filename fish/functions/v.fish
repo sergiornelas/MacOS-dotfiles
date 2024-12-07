@@ -1,3 +1,4 @@
 function v --wraps=nvim --description 'alias v=nvim'
-  nvim $argv; 
+  cd ~/notes/
+  sc-im ~/notes/data/spreadsheet.sc
 end

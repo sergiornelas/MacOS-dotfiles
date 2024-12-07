@@ -16,6 +16,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 sketchybar --bar position=top height=33 blur_radius=60 padding_left=10 padding_right=0 color=0x80302D27
+# sketchybar --bar position=top height=33 blur_radius=20 padding_left=10 padding_right=0 color=0xA03C3836
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -32,7 +33,6 @@ default=(
   icon.padding_right=4
   label.padding_left=2
   label.padding_right=4
-  background.color=0x59302D27
   background.border_color=0xFFFABD2F
   background.border_width=0
 )

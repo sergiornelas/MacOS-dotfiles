@@ -1,10 +1,20 @@
 # https://raw.githubusercontent.com/andmarti1424/sc-im/freeze/src/doc
-#:format "%d/%m/%Y"
-#:format "###,###.##"
 #:cellcolor "fg=CYAN bg=DEFAULT_COLOR"
-# remember to use 2023, no 23 year on date before format
 # =@sum(B1:B52)
 # center the content (justify): '{' '}'
+
+# ==================================
+# c-j auto resize column according the widest content
+# sj to move the below column elements 1 bottom
+# sk to move the below column elements 1 above
+# sh/sl same logic
+# rv to remove the formula but preserving the result
+# e to enter edit mode in number
+# E to enter edit mode in string
+# < or > to enter string in left/right position in cell
+
+# YOU HAVE TO SET A BACKGROUND COLOR AND FONT COLOR, BOTH, TO APPLY THE STYLES
+# ==================================
 
 #fh = decrement column width
 #fl = increment column width
@@ -31,7 +41,6 @@ set underline_grid=0
 set ignorecase=1
 set truncate=0
 set input_bar_bottom=0
-set autowrap=0
 set copy_to_clipboard_delimited_tab=1
 
 # Mappings
@@ -46,6 +55,7 @@ vnoremap "_" "g0"
 nnoremap "<C-o>" "gl"
 vnoremap "<C-o>" "gl"
 nnoremap "a" "="
+nnoremap "t" "\"
 nnoremap "yl" "yy"
 vnoremap "yl" "yy"
 nnoremap "J" ":prevsheet<cr>"
@@ -60,14 +70,63 @@ nnoremap "<Space>y" ":ccopy<cr>"
 vnoremap "<Space>y" ":ccopy<cr>"
 
 # Mappings cell style
-nnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
-vnoremap "<C-n>" ":cellcolor \"bold=1\"<cr>"
-nnoremap "<C-p>" ":cellcolor \"bold=0\"<cr>"
-vnoremap "<C-p>" ":cellcolor \"bold=0\"<cr>"
-nnoremap "<C-s>" ":cellcolor \"underline=1\"<cr>"
-vnoremap "<C-s>" ":cellcolor \"underline=1\"<cr>"
-nnoremap "<C-x>" ":cellcolor \"underline=0\"<cr>"
-vnoremap "<C-x>" ":cellcolor \"underline=0\"<cr>"
+nnoremap "<C-n>1" ":cellcolor \"bold=1\"<cr>"
+vnoremap "<C-n>1" ":cellcolor \"bold=1\"<cr>"
+nnoremap "<C-n>0" ":cellcolor \"bold=0\"<cr>"
+vnoremap "<C-n>0" ":cellcolor \"bold=0\"<cr>"
+nnoremap "<C-u>1" ":cellcolor \"underline=1\"<cr>"
+vnoremap "<C-u>1" ":cellcolor \"underline=1\"<cr>"
+nnoremap "<C-u>0" ":cellcolor \"underline=0\"<cr>"
+vnoremap "<C-u>0" ":cellcolor \"underline=0\"<cr>"
+nnoremap "<C-w>1" ":cellcolor \"italic=1\"<cr>"
+vnoremap "<C-w>1" ":cellcolor \"italic=1\"<cr>"
+nnoremap "<C-w>0" ":cellcolor \"italic=0\"<cr>"
+vnoremap "<C-w>0" ":cellcolor \"italic=0\"<cr>"
+
+# this one is the gray regular (<c-t>w):
+nnoremap "<C-t>d" ":cellcolor \"fg=WHITE\"<cr>"
+nnoremap "<C-t>b" ":cellcolor \"fg=BLACK\"<cr>"
+nnoremap "<C-t>r" ":cellcolor \"fg=RED\"<cr>"
+nnoremap "<C-t>g" ":cellcolor \"fg=GREEN\"<cr>"
+nnoremap "<C-t>y" ":cellcolor \"fg=YELLOW\"<cr>"
+nnoremap "<C-t>l" ":cellcolor \"fg=BLUE\"<cr>"
+nnoremap "<C-t>m" ":cellcolor \"fg=MAGENTA\"<cr>"
+nnoremap "<C-t>c" ":cellcolor \"fg=CYAN\"<cr>"
+nnoremap "<C-t>w" ":cellcolor \"fg=DEFAULT_COLOR\"<cr>"
+vnoremap "<C-t>d" ":cellcolor \"fg=WHITE\"<cr>"
+vnoremap "<C-t>b" ":cellcolor \"fg=BLACK\"<cr>"
+vnoremap "<C-t>r" ":cellcolor \"fg=RED\"<cr>"
+vnoremap "<C-t>g" ":cellcolor \"fg=GREEN\"<cr>"
+vnoremap "<C-t>y" ":cellcolor \"fg=YELLOW\"<cr>"
+vnoremap "<C-t>l" ":cellcolor \"fg=BLUE\"<cr>"
+vnoremap "<C-t>m" ":cellcolor \"fg=MAGENTA\"<cr>"
+vnoremap "<C-t>c" ":cellcolor \"fg=CYAN\"<cr>"
+vnoremap "<C-t>w" ":cellcolor \"fg=DEFAULT_COLOR\"<cr>"
+
+nnoremap "<C-p>w" ":cellcolor \"bg=WHITE\"<cr>"
+nnoremap "<C-p>b" ":cellcolor \"bg=BLACK\"<cr>"
+nnoremap "<C-p>r" ":cellcolor \"bg=RED\"<cr>"
+nnoremap "<C-p>g" ":cellcolor \"bg=GREEN\"<cr>"
+nnoremap "<C-p>y" ":cellcolor \"bg=YELLOW\"<cr>"
+nnoremap "<C-p>l" ":cellcolor \"bg=BLUE\"<cr>"
+nnoremap "<C-p>m" ":cellcolor \"bg=MAGENTA\"<cr>"
+nnoremap "<C-p>c" ":cellcolor \"bg=CYAN\"<cr>"
+nnoremap "<C-p>d" ":cellcolor \"bg=DEFAULT_COLOR\"<cr>"
+vnoremap "<C-p>w" ":cellcolor \"bg=WHITE\"<cr>"
+vnoremap "<C-p>b" ":cellcolor \"bg=BLACK\"<cr>"
+vnoremap "<C-p>r" ":cellcolor \"bg=RED\"<cr>"
+vnoremap "<C-p>g" ":cellcolor \"bg=GREEN\"<cr>"
+vnoremap "<C-p>y" ":cellcolor \"bg=YELLOW\"<cr>"
+vnoremap "<C-p>l" ":cellcolor \"bg=BLUE\"<cr>"
+vnoremap "<C-p>m" ":cellcolor \"bg=MAGENTA\"<cr>"
+vnoremap "<C-p>c" ":cellcolor \"bg=CYAN\"<cr>"
+vnoremap "<C-p>d" ":cellcolor \"bg=DEFAULT_COLOR\"<cr>"
+
+nnoremap "<C-x>" ":format \"###,###.##\"<cr>"
+vnoremap "<C-x>" ":format \"###,###.##\"<cr>"
+
+# available:
+# z
 
 # Mappings insert/command
 inoremap "<C-h>" "<BS>"
@@ -75,6 +134,7 @@ inoremap "<C-u>" "<LEFT>"
 inoremap "<C-f>" "<RIGHT>"
 inoremap "<C-e>" "<END>"
 inoremap "<C-a>" "<HOME>"
+cnoremap "<C-b>" "<LEFT>"
 cnoremap "<C-h>" "<BS>"
 cnoremap "<C-u>" "<LEFT>"
 cnoremap "<C-f>" "<RIGHT>"
@@ -83,6 +143,7 @@ cnoremap "<C-a>" "<HOME>"
 
 # Colors
 DEFINE_COLOR "comment" 164 160 148
+DEFINE_COLOR "total" 228 197 184
 DEFINE_COLOR "negative_number" 183 73 73
 REDEFINE_COLOR "RED" 183 73 73
 color "type=STRG fg=comment bg=DEFAULT_COLOR bold=0 italic=0"
