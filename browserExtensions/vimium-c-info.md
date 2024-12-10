@@ -57,7 +57,7 @@ podrias crear un f para links y uno para inputs, asi reducimos las opciones.
 @@ LinkHints.activateOpenImage: "Show image in a new tab",               (useless)
 @@ LinkHints.activateOpenIncognito: "Open a link in incognito window",   (useless)
 @@ LinkHints.activateOpenInNewForegroundTab: "Open a link in a new tab and switch to it", (regular-F)
-@@ LinkHints.activateOpenInNewTab: "Open a link in a new tab",             (regular-e)
+@@ LinkHints.activateOpenInNewTab: "Open a link in a new tab",           (regular-e)
 @@ LinkHints.activateOpenUrl: "Open a URL directly without simulating mouse actions", (like regular-F, but selects only links no inputs)
 @@ LinkHints.activateOpenVomnibar: "Edit a link text on Vomnibar",       (useless)
 @@ LinkHints.activateSearchLinkText: "Open or search a link text",       (useless)
@@ -69,14 +69,13 @@ podrias crear un f para links y uno para inputs, asi reducimos las opciones.
 @@ Marks.activateCreate: "Create a new mark",                            (regular-m)
 @@ Marks.clearGlobal: "Remove all global marks",                         (useless)
 @@ Marks.clearLocal: "Remove all local marks for this site",             (useless)
-
 @@ Vomnibar.activate: "Open URL, bookmark, or history entry"              (regular-o)
 @@ Vomnibar.activateBookmarks: "Open a bookmark",                         (regular-b)
 @@ Vomnibar.activateBookmarksInNewTab: "Open a bookmark in a new tab",    (regular-B)
 @@ Vomnibar.activateEditUrl: "Edit the current URL",                      (regular-ge)
 @@ Vomnibar.activateEditUrlInNewTab: "Edit the current URL and open in a new tab", (regular-gE)
-@@ Vomnibar.activateHistory: "Open a history"                             (gH)
-@@ Vomnibar.activateHistoryInNewTab: "Open a history in a new tab",       (gh)
+@@ Vomnibar.activateHistory: "Open a history"                             (useless)
+@@ Vomnibar.activateHistoryInNewTab: "Open a history in a new tab",       (useless)
 @@ Vomnibar.activateInNewTab: "Open URL, history, … in a new tab",        (regular-O)
 @@ Vomnibar.activateTabs: "Search through your open tabs",                (regular-T)
 @@ addBookmark: "Add tabs into a bookmark folder",                        (useless)
@@ -87,150 +86,109 @@ podrias crear un f para links y uno para inputs, asi reducimos las opciones.
 @@ clearContentSettings: "Clear extension's content settings",            (useless)
 @@ clearFindHistory: "Clear find mode history",                           (useless)
 @@ closeDownloadBar: "Close the bottom download bar elegantly",           (useless)
-
-closeOtherTabs: "Close all other tabs",
-closeSomeOtherTabs: "Close other tabs",
-closeTabsOnLeft: "Close all tabs on the left",
-closeTabsOnRight: "Close all tabs on the right",
-confirm: "Display confirmation dialog and wait",
-copyCurrentTitle: "Copy current tab's title",
-copyCurrentUrl: "Copy page's info",
-copyWindowInfo: "Copy title/URL info of a current window",
-createTab: "Create new tabs",
-debugBackground: "Debug the background page",
-discardTab: "Discard some other tabs",
-dispatchEvent: "Simulate dipatching arbitrary DOM event",
-duplicateTab: "Duplicate current tab for N times",
-editText: "Send editing action to browser",
-enableContentSettingTemp: "Enable the site's ContentSetting in incognito window",
-enterFindMode: "Enter find mode",
-enterInsertMode: "Enter insert mode",
-enterVisualLineMode: "Enter visual line mode",
-enterVisualMode: "Enter visual mode",
-firstTab: "Go to the first N-th tab",
-focusInput: "Focus the N-th visible text box on the page and cycle using tab",
-focusOrLaunch: "Focus a tab with given URL or open it",
-goBack: "Go back in history",
-goForward: "Go forward in history",
-goNext: "Follow the link labeled next or \">\"",
-goPrevious: "Follow the link labeled previous or \"<\"",
-goToRoot: "Go to root of current URL hierarchy",
-goUp: "Go up the URL hierarchy",
-joinTabs: "Collect all tabs into current window",
-lastTab: "Go to the last N-th tab",
-mainFrame: "Select the tab's main/top frame",
-moveTabLeft: "Move tab to the left",
-moveTabRight: "Move tab to the right",
-moveTabToIncognito: "Make tab in incognito window",
-moveTabToNewWindow: "Move N tabs to new window",
-moveTabToNextWindow: "Move tab to next window",
-nextFrame: "Cycle forward to the next frame on the page",
-nextTab: "Go one tab right",
+@@ closeOtherTabs: "Close all other tabs",                                (X)
+@@ closeSomeOtherTabs: "Close other tabs",                                (x)
+@@ closeTabsOnLeft: "Close all tabs on the left",                         (<<)
+@@ closeTabsOnRight: "Close all tabs on the right                         (>>)
+@@ confirm: "Display confirmation dialog and wait",
+@@ copyCurrentTitle: "Copy current tab's title",
+@@ copyCurrentUrl: "Copy page's info",                                    (yy)
+@@ copyWindowInfo: "Copy title/URL info of a current window",
+@@ createTab: "Create new tabs",                                          (t)
+@@ debugBackground: "Debug the background page",
+@@ discardTab: "Discard some other tabs",                                 (??)
+@@ dispatchEvent: "Simulate dipatching arbitrary DOM event",              (??)
+@@ duplicateTab: "Duplicate current tab for N times",                     (yt)
+@@ editText: "Send editing action to browser",                            (??)
+@@ enableContentSettingTemp: "Enable the site's ContentSetting in incognito window",
+@@ enterFindMode: "Enter find mode",                                      (/)
+@@ enterInsertMode: "Enter insert mode",                                  (i)
+@@ enterVisualLineMode: "Enter visual line mode",                         (V)
+@@ enterVisualMode: "Enter visual mode",                                  (v)
+@@ firstTab: "Go to the first N-th tab",
+@@ focusInput: "Focus the N-th visible text box on the page and cycle using tab", (a)
+@@ focusOrLaunch: "Focus a tab with given URL or open it",
+@@ goBack: "Go back in history",                                          (S,J)
+@@ goForward: "Go forward in history",                                    (D,K)
+@@ goNext: "Follow the link labeled next or \">\"",
+@@ goPrevious: "Follow the link labeled previous or \"<\"",
+@@ goToRoot: "Go to root of current URL hierarchy",                       (gU)
+@@ goUp: "Go up the URL hierarchy",                                       (gu)
+@@ joinTabs: "Collect all tabs into current window",
+@@ lastTab: "Go to the last N-th tab",
+@@ mainFrame: "Select the tab's main/top frame",                          (??)
+@@ moveTabLeft: "Move tab to the left",                                   (H)
+@@ moveTabRight: "Move tab to the right",                                 (L)
+@@ moveTabToIncognito: "Make tab in incognito window",
+@@ moveTabToNewWindow: "Move N tabs to new window",
+@@ moveTabToNextWindow: "Move tab to next window",                           (W)
+@@ nextFrame: "Cycle forward to the next frame on the page",                 (gf)
+@@ nextTab: "Go one tab right",                                              (R)
 @@ openBookmark: "Open a bookmark (folder)",                             (useless)
-openCopiedUrlInCurrentTab: "Open the clipboard's URL in the current tab",
-openCopiedUrlInNewTab: "Open the clipboard's URL in N new tabs",
-openUrl: "Open URL",
-parentFrame: "Focus a parent frame",
-passNextKey: "Pass the next keys to the page",
-performAnotherFind: "Find the second or even earlier query words",
-performBackwardsFind: "Cycle backward to the previous find match",
-performFind: "Cycle forward to the next find match",
-previousTab: "Go one tab left",
-reload: "Reload current frame",
-reloadGivenTab: "Reload N-th tab",
-reloadTab: "Reload N tabs",
-removeRightTab: "Close N-th tab on the right",
-removeTab: "Close N tabs",
-reopenTab: "Reopen current page",
-reset: "reset to normal mode",
-restoreGivenTab: "Restore the last N-th tab",
-restoreTab: "Restore closed tabs",
-runKey: "Select and run another mapped key sequence",
-scrollDown: "Scroll down",
-scrollFullPageDown: "Scroll a full page down",
-scrollFullPageUp: "Scroll a full page up",
-scrollLeft: "Scroll left",
-scrollPageDown: "Scroll a page down",
-scrollPageUp: "Scroll a page up",
-scrollPxDown: "Scroll 1px down",
-scrollPxLeft: "Scroll 1px left",
-scrollPxRight: "Scroll 1px right",
-scrollPxUp: "Scroll 1px up",
-scrollRight: "Scroll right",
-scrollSelect: "Switch in items of a (closed) selection box",
-scrollTo: "Scroll to custom position",
-scrollToBottom: "Scroll to the bottom of the page",
-scrollToLeft: "Scroll all the way to the left",
-scrollToRight: "Scroll all the way to the right",
-scrollToTop: "Scroll to the top of the page",
-scrollUp: "Scroll up",
-searchAs: "Search selected or copied text using current search engine",
-searchInAnother: "Redo search in another search engine",
-sendToExtension: "Send message to another extension",
-showHelp: "Show help",
-showTip: "Show a tip on the HUD",
-simulateBackspace: "Simulate backspace once if focused",
-sortTabs: "Sort all tabs in current window",
-switchFocus: "Blur activeElement or refocus it",
-toggleContentSetting: "Toggle the site's content settings",
-toggleLinkHintCharacters: "Toggle the other link hints",
-toggleMuteTab: "Mute or unmute current tab",
-togglePinTab: "Pin or unpin N tabs",
-toggleReaderMode: "Toggle reader view",
-toggleStyle: "Add or disable CSS styles",
-toggleSwitchTemp: "Toggle switch only on current page",
-toggleUrl: "Modify the URL of the current tab page and visit",
-toggleViewSource: "View page source",
-toggleVomnibarStyle: "Toggle styles of vomnibar page",
-toggleWindow: "Change window status",
-visitPreviousTab: "Go to previously-visited tab on current window",
-zoom: "Make a current tab zoom",
-zoomIn: "Make a current tab zoom in",
-zoomOut: "Make a current tab zoom out",
-zoomReset: "Reset zoom level"
+@@ openCopiedUrlInCurrentTab: "Open the clipboard's URL in the current tab",(p)
+@@ openCopiedUrlInNewTab: "Open the clipboard's URL in N new tabs",         (P)
+@@ openUrl: "Open URL",                                                   (same as new tab)
+@@ parentFrame: "Focus a parent frame",
+@@ passNextKey: "Pass the next keys to the page",                          (;)
+@@ performAnotherFind: "Find the second or even earlier query words",
+@@ performBackwardsFind: "Cycle backward to the previous find match",      (N)
+@@ performFind: "Cycle forward to the next find match",                    (n)
+@@ previousTab: "Go one tab left",                                         (E)
+@@ reload: "Reload current frame",                                         (r)
+@@ reloadGivenTab: "Reload N-th tab",
+@@ reloadTab: "Reload N tabs",                                             (r)
+@@ removeRightTab: "Close N-th tab on the right",
+@@ removeTab: "Close N tabs",                                              (w)
+@@ reopenTab: "Reopen current page",
+@@ reset: "reset to normal mode",
+@@ restoreGivenTab: "Restore the last N-th tab",
+@@ restoreTab: "Restore closed tabs",                                      (X)
+@@ runKey: "Select and run another mapped key sequence",                   (interesting)
+@@ scrollDown: "Scroll down",                                              (j)
+@@ scrollFullPageDown: "Scroll a full page down",
+@@ scrollFullPageUp: "Scroll a full page up",
+@@ scrollLeft: "Scroll left",                                              (h)
+@@ scrollPageDown: "Scroll a page down",                                   (d)
+@@ scrollPageUp: "Scroll a page up",                                       (u)
+@@ scrollPxDown: "Scroll 1px down",
+@@ scrollPxLeft: "Scroll 1px left",
+@@ scrollPxRight: "Scroll 1px right",
+@@ scrollPxUp: "Scroll 1px up",
+@@ scrollRight: "Scroll right",                                            (l)
+@@ scrollSelect: "Switch in items of a (closed) selection box",
+@@ scrollTo: "Scroll to custom position",
+@@ scrollToBottom: "Scroll to the bottom of the page",                     (G)
+@@ scrollToLeft: "Scroll all the way to the left",                         (zH)
+@@ scrollToRight: "Scroll all the way to the right",                       (zL)
+@@ scrollToTop: "Scroll to the top of the page",                           (gg)
+@@ scrollUp: "Scroll up",                                                  (k)
+@@ searchAs: "Search selected or copied text using current search engine", (gy)
+@@ searchInAnother: "Redo search in another search engine",
+@@ sendToExtension: "Send message to another extension",
+@@ showHelp: "Show help",                                                  (?)
+@@ showTip: "Show a tip on the HUD",
+@@ simulateBackspace: "Simulate backspace once if focused",                (f1)
+@@ sortTabs: "Sort all tabs in current window",
+@@ switchFocus: "Blur activeElement or refocus it",
+@@ toggleContentSetting: "Toggle the site's content settings",
+@@ toggleLinkHintCharacters: "Toggle the other link hints",
+@@ toggleMuteTab: "Mute or unmute current tab",
+@@ togglePinTab: "Pin or unpin N tabs",                                    (gp)
+@@ toggleReaderMode: "Toggle reader view",
+@@ toggleStyle: "Add or disable CSS styles",
+@@ toggleSwitchTemp: "Toggle switch only on current page",
+@@ toggleUrl: "Modify the URL of the current tab page and visit",
+@@ toggleViewSource: "View page source",
+@@ toggleVomnibarStyle: "Toggle styles of vomnibar page",
+@@ toggleWindow: "Change window status",
+@@ visitPreviousTab: "Go to previously-visited tab on current window",     (c-g/F)
+@@ zoom: "Make a current tab zoom",
+@@ zoomIn: "Make a current tab zoom in",                                   (zi)
+@@ zoomOut: "Make a current tab zoom out",                                 (zo)
+@@ zoomReset: "Reset zoom level"                                           (zr)
 
 ## Addditional shortcuts with no description
 
 Number of shortcuts: 179 (04/08/2024)
 If this number changes (179), it means that there are new shortcuts to add to
 the list.
-
-[commands](https://github.com/gdh1995/vimium-c/blob/master/background/typed_commands.d.ts#L323)
-
-LinkHints.activateMode *
-LinkHints.activateModeToCopyImage *
-LinkHints.activateModeToCopyLinkText *
-LinkHints.activateModeToCopyLinkUrl *
-LinkHints.activateModeToDownloadImage *
-LinkHints.activateModeToDownloadLink *
-LinkHints.activateModeToEdit *
-LinkHints.activateModeToFocus *
-LinkHints.activateModeToHover *
-LinkHints.activateModeToLeave *
-LinkHints.activateModeToOpenImage *
-LinkHints.activateModeToOpenIncognito *
-LinkHints.activateModeToOpenInNewForegroundTab *
-LinkHints.activateModeToOpenInNewTab *
-LinkHints.activateModeToOpenUrl *
-LinkHints.activateModeToOpenVomnibar *
-LinkHints.activateModeToSearchLinkText *
-LinkHints.activateModeToSelect *
-LinkHints.activateModeToUnhover *
-LinkHints.activateModeWithQueue *
-LinkHints.activateUnhover *
-Marks.activateCreateMode *
-Marks.activateGoto *
-Marks.activateGotoMode *
-Vomnibar.activateTabSelection *
-Vomnibar.activateUrl *
-Vomnibar.activateUrlInNewTab *
-clearContentSetting   *
-clearCS *
-enableCSTemp *
-newTab *
-quickNext *
-showHud *
-showHUD *
-simBackspace *
-toggleCS *
-wait *
