@@ -1,6 +1,6 @@
 # Hyper availability:
 # ____________
-#  __________'Enter
+#  __________'
 #   _______,._
 
 # Hyper mappings:
@@ -71,6 +71,7 @@ hyper - w : yabai -m window --warp west || yabai -m window --warp east
 hyper - s : yabai -m window --swap recent
 hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 hyper - z : yabai -m window --toggle sticky
+hyper - return : yabai -m window --focus recent
 
 # Misc
 hyper - y : yabai --restart-service

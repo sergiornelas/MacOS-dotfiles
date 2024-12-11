@@ -39,7 +39,7 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "j",
+                    "key_code": "return_or_enter",
                     "modifiers": [
                       "left_command",
                       "left_control",

@@ -13,7 +13,7 @@
     "map gp togglePinTab",
     "map gx LinkHints.activateFocus",
     "map gy searchAs",
-    "map l LinkHints.activateOpenUrl",
+    "map gj joinTabs",
     "map q LinkHints.activateWithQueue",
     "map r reloadTab",
     "map s LinkHints.activateSelect",
