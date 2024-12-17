@@ -87,4 +87,4 @@ yabai -m signal --add event=application_terminated action="yabai -m query --wind
 yabai -m signal --add event=window_focused action="sketchybar -m --trigger window_focus &> /dev/null"
 yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger title_change &> /dev/null"
 
-borders active_color=0xFF003E00F inactive_color=0xff494d64 width=5.0 &
+borders active_color=0xFFEBDBB2 inactive_color=0xff494d64 width=4.0 &

@@ -10,6 +10,10 @@ if [[ $WINDOW_TITLE = "fish" ]]; then
   WINDOW_TITLE="Vim"
 fi
 
+if [[ $WINDOW_TITLE = "lazygit" ]]; then
+  WINDOW_TITLE="git 󰂓 "
+fi
+
 # In browser, filter search remove additional text
 if [[ $WINDOW_TITLE == *"Find in page"* ]]; then
   exit 0

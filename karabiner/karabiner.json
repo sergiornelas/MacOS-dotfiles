@@ -201,7 +201,7 @@
             ]
           },
           {
-            "description": "Both shifts to Caps Lock, one shift to accent",
+            "description": "Both shifts to Caps Lock",
             "manipulators": [
               {
                 "from": {
@@ -224,25 +224,17 @@
                 },
                 "to": [{ "key_code": "caps_lock" }],
                 "type": "basic"
-              },
+              }
+            ]
+          },
+          {
+            "description": "Tap left command to accent",
+            "manipulators": [
               {
                 "from": {
-                  "key_code": "right_shift"
+                  "key_code": "left_command"
                 },
-                "to": [{ "key_code": "right_shift" }],
-                "to_if_alone": [
-                  {
-                    "key_code": "e",
-                    "modifiers": ["left_option"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "left_shift"
-                },
-                "to": [{ "key_code": "left_shift" }],
+                "to": [{ "key_code": "left_command" }],
                 "to_if_alone": [
                   {
                     "key_code": "e",
