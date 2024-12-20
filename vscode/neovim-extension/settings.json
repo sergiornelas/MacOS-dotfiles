@@ -1,0 +1,59 @@
+{
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "workbench.sideBar.location": "right",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.formatOnSave": true,
+  "editor.guides.indentation": true,
+  "indenticator.width": 0.1,
+  "indenticator.color.dark": "#888",
+  "indenticator.inner.color.dark": "#888",
+  "editor.matchBrackets": "never",
+  "workbench.statusBar.visible": false,
+  "editor.lineDecorationsWidth": 10,
+  "editor.glyphMargin": false,
+  "editor.folding": false,
+  "workbench.activityBar.location": "hidden",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Jetbrains Mono",
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('vscode-neovim.escape')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    },
+    "jw": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  }
+}

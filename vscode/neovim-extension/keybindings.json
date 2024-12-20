@@ -1,0 +1,32 @@
+[
+  {
+    "key": "ctrl-shift-o",
+    "command": "workbench.action.nextEditorInGroup"
+  },
+  {
+    "key": "ctrl-shift-i",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "ctrl-shift-w",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl-shift-n",
+    "command": "editor.action.marker.next"
+  },
+  {
+    "key": "ctrl-shift-p",
+    "command": "editor.action.marker.next"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "-vscode-neovim.send",
+    "when": "editorTextFocus && neovim.ctrlKeysNormal.s && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "-vscode-neovim.send",
+    "when": "editorTextFocus && neovim.ctrlKeysInsert.s && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+  }
+]
