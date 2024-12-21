@@ -45,7 +45,7 @@ Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins
 System settings / Desktop & Dock / Automatically rearrange Spaces based on
 most recent use (at the bottom)
 
-## Yabai doesn't work if you disable Displays have separate Spaces!
+## Yabai doesn't work if you disable Displays have separate Spaces
 
 Desktop & Dock > At the bottom
 This option makes the displays (builting and external) combine into just big one
@@ -122,7 +122,14 @@ git config --global core.excludesfile ~/.gitignore_global
 >> zig build -Doptimize=ReleaseFast
 >> zig-out/bin/terminal-doom
 
-## Alfred karabiner mappings make it work:
+## Alfred karabiner mappings make it work
 
 Alfred Preferences > Appearance > Options > Focusing to "Compatibility Mode"
 
+## Brave browser not blocking youtube ads
+
+Check for update or all components:
+
+brave://components/
+
+If this is not working, clear cache

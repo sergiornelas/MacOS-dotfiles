@@ -1,6 +1,6 @@
 function v --wraps=nvim --description 'alias v=nvim'
-  cd ~/notes/
+  cd ~/notes/data
   kitty @ set-tab-title "spreadsheet  "
-  sc-im ~/notes/data/spreadsheet.sc
+  sc-im spreadsheet.sc
   kitty @ close-window
 end
