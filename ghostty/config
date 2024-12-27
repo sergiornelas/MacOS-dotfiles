@@ -1,0 +1,52 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+# background = 282c34
+# foreground= ffffff
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+# Empty values reset the configuration to the default value
+font-family = "Iosevka Term"
+# font-family      = Iosevka Term Regular
+# bold-font        = Iosevka Term Bold
+# italic-font      = Iosevka Term Italic
+# bold-italic-font = Iosevka Term Bold Italic
+
+font-thicken = true
+font-style = "Light"
+
+# theme = "GruvboxDarkHard"
+theme = "Kanagawa Dragon"
+background-opacity = 0.85
+background-blur-radius = 20
+window-decoration=true
+macos-titlebar-style = "hidden"
+copy-on-select = true
+
+window-padding-y = 10,0
+window-padding-x = 0,0
+# @"window-padding-x": WindowPadding = .{ .top_left = 2, .bottom_right = 2 },
+
+keybind = ctrl+shift+n=new_split:down
+# keybind = ctrl+shift+j=goto_split:left
+keybind = ctrl+shift+]=goto_split:bottom
+keybind = ctrl+shift+[=goto_split:top
+
+# quick-terminal-position:bottom
+keybind = global:ctrl+shift+t=toggle_quick_terminal
+keybind = ctrl+shift+z=toggle_split_zoom
+# keybind = ctrl+shift+z=resize_split
+
+quick-terminal-position = left
+quick-terminal-animation-duration = 0.15
+
+macos-option-as-alt = true
+confirm-close-surface = false
+
+# TODO
+# 1. Ghostty is not possible to launch CLI with flags for creating scripts:
+#    >> ghostty --font-family="JetBrains Mono"
+#    https://github.com/ghostty-org/ghostty/discussions/2872
+# 2. Not able to use native tabs, it breakes the yabai layout. You are forced to use tmux
+#    or navigate with the auto-session plugin
