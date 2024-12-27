@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# KITTY_NUM_PANES=$(kitty @ ls | jq '[.[] | .tabs[].groups | length] | add')
+# IS_KITTY_TERMINAL=$(yabai -m query --windows --window | jq -r '.app')
+
 WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
 
 if [[ $WINDOW_TITLE = "" ]]; then

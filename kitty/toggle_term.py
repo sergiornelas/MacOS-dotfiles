@@ -10,6 +10,7 @@ def toggle_term(boss):
     have_only_one = len(all_another_wins) == 0
 
     if have_only_one:
+        tab.goto_layout('fat')
         boss.launch('--cwd=current', '--location=hsplit')
         tab.neighboring_window("bottom")
     else:

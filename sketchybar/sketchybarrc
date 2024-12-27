@@ -96,7 +96,7 @@ sketchybar --add item  ip_address right                              \
            --subscribe volume volume_change \
            \
            --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" icon.color=0xffb8bb26 click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
+           --set battery update_freq=60 script="$PLUGIN_DIR/battery.sh" icon.color=0xffb8bb26 click_script="open 'x-apple.systempreferences:com.apple.preference.battery'" \
            --subscribe battery system_woke power_source_change \
            \
            --add event bluetooth_change "com.apple.bluetooth.status" \
