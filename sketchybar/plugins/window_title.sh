@@ -4,9 +4,11 @@ CURRENT_APP=$(yabai -m query --windows --window | jq -r '.app')
 WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
 
 if [[ $CURRENT_APP = "kitty" ]]; then
-  TERMINAL_NUM_PANES=$(ps -eo tty | grep -E '^tty|^pts' | sort | uniq | wc -l | awk '{$1=$1};1')
+  TERMINAL_NUM_PANES=$(ps | grep -v scratch.js | awk 'NR > 1 {print $2}' | sort | uniq | wc -l | awk '{$1=$1};1')
   if [[ $WINDOW_TITLE = "lazygit" ]]; then
     WINDOW_TITLE="git 󰂓 "
+  elif [[ $WINDOW_TITLE == *"Grab "* ]]; then
+    WINDOW_TITLE="Vim mode 󰚺 "
   elif [[ $TERMINAL_NUM_PANES -gt 1 ]]; then
     WINDOW_TITLE="$WINDOW_TITLE 󰆍 $TERMINAL_NUM_PANES"
   fi
