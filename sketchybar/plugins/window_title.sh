@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# KITTY_NUM_PANES=$(kitty @ ls | jq '[.[] | .tabs[].groups | length] | add')
-# IS_KITTY_TERMINAL=$(yabai -m query --windows --window | jq -r '.app')
-
+CURRENT_APP=$(yabai -m query --windows --window | jq -r '.app')
 WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
+
+if [[ $CURRENT_APP = "kitty" ]]; then
+  TERMINAL_NUM_PANES=$(ps -eo tty | grep -E '^tty|^pts' | sort | uniq | wc -l | awk '{$1=$1};1')
+  if [[ $WINDOW_TITLE = "lazygit" ]]; then
+    WINDOW_TITLE="git 󰂓 "
+  elif [[ $TERMINAL_NUM_PANES -gt 1 ]]; then
+    WINDOW_TITLE="$WINDOW_TITLE 󰆍 $TERMINAL_NUM_PANES"
+  fi
+fi
 
 if [[ $WINDOW_TITLE = "" ]]; then
   WINDOW_TITLE="אנשים שלא חושבים על איך הם רוצים לחיות בסופו של דבר יחיו כמ"
-fi
-
-if [[ $WINDOW_TITLE = "fish" ]]; then
-  WINDOW_TITLE="Vim"
-fi
-
-if [[ $WINDOW_TITLE = "lazygit" ]]; then
-  WINDOW_TITLE="git 󰂓 "
 fi
 
 # In browser, filter search remove additional text
