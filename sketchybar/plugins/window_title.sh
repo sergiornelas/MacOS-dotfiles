@@ -9,6 +9,12 @@ if [[ $CURRENT_APP = "kitty" ]]; then
     WINDOW_TITLE="git 󰂓 "
   elif [[ $WINDOW_TITLE == *"Grab "* ]]; then
     WINDOW_TITLE="Vim mode 󰚺 "
+  elif [[ $WINDOW_TITLE == *"Last command output"* ]]; then
+    WINDOW_TITLE="Last command output 󱙬 "
+  elif [[ $WINDOW_TITLE == *"kitten"* ]]; then
+    WINDOW_TITLE="kitten 󰄛 "
+  elif [[ $WINDOW_TITLE == *"Choose text"* ]]; then
+    WINDOW_TITLE="Choose text 󰃵 "
   elif [[ $TERMINAL_NUM_PANES -gt 1 ]]; then
     WINDOW_TITLE="$WINDOW_TITLE 󰆍 $TERMINAL_NUM_PANES"
   fi
@@ -35,27 +41,19 @@ fi
 
 # Adjust the title based on the number of spaces
 if [[ "$SPACES" -eq 1 && ${#WINDOW_TITLE} -gt 88 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-87)
-  sketchybar --set title label="$WINDOW_TITLE"…
-  exit 0
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-87)…
 fi
 
 if [[ "$SPACES" -eq 2 && ${#WINDOW_TITLE} -gt 83 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-82)
-  sketchybar --set title label="$WINDOW_TITLE"…
-  exit 0
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-82)…
 fi
 
 if [[ "$SPACES" -eq 3 && ${#WINDOW_TITLE} -gt 77 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-76)
-  sketchybar --set title label="$WINDOW_TITLE"…
-  exit 0
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-76)…
 fi
 
 if [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 71 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-70)
-  sketchybar --set title label="$WINDOW_TITLE"…
-  exit 0
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-70)…
 fi
 
-sketchybar --set title label="$WINDOW_TITLE"
+sketchybar --animate sin 5 --set title label="$WINDOW_TITLE"

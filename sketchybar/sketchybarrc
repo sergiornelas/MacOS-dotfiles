@@ -106,3 +106,9 @@ sketchybar --add item  ip_address right                              \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
+
+# NOTE:
+# For some reason, my external 17 y/o monitor renders the sketchybar background items unalligned.
+
+# sketchybar --hotload true (load on save)
+# sketchybar --reload (reload sketchybar)

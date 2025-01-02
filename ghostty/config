@@ -30,12 +30,12 @@ window-padding-x = 0,0
 
 keybind = ctrl+shift+n=new_split:down
 # keybind = ctrl+shift+j=goto_split:left
-keybind = ctrl+shift+]=goto_split:bottom
-keybind = ctrl+shift+[=goto_split:top
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
 
 # quick-terminal-position:bottom
 keybind = global:ctrl+shift+t=toggle_quick_terminal
-keybind = ctrl+shift+z=toggle_split_zoom
+keybind = ctrl+shift+space=toggle_split_zoom
 # keybind = ctrl+shift+z=resize_split
 
 quick-terminal-position = left
@@ -51,3 +51,4 @@ confirm-close-surface = false
 # 2. The command new_tab_with_cwd or --cwd=current argument still doesn't exist
 # 3. Not able to use native tabs, it breakes the yabai layout. You are forced to use tmux
 #    or navigate with the auto-session plugin
+# 4. Kitty terminal has paste file/path/line. Also vim mode (kitty-grab)
