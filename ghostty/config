@@ -14,7 +14,7 @@ font-family = "Iosevka Term"
 # bold-italic-font = Iosevka Term Bold Italic
 
 font-thicken = true
-font-style = "Light"
+# font-style = "Light"
 
 # theme = "GruvboxDarkHard"
 theme = "Kanagawa Dragon"
@@ -51,4 +51,4 @@ confirm-close-surface = false
 # 2. The command new_tab_with_cwd or --cwd=current argument still doesn't exist
 # 3. Not able to use native tabs, it breakes the yabai layout. You are forced to use tmux
 #    or navigate with the auto-session plugin
-# 4. Kitty terminal has paste file/path/line. Also vim mode (kitty-grab)
+# 4. Kitty terminal has paste file/path/line. Also vim mode (kitty-grab). Ghostty doesn't.

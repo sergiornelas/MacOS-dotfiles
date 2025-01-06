@@ -56,4 +56,4 @@ if [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 71 ]]; then
   WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-70)…
 fi
 
-sketchybar --animate sin 5 --set title label="$WINDOW_TITLE"
+sketchybar --set title label="$WINDOW_TITLE"

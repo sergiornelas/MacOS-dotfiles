@@ -108,7 +108,9 @@ sketchybar --add item  ip_address right                              \
 sketchybar --update
 
 # NOTE:
-# For some reason, my external 17 y/o monitor renders the sketchybar background items unalligned.
+# For some reason, my external 17 y/o monitor renders the sketchybar background-height color items unalligned.
+# You can style it to your liking until you get a brand new display
 
+# Commands
 # sketchybar --hotload true (load on save)
 # sketchybar --reload (reload sketchybar)
