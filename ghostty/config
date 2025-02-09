@@ -51,4 +51,5 @@ confirm-close-surface = false
 # 2. The command new_tab_with_cwd or --cwd=current argument still doesn't exist
 # 3. Not able to use native tabs, it breakes the yabai layout. You are forced to use tmux
 #    or navigate with the auto-session plugin
-# 4. Kitty terminal has paste file/path/line. Also vim mode (kitty-grab). Ghostty doesn't.
+# 4. Kitty terminal has insert file/path/line commands. Also vim mode (kitty-grab). Ghostty doesn't.
+# 5. Kitty has cursor trail animation, which is cool. Ghostty doesn't.
