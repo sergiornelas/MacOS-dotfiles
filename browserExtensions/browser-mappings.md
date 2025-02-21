@@ -11,11 +11,11 @@
 
 ## Ctrl+shift+key
 
-### Normal mode:
+### Normal mode
 
 Some sites have defined mappings, for example outlook ctrl-shift-1/2/3/...
 
-### Insert mode:
+### Insert mode
 
 e,a | Visual select insert mode far left/right
 f,b | Visual select insert mode one char left/right
@@ -31,22 +31,22 @@ v   | Selects visual to very bottom
 
 ## Ctrl+key
 
-### Normal mode:
+### Normal mode
 
 Some sites have defined mappings, for example outlook ctrl-r/p/,/.
 c   | Copy (mapped in DefaultKeyBinding.Dict)
 
-### Insert mode:
+### Insert mode
 
 e,a | Move end/start of line
 f,b | Move move one char *
-n,p | Move up/down of line *
-v   | Goes to the last bottom * (DefaultKeyBinding.Dict)
+n,p | Move up/down of line*
+v   | Goes to the last bottom *(DefaultKeyBinding.Dict)
 ----+-------------------
-c   | _Copy_                      (DefaultKeyBinding.Dict)
-w   | _Delete word left_          (DefaultKeyBinding.Dict)
-u   | _Delete all left_           (DefaultKeyBinding.Dict)
-t   | Inverts next chat *
+c   | *Copy*                      (DefaultKeyBinding.Dict)
+w   | *Delete word left*          (DefaultKeyBinding.Dict)
+u   | *Delete all left*           (DefaultKeyBinding.Dict)
+t   | Inverts next chat*
 y   | Emacs kill ring
 k   | Deletes right text
 h   | Deletes one char left
@@ -171,6 +171,7 @@ That's why I decided to keep using right cmd as control.
 *Alfred* and *Slack* use ctrl commands quite often.
 
 I decided to ditch the keymaps for codesandbox compatibility because:
+
 - Codesandbox mappings are already broken by you (no ctrl+l (c-w-l), no
 ctrl+g/t), so it's not like a real improvement.
 - It's better to use your native neovim, downloading the repo is quite fast
@@ -180,14 +181,15 @@ if you found an interesting project that you want to work on.
 
 ---
 
-03/08/2024
+21/02/2025
 
-Q____Y____
+Y
  ____G____;
-  _X____M__
+  *X_____**
   Spacebar
 
 ## REMAINING (and interesting)
+
 0       | reset font size
 -/+     | zoom in/out
 d       | bookmark add
@@ -210,4 +212,3 @@ If you type the hints in upper case, the link will open in a new tab.
 - [x] Use the link's name and characters for link-hint filtering
 
 is more similiat to flash, you type the word then enter
-

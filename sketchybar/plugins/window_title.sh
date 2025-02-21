@@ -20,6 +20,14 @@ if [[ $CURRENT_APP = "kitty" ]]; then
   fi
 fi
 
+# Ghostty:
+# if [[ $CURRENT_APP = "Ghostty" ]]; then
+#   TERMINAL_NUM_PANES=$(ps | grep -v scratch.js | awk 'NR > 1 {print $2}' | sort | uniq | wc -l | awk '{$1=$1};1')
+#   if [[ $TERMINAL_NUM_PANES -gt 1 ]]; then
+#     WINDOW_TITLE="$WINDOW_TITLE 󰆍 $TERMINAL_NUM_PANES"
+#   fi
+# fi
+
 if [[ $WINDOW_TITLE = "" ]]; then
   WINDOW_TITLE="אנשים שלא חושבים על איך הם רוצים לחיות בסופו של דבר יחיו כמ"
 fi
