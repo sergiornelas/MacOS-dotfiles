@@ -1417,6 +1417,27 @@
                   }
                 ],
                 "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.runningwithcrayons\\.Alfred$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "z",
+                  "modifiers": { "mandatory": ["right_control"] }
+                },
+                "to": [
+                  {
+                    "key_code": "z",
+                    "modifiers": "left_command"
+                  }
+                ],
+                "type": "basic"
               }
             ]
           }

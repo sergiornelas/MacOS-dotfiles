@@ -10,7 +10,7 @@
     "map ga LinkHints.activateEdit",
     "map gc LinkHints.click",
     "map gh LinkHints.activateHover",
-    "map gj joinTabs",
+    "map g` joinTabs",
     "map gp togglePinTab",
     "map gx LinkHints.activateFocus",
     "map gy searchAs",
