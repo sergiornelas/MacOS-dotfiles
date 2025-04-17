@@ -1,6 +1,16 @@
 {
   "name": "Vimium C",
   "autoDarkMode": 1,
+  "exclusionRules": [
+    {
+      "passKeys": "<esc>",
+      "pattern": ":https://codepen.io/"
+    },
+    {
+      "passKeys": "w",
+      "pattern": ":https://codepen.io/"
+    }
+  ],
   "keyLayout": 2,
   "keyMappings": [
     "map a focusInput",

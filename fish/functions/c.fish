@@ -1,3 +1,3 @@
 function c --wraps bat --description 'alias c=bat'
-  bat $argv
+  cal 2025
 end
