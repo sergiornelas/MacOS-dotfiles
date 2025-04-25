@@ -1,0 +1,171 @@
+[
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "space w",
+    "command": "workbench.action.files.save",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "ctrl-shift-o",
+    "command": "workbench.action.nextEditorInGroup"
+  },
+  {
+    "key": "ctrl-shift-i",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "ctrl-shift-w",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "space o",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        {
+          "command": "workbench.files.action.focusFilesExplorer",
+          "when": "sideBarVisible"
+        }
+      ]
+    },
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f i",
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f o",
+    "command": "workbench.action.showAllEditors",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f y",
+    "command": "workbench.action.gotoSymbol",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f l",
+    "command": "workbench.action.findInFiles",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        {
+          "command": "workbench.action.closeSidebar",
+          "when": "explorerViewletFocus"
+        },
+        {
+          "command": "workbench.action.closePanel",
+          "when": "searchViewletFocus"
+        },
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "explorerViewletFocus || searchViewletFocus"
+  },
+  {
+    "key": "ctrl-v",
+    "command": "explorer.openToSide",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "ctrl-s",
+    "command": "runCommands",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus",
+    "args": {
+      "commands": [
+        "workbench.action.splitEditorDown",
+        "explorer.openAndPassFocus",
+        "workbench.action.closeOtherEditors"
+      ]
+    }
+  },
+  {
+    "key": "enter",
+    "command": "workbench.action.editor.nextChange",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.editor.previousChange",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible && editorTextFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.wordHighlight.next",
+    "when": "!suggestWidgetVisible && editorHasReferenceProvider && editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible && editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "editor.action.wordHighlight.prev",
+    "when": "!suggestWidgetVisible && editorHasReferenceProvider && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+space",
+    "command": "workbench.action.togglePanel",
+    "when": "editorTextFocus && neovim.mode != 'insert' || terminalFocus"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "vscode-harpoon.addEditor",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 1",
+    "command": "vscode-harpoon.gotoEditor1",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 2",
+    "command": "vscode-harpoon.gotoEditor2",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 3",
+    "command": "vscode-harpoon.gotoEditor3",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 4",
+    "command": "vscode-harpoon.gotoEditor4",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 5",
+    "command": "vscode-harpoon.gotoEditor5",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space 6",
+    "command": "vscode-harpoon.gotoEditor6",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "space g o",
+    "command": "vscode-harpoon.editEditors",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "vscode-harpoon.editorQuickPick"
+  }
+]

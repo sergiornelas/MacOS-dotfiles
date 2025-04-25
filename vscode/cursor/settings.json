@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.glyphMargin": false,
+  "workbench.settings.applyToAllProfiles": [],
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.editor.showTabs": "none",
+  "workbench.statusBar.visible": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "indenticator.color.dark": "#8e8165"
+}
