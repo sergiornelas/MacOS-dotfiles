@@ -134,9 +134,9 @@ keybinding:
     optionMenu: null # show help menu
     optionMenu-alt1: '?' # show help menu
     select: '<space>'
-    goInto: '<enter>'
+    goInto: '<c-j>'
     openRecentRepos: '<c-r>'
-    confirm: '<enter>'
+    confirm: '<c-j>'
     remove: 'd'
     new: 'n'
     edit: 'e'
@@ -163,14 +163,14 @@ keybinding:
     diffingMenu: 'W'
     diffingMenu-alt: '<c-e>' # deprecated
     copyToClipboard: '<c-o>'
-    submitEditorText: '<enter>'
+    submitEditorText: '<c-j>'
     extrasMenu: '@'
     toggleWhitespaceInDiffView: '<c-w>'
     increaseContextInDiffView: '}'
     decreaseContextInDiffView: '{'
   status:
     checkForUpdate: 'u'
-    recentRepos: '<enter>'
+    recentRepos: '<c-j>'
   files:
     commitChanges: 'c'
     commitChangesWithoutHook: 'w' # commit changes without pre-commit hook
