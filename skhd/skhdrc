@@ -32,10 +32,10 @@
 # Transparency             \^
 
 # Space navigation
-hyper - i : yabai -m space --focus 1
-hyper - o : yabai -m space --focus 2
-hyper - p : yabai -m space --focus 3
-hyper - u : yabai -m space --focus 4
+# hyper - i : yabai -m space --focus 1
+# hyper - o : yabai -m space --focus 2
+# hyper - p : yabai -m space --focus 3
+# hyper - u : yabai -m space --focus 4
 
 # Move window to space
 hyper - 1 : yabai -m window --space 1

@@ -53,6 +53,33 @@
             ]
           },
           {
+            "description": "Center Desktop apps menu",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_control",
+                      "left_option",
+                      "left_command"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow",
+                    "modifiers": ["left_control"]
+                  },
+                  { "key_code": "n" }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Hyper Spanish symbols (¿,ñ)",
             "manipulators": [
               {
