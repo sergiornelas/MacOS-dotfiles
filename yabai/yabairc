@@ -89,6 +89,6 @@ yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger
 
 borders active_color=0xFFEBDBB2 inactive_color=0xff494d64 width=4.0 &
 
-# Ghostty workaround (not working as expected):
+# Ghostty workaround (everytime you create or destroy a tab, the layout breaks)
 # yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
 # yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'

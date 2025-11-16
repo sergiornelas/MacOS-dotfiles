@@ -10,11 +10,11 @@ If fish updates:
 Best way: System Settings/Users & Groups/{your user} advanced options/Login
 shell.
 
-06/12/2023:
+28/09/2025:
 Remember that yabai wasn't working until you updated the updated fish version
 default shell:
-/usr/local/Cellar/fish/3.6.1/bin/fish ->
-/usr/local/Cellar/fish/3.6.4/bin/fish
+
+/opt/homebrew/Cellar/fish/4.1.0/bin/fish
 
 ## Mac OS Key-Repeat Tester
 
@@ -133,3 +133,31 @@ Check for update or all components:
 brave://components/
 
 If this is not working, clear cache
+
+## Mousecape Tahoe OS
+
+<https://github.com/AdamWawrzynkowskiGF/Mousecape-TahoeSupport/releases/tag/PreRelease-v01>
+
+## Add music to Iphone
+
+1. Descarga la cancion con el comando
+2. En la app de Music, presiona cmd + o, selecciona la cancion descargada
+2.1 _Repite el proceso con todas las canciones que quieras_
+4. En finder, selecciona el Iphone, busca la seccion de Musica, y sincroniza
+   todas las canciones.
+
+## Adult site DNS for chrome settings (no blocks reddit)
+
+<https://family.cloudflare-dns.com/dns-query>
+
+- Al archivo 'aquel', no cambiarle los permisos (chmod 777)
+Se corrompe el archivo y hay que volver a descargarlo.
+Incluso los DNS del browser configurados dejan de funcionar
+
+- El archivo, si se encripta (vim -x), deja de funcionar (se corrompe).
+
+- En el file, no olvides poner todas las vertientes:
+<www.site.com>
+0.0.0.0 site.com
+0.0.0.0 <www.site.com>
+site.com
