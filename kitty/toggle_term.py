@@ -10,16 +10,22 @@ def toggle_term(boss):
     have_only_one = len(all_another_wins) == 0
 
     if have_only_one:
-        tab.goto_layout('fat')
-        boss.launch('--cwd=current', '--location=hsplit')
-        tab.neighboring_window("bottom")
+        tab.goto_layout("tall")
+        boss.launch("--cwd=current")
+        tab.neighboring_window("right")
     else:
-        if tab.current_layout.name == 'stack':
+        if tab.current_layout.name == "stack":
             tab.last_used_layout()
-            tab.neighboring_window("bottom")
+            if tab.current_layout.name == "tall":
+                tab.neighboring_window("right")
+            if tab.current_layout.name == "fat":
+                tab.neighboring_window("bottom")
         else:
-            tab.neighboring_window("top")
-            tab.goto_layout('stack')
+            if tab.current_layout.name == "tall":
+                tab.neighboring_window("left")
+            if tab.current_layout.name == "fat":
+                tab.neighboring_window("top")
+            tab.goto_layout("stack")
 
 @result_handler(no_ui=True)
 def handle_result(args, result, target_window_id, boss):

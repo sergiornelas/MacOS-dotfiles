@@ -1,0 +1,3 @@
+layout stack
+cd ~/notes/
+launch --title "Notes 󱞂 " fish --interactive --login -c "nvim"

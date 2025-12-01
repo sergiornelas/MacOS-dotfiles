@@ -1,0 +1,15 @@
+layout stack
+cd ~/Desktop/pn_frontend/
+
+launch --title "HNS 󰛯 " fish -ilC "nvim"
+
+new_tab
+layout fat
+cd ~/Desktop/pn_frontend/
+launch --title "Server 󰒋 " fish -ilC "npm run start"
+# launch --title "Terminal 󰆍 "
+
+new_tab
+launch fish --interactive --login -c "exit"
+
+focus_tab title:"HNS 󰛯 "

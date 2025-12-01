@@ -1,0 +1,3 @@
+layout stack
+cd ~/.config/nvim/
+launch --title "Nvim 󰢀 " fish --interactive --login -c "nvim"

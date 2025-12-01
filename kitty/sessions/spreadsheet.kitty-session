@@ -1,0 +1,3 @@
+layout stack
+cd ~/notes/data
+launch --title "Spreadsheet 󰓱 " fish --interactive --login -c "v"

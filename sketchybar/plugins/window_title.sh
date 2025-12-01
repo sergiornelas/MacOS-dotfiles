@@ -16,7 +16,7 @@ if [[ $CURRENT_APP = "kitty" ]]; then
   elif [[ $WINDOW_TITLE == *"Choose text"* ]]; then
     WINDOW_TITLE="Choose text 󰃵 "
   elif [[ $TERMINAL_NUM_PANES -gt 1 ]]; then
-    WINDOW_TITLE="$WINDOW_TITLE 󰆍 $TERMINAL_NUM_PANES"
+    WINDOW_TITLE="$WINDOW_TITLE | 󱂬 $TERMINAL_NUM_PANES"
   fi
 fi
 
