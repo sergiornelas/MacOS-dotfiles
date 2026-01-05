@@ -18,7 +18,8 @@
     "input_clear": "ctrl+c",
     "input_paste": "ctrl+v",
     "input_submit": "ctrl+j",
-    "input_newline": "ctrl+shift+j",
+    "input_newline": "ctrl+m",
+    "agent_cycle": "ctrl+i",
 
     "messages_page_up": "pgup",
     "messages_page_down": "pgdown",

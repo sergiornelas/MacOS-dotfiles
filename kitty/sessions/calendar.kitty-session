@@ -1,0 +1,3 @@
+layout stack
+cd ~
+launch --title "Calendar 󰃭 " fish --interactive --login -c "unbuffer cal -y | less -R"

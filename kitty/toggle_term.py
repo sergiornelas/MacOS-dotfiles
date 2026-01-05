@@ -11,7 +11,7 @@ def toggle_term(boss):
 
     if have_only_one:
         tab.goto_layout("tall")
-        boss.launch("--cwd=current")
+        boss.launch("opencode")
         tab.neighboring_window("right")
     else:
         if tab.current_layout.name == "stack":

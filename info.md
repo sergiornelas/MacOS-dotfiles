@@ -143,7 +143,7 @@ If this is not working, clear cache
 1. Descarga la cancion con el comando
 2. En la app de Music, presiona cmd + o, selecciona la cancion descargada
 2.1 _Repite el proceso con todas las canciones que quieras_
-4. En finder, selecciona el Iphone, busca la seccion de Musica, y sincroniza
+3. En finder, selecciona el Iphone, busca la seccion de Musica, y sincroniza
    todas las canciones.
 
 ## Adult site DNS for chrome settings (no blocks reddit)
@@ -161,3 +161,6 @@ Incluso los DNS del browser configurados dejan de funcionar
 0.0.0.0 site.com
 0.0.0.0 <www.site.com>
 site.com
+NO utilices el https:// ?
+
+- Aveces tarda en aplicar efecto
