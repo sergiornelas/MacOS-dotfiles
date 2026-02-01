@@ -7,8 +7,8 @@ Update 29/11/2024:
 You have to reboot to apply changes
 
 If fish updates:
-Best way: System Settings/Users & Groups/{your user} advanced options/Login
-shell.
+Best way: System Settings/Users & Groups/{your user} advanced options (right
+click)/Login shell.
 
 28/09/2025:
 Remember that yabai wasn't working until you updated the updated fish version
@@ -139,6 +139,8 @@ If this is not working, clear cache
 <https://github.com/AdamWawrzynkowskiGF/Mousecape-TahoeSupport/releases/tag/PreRelease-v01>
 
 ## Add music to Iphone
+
+yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "%(title)s.%(ext)s" <https://www.youtube.com/watch?v=piUHpVKke2E>
 
 1. Descarga la cancion con el comando
 2. En la app de Music, presiona cmd + o, selecciona la cancion descargada

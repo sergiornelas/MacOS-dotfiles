@@ -1,0 +1,4 @@
+layout stack
+cd ~/Desktop/test/
+
+launch --title "Server 󰒋 " fish -ilC "npm run dev"

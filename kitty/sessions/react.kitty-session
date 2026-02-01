@@ -1,0 +1,4 @@
+layout stack
+cd ~/Desktop/test/
+
+launch --title "React 󰜈 " fish -ilC "nvim"
