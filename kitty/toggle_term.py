@@ -10,8 +10,14 @@ def toggle_term(boss):
     have_only_one = len(all_another_wins) == 0
 
     if have_only_one:
+        active_window = boss.active_window
+        cwd = active_window.cwd_of_child if active_window else "~"
+
         tab.goto_layout("tall")
-        boss.launch("opencode")
+        boss.call_remote_control(
+            active_window,
+            ("launch", f"--cwd={cwd}", "--type=window", "opencode", "--port")
+        )
         tab.neighboring_window("right")
     else:
         if tab.current_layout.name == "stack":
@@ -30,8 +36,6 @@ def toggle_term(boss):
 @result_handler(no_ui=True)
 def handle_result(args, result, target_window_id, boss):
     window = boss.window_id_map.get(target_window_id)
-
     if window is None:
         return
-
     toggle_term(boss)

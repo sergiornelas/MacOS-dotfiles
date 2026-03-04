@@ -36,3 +36,8 @@ set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 # which you can do interactively with funced and funcsave,
 # or manually by saving each function in its own file
 # ~/.config/fish/functions/name-of-function.fish
+
+# Created by `pipx` on 2026-02-25 18:09:22
+set PATH $PATH /Users/sergiornelas/.local/bin
+
+set -U fish_user_paths ~/.local/bin $fish_user_paths
