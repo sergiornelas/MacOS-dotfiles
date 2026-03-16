@@ -148,7 +148,7 @@ yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "%(title)s.%(ex
 3. En finder, selecciona el Iphone, busca la seccion de Musica, y sincroniza
    todas las canciones.
 
-## Adult site DNS for chrome settings (no blocks reddit)
+## Ya te la sabes site DNS for chrome settings (no blocks reddit)
 
 <https://family.cloudflare-dns.com/dns-query>
 
@@ -165,4 +165,14 @@ Incluso los DNS del browser configurados dejan de funcionar
 site.com
 NO utilices el https:// ?
 
-- Aveces tarda en aplicar efecto
+- Aveces tarda en aplicar efecto, mucho como unos 10-15 minutos
+
+## Zathura as default pdf reader
+
+1. Right click on the pdf file
+2. Get info
+3. Open with: Zathura
+4. Change all
+
+Install Zathura:
+<https://github.com/homebrew-zathura/homebrew-zathura>
