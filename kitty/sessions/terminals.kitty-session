@@ -1,0 +1,8 @@
+cd ~/Desktop/harley/hd-global-container/
+launch --title "Terminal 󰆍 " fish -ilC "pnpm dev"
+
+layout tall
+
+launch fish -ilC
+cd ~/Desktop/harley/hd-rpw-app/
+launch --title "Terminal 󰆍 " fish -ilC "pnpm dev"

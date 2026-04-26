@@ -1,0 +1,3 @@
+layout stack
+cd ~/Desktop/harley/hd-global-container/
+launch --title "Global Container" fish --interactive --login -c "nvim"

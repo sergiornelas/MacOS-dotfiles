@@ -1,0 +1,4 @@
+layout stack
+cd ~/Desktop/harley/
+launch --title "HARLEY" fish --interactive --login -c "nvim"
+

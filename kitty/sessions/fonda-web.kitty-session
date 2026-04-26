@@ -1,0 +1,3 @@
+layout stack
+cd ~/Desktop/harley/fonda-web/
+launch --title "Legacy" fish --interactive --login -c "nvim"
