@@ -1,3 +1,4 @@
+CLAUDE.md
 /configstore
 /fish/completions
 /fish/conf.d
@@ -10,8 +11,10 @@
 /fish/functions/_puffer*
 /fish/functions/_sponge*
 /fish/functions/_tide*
+!/fish/functions/_tide_item_jobs.fish
 /fish/functions/fish_mode_prompt.fish
 /fish/functions/fish_prompt.fish
+!/fish/functions/fish_prompt.fish
 /fish/functions/fisher.fish
 /fish/functions/fzf_configure_bindings.fish
 /fish/functions/nvm.fish
