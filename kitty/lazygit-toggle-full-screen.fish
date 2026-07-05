@@ -1,8 +1,19 @@
 set HAS_ZOOM (yabai -m query --windows --window | jq -r '."has-parent-zoom"')
 
+# Save the current layout of the focused tab and maximize the pane by changing it to 'stack'.
+# Skip the layout swap if already in 'stack' so we don't overwrite kitty's
+# "last used layout" (toggle_term.py relies on it via last_used_layout()).
+set ORIGINAL_LAYOUT (kitty @ ls | jq -r '.[] | select(.is_focused) | .tabs[] | select(.is_focused) | .layout')
+if test "$ORIGINAL_LAYOUT" != "stack"
+    kitty @ goto-layout stack
+end
+
 if test "$HAS_ZOOM" = "true"
     lazygit
     # tmux kill-window
+    if test "$ORIGINAL_LAYOUT" != "stack"
+        kitty @ goto-layout "$ORIGINAL_LAYOUT"
+    end
     kitty @ close-window
 else
     yabai -m window --toggle zoom-fullscreen
@@ -11,6 +22,9 @@ else
     if test "$HAS_ZOOM_AFTER_LAZYGIT" = "true"
         yabai -m window --toggle zoom-fullscreen
         # tmux kill-window
+    end
+    if test "$ORIGINAL_LAYOUT" != "stack"
+        kitty @ goto-layout "$ORIGINAL_LAYOUT"
     end
     kitty @ close-window
 end

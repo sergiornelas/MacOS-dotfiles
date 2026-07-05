@@ -1,0 +1,59 @@
+{
+  "$schema": "<https://platform.claude.com/docs/schemas/claude-code/keybindings.json>",
+  "$docs": "https://code.claude.com/docs/en/keybindings",
+  "bindings": [
+    {
+      "context": "Global",
+      "bindings": {
+        "ctrl+shift+u": "scroll:halfPageUp",
+        "ctrl+shift+d": "scroll:halfPageDown",
+        "ctrl+shift+[": "scroll:lineUp",
+        "ctrl+shift+]": "scroll:lineDown",
+        "ctrl+shift+;": "scroll:top",
+        "ctrl+shift+m": "scroll:bottom"
+      }
+    },
+    {
+      "context": "Chat",
+      "bindings": {
+        "enter": null,
+        "escape": null,
+        "ctrl+j": "chat:submit",
+        "ctrl+m": "chat:newline",
+        "ctrl+space": "chat:cycleMode"
+      }
+    },
+    {
+      "context": "Autocomplete",
+      "bindings": {
+        "tab": null,
+        "ctrl+i": null,
+        "ctrl+j": "autocomplete:accept"
+      }
+    },
+    {
+      "context": "Confirmation",
+      "bindings": {
+        "enter": null,
+        "escape": null,
+        "ctrl+j": "confirm:yes",
+        "ctrl+x ctrl+s": "confirm:cycleMode"
+      }
+    },
+    {
+      "context": "Select",
+      "bindings": {
+        "enter": null,
+        "escape": null,
+        "ctrl+j": "select:accept"
+      }
+    },
+    {
+      "context": "MessageSelector",
+      "bindings": {
+        "enter": null,
+        "ctrl+j": "messageSelector:select"
+      }
+    }
+  ]
+}

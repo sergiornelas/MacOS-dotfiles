@@ -176,3 +176,9 @@ NO utilices el https:// ?
 
 Install Zathura:
 <https://github.com/homebrew-zathura/homebrew-zathura>
+
+## Git doesn't save (add) the changes correctly
+
+Run this command:
+
+rm .git/index.lock

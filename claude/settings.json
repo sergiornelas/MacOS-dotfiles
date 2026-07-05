@@ -1,0 +1,10 @@
+{
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "sh /Users/sergiornelas/.claude/statusline-command.sh"
+  },
+  "language": "Español",
+  "tui": "fullscreen",
+  "theme": "dark"
+}

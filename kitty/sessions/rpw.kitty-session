@@ -1,3 +1,3 @@
 layout stack
 cd ~/Desktop/harley/hd-rpw-app/
-launch --title "RPW" fish --interactive --login -c "nvim"
+launch --title "RPW"
