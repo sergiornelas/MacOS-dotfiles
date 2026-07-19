@@ -23,6 +23,9 @@ set --universal nvm_default_version lts
 # Fish_prompt:
 set -U fish_greeting ""
 
+# Tide: Do not truncate the git branch name
+set -g tide_git_truncation_length 0
+
 # Rust
 set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 

@@ -1,7 +1,18 @@
 #!/bin/bash
 
-CURRENT_APP=$(yabai -m query --windows --window | jq -r '.app')
-WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
+# Trailing-edge debounce: coalesce bursts of title_change events (rapid tab
+# switching, apps with live/dynamic titles) so only the LAST event in a burst
+# does the actual work. Each invocation stamps this file with its PID, waits,
+# then bails out if a newer invocation has overwritten the stamp meanwhile.
+# PID is used as the token because macOS `date` has no millisecond support.
+DEBOUNCE_STAMP="/tmp/sketchybar_window_title.debounce"
+echo $$ >"$DEBOUNCE_STAMP"
+sleep 0.19
+[[ "$(cat "$DEBOUNCE_STAMP" 2>/dev/null)" == "$$" ]] || exit 0
+
+WINDOW_INFO=$(yabai -m query --windows --window)
+CURRENT_APP=$(echo "$WINDOW_INFO" | jq -r '.app')
+WINDOW_TITLE=$(echo "$WINDOW_INFO" | jq -r '.title')
 
 if [[ $CURRENT_APP = "kitty" ]]; then
   TERMINAL_NUM_PANES=$(ps | grep -v scratch.js | awk 'NR > 1 {print $2}' | sort | uniq | wc -l | awk '{$1=$1};1')
@@ -39,31 +50,26 @@ if [[ $WINDOW_TITLE == *"Find in page"* ]]; then
   exit 0
 fi
 
-DISPLAY_COUNT=$(yabai -m query --displays | jq 'length')
+DISPLAYS_INFO=$(yabai -m query --displays)
+DISPLAY_COUNT=$(echo "$DISPLAYS_INFO" | jq 'length')
 
 # If there is only one display (builtin), get the number of spaces on that display
 if [ "$DISPLAY_COUNT" -eq 1 ]; then
   SPACES=$(yabai -m query --spaces | jq '. | length')
 else
   # If there are multiple displays, get the number of spaces on display 2
-  SPACES=$(yabai -m query --displays | jq '.[1].spaces | length')
+  SPACES=$(echo "$DISPLAYS_INFO" | jq '.[1].spaces | length')
 fi
 
 # Adjust the title based on the number of spaces
 if [[ "$SPACES" -eq 1 && ${#WINDOW_TITLE} -gt 88 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-87)…
-fi
-
-if [[ "$SPACES" -eq 2 && ${#WINDOW_TITLE} -gt 83 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-82)…
-fi
-
-if [[ "$SPACES" -eq 3 && ${#WINDOW_TITLE} -gt 77 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-76)…
-fi
-
-if [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 71 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-70)…
+  WINDOW_TITLE="${WINDOW_TITLE:0:87}…"
+elif [[ "$SPACES" -eq 2 && ${#WINDOW_TITLE} -gt 83 ]]; then
+  WINDOW_TITLE="${WINDOW_TITLE:0:82}…"
+elif [[ "$SPACES" -eq 3 && ${#WINDOW_TITLE} -gt 77 ]]; then
+  WINDOW_TITLE="${WINDOW_TITLE:0:76}…"
+elif [[ "$SPACES" -eq 4 && ${#WINDOW_TITLE} -gt 71 ]]; then
+  WINDOW_TITLE="${WINDOW_TITLE:0:70}…"
 fi
 
 sketchybar --set title label="$WINDOW_TITLE"

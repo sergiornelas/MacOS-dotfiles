@@ -21,7 +21,7 @@ branch_color='\033[38;2;215;153;33m'
 ctx_color='\033[38;2;91;122;194m'
 added_color='\033[38;2;104;157;106m'
 modified_color='\033[38;2;251;73;52m'
-untracked_color='\033[38;2;213;196;161m'
+untracked_color='\033[38;2;173;158;130m'
 sep_color='\033[38;2;146;131;116m'
 reset='\033[0m'
 
