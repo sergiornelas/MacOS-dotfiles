@@ -1,3 +1,3 @@
 layout stack
 cd ~/notes/data
-launch --title "Spreadsheet 󰓱 " fish --interactive --login -c "v"
+launch --title "Spreadsheet 󰓱 " fish --interactive --login -c "source ~/.config/kitty/spreadsheet-fullscreen.fish"
