@@ -51,7 +51,7 @@ hyper - x : yabai -m space --rotate 90
 # Windows navigation
 hyper - j : yabai -m window --focus east  || yabai -m window --focus west
 hyper - b : yabai -m window --focus south || yabai -m window --focus north
-hyper - k : yabai -m config mouse_follows_focus on && yabai -m display --focus east || yabai -m display --focus west || yabai -m display --focus north || yabai -m display --focus south && yabai -m config mouse_follows_focus off
+hyper - k : $HOME/.config/skhd/focus-display.sh
 hyper - d : yabai -m config mouse_follows_focus on && yabai -m window --display east --focus || yabai -m display --focus east || yabai -m window --display west --focus || yabai -m display --focus west || yabai -m window --display north --focus || yabai -m display --focus north || yabai -m window --display south --focus || yabai -m display --focus south && yabai -m config mouse_follows_focus off
 
 # Resize windows
