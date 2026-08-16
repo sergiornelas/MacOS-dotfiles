@@ -1134,6 +1134,24 @@
                   }
                 ],
                 "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": ["^com.apple.Safari$"]
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": { "mandatory": ["right_control"] }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter"
+                  }
+                ],
+                "type": "basic"
               }
             ]
           },

@@ -7,8 +7,9 @@
       "bindings": {
         "ctrl+shift+u": "scroll:halfPageUp",
         "ctrl+shift+d": "scroll:halfPageDown",
-        "ctrl+shift+[": "scroll:lineUp",
-        "ctrl+shift+]": "scroll:lineDown",
+        "ctrl+o": "scroll:lineUp",
+        "ctrl+i": "scroll:lineDown",
+        "ctrl+;": "app:toggleTranscript",
         "ctrl+shift+;": "scroll:top",
         "ctrl+shift+m": "scroll:bottom"
       }

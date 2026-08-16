@@ -1,0 +1,3 @@
+layout stack
+cd ~/Desktop/practice/
+launch --title "Practice  " fish --interactive --login -c "nvim"

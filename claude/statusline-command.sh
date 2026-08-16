@@ -4,6 +4,7 @@ input=$(cat)
 used=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 ctx=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 model=$(echo "$input" | jq -r '.model.display_name // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
 
 if [ -z "$used" ]; then
@@ -19,6 +20,8 @@ filled_color='\033[38;2;255;127;0m'
 model_color='\033[38;2;104;157;106m'
 branch_color='\033[38;2;215;153;33m'
 ctx_color='\033[38;2;91;122;194m'
+effort_color='\033[38;2;175;135;255m'
+effort_max_color='\033[38;2;255;110;0m'
 added_color='\033[38;2;104;157;106m'
 modified_color='\033[38;2;251;73;52m'
 untracked_color='\033[38;2;173;158;130m'
@@ -29,6 +32,7 @@ sep=" ${sep_color}|${reset} "
 git_icon='\xee\x82\xa0'
 model_icon='\xef\x8b\x9b'
 ctx_icon='\xf3\xb0\x86\xbc'
+effort_icon='\xf3\xb1\x90\x8b'
 
 bar=""
 i=0
@@ -59,9 +63,18 @@ if [ -n "$cwd" ]; then
   fi
 fi
 
+effort_out=""
+if [ -n "$effort" ]; then
+  if [ "$effort" = "max" ]; then
+    effort_out=" ${effort_max_color}${effort_icon} ${effort}${reset}"
+  else
+    effort_out=" ${effort_color}${effort_icon} ${effort}${reset}"
+  fi
+fi
+
 model_out=""
 if [ -n "$model" ]; then
-  model_out="${model_color}${model_icon}  ${model}${reset}${sep}"
+  model_out="${model_color}${model_icon}  ${model}${reset}${effort_out}${sep}"
 fi
 
 ctx_out=""
