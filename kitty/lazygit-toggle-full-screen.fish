@@ -1,3 +1,12 @@
+# Close our own window by id. A bare `close-window` acts on whatever is
+# active, and lazygit's editor hook (lazygit/nvim-open.fish) now focuses the
+# neovim window before quitting lazygit -- without this, the cleanup below
+# would close that neovim instead of this overlay.
+set SELF_WINDOW
+if test -n "$KITTY_WINDOW_ID"
+    set SELF_WINDOW --match id:$KITTY_WINDOW_ID
+end
+
 set HAS_ZOOM (yabai -m query --windows --window | jq -r '."has-parent-zoom"')
 
 # Save the current layout of the focused tab and maximize the pane by changing it to 'stack'.
@@ -14,7 +23,7 @@ if test "$HAS_ZOOM" = "true"
     if test "$ORIGINAL_LAYOUT" != "stack"
         kitty @ goto-layout "$ORIGINAL_LAYOUT"
     end
-    kitty @ close-window
+    kitty @ close-window $SELF_WINDOW
 else
     yabai -m window --toggle zoom-fullscreen
     lazygit
@@ -26,7 +35,7 @@ else
     if test "$ORIGINAL_LAYOUT" != "stack"
         kitty @ goto-layout "$ORIGINAL_LAYOUT"
     end
-    kitty @ close-window
+    kitty @ close-window $SELF_WINDOW
 end
 
 # bash version
