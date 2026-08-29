@@ -7,8 +7,9 @@
       "bindings": {
         "ctrl+shift+u": "scroll:halfPageUp",
         "ctrl+shift+d": "scroll:halfPageDown",
-        "ctrl+o": "scroll:lineUp",
-        "ctrl+i": "scroll:lineDown",
+        "ctrl+shift+[": "scroll:lineUp",
+        "ctrl+shift+]": "scroll:lineDown",
+        "ctrl+q": "app:toggleTranscript",
         "ctrl+;": "app:toggleTranscript",
         "ctrl+shift+;": "scroll:top",
         "ctrl+shift+m": "scroll:bottom"
@@ -17,10 +18,9 @@
     {
       "context": "Chat",
       "bindings": {
-        "enter": null,
+        "enter": "chat:newline",
         "escape": null,
         "ctrl+j": "chat:submit",
-        "ctrl+m": "chat:newline",
         "ctrl+space": "chat:cycleMode"
       }
     },

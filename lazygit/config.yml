@@ -66,7 +66,7 @@ gui:
   # want to pick a small number (e.g. 0.2) if you're using a narrow screen, so
   # that you can see more of the main section.
   # Number from 0 to 1.0.
-  sidePanelWidth: 0.17
+  sidePanelWidth: 0.22
 
   # If true, increase the height of the focused side window; creating an accordion
   # effect.
@@ -91,10 +91,9 @@ gui:
   # 'remotes', 'tags', 'commits', 'reflog', 'stash'. 'files', 'branches', and
   # 'commits' must always be included; they can't be hidden.
   sidePanels:
-    - [status]
     - [files, worktrees]
-    - [branches, remotes, tags]
     - [commits, reflog]
+    - [branches, remotes, tags]
     - [stash]
 
   # Sometimes the main window is split in two (e.g. when the selected file has
@@ -228,7 +227,7 @@ gui:
   # If true, show the bottom line that contains keybinding info and useful
   # buttons. If false, this line will be hidden except to display a loader for an
   # in-progress action.
-  showBottomLine: false
+  showBottomLine: true
 
   # If true, show jump-to-window keybindings in window titles.
   showPanelJumps: true
@@ -545,21 +544,27 @@ quitOnTopLevelReturn: false
 # copying to clipboard, etc
 os:
   # Command for editing a file. Should contain "{{filename}}".
-  edit: ""
+  # Hands the file to the neovim session already open on this project; falls
+  # back to a nested neovim when there isn't one. See nvim-open.fish.
+  edit: 'fish -N $HOME/.config/lazygit/nvim-open.fish {{filename}}'
 
   # Command for editing a file at a given line number. Should contain
   # "{{filename}}", and may optionally contain "{{line}}".
-  editAtLine: ""
+  editAtLine: 'fish -N $HOME/.config/lazygit/nvim-open.fish --line {{line}} {{filename}}'
 
   # Same as EditAtLine, except that the command needs to wait until the window is
   # closed.
   editAtLineAndWait: ""
 
   # Whether lazygit suspends until an edit process returns
-  editInTerminal: true
+  # false so lazygit keeps the screen: suspending flashes the terminal and
+  # echoes the command. nvim-open.fish never needs lazygit's terminal.
+  editInTerminal: false
 
   # For opening a directory in an editor
-  openDirInEditor: ""
+  # Routed through the script too: with editInTerminal false, the preset's
+  # nested `nvim -- {{dir}}` would have nowhere to draw and would hang.
+  openDirInEditor: 'fish -N $HOME/.config/lazygit/nvim-open.fish {{dir}}'
 
   # A built-in preset that sets all of the above settings. Supported presets are
   # defined in the getPreset function in editor_presets.go.
