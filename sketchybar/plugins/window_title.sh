@@ -15,7 +15,22 @@ CURRENT_APP=$(echo "$WINDOW_INFO" | jq -r '.app')
 WINDOW_TITLE=$(echo "$WINDOW_INFO" | jq -r '.title')
 
 if [[ $CURRENT_APP = "kitty" ]]; then
-  TERMINAL_NUM_PANES=$(ps | grep -v scratch.js | awk 'NR > 1 {print $2}' | sort | uniq | wc -l | awk '{$1=$1};1')
+  # Every pane of this kitty, across its tabs, asked of kitty itself. Counting
+  # distinct ttys instead counted any terminal session at all: another terminal
+  # app, an ssh session, a :terminal buffer inside neovim -- none of which is a
+  # kitty pane. Overlays (lazygit) count as panes of their own.
+  #
+  # kitty is named in full because sketchybar's plugins run with a bare PATH
+  # (/opt/homebrew/bin, /usr/bin, ...) and it only lives inside its bundle.
+  # The socket is `listen_on` from kitty.conf plus the pid, and the pid is the
+  # one yabai just reported for the window on screen -- so this asks the
+  # instance being looked at rather than whichever one answers first.
+  KITTY_BIN=$(command -v kitty || echo /Applications/kitty.app/Contents/MacOS/kitty)
+  KITTY_PID=$(echo "$WINDOW_INFO" | jq -r '.pid')
+  TERMINAL_NUM_PANES=$("$KITTY_BIN" @ --to "unix:/tmp/kitty-$KITTY_PID" ls 2>/dev/null |
+    jq '[.[].tabs[].windows[]] | length')
+  # Falls back to hiding the count rather than showing a wrong one.
+  [[ $TERMINAL_NUM_PANES -gt 0 ]] 2>/dev/null || TERMINAL_NUM_PANES=1
   if [[ $WINDOW_TITLE = "lazygit" ]]; then
     WINDOW_TITLE="git 󰂓 | 󱂬 $TERMINAL_NUM_PANES"
   elif [[ $WINDOW_TITLE == *"Grab "* ]]; then
