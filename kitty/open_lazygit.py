@@ -55,6 +55,11 @@ def open_lazygit(boss, window):
             # that is already active does nothing, which beats stacking a
             # second lazygit on top of the first.
             boss.set_active_window(other, switch_os_window_if_needed=True)
+            # Repaint the active border, which focusing alone leaves behind on
+            # whichever window had it before. See cycle_window.py.
+            other_tab = boss.tab_for_id(other.tab_id)
+            if other_tab is not None:
+                other_tab.relayout_borders()
             return
 
     boss.launch(

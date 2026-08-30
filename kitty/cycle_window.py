@@ -42,6 +42,10 @@ def cycle(boss, window, step):
     # Focusing a covered window raises it within its group, so this reveals
     # whatever was underneath rather than only moving the focus ring.
     boss.set_active_window(windows[(ids.index(window.id) + step) % len(windows)])
+    # Focusing on its own leaves the active border painted where it was. kitty
+    # redraws it as part of its own focus actions; reaching for the window
+    # directly skips that, so ask for it.
+    tab.relayout_borders()
 
 
 @result_handler(no_ui=True)

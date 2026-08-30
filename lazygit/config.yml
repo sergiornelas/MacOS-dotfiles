@@ -575,7 +575,8 @@ os:
   open: ""
 
   # Command for opening a link. Should contain "{{link}}".
-  openLink: ""
+  # Brave instead of the system default browser (Chrome).
+  openLink: 'open -a "Brave Browser" {{link}}'
 
   # CopyToClipboardCmd is the command for copying to clipboard.
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
