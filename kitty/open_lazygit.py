@@ -68,6 +68,9 @@ def open_lazygit(boss, window):
         "--title=lazygit",
         "--tab-title=lazygit",
         "--copy-env",
+        # Which window this overlay is covering, so the launcher can ask the
+        # neovim living there what file to open on. See the fish script.
+        "--env=LAZYGIT_SOURCE_WINDOW={}".format(window.id),
         os.path.join(config_dir, "lazygit-toggle-full-screen.fish"),
     )
 

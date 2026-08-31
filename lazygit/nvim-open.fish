@@ -72,6 +72,6 @@ if test -n "$KITTY_WINDOW_ID"
             sleep 0.05
             kitty @ ls --match id:'$KITTY_WINDOW_ID' |
               jq -e "[.[].tabs[].windows[].foreground_processes[].cmdline[0]] |
-                     any(. == \"lazygit\" or endswith(\"/lazygit\"))" >/dev/null &&
+                     any(type == \"string\" and (. == \"lazygit\" or endswith(\"/lazygit\")))" >/dev/null &&
               kitty @ send-text --match id:'$KITTY_WINDOW_ID' q) >/dev/null 2>&1 &'
 end

@@ -13,12 +13,11 @@
 
 local uv = vim.uv
 
--- Leaving through `cquit` rather than os.exit: os.exit skips neovim's own
--- shutdown, and that shutdown is what unlinks the socket this process opened.
--- Every run would otherwise leave one behind for the next run to probe.
-local function quit(code)
-	vim.cmd("cquit " .. code)
-end
+-- Listing the live sessions, and leaving without stranding our own socket, is
+-- shared with nvim-current-file.lua.
+local here = debug.getinfo(1, "S").source:sub(2):gsub("[^/]+$", "")
+local sessions = dofile(here .. "nvim-sessions.lua")
+local quit = sessions.quit
 
 -- ---------------------------------------------------------------------- args
 local line
@@ -79,24 +78,6 @@ if not root then
 end
 
 -- -------------------------------------------------------------- the sessions
--- Every session's socket lives beside ours, under the parent of this process's
--- own run directory. Newest first, so a tie between two sessions on the same
--- directory goes to the one started most recently.
-local socks = {}
-local sockdir = vim.fs.dirname(vim.fn.stdpath("run"))
-pcall(function()
-	for name, kind in vim.fs.dir(sockdir, { depth = 2 }) do
-		local path = sockdir .. "/" .. name
-		if kind == "socket" and path ~= vim.v.servername then
-			local st = uv.fs_stat(path)
-			socks[#socks + 1] = { path = path, mtime = st and st.mtime.sec or 0 }
-		end
-	end
-end)
-table.sort(socks, function(a, b)
-	return a.mtime > b.mtime
-end)
-
 local PROBE = [[
     local paths = ...
     local holds = false
@@ -121,31 +102,30 @@ local PROBE = [[
 -- KITTY_WINDOW_ID it happened to inherit, so "the socket replies" is no proof
 -- of a usable session: the file would land where nobody is looking.
 local best, best_score
-for _, sock in ipairs(socks) do
-	local connected, chan = pcall(vim.fn.sockconnect, "pipe", sock.path, { rpc = true })
-	if connected then
-		local answered, info = pcall(vim.rpcrequest, chan, "nvim_exec_lua", PROBE, { files })
-		if answered and type(info) == "table" and info.uis > 0 then
-			local score
-			if info.cwd == root then
-				score = 1e6
-			elseif vim.startswith(info.cwd, root .. "/") then
-				-- Deepest cwd inside the repo wins, so a session opened in a
-				-- subdirectory still counts when none sits at the root.
-				score = #vim.split(info.cwd, "/", { plain = true })
-			end
-			-- Among sessions that rank the same, the one already holding the
-			-- file takes it, rather than opening a second copy elsewhere.
-			if score and info.holds then
-				score = score + 0.5
-			end
-			if score and (not best_score or score > best_score) then
-				best, best_score = { sock = sock.path, info = info }, score
-			end
-		end
-		pcall(vim.fn.chanclose, chan)
+sessions.probe(PROBE, { files }, function(info, sock)
+	if info.uis == 0 then
+		return
 	end
-end
+	local score
+	if info.cwd == root then
+		score = 1e6
+	elseif vim.startswith(info.cwd, root .. "/") then
+		-- Deepest cwd inside the repo wins, so a session opened in a
+		-- subdirectory still counts when none sits at the root.
+		score = #vim.split(info.cwd, "/", { plain = true })
+	else
+		return
+	end
+	-- Among sessions that rank the same, the one already holding the file takes
+	-- it, rather than opening a second copy elsewhere.
+	if info.holds then
+		score = score + 0.5
+	end
+	if not best_score or score > best_score then
+		best, best_score = { sock = sock, info = info }, score
+	end
+end)
+
 if not best then
 	quit(1)
 end
