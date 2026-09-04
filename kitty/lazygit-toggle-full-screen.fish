@@ -60,22 +60,45 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID"
                 sleep 0.01
                 m=$((m + 1))
             done
-            printf "/%s\r>\033" "$REL" | kitty @ send-text --match id:$WIN --stdin
-
-            # Wait out the filter before reading the list again. The escape
-            # that ends it can go missing -- a key you press right behind it is
-            # read as Alt+key instead, and the filter stays on -- so watch for
-            # it, which is easy because its footer names the path, and ask again
-            # every few rounds. The dance takes lazygit about 70ms and reading
-            # the screen costs half that, so give it the head start rather than
-            # spend a read watching it work.
-            sleep 0.06
-            d=0
-            while [ $d -lt 30 ]; do
+            # Every step is confirmed before the next, because lazygit blanks
+            # the panel while it re-renders and a key that lands in that gap is
+            # simply gone. The panel footer is the witness: it counts the rows,
+            # and while a filter is on it also names the path being filtered by.
+            # Reading "no filter" alone is not enough -- the blank frame has no
+            # filter either -- so a step only counts as done once the rows are
+            # back too.
+            settled() {
                 TXT=$(kitty @ get-text --match id:$WIN 2>/dev/null)
-                echo "$TXT" | tail -1 | grep -qF "$REL" || break
-                [ $((d % 6)) -eq 5 ] && printf "\033" | kitty @ send-text --match id:$WIN --stdin
-                sleep 0.01
+                POS=$(echo "$TXT" | grep -oE "[0-9]+ of [0-9]+" | head -1)
+                AT=${POS%% of *}
+                OF=${POS##* of }
+                [ -n "$POS" ] && [ "$OF" -gt 0 ]
+            }
+            filtering() { echo "$TXT" | tail -1 | grep -qF "$REL"; }
+
+            # Narrow to the one file and drop onto it. `>` is the last row of
+            # the filtered tree whatever directories sit above it, and it is
+            # idempotent, so it can simply be repeated until it takes.
+            printf "/%s\r>" "$REL" | kitty @ send-text --match id:$WIN --stdin
+            d=0
+            while [ $d -lt 40 ]; do
+                sleep 0.02
+                if settled && filtering; then
+                    [ "$AT" = "$OF" ] && break
+                    printf ">" | kitty @ send-text --match id:$WIN --stdin
+                fi
+                d=$((d + 1))
+            done
+
+            # Back to the whole list, keeping the selection. The escape can go
+            # missing too -- a key you press right behind it is read as Alt+key
+            # instead -- so ask again every few rounds.
+            printf "\033" | kitty @ send-text --match id:$WIN --stdin
+            d=0
+            while [ $d -lt 40 ]; do
+                sleep 0.02
+                settled && ! filtering && break
+                [ $((d % 8)) -eq 7 ] && printf "\033" | kitty @ send-text --match id:$WIN --stdin
                 d=$((d + 1))
             done
 
@@ -86,9 +109,23 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID"
             # step has nowhere to go and the down step would leave us a file
             # below where we meant to be -- and the one place that was never
             # scrolled away from anyway.
-            POS=$(echo "$TXT" | grep -oE "[0-9]+ of [0-9]+" | head -1)
-            [ -n "$POS" ] && [ "${POS%% of *}" -gt 1 ] &&
-              printf "kj" | kitty @ send-text --match id:$WIN --stdin
+            WANT=$AT
+            if [ -n "$WANT" ] && [ "$WANT" -gt 1 ]; then
+                printf "kj" | kitty @ send-text --match id:$WIN --stdin
+                # That pair can come apart the same way. Walk it back.
+                c=0
+                while [ $c -lt 15 ]; do
+                    c=$((c + 1))
+                    sleep 0.02
+                    settled || continue
+                    [ "$AT" = "$WANT" ] && break
+                    if [ "$AT" -lt "$WANT" ]; then
+                        printf "j"
+                    else
+                        printf "k"
+                    fi | kitty @ send-text --match id:$WIN --stdin
+                done
+            fi
         fi) >/dev/null 2>&1 &'
 end
 
