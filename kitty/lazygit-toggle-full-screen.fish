@@ -29,7 +29,7 @@ end
 # run while it loads.
 #
 # open_lazygit.py names the window this overlay covered.
-if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID"
+if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID" -a -z "$LAZYGIT_FILTER"
     env SRC=$LAZYGIT_SOURCE_WINDOW WIN=$KITTY_WINDOW_ID sh -c '(
         FILE=$(nvim -u NONE -l "$HOME/.config/lazygit/nvim-current-file.lua" "$SRC" 2>/dev/null)
         ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -129,8 +129,20 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID"
         fi) >/dev/null 2>&1 &'
 end
 
+# ctrl+tab asks for one file's history, which lazygit only takes as flags at
+# startup. open_lazygit.py sets the variable when that is what was asked for.
+#
+#   -f <path>    filters commits, reflog and stash by that path
+#   -sm normal   filter mode otherwise comes up with the commits enlarged to
+#                half the width; normal keeps the side panels narrow and gives
+#                the rest to the diff, which is the point of looking at history
+set -l LAZYGIT lazygit
+if test -n "$LAZYGIT_FILTER"
+    set LAZYGIT lazygit -f "$LAZYGIT_FILTER" -sm normal
+end
+
 if test "$HAS_ZOOM" = "true"
-    lazygit
+    $LAZYGIT
     # tmux kill-window
     if test "$ORIGINAL_LAYOUT" != "stack"
         kitty @ goto-layout "$ORIGINAL_LAYOUT"
@@ -138,7 +150,7 @@ if test "$HAS_ZOOM" = "true"
     kitty @ close-window $SELF_WINDOW
 else
     yabai -m window --toggle zoom-fullscreen
-    lazygit
+    $LAZYGIT
     set HAS_ZOOM_AFTER_LAZYGIT (yabai -m query --windows --window | jq -r '."has-parent-zoom"')
     if test "$HAS_ZOOM_AFTER_LAZYGIT" = "true"
         yabai -m window --toggle zoom-fullscreen
