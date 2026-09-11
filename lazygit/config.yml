@@ -1,5 +1,5 @@
 # HERE ==============================================================================
-# cd /Users/sergiornelas/Library/Application\ Support/lazygit/
+# nvim /Users/sergiornelas/Library/Application\ Support/lazygit/config.yml
 # ===================================================================================
 
 # Config relating to the Lazygit UI
@@ -632,15 +632,15 @@ keybinding:
     nextItem: [<down>, j]
     prevPage: ','
     nextPage: .
-    scrollLeft: h
-    scrollRight: l
+    scrollLeft: H
+    scrollRight: L
     gotoTop: [<, <home>]
     gotoBottom: ['>', <end>]
     toggleRangeSelect: v
     rangeSelectDown: <shift+down>
     rangeSelectUp: <shift+up>
-    prevBlock: [<left>, H, <backtab>]
-    nextBlock: [<right>, L, <tab>]
+    prevBlock: [<left>, h, <backtab>]
+    nextBlock: [<right>, l, <tab>]
     jumpToBlock:
       - "1"
       - "2"
