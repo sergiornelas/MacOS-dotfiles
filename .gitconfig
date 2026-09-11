@@ -1,9 +1,11 @@
 [user]
-  name = Sergio Ornelas <sergio.ornelas.92@outlook.com>
-  email = sergio.ornelas.92@outlook.com
+	name = sergiornelas
+	email = sergio.ornelas.92@outlook.com
+[includeIf "gitdir:~/Desktop/harley/"]
+  path = ~/Desktop/harley/.gitconfig
 [core]
 	editor = nvim
-	excludesfile = /Users/sergioornelas/.gitignore
+	excludesfile = /Users/sergiornelas/.gitignore_global
   pager = delta
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -30,3 +32,6 @@
   conflictstyle = diff3
 [diff]
     colorMoved = default
+	tool = vimdiff
+[init]
+	defaultBranch = main

@@ -159,7 +159,7 @@ gui:
     # Background color of selected line.
     # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#highlighting-the-selected-line
     selectedLineBgColor:
-      - blue
+      - '#434c5e'
 
     # Background color of selected line when view doesn't have focus.
     inactiveViewSelectedLineBgColor:
@@ -358,6 +358,9 @@ git:
   #
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_DiffRenderers.md
   # for more information.
+  # Note: this never reaches the merge conflicts view, which lazygit renders
+  # itself from the raw file. That view gets its colours from the patched
+  # binary instead -- see info.md and lazygit/build-patched.fish.
   diffRenderers:
     - colorArg: always
       command: delta --dark --paging=never

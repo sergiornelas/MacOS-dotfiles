@@ -1,0 +1,288 @@
+diff --git a/go.mod b/go.mod
+index c57a8ae..9f3d58b 100644
+--- a/go.mod
++++ b/go.mod
+@@ -8,6 +8,7 @@ ignore ./test
+ require (
+ 	dario.cat/mergo v1.0.2
+ 	github.com/adrg/xdg v0.5.3
++	github.com/alecthomas/chroma/v2 v2.14.0
+ 	github.com/atotto/clipboard v0.1.4
+ 	github.com/aybabtme/humanlog v0.4.1
+ 	github.com/cli/go-gh/v2 v2.13.0
+@@ -51,6 +52,7 @@ require (
+ 	github.com/clipperhouse/displaywidth v0.11.0 // indirect
+ 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
+ 	github.com/davecgh/go-spew v1.1.1 // indirect
++	github.com/dlclark/regexp2 v1.11.0 // indirect
+ 	github.com/fatih/color v1.9.0 // indirect
+ 	github.com/gdamore/encoding v1.0.1 // indirect
+ 	github.com/go-logfmt/logfmt v0.5.0 // indirect
+diff --git a/go.sum b/go.sum
+index 2abeffe..0028237 100644
+--- a/go.sum
++++ b/go.sum
+@@ -2,6 +2,12 @@ dario.cat/mergo v1.0.2 h1:85+piFYR1tMbRrLcDwR18y4UKJ3aH1Tbzi24VRW1TK8=
+ dario.cat/mergo v1.0.2/go.mod h1:E/hbnu0NxMFBjpMIE34DRGLWqDy0g5FuKDhCb31ngxA=
+ github.com/adrg/xdg v0.5.3 h1:xRnxJXne7+oWDatRhR1JLnvuccuIeCoBu2rtuLqQB78=
+ github.com/adrg/xdg v0.5.3/go.mod h1:nlTsY+NNiCBGCK2tpm09vRqfVzrc2fLmXGpBLF0zlTQ=
++github.com/alecthomas/assert/v2 v2.7.0 h1:QtqSACNS3tF7oasA8CU6A6sXZSBDqnm7RfpLl9bZqbE=
++github.com/alecthomas/assert/v2 v2.7.0/go.mod h1:Bze95FyfUr7x34QZrjL+XP+0qgp/zg8yS+TtBj1WA3k=
++github.com/alecthomas/chroma/v2 v2.14.0 h1:R3+wzpnUArGcQz7fCETQBzO5n9IMNi13iIs46aU4V9E=
++github.com/alecthomas/chroma/v2 v2.14.0/go.mod h1:QolEbTfmUHIMVpBqxeDnNBj2uoeI4EbYP4i6n68SG4I=
++github.com/alecthomas/repr v0.4.0 h1:GhI2A8MACjfegCPVq9f1FLvIBS+DrQ2KQBFZP1iFzXc=
++github.com/alecthomas/repr v0.4.0/go.mod h1:Fr0507jx4eOXV7AlPV6AVZLYrLIuIeSOWtW57eE/O/4=
+ github.com/atotto/clipboard v0.1.4 h1:EH0zSVneZPSuFR11BlR9YppQTVDbh5+16AmcJi4g1z4=
+ github.com/atotto/clipboard v0.1.4/go.mod h1:ZY9tmq7sm5xIbd9bOK4onWV4S6X0u6GY7Vn0Yu86PYI=
+ github.com/aybabtme/humanlog v0.4.1 h1:D8d9um55rrthJsP8IGSHBcti9lTb/XknmDAX6Zy8tek=
+@@ -27,6 +33,8 @@ github.com/davecgh/go-spew v0.0.0-20161028175848-04cdfd42973b/go.mod h1:J7Y8YcW2
+ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
++github.com/dlclark/regexp2 v1.11.0 h1:G/nrcoOa7ZXlpoa/91N3X7mM3r8eIlMBBJZvsz/mxKI=
++github.com/dlclark/regexp2 v1.11.0/go.mod h1:DHkYz0B9wPfa6wondMfaivmHpzrQ3v9q8cnmRbL6yW8=
+ github.com/fatih/color v1.7.1-0.20180516100307-2d684516a886/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+ github.com/fatih/color v1.9.0 h1:8xPHl4/q1VyqGIPif1F+1V3Y3lSmrq01EabUW3CoW5s=
+ github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
+@@ -47,6 +55,8 @@ github.com/gookit/assert v0.1.1 h1:lh3GcawXe/p+cU7ESTZ5Ui3Sm/x8JWpIis4/1aF0mY0=
+ github.com/gookit/assert v0.1.1/go.mod h1:jS5bmIVQZTIwk42uXl4lyj4iaaxx32tqH16CFj0VX2E=
+ github.com/gookit/color v1.6.1 h1:KoTnDxJPRgrL0SoX0f8rCFg2zI0t4E3GZZBMo2nN8LU=
+ github.com/gookit/color v1.6.1/go.mod h1:9ACFc7/1IpHGBW8RwuDm/0YEnhg3dwwXpoMsmtyHfjs=
++github.com/hexops/gotextdiff v1.0.3 h1:gitA9+qJrrTCsiCl7+kh75nPqQt1cx4ZkudSTLoUqJM=
++github.com/hexops/gotextdiff v1.0.3/go.mod h1:pSWU5MAI3yDq+fZBTazCSJysOMbxWL1BSow5/V2vxeg=
+ github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=
+ github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
+ github.com/integrii/flaggy v1.8.0 h1:tC1qWwg4fhF2Qdaj+MpPK04cxlOSq0+HoMZqAW6Arao=
+diff --git a/pkg/gui/mergeconflicts/highlight.go b/pkg/gui/mergeconflicts/highlight.go
+new file mode 100644
+index 0000000..8bdb8b3
+--- /dev/null
++++ b/pkg/gui/mergeconflicts/highlight.go
+@@ -0,0 +1,195 @@
++package mergeconflicts
++
++import (
++	"bytes"
++	"os"
++	"path/filepath"
++	"strings"
++	"sync"
++
++	"github.com/alecthomas/chroma/v2"
++	"github.com/alecthomas/chroma/v2/formatters"
++	"github.com/alecthomas/chroma/v2/lexers"
++	"github.com/alecthomas/chroma/v2/styles"
++	"github.com/jesseduffield/lazygit/pkg/utils"
++)
++
++// The merge conflicts view renders the raw file rather than a diff, so the
++// configured diff renderer (delta and friends) never sees it and every line
++// comes out in the default colour. We run the content through chroma here so
++// the view keeps the syntax colours of the file being merged.
++//
++// Set LAZYGIT_CONFLICT_SYNTAX_THEME to any chroma style name to change the
++// palette, or to "none" to turn the highlighting off.
++
++const defaultSyntaxTheme = "gruvbox"
++
++type highlightCacheEntry struct {
++	path    string
++	content string
++	lines   []string
++}
++
++var (
++	highlightCacheMutex sync.Mutex
++	highlightCache      highlightCacheEntry
++)
++
++// highlightedLines returns one syntax-highlighted string per line of content,
++// or nil when the file's language isn't recognised. Marker lines are blanked
++// out before lexing (they'd throw the lexer off) and are coloured by the
++// caller anyway.
++func highlightedLines(path string, content string, conflicts []*mergeConflict) []string {
++	if path == "" {
++		return nil
++	}
++
++	highlightCacheMutex.Lock()
++	defer highlightCacheMutex.Unlock()
++
++	if highlightCache.path == path && highlightCache.content == content {
++		return highlightCache.lines
++	}
++
++	lines := highlightContent(path, content, conflicts)
++	highlightCache = highlightCacheEntry{path: path, content: content, lines: lines}
++
++	return lines
++}
++
++func highlightContent(path string, content string, conflicts []*mergeConflict) []string {
++	themeName := os.Getenv("LAZYGIT_CONFLICT_SYNTAX_THEME")
++	if themeName == "none" {
++		return nil
++	}
++	if themeName == "" {
++		themeName = defaultSyntaxTheme
++	}
++
++	lexer := lexers.Match(filepath.Base(path))
++	if lexer == nil {
++		return nil
++	}
++	lexer = chroma.Coalesce(lexer)
++
++	style := withoutBackgrounds(styles.Get(themeName))
++	formatter := formatters.Get(terminalFormatterName())
++	if formatter == nil {
++		return nil
++	}
++
++	iterator, err := lexer.Tokenise(nil, blankOutMarkerLines(content, conflicts))
++	if err != nil {
++		return nil
++	}
++
++	var lines []string
++	for _, tokenLine := range chroma.SplitTokensIntoLines(iterator.Tokens()) {
++		line, err := formatLine(tokenLine, style, formatter)
++		if err != nil {
++			return nil
++		}
++		lines = append(lines, line)
++	}
++
++	return lines
++}
++
++// formatLine renders a line's tokens, leaving the ones that would come out in
++// the style's plain text colour untouched: emitting an escape sequence for
++// those would override the user's `defaultFgColor` and bloat every line.
++func formatLine(tokenLine []chroma.Token, style *chroma.Style, formatter chroma.Formatter) (string, error) {
++	plain := style.Get(chroma.Background)
++
++	var buf bytes.Buffer
++	pending := make([]chroma.Token, 0, len(tokenLine))
++
++	flush := func() error {
++		if len(pending) == 0 {
++			return nil
++		}
++		err := formatter.Format(&buf, style, chroma.Literator(pending...))
++		pending = pending[:0]
++		return err
++	}
++
++	for _, token := range tokenLine {
++		// the newline belongs to the line break, not to the token's colour
++		token.Value = strings.ReplaceAll(token.Value, "\n", "")
++		if token.Value == "" {
++			continue
++		}
++
++		if isPlain(style.Get(token.Type), plain) {
++			if err := flush(); err != nil {
++				return "", err
++			}
++			buf.WriteString(token.Value)
++			continue
++		}
++
++		pending = append(pending, token)
++	}
++
++	if err := flush(); err != nil {
++		return "", err
++	}
++
++	return buf.String(), nil
++}
++
++// isPlain reports whether an entry renders identically to the style's plain
++// text. NoInherit is normalised away: it's set on the Background entry only,
++// and says where the colour came from rather than how it looks.
++func isPlain(entry chroma.StyleEntry, plain chroma.StyleEntry) bool {
++	entry.NoInherit = plain.NoInherit
++	return entry == plain
++}
++
++// blankOutMarkerLines replaces the conflict markers with empty lines, keeping
++// the line count intact, so that `<<<<<<< HEAD` and friends don't derail the
++// lexer's state.
++func blankOutMarkerLines(content string, conflicts []*mergeConflict) string {
++	lines := utils.SplitLines(content)
++
++	for _, conflict := range conflicts {
++		for _, idx := range []int{conflict.start, conflict.ancestor, conflict.target, conflict.end} {
++			if idx >= 0 && idx < len(lines) {
++				lines[idx] = ""
++			}
++		}
++	}
++
++	return strings.Join(lines, "\n")
++}
++
++// withoutBackgrounds strips background colours from the style: lazygit paints
++// the selected hunk with its own background and chroma's would fight it.
++func withoutBackgrounds(style *chroma.Style) *chroma.Style {
++	if style == nil {
++		return styles.Fallback
++	}
++
++	builder := style.Builder()
++	for _, tokenType := range style.Types() {
++		entry := style.Get(tokenType)
++		entry.Background = 0
++		builder.AddEntry(tokenType, entry)
++	}
++
++	stripped, err := builder.Build()
++	if err != nil {
++		return style
++	}
++
++	return stripped
++}
++
++func terminalFormatterName() string {
++	switch os.Getenv("COLORTERM") {
++	case "truecolor", "24bit":
++		return "terminal16m"
++	default:
++		return "terminal256"
++	}
++}
+diff --git a/pkg/gui/mergeconflicts/rendering.go b/pkg/gui/mergeconflicts/rendering.go
+index c71c12d..05bc1ed 100644
+--- a/pkg/gui/mergeconflicts/rendering.go
++++ b/pkg/gui/mergeconflicts/rendering.go
+@@ -13,18 +13,23 @@ func ColoredConflictFile(state *State) string {
+ 	if len(state.conflicts) == 0 {
+ 		return content
+ 	}
++	highlighted := highlightedLines(state.GetPath(), content, state.conflicts)
+ 	conflict, remainingConflicts := shiftConflict(state.conflicts)
+ 	var outputBuffer bytes.Buffer
+ 	for i, line := range utils.SplitLines(content) {
+-		textStyle := theme.DefaultTextColor
+-		if conflict.isMarkerLine(i) {
+-			textStyle = style.FgRed
++		switch {
++		case conflict.isMarkerLine(i):
++			line = style.FgRed.Sprint(line)
++		case i < len(highlighted):
++			line = highlighted[i]
++		default:
++			line = theme.DefaultTextColor.Sprint(line)
+ 		}
+ 
+ 		if i == conflict.end && len(remainingConflicts) > 0 {
+ 			conflict, remainingConflicts = shiftConflict(remainingConflicts)
+ 		}
+-		outputBuffer.WriteString(textStyle.Sprint(line))
++		outputBuffer.WriteString(line)
+ 		outputBuffer.WriteByte('\n')
+ 	}
+ 	return outputBuffer.String()
