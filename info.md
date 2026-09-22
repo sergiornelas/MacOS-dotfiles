@@ -138,6 +138,10 @@ If this is not working, clear cache
 
 <https://github.com/AdamWawrzynkowskiGF/Mousecape-TahoeSupport/releases/tag/PreRelease-v01>
 
+For those that can't see the icons applied:
+System settings > Accessibility > Display > Scroll down to pointer and click
+reset colors
+
 ## Add music to Iphone
 
 yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "%(title)s.%(ext)s" <https://www.youtube.com/watch?v=piUHpVKke2E>
@@ -183,23 +187,8 @@ Run this command:
 
 rm .git/index.lock
 
-## Lazygit with syntax highlighting in merge conflicts
+## Run battlenet
 
-Lazygit renders the merge conflicts view itself (it's the raw file, not a diff),
-so the `diffRenderers` delta config never reaches it and every line comes out in
-the default colour -- see <https://github.com/jesseduffield/lazygit/issues/1735>.
-There's no config for it, so `lazygit/patches/conflict-syntax-highlighting.patch`
-adds it: it colours the content with chroma before lazygit paints the markers.
+Clean this file:
 
-The patched binary lives in `~/.local/bin/lazygit`, which comes before Homebrew
-in `$PATH`. **Re-run the build after every `brew upgrade lazygit`**, otherwise
-the patched binary silently keeps you on the old version:
-
-```fish
-fish ~/.config/lazygit/build-patched.fish          # matches the brewed version
-fish ~/.config/lazygit/build-patched.fish v0.65.0  # or pin a tag
-```
-
-Needs `brew install go`. The source clone is kept at `~/.local/src/lazygit`.
-Set `LAZYGIT_CONFLICT_SYNTAX_THEME` to any chroma style name to change the
-palette (default `gruvbox`), or to `none` to turn the highlighting off.
+`/etc/hosts`
