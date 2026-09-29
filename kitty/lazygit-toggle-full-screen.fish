@@ -38,13 +38,25 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID" -a -z "$LAZYGIT_FIL
         # selected. Anything else -- no neovim in that window, a terminal
         # buffer, a file outside this repo -- leaves lazygit to open as it
         # always did.
+        #
+        # And while a merge has conflicts, lazygit narrows the panel to the
+        # conflicted files alone ("only conflicting"), hiding everything else
+        # the merge staged. Filtering for one of those finds nothing, and the
+        # wait below would spin out its whole budget (~2s) before giving up.
+        # So only a conflicted file qualifies then; for any other, lazygit
+        # opens on the first conflict, which is where you want to be anyway.
+        #
+        # lazygit shows paths from the repo root, so the filter has to match
+        # that, and git prints the conflicted ones the same way. Quoted inside
+        # the expansion so a root with a bracket or a star in it stays a
+        # string rather than becoming a pattern.
+        REL=${FILE#"$ROOT"/}
+        # -z: without it git escapes any non-ASCII path ("dise\303\261o.ts"),
+        # which would never match REL.
+        UNMERGED=$(git diff --name-only -z --diff-filter=U 2>/dev/null | tr "\000" "\n")
         if [ -n "$FILE" ] && [ -n "$ROOT" ] &&
-           [ -n "$(git status --porcelain -- "$FILE" 2>/dev/null)" ]; then
-            # lazygit shows paths from the repo root, so the filter has to match
-            # that. Quoted inside the expansion so a root with a bracket or a
-            # star in it stays a string rather than becoming a pattern.
-            REL=${FILE#"$ROOT"/}
-
+           [ -n "$(git status --porcelain -- "$FILE" 2>/dev/null)" ] &&
+           { [ -z "$UNMERGED" ] || printf "%s\n" "$UNMERGED" | grep -qxF "$REL"; }; then
             # The keys have to wait for lazygit, and a fixed delay is the wrong
             # way to do it: too short and they land half-processed, leaving the
             # cursor on a directory, and how short is too short depends on how
@@ -52,10 +64,16 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID" -a -z "$LAZYGIT_FIL
             # the Files panel having rows, which its footer counts. The whole
             # list lands in one go, so a count above zero means lazygit is done
             # starting and will keep every key.
+            #
+            # grep -a throughout: the screen is whatever lazygit is drawing,
+            # and a diff can put a NUL on it (a literal \000 in the source is
+            # enough). Without -a grep calls the text binary and answers
+            # "Binary file matches" instead of the count, so no wait here would
+            # ever see its condition and each would run out its full budget.
             m=0
             while [ $m -lt 50 ]; do
                 POS=$(kitty @ get-text --match id:$WIN 2>/dev/null |
-                        grep -oE "[0-9]+ of [0-9]+" | head -1)
+                        grep -aoE "[0-9]+ of [0-9]+" | head -1)
                 [ -n "$POS" ] && [ "${POS##* of }" -gt 0 ] && break
                 sleep 0.01
                 m=$((m + 1))
@@ -69,12 +87,12 @@ if test -n "$LAZYGIT_SOURCE_WINDOW" -a -n "$KITTY_WINDOW_ID" -a -z "$LAZYGIT_FIL
             # back too.
             settled() {
                 TXT=$(kitty @ get-text --match id:$WIN 2>/dev/null)
-                POS=$(echo "$TXT" | grep -oE "[0-9]+ of [0-9]+" | head -1)
+                POS=$(echo "$TXT" | grep -aoE "[0-9]+ of [0-9]+" | head -1)
                 AT=${POS%% of *}
                 OF=${POS##* of }
                 [ -n "$POS" ] && [ "$OF" -gt 0 ]
             }
-            filtering() { echo "$TXT" | tail -1 | grep -qF "$REL"; }
+            filtering() { echo "$TXT" | tail -1 | grep -aqF "$REL"; }
 
             # Narrow to the one file and drop onto it. `>` is the last row of
             # the filtered tree whatever directories sit above it, and it is
