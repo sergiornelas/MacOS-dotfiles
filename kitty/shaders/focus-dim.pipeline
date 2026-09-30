@@ -1,0 +1,28 @@
+# focus-highlight (integrado en kitty) sin iluminar el pane enfocado:
+# solo oscurece el resto al cambiar de foco. Defaults entre paréntesis.
+startgroup
+    # Solo cambios de pane/tab. El built-in usa window-focus-in, que kitty
+    # también dispara cuando la ventana de macOS recupera el foco (p. ej. al
+    # guardar en nvim). Un cambio de pane/tab siempre trae window-focus-out;
+    # la vuelta del foco de macOS no.
+    animation_start window-focus-out
+    # os-window-focus-out como stop evita que arranque cuando kitty pierde el
+    # foco de macOS (un stop *-focus-out en el mismo tick anula el inicio).
+    # Duración en ms (750)
+    animation_stop 400 | os-window-focus-out
+    animation_curve ease-in
+    animation_step 16
+    # Sin brillo extra en el pane activo (0.30)
+    var float HIGHLIGHT_INTENSITY = 0
+    # Sin brillo en el borde del pane activo (0.04)
+    var float BORDER_WIDTH = 0
+    # No oscurecer el padding del pane activo (false). A partir de la versión
+    # posterior a 0.49.1 también cubre su borde (window_border_width):
+    # kovidgoyal/kitty@8e80e96c64
+    var bool INCLUDE_WINDOW_PADDING = true
+    # No oscurecer la barra de tabs, solo los panes (false)
+    var bool DIM_CENTRAL_AREA_ONLY = true
+    # Fracción de color que conservan los panes no enfocados; menor = más oscuro (0.3)
+    var float INACTIVE_DIM = 0.15
+    shaders focus-highlight
+endgroup
