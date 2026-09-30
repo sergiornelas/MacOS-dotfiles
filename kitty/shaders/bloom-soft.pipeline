@@ -1,8 +1,8 @@
-# bloom (integrado en kitty) con menos brillo. Defaults entre paréntesis.
+# bloom (built into kitty) with less glow. Defaults in parentheses.
 startgroup
-    # Intensidad del resplandor (0.2)
+    # Glow strength (0.2)
     var float BLOOM_STRENGTH = 0.03
-    # Luminancia mínima para que un píxel brille; mayor = brillan menos cosas (0.2)
+    # Minimum luminance for a pixel to glow; higher = fewer things glow (0.2)
     var float BLOOM_THRESHOLD = 0.2
     shaders bloom
 endgroup

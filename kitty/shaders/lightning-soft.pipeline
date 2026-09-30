@@ -1,15 +1,15 @@
-# Versión suavizada de cursor-trail-lightning (integrado en kitty).
-# Defaults del shader entre paréntesis.
+# Softened version of cursor-trail-lightning (built into kitty).
+# Shader defaults in parentheses.
 startgroup
     animation_start cursor-trail-move
     animation_stop cursor-trail-stop
-    # Destello más corto (0.14)
+    # Shorter flash (0.14)
     var float DURATION = 0.1
-    # Halo más estrecho (5.5)
+    # Narrower glow (5.5)
     var float GLOW_WIDTH = 1.8
-    # Trazo central más fino (1.15)
+    # Thinner core stroke (1.15)
     var float CORE_WIDTH = 0.6
-    # Menos zigzag (0.085)
+    # Less zigzag (0.085)
     var float JAGGEDNESS = 0.035
     shaders cursor-trail-lightning
 endgroup
