@@ -15,6 +15,7 @@ o.ignorecase = true
 o.showcmd = false
 o.smartcase = true
 o.swapfile = false
+o.report = 100000
 
 -- No colorscheme: the text keeps the colors of the pane it was copied from. These
 -- are the overrides from nvim/lua/config/autocommands.lua for what the pager draws

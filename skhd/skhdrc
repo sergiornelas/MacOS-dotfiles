@@ -32,10 +32,13 @@
 # Transparency             \^
 
 # Space navigation
-# hyper - i : yabai -m space --focus 1
-# hyper - o : yabai -m space --focus 2
-# hyper - p : yabai -m space --focus 3
-# hyper - u : yabai -m space --focus 4
+# Simula los atajos "Switch to Desktop N" de Mission Control (hyper + F13-F16)
+# y reinicia el Dock si macOS 27 los perdió; ver focus-space.sh
+# TEMPORAL: hasta que Golden Gate corrija el bug al conectar/desconectar el display
+hyper - i : $HOME/.config/skhd/focus-space.sh 1
+hyper - o : $HOME/.config/skhd/focus-space.sh 2
+hyper - p : $HOME/.config/skhd/focus-space.sh 3
+hyper - u : $HOME/.config/skhd/focus-space.sh 4
 
 # Move window to space
 hyper - 1 : yabai -m window --space 1
