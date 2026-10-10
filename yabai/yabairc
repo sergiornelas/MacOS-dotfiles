@@ -20,6 +20,13 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# TEMPORAL macOS 27 (Golden Gate): al conectar/desconectar el display el Dock
+# pierde algunos atajos "Switch to Desktop N" de Mission Control, y solo los
+# recupera al reiniciarse. El sleep deja que macOS termine de mover los espacios
+# entre displays antes de reiniciarlo. Quitar cuando Apple lo corrija
+yabai -m signal --add label=dock_fix_added event=display_added action="sleep 2; killall Dock"
+yabai -m signal --add label=dock_fix_removed event=display_removed action="sleep 2; killall Dock"
+
 # Get the names of all running applications
 # yabai -m query --windows | jq -r '.[].app'
 
