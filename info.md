@@ -60,10 +60,6 @@ chrome://extensions/shortcuts
 New Tab Redirect
 <https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna>
 
-## Kitty yank vim mode
-
-<https://github.com/yurikhan/kitty_grab>
-
 ## Yabai borders
 
 <https://github.com/FelixKratz/JankyBorders>

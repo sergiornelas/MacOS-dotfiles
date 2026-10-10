@@ -9,7 +9,7 @@ startgroup
     # os-window-focus-out as a stop prevents starting when kitty loses macOS
     # focus (a *-focus-out stop in the same tick cancels the start).
     # Duration in ms (750)
-    animation_stop 400 | os-window-focus-out
+    animation_stop 500 | os-window-focus-out
     animation_curve ease-in
     animation_step 16
     # No extra brightness on the active pane (0.30)

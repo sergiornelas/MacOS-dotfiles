@@ -1,16 +1,21 @@
 {
-  "model": "opus",
   "permissions": {
     "defaultMode": "auto"
   },
   "statusLine": {
     "type": "command",
-    "command": "sh /Users/sergiornelas/.claude/statusline-command.sh"
+    "command": "sh /Users/sergiornelas/.claude/statusline-command.sh",
+    "refreshInterval": 3
   },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true
   },
   "language": "Español",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "theme": "dark",
   "autoMode": {

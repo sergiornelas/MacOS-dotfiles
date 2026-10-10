@@ -29,11 +29,20 @@ def panes(tab):
     return windows
 
 
+def is_scrollback_pager(window):
+    return any("scrollback_pager.lua" in arg for arg in window.child.argv)
+
 def cycle(boss, window, step):
     tab = boss.tab_for_id(window.tab_id)
     if tab is None:
         return
     windows = panes(tab)
+    # The scrollback pager (kitty_mod+y) closes when it loses focus, so moving to
+    # the window it covers would only close it. Skip that window: leaving the
+    # pager goes straight to the neighbouring pane, both ways.
+    if is_scrollback_pager(window):
+        covered = next(group for group in tab.windows.groups if window in group)
+        windows = [w for w in windows if w is window or w not in covered]
     if len(windows) < 2:
         return
     ids = [w.id for w in windows]
