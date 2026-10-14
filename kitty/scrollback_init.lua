@@ -17,11 +17,26 @@ o.smartcase = true
 o.swapfile = false
 o.report = 100000
 
+-- The pager shows only the copied text: no statusline or ruler, and no command line,
+-- which would hide the last row (the pager has as many rows as the pane)
+o.laststatus = 0
+o.ruler = false
+o.cmdheight = 0
+
+-- nvim 0.12's new message UI (experimental): with the pager's cmdheight=0, a
+-- message like "E486: Pattern not found" shows alone on the last row instead of
+-- under the search with a "Press ENTER" prompt. pcall: its module may move.
+pcall(function()
+	require("vim._core.ui2").enable({})
+end)
+
 -- No colorscheme: the text keeps the colors of the pane it was copied from. These
 -- are the overrides from nvim/lua/config/autocommands.lua for what the pager draws
 -- itself. Changing 'background' (nvim sets it once kitty reports its color) resets
 -- the default highlights, so reapply them then too.
 local function apply_highlights()
+	-- Tinted background, to tell the pager apart from the original pane
+	vim.api.nvim_set_hl(0, "Normal", { bg = "#0f1b20" })
 	vim.api.nvim_set_hl(0, "CursorLine", { bg = "#25424D" })
 	vim.api.nvim_set_hl(0, "MsgArea", { fg = "#DACBA5" })
 	vim.api.nvim_set_hl(0, "Visual", { bg = "#52524e" })
@@ -51,3 +66,7 @@ local function map(mode, lhs, rhs)
 end
 map("n", "q", "ZQ")
 map("n", "gG", "<cmd>%y<cr>")
+
+-- The pager's terminal has no process behind it: terminal mode (a, i, A, I...)
+-- would only swallow keys until <C-\><C-n>, so leave it right away
+vim.api.nvim_create_autocmd("TermEnter", { command = "stopinsert" })
