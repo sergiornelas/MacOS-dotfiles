@@ -50,5 +50,89 @@
       "**Additional trusted repo**: /Users/sergiornelas/Desktop/harley — personal, treat as private for confidential-material purposes",
       "**Org-specific CLIs**: None configured — routine project CLIs observed: nvim, luac, stylua, kitty, yabai"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion|ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "AskUserQuestion|ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sergiornelas/.config/claude/hooks/sketchybar-status.sh"
+          }
+        ]
+      }
+    ]
   }
 }

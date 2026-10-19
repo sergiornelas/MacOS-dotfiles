@@ -102,7 +102,19 @@ sketchybar --add item  ip_address right                              \
            --add event bluetooth_change "com.apple.bluetooth.status" \
            --add item headphones right \
            --set headphones icon=  script="$PLUGIN_DIR/airpods_battery.sh" icon.color=0xFFB16286 \
-           --subscribe headphones bluetooth_change
+           --subscribe headphones bluetooth_change \
+           \
+           --add event agents_update \
+           --add item agents right \
+           --set agents icon=󰚩 update_freq=10 popup.align=right script="$PLUGIN_DIR/agents.sh" \
+                 popup.background.color=0xC01D2021 popup.background.border_color=0xFFEBDBB2 \
+                 popup.background.border_width=2 popup.background.corner_radius=9 \
+                 popup.blur_radius=20 popup.background.shadow.drawing=on \
+                 background.drawing=on background.color=0x00000000 \
+                 background.height=25 background.corner_radius=5 \
+           --subscribe agents agents_update system_woke display_change \
+                       mouse.clicked mouse.entered mouse.exited \
+                       front_app_switched window_focus space_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
