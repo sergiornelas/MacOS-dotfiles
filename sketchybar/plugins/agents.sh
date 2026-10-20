@@ -10,6 +10,7 @@
 AGENT_TABS="$HOME/.config/kitty/agent-tabs.sh"
 AUTO_STAMP="/tmp/sketchybar-agents-popup"
 AUTO_SECONDS=5.5
+SOUND_DELAY=0.4
 
 RED=0xFFFB4934
 BLUE=0xFF458588
@@ -65,10 +66,14 @@ fi
 # The Claude hook passes ATTENTION=1 when a session starts waiting for input
 # while its window is not focused: the menu pops up for a few seconds. The
 # stamp lets only the latest pop up close it, and a click cancel the close
+# afplay takes SOUND_DELAY to be heard (more over Bluetooth), the menu waits
+# that long so both show up together
 if [[ "${ATTENTION:-0}" == 1 ]] && ((COUNT > 0)); then
-  POPUP=on
   echo $$ >"$AUTO_STAMP"
+  afplay /System/Library/Sounds/Glass.aiff >/dev/null 2>&1 &
   (
+    sleep $SOUND_DELAY
+    [[ "$(cat "$AUTO_STAMP" 2>/dev/null)" == "$$" ]] && sketchybar --set "$NAME" popup.drawing=on
     sleep $AUTO_SECONDS
     if [[ "$(cat "$AUTO_STAMP" 2>/dev/null)" == "$$" ]]; then
       rm -f "$AUTO_STAMP"

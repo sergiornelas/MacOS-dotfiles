@@ -2,6 +2,8 @@
 #   "inline": each tab followed by its panes (draw_title, used by {custom} in tab_title_template)
 #   "split": panes of the active tab on the left, tabs on the right, positioned here
 #            instead of tab_bar_align because kitty's align shifts the whole line, panes included
+import re
+
 from kitty.fast_data_types import get_boss, wcswidth
 from kitty.tab_bar import as_rgb, color_as_int, draw_tab_with_fade
 
@@ -25,6 +27,42 @@ def short(title: str, limit: int) -> str:
     return title if len(title) <= limit else title[: limit - 1] + "…"
 
 
+# Claude Code prefixes its title with a small unicode glyph (✳ idle, ◐ spinner
+# while working). It is swapped for the Nerd Font Claude icon: kitty only draws
+# private use glyphs two cells wide, and only when a space follows them
+CLAUDE_ICON = " "
+CLAUDE_PREFIX = re.compile(r"^[^\w\s]+\s+")
+CLAUDE_IDLE = "✳"
+# The icon takes the place of the spinner: colored while Claude works, another
+# color when it waits for input (claude_waiting, from
+# claude/hooks/sketchybar-status.sh), the chip color when idle
+CLAUDE_WORKING_FG = 0xFABD2F
+CLAUDE_WAITING_FG = 0xFE8019
+
+
+def is_claude(w) -> bool:
+    return "claude" in w.user_vars or "claude_busy" in w.user_vars
+
+
+def pane_title(w, limit: int) -> str:
+    title = short(w.title, limit)
+    if is_claude(w):
+        title = CLAUDE_PREFIX.sub("", title)
+        title = CLAUDE_ICON + " " + title
+    return title
+
+
+def claude_icon_fg(w) -> int | None:
+    if not is_claude(w):
+        return None
+    if w.user_vars.get("claude_waiting", "0") not in ("", "0"):
+        return CLAUDE_WAITING_FG
+    prefix = CLAUDE_PREFIX.match(w.title.strip())
+    if prefix and prefix.group().strip() != CLAUDE_IDLE:
+        return CLAUDE_WORKING_FG
+    return None
+
+
 def draw_title(data: dict) -> str:
     if PANES_LAYOUT != "inline":
         return ""
@@ -37,10 +75,16 @@ def draw_title(data: dict) -> str:
     active = tab.active_window
     panes = []
     for w in tab:
-        title = f"  {short(w.title, MAX_PANE_TITLE)}  "
+        title = f"  {pane_title(w, MAX_PANE_TITLE)}  "
+        fg_code = fmt.fg.tab
         if is_active_tab:
             bg, fg = (ACTIVE_PANE_BG, ACTIVE_PANE_FG) if w is active else (PANE_BG, PANE_FG)
-            title = getattr(fmt.bg, f"_{bg:06x}") + getattr(fmt.fg, f"_{fg:06x}") + title + fmt.bg.tab + fmt.fg.tab
+            fg_code = getattr(fmt.fg, f"_{fg:06x}")
+        icon_fg = claude_icon_fg(w)
+        if icon_fg is not None:
+            title = title.replace(CLAUDE_ICON, getattr(fmt.fg, f"_{icon_fg:06x}") + CLAUDE_ICON + fg_code, 1)
+        if is_active_tab:
+            title = getattr(fmt.bg, f"_{bg:06x}") + fg_code + title + fmt.bg.tab + fmt.fg.tab
         panes.append(title)
     # inactive tabs have no chip colors, "|" takes the place of SEP to keep the same spacing
     return " " + (SEP if is_active_tab else INACTIVE_SEP).join(panes)
@@ -58,9 +102,9 @@ def pane_chips(os_window_id: int, limit: int) -> list:
     chips = []
     for w in windows:
         if w is active:
-            chips.append((f"[ {short(w.title, limit)} ]", ACTIVE_PANE_FG, ACTIVE_PANE_BG))
+            chips.append((f"[ {pane_title(w, limit)} ]", ACTIVE_PANE_FG, ACTIVE_PANE_BG))
         else:
-            chips.append((f" {short(w.title, limit)} ", PANE_FG, PANE_BG))
+            chips.append((f" {pane_title(w, limit)} ", PANE_FG, PANE_BG))
     return chips
 
 

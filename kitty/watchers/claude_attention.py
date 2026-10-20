@@ -39,6 +39,16 @@ def acknowledge(window_id: int) -> None:
     )
 
 
+def on_set_user_var(boss: Boss, window: Window, data: dict[str, Any]) -> None:
+    # kitty/tab_bar.py colors the Claude icon from these vars, a title change is
+    # the only other thing that redraws the tab bar
+    if not data.get("key", "").startswith("claude_"):
+        return
+    tm = boss.os_window_map.get(window.os_window_id)
+    if tm is not None:
+        tm.mark_tab_bar_dirty()
+
+
 def on_focus_change(boss: Boss, window: Window, data: dict[str, Any]) -> None:
     if not data.get("focused") or not waiting(window):
         return
