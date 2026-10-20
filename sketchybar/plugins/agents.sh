@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Claude Code sessions running in kitty: the label is how many, the icon turns
-# red when one needs input. Clicking toggles a popup listing them, attention
-# first; clicking a row focuses that kitty window.
+# Claude Code sessions running in kitty, hidden when there are none: the label
+# is how many, the icon turns red when one needs input. Clicking toggles a
+# popup listing them, attention first; clicking a row focuses that window.
 # Data comes from kitty/agent-tabs.sh, refreshed on agents_update, which the
 # Claude hook (claude/hooks/sketchybar-status.sh) triggers on every change.
 # The popup rows run this same script for their hover events.
 
 AGENT_TABS="$HOME/.config/kitty/agent-tabs.sh"
+AUTO_STAMP="/tmp/sketchybar-agents-popup"
+AUTO_SECONDS=5.5
 
 RED=0xFFFB4934
 BLUE=0xFF458588
@@ -40,6 +42,8 @@ esac
 POPUP=$(sketchybar --query "$NAME" | jq -r '.popup.drawing')
 if [[ "$SENDER" == "mouse.clicked" ]]; then
   [[ "$POPUP" == "on" ]] && POPUP=off || POPUP=on
+  # A click takes over a menu that popped up by itself, so it is not closed
+  rm -f "$AUTO_STAMP"
 fi
 
 WINDOWS=$("$AGENT_TABS" --json 2>/dev/null)
@@ -48,11 +52,29 @@ jq -e 'type == "array"' >/dev/null 2>&1 <<<"$WINDOWS" || WINDOWS="[]"
 COUNT=$(jq 'length' <<<"$WINDOWS")
 WAITING=$(jq '[.[] | select(.waiting > 0)] | length' <<<"$WINDOWS")
 
-COLOR=$GREY
-if ((WAITING > 0)); then
-  COLOR=$RED
-elif ((COUNT > 0)); then
-  COLOR=$BLUE
+COLOR=$BLUE
+((WAITING > 0)) && COLOR=$RED
+
+# Without sessions the whole item is hidden
+DRAWING=on
+if ((COUNT == 0)); then
+  DRAWING=off
+  POPUP=off
+fi
+
+# The Claude hook passes ATTENTION=1 when a session starts waiting for input
+# while its window is not focused: the menu pops up for a few seconds. The
+# stamp lets only the latest pop up close it, and a click cancel the close
+if [[ "${ATTENTION:-0}" == 1 ]] && ((COUNT > 0)); then
+  POPUP=on
+  echo $$ >"$AUTO_STAMP"
+  (
+    sleep $AUTO_SECONDS
+    if [[ "$(cat "$AUTO_STAMP" 2>/dev/null)" == "$$" ]]; then
+      rm -f "$AUTO_STAMP"
+      sketchybar --set "$NAME" popup.drawing=off
+    fi
+  ) >/dev/null 2>&1 &
 fi
 
 # Every row gets the width of the longest one, so the hover backgrounds line
@@ -61,7 +83,7 @@ MAX_CHARS=45
 LONGEST=$(jq --argjson max $MAX_CHARS '[.[].display_title | length] + [18] | max | [., $max] | min' <<<"$WINDOWS")
 ROW_WIDTH=$((40 + LONGEST * 8 + 16))
 
-ARGS=(--set "$NAME" label="$COUNT" icon.color="$COLOR")
+ARGS=(--set "$NAME" drawing=$DRAWING label="$COUNT" icon.color="$COLOR")
 ARGS+=(--remove '/agents\.row\..*/')
 
 row() {
@@ -98,10 +120,7 @@ while IFS=$'\t' read -r ID STATUS TITLE; do
     click_script="sketchybar --set $NAME popup.drawing=off; $AGENT_TABS --focus $ID"
 done < <(jq -r '.[] | [.id, .status, .display_title] | @tsv' <<<"$WINDOWS")
 
-if ((COUNT == 0)); then
-  row empty "-" "$GREY" "No Claude sessions"
-fi
-
 ARGS+=(--set "$NAME" popup.drawing="$POPUP")
 
-sketchybar "${ARGS[@]}"
+# Without rows the --remove regex has no match and only warns
+sketchybar "${ARGS[@]}" >/dev/null

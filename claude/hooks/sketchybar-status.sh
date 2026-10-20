@@ -26,22 +26,29 @@ event="$(jq -r '.hook_event_name // empty' <<<"$input" 2>/dev/null)"
 notification_type="$(jq -r '.notification_type // empty' <<<"$input" 2>/dev/null)"
 tool_name="$(jq -r '.tool_name // empty' <<<"$input" 2>/dev/null)"
 
-window_focused() {
-  "$kitty_bin" @ --to "$socket" ls --match "id:${KITTY_WINDOW_ID}" 2>/dev/null |
-    jq -e '.[0] as $os | ($os.is_focused and $os.tabs[0].is_focused and $os.tabs[0].windows[0].is_focused)' >/dev/null 2>&1
-}
+# ATTENTION=1 makes the sketchybar agents item pop its menu up for a moment
+popup=0
 
 publish() {
   "$kitty_bin" @ --to "$socket" set-user-vars --match "id:${KITTY_WINDOW_ID}" "$@" >/dev/null 2>&1 || return 0
-  "$sketchybar_bin" --trigger agents_update >/dev/null 2>&1 || true
+  "$sketchybar_bin" --trigger agents_update "ATTENTION=${popup}" >/dev/null 2>&1 || true
 }
 
 attention() {
   local reason="$1"
+  local window=""
 
-  if window_focused; then
+  window="$("$kitty_bin" @ --to "$socket" ls --match "id:${KITTY_WINDOW_ID}" 2>/dev/null |
+    jq -c '.[0] as $os | $os.tabs[0].windows[0] as $w
+      | {focused: ($os.is_focused and $os.tabs[0].is_focused and $w.is_focused),
+         waiting: (($w.user_vars.claude_waiting // "0") != "0")}')"
+
+  if [[ "$(jq -r '.focused' <<<"$window")" == "true" ]]; then
     publish claude_waiting=0 claude_reason=none "${@:2}"
   else
+    # Only the first request pops the menu up: a question raises attention on
+    # PreToolUse and again with its permission_prompt notification
+    [[ "$(jq -r '.waiting' <<<"$window")" == "true" ]] || popup=1
     publish claude_waiting=1 "claude_reason=${reason}" "${@:2}"
   fi
 }
