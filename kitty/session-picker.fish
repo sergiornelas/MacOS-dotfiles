@@ -1,19 +1,21 @@
-# Fuzzy session picker (cmd+/), replaces the built-in goto_session menu.
+# Fuzzy session picker (cmd+;), replaces the built-in goto_session menu.
+# Runs in a quick access panel (qat.sh), so it talks to the main kitty.
 # Lists every file in sessions/: open sessions first (most recently focused
 # on top, so enter jumps back to the previous one; the current session closes
 # the group), then the rest alphabetically. Switches via remote control.
 # Open sessions show their pane count across all their tabs.
 set sessions_dir ~/.config/kitty/sessions
+set socket (~/.config/kitty/main-socket.sh); or exit
 
 # Open sessions as "name<TAB>is_current<TAB>panes", most recently focused first.
 # A tab belongs to the session of any of its windows; panes are counted as
-# window groups, so overlays (lazygit, this picker...) don't add to the count.
-set open (kitty @ ls | jq -r '
+# window groups, so overlays (lazygit...) don't add to the count.
+set open (kitty @ --to $socket ls | jq -r '
   [.[] | . as $os | .tabs[]
     | ([.windows[].session_name // "" | select(. != "")] | first) as $name
     | select($name != null)
     | {name: $name, t: ([.windows[].last_focused_at // 0] | max),
-       cur: ($os.is_focused and .is_focused), panes: (.groups | length)}]
+       cur: ($os.last_focused and .is_active), panes: (.groups | length)}]
   | group_by(.name)
   | map({name: .[0].name, t: (map(.t) | max), cur: (map(.cur) | any), panes: (map(.panes) | add)})
   | sort_by(-.t) | .[] | "\(.name)\t\(.cur)\t\(.panes)"')
@@ -59,5 +61,6 @@ set choice (printf '%b\n' $lines | fzf --ansi --delimiter=\t --with-nth=2.. \
     string split -f1 \t)
 
 if test -n "$choice"
-    kitty @ action goto_session $sessions_dir/$choice.kitty-session
+    kitty @ --to $socket action goto_session $sessions_dir/$choice.kitty-session
+    open -a kitty
 end

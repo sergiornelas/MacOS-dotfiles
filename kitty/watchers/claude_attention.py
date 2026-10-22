@@ -1,5 +1,5 @@
 # Clears Claude Code attention once its kitty window stays focused for two
-# seconds, so the sketchybar agents item and the cmd+a picker
+# seconds, so the sketchybar agents item and the agents picker
 # (kitty/agent-tabs.sh) stop flagging it.
 # Adapted from github.com/linkarzu/dotfiles-latest (kitty/watchers).
 #

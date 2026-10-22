@@ -39,13 +39,7 @@
                 ],
                 "to_if_alone": [
                   {
-                    "key_code": "return_or_enter",
-                    "modifiers": [
-                      "left_command",
-                      "left_control",
-                      "left_option",
-                      "left_shift"
-                    ]
+                    "key_code": "f18"
                   }
                 ],
                 "type": "basic"

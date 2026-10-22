@@ -14,25 +14,43 @@ WINDOW_INFO=$(yabai -m query --windows --window)
 CURRENT_APP=$(echo "$WINDOW_INFO" | jq -r '.app')
 WINDOW_TITLE=$(echo "$WINDOW_INFO" | jq -r '.title')
 
+# kitty is named in full because sketchybar's plugins run with a bare PATH
+# (/opt/homebrew/bin, /usr/bin, ...) and it only lives inside its bundle.
+KITTY_BIN=$(command -v kitty || echo /Applications/kitty.app/Contents/MacOS/kitty)
+
+# Every pane of the kitty listening on socket $1, across its tabs, asked of
+# kitty itself. Counting distinct ttys instead counted any terminal session at
+# all: another terminal app, an ssh session, a :terminal buffer inside neovim
+# -- none of which is a kitty pane. Overlays (lazygit) count as panes of their
+# own. Prints 1 when kitty doesn't answer, hiding the count rather than
+# showing a wrong one.
+kitty_panes() {
+  local panes
+  panes=$("$KITTY_BIN" @ --to "$1" ls 2>/dev/null | jq '[.[].tabs[].windows[]] | length')
+  [[ $panes -gt 0 ]] 2>/dev/null || panes=1
+  echo "$panes"
+}
+
+# yabai can't describe the pickers' floating panel (kitty/qat.sh), which marks
+# the picker on screen with a file. The panes are the main kitty's.
+if [[ -z "$WINDOW_INFO" ]]; then
+  PICKER=""
+  if [[ -e /tmp/qat-picker-sessions.picking ]]; then
+    PICKER="Sessions"
+  elif [[ -e /tmp/qat-picker-agents.picking ]]; then
+    PICKER="Agent tabs"
+  fi
+  if [[ -n $PICKER ]]; then
+    WINDOW_TITLE="$PICKER | 󱂬 $(kitty_panes "$("$HOME/.config/kitty/main-socket.sh")")"
+  fi
+fi
+
 if [[ $CURRENT_APP = "kitty" ]]; then
-  # Every pane of this kitty, across its tabs, asked of kitty itself. Counting
-  # distinct ttys instead counted any terminal session at all: another terminal
-  # app, an ssh session, a :terminal buffer inside neovim -- none of which is a
-  # kitty pane. Overlays (lazygit) count as panes of their own, except the
-  # session picker (cmd+/, kitty/session-picker.fish): it is a transient
-  # overlay stacked on a pane, not a pane.
-  #
-  # kitty is named in full because sketchybar's plugins run with a bare PATH
-  # (/opt/homebrew/bin, /usr/bin, ...) and it only lives inside its bundle.
   # The socket is `listen_on` from kitty.conf plus the pid, and the pid is the
   # one yabai just reported for the window on screen -- so this asks the
   # instance being looked at rather than whichever one answers first.
-  KITTY_BIN=$(command -v kitty || echo /Applications/kitty.app/Contents/MacOS/kitty)
   KITTY_PID=$(echo "$WINDOW_INFO" | jq -r '.pid')
-  TERMINAL_NUM_PANES=$("$KITTY_BIN" @ --to "unix:/tmp/kitty-$KITTY_PID" ls 2>/dev/null |
-    jq '[.[].tabs[].windows[] | select(.cmdline // [] | join(" ") | contains("session-picker.fish") | not)] | length')
-  # Falls back to hiding the count rather than showing a wrong one.
-  [[ $TERMINAL_NUM_PANES -gt 0 ]] 2>/dev/null || TERMINAL_NUM_PANES=1
+  TERMINAL_NUM_PANES=$(kitty_panes "unix:/tmp/kitty-$KITTY_PID")
   if [[ $WINDOW_TITLE = "lazygit" ]]; then
     WINDOW_TITLE="git 󰂓 | 󱂬 $TERMINAL_NUM_PANES"
   elif [[ $WINDOW_TITLE == *"Grab "* ]]; then

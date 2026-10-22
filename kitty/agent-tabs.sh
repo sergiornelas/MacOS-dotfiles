@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Claude Code windows across kitty (cmd+a), attention first. Also feeds the
+# Claude Code windows across kitty (hyper+return), attention first. Also feeds the
 # sketchybar agents item (sketchybar/plugins/agents.sh).
 # Adapted from github.com/linkarzu/dotfiles-latest (kitty-opencode-sessions.sh).
 #
@@ -18,26 +18,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 kitty_bin="/Applications/kitty.app/Contents/MacOS/kitty"
 sessions_dir="$HOME/.config/kitty/sessions"
 
-# Inside kitty KITTY_LISTEN_ON points at its own socket. From outside
-# (sketchybar) take the socket owned by the main kitty process, skipping
-# sockets of other kitty instances like quick access panels.
+# Always the main kitty: this picker runs in a quick access panel (qat.sh),
+# whose KITTY_LISTEN_ON is the panel's own socket
 kitty_socket() {
-  if [[ -n "${KITTY_LISTEN_ON:-}" ]]; then
-    printf '%s\n' "$KITTY_LISTEN_ON"
-    return 0
-  fi
-
-  local sock pid command
-  for sock in /tmp/kitty-*; do
-    [[ -S "$sock" ]] || continue
-    pid="${sock##*-}"
-    command="$(ps -p "$pid" -o command= 2>/dev/null || true)"
-    if [[ "$command" == "$kitty_bin" || "$command" == "$kitty_bin "* ]]; then
-      printf 'unix:%s\n' "$sock"
-      return 0
-    fi
-  done
-  return 1
+  "$HOME/.config/kitty/main-socket.sh"
 }
 
 agent_windows() {
@@ -109,6 +93,7 @@ focus_window() {
 
 menu_lines() {
   local id status reason display_title cwd color marker
+  local tilde="~"
   local reset=$'\033[0m'
   local red=$'\033[38;2;251;73;52m'
   local blue=$'\033[38;2;131;165;152m'
@@ -137,7 +122,7 @@ menu_lines() {
     esac
 
     printf '%s\t%s%s%s %s %s  %s%s  %s%s\n' "$id" "$color" "$marker" "$reset" \
-      "$claude" "$display_title" "$gray" "${cwd/#$HOME/\~}" "$reason" "$reset"
+      "$claude" "$display_title" "$gray" "${cwd/#$HOME/$tilde}" "$reason" "$reset"
   done < <(
     agent_windows | jq -r '.[] | [.id, .status, .reason, .display_title, .cwd] | @tsv'
   )
