@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Opens a picker in a floating quick access panel (kitten quick-access-terminal),
-# from any app, kitty included, through skhd (cmd+; and hyper+return).
+# from any app, kitty included, through skhd (cmd+space and cmd+;).
 # Adapted from github.com/linkarzu/dotfiles-latest (561-skhdQatOpencode.sh).
 #
 #   qat.sh sessions   session picker (session-picker.fish)

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Claude Code windows across kitty (hyper+return), attention first. Also feeds the
+# Claude Code windows across kitty (cmd+;), attention first. Also feeds the
 # sketchybar agents item (sketchybar/plugins/agents.sh).
 # Adapted from github.com/linkarzu/dotfiles-latest (kitty-opencode-sessions.sh).
 #

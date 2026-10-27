@@ -1,4 +1,4 @@
-# Fuzzy session picker (cmd+;), replaces the built-in goto_session menu.
+# Fuzzy session picker (cmd+space), replaces the built-in goto_session menu.
 # Runs in a quick access panel (qat.sh), so it talks to the main kitty.
 # Lists every file in sessions/: open sessions first (most recently focused
 # on top, so enter jumps back to the previous one; the current session closes

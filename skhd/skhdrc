@@ -75,5 +75,5 @@ f18 : yabai -m window --focus recent
 
 # Misc
 hyper - y : yabai --restart-service
-cmd - 0x29 : $HOME/.config/kitty/qat.sh sessions
-hyper - return : $HOME/.config/kitty/qat.sh agents
+cmd - space : $HOME/.config/kitty/qat.sh sessions
+cmd - 0x29 : $HOME/.config/kitty/qat.sh agents

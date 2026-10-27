@@ -2,7 +2,7 @@
 
 # Claude Code hook that publishes session state to its kitty window as user
 # vars (claude_busy, claude_waiting, claude_reason), read by
-# kitty/agent-tabs.sh for the sketchybar agents item and the cmd+a picker.
+# kitty/agent-tabs.sh for the sketchybar agents item and the agents picker.
 # Adapted from github.com/linkarzu/dotfiles-latest (claude/hooks).
 #
 # Registered in ~/.claude/settings.json for SessionStart, UserPromptSubmit,
