@@ -42,6 +42,7 @@ set ignorecase=1
 set truncate=0
 set input_bar_bottom=0
 set copy_to_clipboard_delimited_tab=1
+set default_paste_from_clipboard_cmd="~/.config/sc-im/paste_clean.sh"
 
 # Mappings
 nnoremap "gk" "^"
@@ -68,6 +69,7 @@ nnoremap "<Space>w" ":w<cr>"
 nnoremap "ZQ" ":q!<cr>"
 nnoremap "<Space>y" ":ccopy<cr>"
 vnoremap "<Space>y" ":ccopy<cr>"
+nnoremap "<Space>p" ":cpaste<cr>"
 
 # Mappings cell style
 nnoremap "<C-n>1" ":cellcolor \"bold=1\"<cr>"
