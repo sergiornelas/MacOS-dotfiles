@@ -118,9 +118,16 @@ git config --global core.excludesfile ~/.gitignore_global
 >> zig build -Doptimize=ReleaseFast
 >> zig-out/bin/terminal-doom
 
-## Alfred karabiner mappings make it work
+## Spotlight karabiner mappings make it work
 
-Alfred Preferences > Appearance > Options > Focusing to "Compatibility Mode"
+Spotlight's frontmost bundle id is com.apple.campo (Siri AI.app), not
+com.apple.Spotlight.
+Check it in Karabiner-EventViewer > Frontmost Application.
+
+"Show Spotlight search" must be enabled in:
+System Settings > Keyboard > Keyboard Shortcuts > Spotlight
+
+left_shift + space sends right_cmd + space, since skhd takes lcmd + space (qat sessions)
 
 ## Brave browser not blocking youtube ads
 
