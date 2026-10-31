@@ -17,6 +17,9 @@ set -gx EDITOR nvim
 # Map ctrl-o for up search
 bind \co 'up-or-search'
 
+# Ask before ctrl-d closes the last kitty pane (see functions/_kitty_delete_or_exit.fish)
+bind ctrl-d _kitty_delete_or_exit
+
 # Node default version (you have to open terminal twice to apply)
 set --universal nvm_default_version lts
 

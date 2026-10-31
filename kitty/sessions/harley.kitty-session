@@ -1,4 +1,4 @@
 layout stack
 cd ~/Desktop/harley/
-launch --title "HARLEY" fish --interactive --login -c "nvim"
+launch --title "HARLEY" fish --interactive --login -c "nvim; source ~/.config/kitty/last_pane_guard.fish"
 
