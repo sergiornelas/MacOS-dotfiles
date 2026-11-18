@@ -1,8 +1,8 @@
 # bloom (built into kitty) with less glow. Defaults in parentheses.
 startgroup
     # Glow strength (0.2)
-    var float BLOOM_STRENGTH = 0.03
+    var float BLOOM_STRENGTH = 0.02
     # Minimum luminance for a pixel to glow; higher = fewer things glow (0.2)
-    var float BLOOM_THRESHOLD = 0.2
+    var float BLOOM_THRESHOLD = 0.1
     shaders bloom
 endgroup
