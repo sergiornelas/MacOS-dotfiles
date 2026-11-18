@@ -3,8 +3,8 @@
 # Claude Code sessions running in kitty, hidden when there are none: the label
 # is how many, the icon turns red when one needs input. Clicking toggles a
 # popup listing them, attention first; clicking a row focuses that window.
-# Data comes from kitty/agent-tabs.sh, refreshed on agents_update, which the
-# Claude hook (claude/hooks/sketchybar-status.sh) triggers on every change.
+# Data comes from kitty/agent-tabs.sh, refreshed on agents_update, which
+# kitty/watchers/claude_status.py triggers when a Claude status changes.
 # The popup rows run this same script for their hover events.
 
 AGENT_TABS="$HOME/.config/kitty/agent-tabs.sh"
@@ -51,7 +51,7 @@ WINDOWS=$("$AGENT_TABS" --json 2>/dev/null)
 jq -e 'type == "array"' >/dev/null 2>&1 <<<"$WINDOWS" || WINDOWS="[]"
 
 COUNT=$(jq 'length' <<<"$WINDOWS")
-WAITING=$(jq '[.[] | select(.waiting > 0)] | length' <<<"$WINDOWS")
+WAITING=$(jq '[.[] | select(.status == "attention")] | length' <<<"$WINDOWS")
 
 COLOR=$BLUE
 ((WAITING > 0)) && COLOR=$RED
@@ -63,7 +63,7 @@ if ((COUNT == 0)); then
   POPUP=off
 fi
 
-# The Claude hook passes ATTENTION=1 when a session starts waiting for input
+# The kitty watcher passes ATTENTION=1 when a session starts needing input
 # while its window is not focused: the menu pops up for a few seconds. The
 # stamp lets only the latest pop up close it, and a click cancel the close
 # afplay takes SOUND_DELAY to be heard (more over Bluetooth), the menu waits

@@ -32,16 +32,29 @@ def short(title: str, limit: int) -> str:
 # private use glyphs two cells wide, and only when a space follows them
 CLAUDE_ICON = " "
 CLAUDE_PREFIX = re.compile(r"^[^\w\s]+\s+")
-CLAUDE_IDLE = "✳"
 # The icon takes the place of the spinner: colored while Claude works, another
-# color when it waits for input (claude_waiting, from
-# claude/hooks/sketchybar-status.sh), the chip color when idle
+# color when it needs you (a question, a permission, or a turn that finished
+# while you were elsewhere), the chip color when idle. The state comes from the
+# OSC 7501 records Claude reports to kitty, the same ones
+# watchers/claude_status.py and agent-tabs.sh read; kitty redraws the tab bar
+# when they change
+CLAUDE_APP = "claude-code"
 CLAUDE_WORKING_FG = 0xFABD2F
 CLAUDE_WAITING_FG = 0xFE8019
 
 
+def claude_states(w) -> set:
+    status = getattr(w, "program_status", None)
+    if status is None:
+        return set()
+    return {r.get("state") for r in status.as_list() if r.get("app") == CLAUDE_APP}
+
+
+# claude=1 is set by nvim/lua/plugins/claudecode.lua on the windows it opens and
+# by watchers/claude_status.py on any window Claude reports from: once a done is
+# seen kitty drops it, and the window has no records left
 def is_claude(w) -> bool:
-    return "claude" in w.user_vars or "claude_busy" in w.user_vars
+    return "claude" in w.user_vars or bool(claude_states(w))
 
 
 def pane_title(w, limit: int) -> str:
@@ -52,14 +65,16 @@ def pane_title(w, limit: int) -> str:
     return title
 
 
+# Same priority as watchers/claude_status.py: background tasks still running
+# after a turn keep it working
 def claude_icon_fg(w) -> int | None:
-    if not is_claude(w):
-        return None
-    if w.user_vars.get("claude_waiting", "0") not in ("", "0"):
+    states = claude_states(w)
+    if "blocked" in states:
         return CLAUDE_WAITING_FG
-    prefix = CLAUDE_PREFIX.match(w.title.strip())
-    if prefix and prefix.group().strip() != CLAUDE_IDLE:
+    if "working" in states:
         return CLAUDE_WORKING_FG
+    if states & {"done", "error"}:
+        return CLAUDE_WAITING_FG
     return None
 
 

@@ -6,11 +6,12 @@
 #
 #   agent-tabs.sh            fzf picker, enter focuses the window
 #   agent-tabs.sh --json     agent windows as JSON
-#   agent-tabs.sh --focus ID focus window ID and clear its attention
+#   agent-tabs.sh --focus ID focus window ID
 #
-# Status comes from the user vars published by
-# claude/hooks/sketchybar-status.sh: claude_waiting (needs input), claude_busy
-# (working) and claude_reason (permission, question, done, error).
+# Status comes from the OSC 7501 records Claude Code reports to kitty
+# (program_status in `kitty @ ls`): blocked on a question/permission/auth,
+# working, done or error. kitty drops done/error once the window is seen;
+# kitty/watchers/claude_status.py refreshes sketchybar when they change.
 
 set -euo pipefail
 
@@ -36,6 +37,17 @@ agent_windows() {
     def number: try tonumber catch 0;
     def is_claude:
       any(.foreground_processes[]?.cmdline[0]? | select(type == "string"); split("/")[-1] == "claude");
+    # Same priority as kitty/watchers/claude_status.py: background tasks still
+    # running after a turn keep it working
+    def claude_status:
+      [.program_status[]? | select(.app == "claude-code")] as $records
+      | ($records | map(select(.state == "blocked")) | first) as $blocked
+      | if $blocked then {status: "attention", reason: ($blocked.kind // "input")}
+        elif any($records[]; .state == "working") then {status: "running", reason: "running"}
+        elif any($records[]; .state == "error") then {status: "attention", reason: "error"}
+        elif any($records[]; .state == "done") then {status: "attention", reason: "done"}
+        else {status: "idle", reason: "idle"}
+        end;
     [
       .[] as $os
       | $os.tabs[] as $tab
@@ -47,20 +59,16 @@ agent_windows() {
           session_name: (.session_name // ""),
           cwd: (.cwd // ""),
           focused: (($os.is_focused // false) and ($tab.is_focused // false) and (.is_focused // false)),
-          last_focused_at: (.last_focused_at // 0),
-          busy: ((.user_vars.claude_busy // "0") | number),
-          waiting: ((.user_vars.claude_waiting // "0") | number),
-          reason: (.user_vars.claude_reason // "none")
-        }
+          last_focused_at: (.last_focused_at // 0)
+        } + claude_status
       | .display_title = (
           if .session_name == "" then .title
           else "\(.session_name) | \(.title)"
           end
         )
-      | .status = (if .waiting > 0 then "attention" elif .busy > 0 then "running" else "idle" end)
     ]
     | sort_by(
-        if .waiting > 0 then 0 elif .busy > 0 then 1 else 2 end,
+        if .status == "attention" then 0 elif .status == "running" then 1 else 2 end,
         -.last_focused_at
       )
   '
@@ -81,9 +89,8 @@ focus_window() {
 
   socket="$(kitty_socket)"
   session_name="$(jq -r '.session_name' <<<"$window")"
-  "$kitty_bin" @ --to "$socket" set-user-vars --match "id:${window_id}" \
-    claude_waiting=0 claude_reason=none
-  sketchybar --trigger agents_update >/dev/null 2>&1 || true
+  # No need to clear anything: kitty drops a done/error once the window is
+  # seen, and the watcher refreshes sketchybar
   if [[ -n "$session_name" && -f "$sessions_dir/$session_name.kitty-session" ]]; then
     "$kitty_bin" @ --to "$socket" action goto_session "$sessions_dir/$session_name.kitty-session"
   fi
