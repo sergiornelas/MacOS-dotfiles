@@ -65,25 +65,9 @@ if [[ "${2:-}" == "--loop" ]]; then
 fi
 
 # A panel opens on whatever display macOS picks, not the focused one, so it
-# gets the focused display by name (output-name). yabai's display id is the
-# NSScreenNumber, whose localizedName is that name. Names are cached because
-# asking macOS takes ~0.1s.
+# gets the focused display by name (output-name), see focused-display.sh
 focused_display_name() {
-  local id cache="/tmp/qat-displays"
-  id="$(yabai -m query --displays --display 2>/dev/null | jq -r '.id')" || return 0
-  if ! grep -q "^$id"$'\t' "$cache" 2>/dev/null; then
-    osascript -l JavaScript >"$cache" <<'EOF'
-ObjC.import("AppKit")
-const screens = $.NSScreen.screens
-const lines = []
-for (let i = 0; i < screens.count; i++) {
-  const screen = screens.objectAtIndex(i)
-  lines.push(screen.deviceDescription.objectForKey("NSScreenNumber").js + "\t" + screen.localizedName.js)
-}
-lines.join("\n")
-EOF
-  fi
-  grep "^$id"$'\t' "$cache" | cut -f2
+  "$kitty_dir/focused-display.sh"
 }
 
 pid="$(pgrep -f "kitty-quick-access.*--instance-group=$group" | head -1 || true)"
