@@ -4,7 +4,7 @@
 #            instead of tab_bar_align because kitty's align shifts the whole line, panes included
 import re
 
-from kitty.fast_data_types import get_boss, wcswidth
+from kitty.fast_data_types import add_timer, get_boss, wcswidth
 from kitty.tab_bar import as_rgb, color_as_int, draw_tab_with_fade
 
 PANES_LAYOUT = "inline"
@@ -100,23 +100,69 @@ def foreground_names(w) -> set:
         processes = w.child.foreground_processes
     except Exception:
         return set()
-    return {program_name(p.get("cmdline") or []) for p in processes}
+    return {name for name in (program_name(p.get("cmdline") or []) for p in processes) if name}
+
+
+# A pane still settling (being created, or its shell starting up without a
+# prompt yet, as in `fish -c nvim` from the session files) gets nothing that
+# would redraw the tab bar once its program runs: no title change, no command
+# reported. So it is checked again every RECHECK_DELAY seconds until it
+# settles, at most RECHECK_TRIES times.
+RECHECK_DELAY = 0.25
+RECHECK_TRIES = 12
+# window id -> checks left; windows with a check pending
+recheck_tries: dict = {}
+recheck_pending: set = set()
+
+
+def recheck_later(w) -> None:
+    left = recheck_tries.get(w.id, RECHECK_TRIES)
+    if w.id in recheck_pending or left <= 0:
+        return
+    recheck_tries[w.id] = left - 1
+    recheck_pending.add(w.id)
+    window_id, os_window_id = w.id, w.os_window_id
+
+    def recheck(timer_id) -> None:
+        recheck_pending.discard(window_id)
+        tm = get_boss().os_window_map.get(os_window_id)
+        if tm is not None:
+            tm.mark_tab_bar_dirty()
+
+    add_timer(recheck, RECHECK_DELAY, False)
+
+
+# window id -> title last shown for it, see pane_title
+last_titles: dict = {}
 
 
 def pane_title(w, limit: int) -> str:
-    if not is_claude(w):
-        if at_shell_prompt(w):
-            return SHELL_TITLE
-        names = foreground_names(w)
-        for program, title in PROGRAM_TITLES:
-            if program in names:
-                return title
-        if names and names <= SHELLS:
-            return SHELL_TITLE
-    title = short(w.title, limit)
     if is_claude(w):
-        title = CLAUDE_PREFIX.sub("", title)
-        title = CLAUDE_ICON + " " + title
+        return CLAUDE_ICON + " " + CLAUDE_PREFIX.sub("", short(w.title, limit))
+    settled = True
+    if at_shell_prompt(w):
+        title = SHELL_TITLE
+    else:
+        names = foreground_names(w)
+        if not names:
+            # The pane's processes can't be read: it is just being created, or
+            # the shell is starting a program. Keep what the pane showed rather
+            # than flash its fixed --title, and don't remember this guess
+            recheck_later(w)
+            return last_titles.get(w.id) or short(w.title, limit)
+        if names <= SHELLS:
+            title = SHELL_TITLE
+            settled = False
+        else:
+            title = next((t for program, t in PROGRAM_TITLES if program in names), None)
+            if title is None:
+                title = short(w.title, limit)
+    if settled:
+        # the next time it changes it gets all its checks again
+        recheck_tries.pop(w.id, None)
+    else:
+        recheck_later(w)
+    last_titles[w.id] = title
     return title
 
 
