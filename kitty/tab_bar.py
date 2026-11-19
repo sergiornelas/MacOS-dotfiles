@@ -203,9 +203,7 @@ def session_label(os_window_id: int) -> str:
         w for t in tm for w in t
         if w.effective_session_name == name and getattr(w, "override_title", None)
     ]
-    if titled:
-        return min(titled, key=lambda w: w.id).override_title.strip()
-    return name
+    return min(titled, key=lambda w: w.id).override_title.strip() if titled else name
 
 
 def draw_session(draw_data, screen) -> None:
@@ -222,6 +220,29 @@ def draw_session(draw_data, screen) -> None:
     c.fg, c.bg, c.bold = fg, bg, bold
 
 
+# How many sessions are open, as a chip at the far right, only when there is
+# more than the current one. Only in the inline layout: in split the tabs are there
+SESSIONS_ICON = "\U000F0328"
+
+
+def draw_session_count(draw_data, screen) -> None:
+    count = len(set(get_boss().all_loaded_session_names))
+    if count < 2:
+        return
+    text = f" {SESSIONS_ICON} {count} "
+    # After the last tab kitty erases the line from the cursor on, so the chip
+    # stops one cell short of the edge and the cursor is left on that cell
+    start = screen.columns - wcswidth(text) - 1
+    c = screen.cursor
+    if start <= c.x:
+        return
+    fg, bg, bold = c.fg, c.bg, c.bold
+    c.x = start
+    c.fg, c.bg, c.bold = as_rgb(SESSION_FG), as_rgb(SESSION_BG), True
+    screen.draw(text)
+    c.fg, c.bg, c.bold = fg, bg, bold
+
+
 def draw_tab(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data) -> int:
     if PANES_LAYOUT == "inline":
         # also in the measuring pass, so the first tab's width includes the chip
@@ -229,7 +250,10 @@ def draw_tab(draw_data, screen, tab, before, max_tab_length, index, is_last, ext
             screen.cursor.x = before
             draw_session(draw_data, screen)
             before = screen.cursor.x
-        return draw_tab_with_fade(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data)
+        end = draw_tab_with_fade(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data)
+        if is_last and not extra_data.for_layout:
+            draw_session_count(draw_data, screen)
+        return end
     widths = tab_widths.setdefault(draw_data.os_window_id, {})
     # for_layout is kitty's measuring pass: each tab is drawn alone from column 0
     if extra_data.for_layout:
