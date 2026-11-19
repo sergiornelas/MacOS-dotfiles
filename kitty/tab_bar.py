@@ -57,7 +57,48 @@ def is_claude(w) -> bool:
     return "claude" in w.user_vars or bool(claude_states(w))
 
 
+# A pane sitting at the shell prompt (nothing running: no nvim, lazygit...)
+# shows this instead of the cwd. at_prompt comes from kitty's shell integration
+# (OSC 133 marks), so a program started straight without a shell keeps its title
+SHELL_TITLE = "terminal \U000F018D"
+
+
+def at_shell_prompt(w) -> bool:
+    try:
+        return bool(w.at_prompt)
+    except Exception:
+        return False
+
+
+# A pane running one of these programs shows its title instead of the cwd. All
+# the foreground processes are checked, not just the group leader: lazygit runs
+# under lazygit-toggle-full-screen.fish (see open_lazygit.py). First match wins,
+# so lazygit goes before nvim, which it can spawn as its editor
+PROGRAM_TITLES = (
+    ("lazygit", "Lazygit \U000F0093"),
+    ("nvim", "Nvim \U000F0880"),
+)
+
+
+def program_title(w) -> str | None:
+    try:
+        processes = w.child.foreground_processes
+    except Exception:
+        return None
+    names = {(p.get("cmdline") or [""])[0].rsplit("/", 1)[-1] for p in processes}
+    for program, title in PROGRAM_TITLES:
+        if program in names:
+            return title
+    return None
+
+
 def pane_title(w, limit: int) -> str:
+    if not is_claude(w):
+        if at_shell_prompt(w):
+            return SHELL_TITLE
+        title = program_title(w)
+        if title is not None:
+            return title
     title = short(w.title, limit)
     if is_claude(w):
         title = CLAUDE_PREFIX.sub("", title)
@@ -136,7 +177,6 @@ def draw_panes(draw_data, screen, available: int) -> None:
         return
     c = screen.cursor
     default_bg = as_rgb(color_as_int(draw_data.default_bg))
-    c.x = 0
     for i, (text, fg, bg) in enumerate(chips):
         if i:
             c.bg = default_bg
@@ -145,8 +185,50 @@ def draw_panes(draw_data, screen, available: int) -> None:
         screen.draw(text)
 
 
+# The active session is shown as a chip at the far left. Its label is the
+# --title of the session file's first titled launch (pane titles no longer show
+# it, they show the program instead), else the session file's name
+SESSION_BG = 0x182A8F
+SESSION_FG = 0xEBDBB2
+
+
+def session_label(os_window_id: int) -> str:
+    tm = get_boss().os_window_map.get(os_window_id)
+    tab = tm.active_tab if tm is not None else None
+    w = tab.active_window if tab is not None else None
+    name = w.effective_session_name if w is not None else ""
+    if not name:
+        return ""
+    titled = [
+        w for t in tm for w in t
+        if w.effective_session_name == name and getattr(w, "override_title", None)
+    ]
+    if titled:
+        return min(titled, key=lambda w: w.id).override_title.strip()
+    return name
+
+
+def draw_session(draw_data, screen) -> None:
+    label = session_label(draw_data.os_window_id)
+    if not label:
+        return
+    # restore the cursor colors that kitty set up for the first tab
+    c = screen.cursor
+    fg, bg, bold = c.fg, c.bg, c.bold
+    c.fg, c.bg, c.bold = as_rgb(SESSION_FG), as_rgb(SESSION_BG), True
+    screen.draw(f" {label} ")
+    c.bg, c.bold = as_rgb(color_as_int(draw_data.default_bg)), False
+    screen.draw(" ")
+    c.fg, c.bg, c.bold = fg, bg, bold
+
+
 def draw_tab(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data) -> int:
     if PANES_LAYOUT == "inline":
+        # also in the measuring pass, so the first tab's width includes the chip
+        if index == 1:
+            screen.cursor.x = before
+            draw_session(draw_data, screen)
+            before = screen.cursor.x
         return draw_tab_with_fade(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data)
     widths = tab_widths.setdefault(draw_data.os_window_id, {})
     # for_layout is kitty's measuring pass: each tab is drawn alone from column 0
@@ -162,7 +244,9 @@ def draw_tab(draw_data, screen, tab, before, max_tab_length, index, is_last, ext
             # draw_panes changes the cursor colors that kitty set up for this tab
             c = screen.cursor
             fg, bg, bold = c.fg, c.bg, c.bold
-            draw_panes(draw_data, screen, start - 1)
+            c.x = 0
+            draw_session(draw_data, screen)
+            draw_panes(draw_data, screen, start - 1 - c.x)
             c.fg, c.bg, c.bold = fg, bg, bold
             c.x = before = start
     return draw_tab_with_fade(draw_data, screen, tab, before, max_tab_length, index, is_last, extra_data)
