@@ -3,8 +3,9 @@
 # something it tracks changes, such as the title. fish reports a command and
 # sets the title before the program is exec'd, so that redraw still sees fish,
 # and nvim never sets the title afterwards. This redraws the tab bar again a
-# moment after the shell integration reports a command starting. Not when it
-# stops: back at the prompt fish sets the title, and that redraws on its own.
+# moment after the shell integration reports a command starting (and stopping,
+# see on_cmd_startstop). A pane that reports nothing, such as a session's
+# `fish -c nvim`, is rechecked by tab_bar.py itself.
 
 from typing import Any
 
@@ -28,17 +29,10 @@ def refresh_soon(window: Window) -> None:
         add_timer(lambda timer_id: refresh_tab_bar(os_window_id), delay, False)
 
 
-# With a fixed --title (session files) kitty does not redraw the tab bar when
-# the program sets the title, it only tells the watchers. fish sets it at every
-# prompt and when it starts a program, so this is what renames a session's pane
-# once its shell or its program (fish -c nvim) is running: no command is
-# reported for either. Not right away: at that moment the program may still be
-# starting and its process can't be read.
-def on_title_change(boss: Boss, window: Window, data: dict[str, Any]) -> None:
-    if data.get("from_child") and window.override_title is not None:
-        refresh_soon(window)
-
-
+# When a command stops, fish sets the title back at the prompt and that redraws
+# on its own, except with a fixed --title (session files): then kitty does not
+# redraw when the program sets the title, so the pane would keep showing the
+# program that just exited.
 def on_cmd_startstop(boss: Boss, window: Window, data: dict[str, Any]) -> None:
-    if data.get("is_start"):
+    if data.get("is_start") or window.override_title is not None:
         refresh_soon(window)
