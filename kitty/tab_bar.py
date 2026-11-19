@@ -57,10 +57,16 @@ def is_claude(w) -> bool:
     return "claude" in w.user_vars or bool(claude_states(w))
 
 
-# A pane sitting at the shell prompt (nothing running: no nvim, lazygit...)
-# shows this instead of the cwd. at_prompt comes from kitty's shell integration
-# (OSC 133 marks), so a program started straight without a shell keeps its title
+# A pane sitting in the shell (nothing running: no nvim, lazygit...) shows this
+# instead of the cwd. at_prompt comes from kitty's shell integration (OSC 133
+# marks), but a new pane is drawn before its shell prints the first prompt, and
+# with a fixed --title (session files) nothing redraws it when the prompt shows
+# up. So a pane whose only foreground processes are shells counts as well,
+# including what kitty starts the shell through on macOS: /usr/bin/login runs
+# `kitten run-shell`, which then becomes the shell, and that is what a new pane
+# has in the foreground when it is first drawn.
 SHELL_TITLE = "terminal \U000F018D"
+SHELLS = {"fish", "zsh", "bash", "sh", "login", "kitten run-shell"}
 
 
 def at_shell_prompt(w) -> bool:
@@ -80,25 +86,33 @@ PROGRAM_TITLES = (
 )
 
 
-def program_title(w) -> str | None:
+# name of a process: a login shell's argv[0] is "-fish"; kitten keeps its
+# subcommand, since only `kitten run-shell` is part of starting the shell
+def program_name(cmdline: list) -> str:
+    name = (cmdline or [""])[0].rsplit("/", 1)[-1].lstrip("-")
+    if name == "kitten" and len(cmdline) > 1:
+        name += " " + cmdline[1]
+    return name
+
+
+def foreground_names(w) -> set:
     try:
         processes = w.child.foreground_processes
     except Exception:
-        return None
-    names = {(p.get("cmdline") or [""])[0].rsplit("/", 1)[-1] for p in processes}
-    for program, title in PROGRAM_TITLES:
-        if program in names:
-            return title
-    return None
+        return set()
+    return {program_name(p.get("cmdline") or []) for p in processes}
 
 
 def pane_title(w, limit: int) -> str:
     if not is_claude(w):
         if at_shell_prompt(w):
             return SHELL_TITLE
-        title = program_title(w)
-        if title is not None:
-            return title
+        names = foreground_names(w)
+        for program, title in PROGRAM_TITLES:
+            if program in names:
+                return title
+        if names and names <= SHELLS:
+            return SHELL_TITLE
     title = short(w.title, limit)
     if is_claude(w):
         title = CLAUDE_PREFIX.sub("", title)

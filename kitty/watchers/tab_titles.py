@@ -22,6 +22,15 @@ def refresh_tab_bar(os_window_id: int) -> None:
         tm.mark_tab_bar_dirty()
 
 
+# With a fixed --title (session files) kitty does not redraw the tab bar when
+# the program sets the title, it only tells the watchers. fish sets it at every
+# prompt, so this is what renames a session's plain shell pane to "terminal"
+# once it has started: no command is reported for it.
+def on_title_change(boss: Boss, window: Window, data: dict[str, Any]) -> None:
+    if data.get("from_child") and window.override_title is not None:
+        refresh_tab_bar(window.os_window_id)
+
+
 def on_cmd_startstop(boss: Boss, window: Window, data: dict[str, Any]) -> None:
     if not data.get("is_start"):
         return
