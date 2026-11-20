@@ -61,12 +61,15 @@ def is_claude(w) -> bool:
 # instead of the cwd. at_prompt comes from kitty's shell integration (OSC 133
 # marks), but a new pane is drawn before its shell prints the first prompt, and
 # with a fixed --title (session files) nothing redraws it when the prompt shows
-# up. So a pane whose only foreground processes are shells counts as well,
-# including what kitty starts the shell through on macOS: /usr/bin/login runs
-# `kitten run-shell`, which then becomes the shell, and that is what a new pane
-# has in the foreground when it is first drawn.
+# up. So a pane whose only foreground processes are interactive shells counts
+# as well, including what kitty starts the shell through on macOS:
+# /usr/bin/login runs `kitten run-shell`, which then becomes the shell, and
+# that is what a new pane has in the foreground when it is first drawn. A shell
+# running a command or a script (fish -c ..., lazygit-toggle-full-screen.fish)
+# is not a terminal: it is starting something, see shell_job.
 SHELL_TITLE = "terminal \U000F018D"
-SHELLS = {"fish", "zsh", "bash", "sh", "login", "kitten run-shell"}
+SHELLS = {"fish", "zsh", "bash", "sh"}
+SHELL_STARTERS = {"login", "kitten run-shell"}
 
 
 def at_shell_prompt(w) -> bool:
@@ -95,12 +98,44 @@ def program_name(cmdline: list) -> str:
     return name
 
 
-def foreground_names(w) -> set:
+def foreground_cmdlines(w) -> list:
     try:
         processes = w.child.foreground_processes
     except Exception:
-        return set()
-    return {name for name in (program_name(p.get("cmdline") or []) for p in processes) if name}
+        return []
+    return [c for c in (p.get("cmdline") or [] for p in processes) if program_name(c)]
+
+
+# What a shell process runs: "" when it is interactive, else its -c command or
+# its script. None when it is not a shell. -C (init command, as in the
+# terminals session's `fish -ilC "pnpm dev"`) still leaves it interactive.
+def shell_job(cmdline: list) -> str | None:
+    name = program_name(cmdline)
+    if name in SHELL_STARTERS:
+        return ""
+    if name not in SHELLS:
+        return None
+    args = iter(cmdline[1:])
+    for arg in args:
+        if arg.startswith("--command="):
+            return arg.split("=", 1)[1]
+        if arg.startswith("--"):
+            if arg == "--command":
+                return next(args, "")
+            if arg == "--init-command":
+                next(args, None)
+        elif arg.startswith("-"):
+            if "c" in arg[1:]:
+                return next(args, "")
+            if "C" in arg[1:]:
+                next(args, None)
+        else:
+            return arg
+    return ""
+
+
+def program_title(names) -> str | None:
+    return next((t for program, t in PROGRAM_TITLES if program in names), None)
 
 
 # A pane still settling (being created, or its shell starting up without a
@@ -136,6 +171,23 @@ def recheck_later(w) -> None:
 last_titles: dict = {}
 
 
+# A pane starting something: its processes can't be read yet (it is just being
+# created, or its shell is starting a program), or only a shell running a
+# command or a script is there. Rather than flash a wrong title it keeps what
+# it showed, else names the program it is about to run: the first word of the
+# -c command (a session's `fish -c "nvim; ..."`), or its window title
+# (open_lazygit.py launches with --title=lazygit), else shows its title.
+def starting_title(w, cmdlines: list, limit: int) -> str:
+    if w.id in last_titles:
+        return last_titles[w.id]
+    words = {w.title.strip().lower()}
+    for cmdline in cmdlines:
+        job = shell_job(cmdline) or ""
+        first = re.split(r"[\s;&|]+", job.strip(), maxsplit=1)[0]
+        words.add(first.rsplit("/", 1)[-1])
+    return program_title(words) or short(w.title, limit)
+
+
 def pane_title(w, limit: int) -> str:
     if is_claude(w):
         return CLAUDE_ICON + " " + CLAUDE_PREFIX.sub("", short(w.title, limit))
@@ -143,20 +195,20 @@ def pane_title(w, limit: int) -> str:
     if at_shell_prompt(w):
         title = SHELL_TITLE
     else:
-        names = foreground_names(w)
-        if not names:
-            # The pane's processes can't be read: it is just being created, or
-            # the shell is starting a program. Keep what the pane showed rather
-            # than flash its fixed --title, and don't remember this guess
-            recheck_later(w)
-            return last_titles.get(w.id) or short(w.title, limit)
-        if names <= SHELLS:
+        cmdlines = foreground_cmdlines(w)
+        jobs = [shell_job(c) for c in cmdlines]
+        title = program_title({program_name(c) for c in cmdlines})
+        if title is None and None in jobs:
+            # some other program: its own title
+            title = short(w.title, limit)
+        elif title is None and jobs and not any(jobs):
+            # interactive shell, no prompt yet
             title = SHELL_TITLE
             settled = False
-        else:
-            title = next((t for program, t in PROGRAM_TITLES if program in names), None)
-            if title is None:
-                title = short(w.title, limit)
+        elif title is None:
+            # a guess, not remembered: what it settles on replaces it
+            recheck_later(w)
+            return starting_title(w, cmdlines, limit)
     if settled:
         # the next time it changes it gets all its checks again
         recheck_tries.pop(w.id, None)
