@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 # Opens a picker in a floating quick access panel (kitten quick-access-terminal),
-# from any app, kitty included, through skhd (cmd+space and cmd+;).
+# from any app, kitty included, through skhd (cmd+;).
 # Adapted from github.com/linkarzu/dotfiles-latest (561-skhdQatOpencode.sh).
 #
-#   qat.sh sessions   session picker (session-picker.fish)
 #   qat.sh agents     Claude Code agents picker (agent-tabs.sh)
 #
 # The panel hides when the picker exits (enter or esc), and pressing the key
@@ -21,9 +20,9 @@ kitten_bin="/Applications/kitty.app/Contents/MacOS/kitten"
 kitty_dir="$HOME/.config/kitty"
 
 case "${1:-}" in
-sessions | agents) ;;
+agents) ;;
 *)
-  echo "usage: qat.sh sessions|agents" >&2
+  echo "usage: qat.sh agents" >&2
   exit 1
   ;;
 esac
@@ -37,7 +36,6 @@ picking="/tmp/qat-$group.picking"
 # only has the main kitty's environment, which never went through fish
 picker() {
   case "$1" in
-  sessions) fish "$kitty_dir/session-picker.fish" ;;
   agents) fish -c "$kitty_dir/agent-tabs.sh" ;;
   esac
 }
