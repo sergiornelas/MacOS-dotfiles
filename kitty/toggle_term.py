@@ -9,14 +9,14 @@ FULLSCREEN_ZOOM = os.path.join(config_dir, "fullscreen_zoom.sh")
 def main(args):
     pass
 
-# Full size when showing the split / restore when going back to stack (see
-# fullscreen_zoom.sh). Runs in the background without waiting: the kitten runs on
-# kitty's main thread, and yabai asks kitty (accessibility) about the window; if kitty
-# waits for yabai, neither makes progress until the timeout.
-def fullscreen_zoom(action):
+# Full size when showing the split (see fullscreen_zoom.sh). Runs in the background
+# without waiting: the kitten runs on kitty's main thread, and yabai asks kitty
+# (accessibility) about the window; if kitty waits for yabai, neither makes progress
+# until the timeout.
+def fullscreen_zoom():
     try:
         subprocess.Popen(
-            [FULLSCREEN_ZOOM, action],
+            [FULLSCREEN_ZOOM],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True,
         )
     except Exception:
@@ -42,7 +42,7 @@ def toggle_term(boss, window):
         return
     else:
         if tab.current_layout.name == "stack":
-            fullscreen_zoom("ensure")
+            fullscreen_zoom()
             tab.last_used_layout()
             if tab.current_layout.name == "tall":
                 tab.neighboring_window("right")
@@ -54,7 +54,6 @@ def toggle_term(boss, window):
             if tab.current_layout.name == "fat":
                 tab.neighboring_window("top")
             tab.goto_layout("stack")
-            fullscreen_zoom("restore")
 
 @result_handler(no_ui=True)
 def handle_result(args, result, target_window_id, boss):
