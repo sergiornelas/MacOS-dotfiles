@@ -1,3 +1,0 @@
-layout stack
-cd ~/Desktop/harley/hd-igniter/
-launch --title "Igniter"

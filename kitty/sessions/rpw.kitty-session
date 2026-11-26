@@ -1,3 +1,0 @@
-layout stack
-cd ~/Desktop/harley/hd-rpw-app/
-launch --title "RPW"
