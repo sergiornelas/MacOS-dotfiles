@@ -102,6 +102,25 @@ local function lazygit_alive(ctx, block_id)
 	return proc ~= nil and proc.child ~= nil and proc.last_exit == nil
 end
 
+-- Pone la ventana de Rex a tamaño completo con yabai (lo mismo que hyper - l) si
+-- no lo está. Nunca la devuelve a su tamaño, igual que kitty/fullscreen_zoom.sh.
+-- Solo toca la ventana enfocada si es de Rex.
+local YABAI = "/opt/homebrew/bin/yabai"
+
+local function ensure_fullscreen_zoom()
+	local r = rex.exec({ YABAI, "-m", "query", "--windows", "--window" }, { timeout = 2 })
+	if not (r and r.ok) then
+		return
+	end
+	local ok, win = pcall(rex.json.decode, r.stdout)
+	if not ok or type(win) ~= "table" or win.app ~= "Rex" or not win.id then
+		return
+	end
+	if win["has-fullscreen-zoom"] == false then
+		rex.exec({ YABAI, "-m", "window", string.format("%d", win.id), "--toggle", "zoom-fullscreen" }, { timeout = 2 })
+	end
+end
+
 local function find_lazygit_layer(window)
 	for _, layer in ipairs(window.layers or {}) do
 		if layer.kind ~= "tiled" then
@@ -159,6 +178,7 @@ rex.action({
 				if window.focused_block_id and not focused then
 					save_origin(lazygit_block, window.focused_block_id)
 				end
+				ensure_fullscreen_zoom()
 				rex.session.set_layer_state({ layer_id = layer.layer_id, state = "normal", focus = true })
 			end
 			return
@@ -169,6 +189,7 @@ rex.action({
 		if cwd and cwd ~= "" then
 			options.cwd = cwd
 		end
+		ensure_fullscreen_zoom()
 		local origin = ctx.block_id or window.focused_block_id
 		local created, new_err = rex.session.new_layer({
 			window_id = window.window_id,
