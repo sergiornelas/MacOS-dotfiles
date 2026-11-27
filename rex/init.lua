@@ -43,8 +43,10 @@ end
 -- Corre lazygit y, si sale bien (`q`), enfoca el panel de origen antes de que la
 -- capa se cierre, para que Rex no mande el foco a otro panel. Si falla, conserva
 -- el código de salida y el panel queda mostrando el error.
+-- rex/lazygit.yml se carga encima del config.yml normal: cambia `e` para que abra
+-- el archivo en el nvim de la pestaña (rex/lazygit-edit.fish).
 local LAZYGIT_WRAPPER = [[
-lazygit
+lazygit --use-config-file "$(lazygit --print-config-dir)/config.yml,$HOME/.config/rex/lazygit.yml"
 status=$?
 file="/tmp/rex-lazygit-${REX_BLOCK#block:}"
 if [ "$status" -eq 0 ] && [ -s "$file" ]; then
@@ -189,3 +191,117 @@ rex.action({
 })
 
 rex.bind("tab", "lazygit_toggle")
+
+-- `e` en lazygit: abrir el archivo en el nvim de la pestaña, no dentro del flotante.
+-- Lo usa rex/lazygit-edit.fish, que corre dentro del panel de lazygit
+-- (ctx.block_id es ese panel):
+--   rex do lazygit_editors              los nvim candidatos
+--   rex do lazygit_show_editor ...      minimizar lazygit y enfocar el editor
+
+local function window_of(view, block_id)
+	for _, w in ipairs(view.windows or {}) do
+		for _, layer in ipairs(w.layers or {}) do
+			for _, b in ipairs(layer.blocks or {}) do
+				if b.block_id == block_id then
+					return w, layer
+				end
+			end
+		end
+	end
+end
+
+local function nvim_in(ctx, block_id)
+	local proc = terminal_call(ctx, block_id, "process")
+	local fg = proc and proc.foreground
+	if fg and fg.name == "nvim" then
+		return { block_id = block_id, pid = fg.pid, cwd = fg.cwd }
+	end
+end
+
+rex.action({
+	name = "lazygit_editors",
+	title = "Lazygit: Editors",
+	description = "Los nvim de la pestaña de lazygit: primero el del panel de origen, luego los demás.",
+	category = "Lazygit",
+	run = function(ctx)
+		local editors = {}
+		local view = rex.session.view({})
+		local window, layer = window_of(view or {}, ctx.block_id)
+		if not window then
+			return { editors = editors }
+		end
+		local seen = {}
+		local function add(block_id)
+			if block_id and not seen[block_id] and block_id ~= ctx.block_id then
+				seen[block_id] = true
+				local nvim = nvim_in(ctx, block_id)
+				if nvim then
+					editors[#editors + 1] = nvim
+				end
+			end
+		end
+		add(read_origin(ctx.block_id))
+		for _, l in ipairs(window.layers or {}) do
+			if l.layer_id ~= layer.layer_id then
+				for _, b in ipairs(l.blocks or {}) do
+					add(b.block_id)
+				end
+			end
+		end
+		return { editors = editors }
+	end,
+})
+
+rex.action({
+	name = "lazygit_show_editor",
+	title = "Lazygit: Show Editor",
+	description = "Minimiza lazygit y enfoca block_id; sin block_id, abre argv en un split junto al panel de origen.",
+	category = "Lazygit",
+	args = { block_id = "string?", argv = "array?", cwd = "string?" },
+	run = function(ctx, args)
+		args = args or {}
+		local view = rex.session.view({})
+		local window, layer = window_of(view or {}, ctx.block_id)
+		if not window then
+			return
+		end
+
+		local target = args.block_id
+		if not target and args.argv then
+			local anchor = read_origin(ctx.block_id)
+			if not anchor or not window_of(view, anchor) then
+				anchor = nil
+				for _, l in ipairs(window.layers or {}) do
+					if l.kind == "tiled" and l.blocks and l.blocks[1] then
+						anchor = l.blocks[1].block_id
+					end
+				end
+			end
+			local created, err = rex.session.new_split({
+				anchor_id = anchor,
+				window_id = (not anchor) and window.window_id or nil,
+				direction = "horizontal",
+				side = "after",
+				layout = {
+					block = {
+						flavor = "com.superlogical.terminal.shell",
+						label = "nvim",
+						options = { command = args.argv, cwd = args.cwd },
+					},
+				},
+			})
+			if err then
+				rex.log("error", "lazygit_show_editor: " .. tostring(err))
+				return
+			end
+			target = created.block_ids and created.block_ids[1]
+		end
+
+		if layer.kind ~= "tiled" then
+			rex.session.set_layer_state({ layer_id = layer.layer_id, state = "minimized" })
+		end
+		if target then
+			rex.session.focus_block({ block_id = target })
+		end
+	end,
+})
