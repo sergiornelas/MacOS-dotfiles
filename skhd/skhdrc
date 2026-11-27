@@ -76,7 +76,7 @@ f18 : yabai -m window --focus recent
 # Misc
 hyper - y : yabai --restart-service
 cmd - 0x29 : $HOME/.config/kitty/qat.sh agents
-lcmd - space [
+lcmd - k [
   "kitty" : /Applications/kitty.app/Contents/MacOS/kitty @ --to "$($HOME/.config/kitty/main-socket.sh)" action session_picker
   *       ~
 ]

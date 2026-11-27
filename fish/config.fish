@@ -44,6 +44,3 @@ set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 set PATH $PATH /Users/sergiornelas/.local/bin
 
 set -U fish_user_paths ~/.local/bin $fish_user_paths
-
-set -gx LAZYGIT_CONFLICT_SYNTAX_THEME vulcan
-
