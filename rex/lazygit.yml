@@ -1,12 +1,12 @@
-# Solo para lazygit dentro de Rex. rex/init.lua (lazygit_toggle) lo lanza con
-#   lazygit --use-config-file "<config.yml normal>,<este archivo>"
-# así que esto solo pisa lo de abajo; el resto sale del config.yml de siempre.
+# Only for lazygit inside Rex. rex/lazygit.lua (lazygit_toggle) launches it with
+#   lazygit --use-config-file "<usual config.yml>,<this file>"
+# so this only overrides what's below; the rest comes from the usual config.yml.
 #
-# `e` abre el archivo en el nvim de la pestaña, no dentro del flotante. Ver
+# `e` opens the file in the tab's nvim, not inside the float. See
 # rex/lazygit-edit.fish.
 os:
   edit: 'fish -N $HOME/.config/rex/lazygit-edit.fish {{filename}}'
   editAtLine: 'fish -N $HOME/.config/rex/lazygit-edit.fish --line {{line}} {{filename}}'
   openDirInEditor: 'fish -N $HOME/.config/rex/lazygit-edit.fish {{dir}}'
-  # El script nunca necesita la terminal de lazygit: no suspenderlo.
+  # The script never needs lazygit's terminal: don't suspend it.
   editInTerminal: false

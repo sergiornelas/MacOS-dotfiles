@@ -1,9 +1,9 @@
--- Abre archivos en un nvim que ya está corriendo, por su socket. Lo usa
+-- Opens files in an nvim that's already running, through its socket. Used by
 -- rex/lazygit-edit.fish:
 --
---   nvim -u NONE -l lazygit-open.lua <socket> [--line N] <archivo>...
+--   nvim -u NONE -l lazygit-open.lua <socket> [--line N] <file>...
 --
--- Sale con 0 si el nvim recibió los archivos y con 1 si no.
+-- Exits 0 if that nvim received the files and 1 if not.
 
 local sock = arg[1]
 local line
@@ -21,8 +21,8 @@ end
 
 local OPEN = [[
     local paths, lnum = ...
-    -- Abrir en una ventana normal: en una flotante, el archivo desaparecería
-    -- con lo que cierre esa flotante.
+    -- Land in a normal window: in a floating one, the file would go away with
+    -- whatever closes that float.
     if vim.api.nvim_win_get_config(0).relative ~= '' then
         for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
             if vim.api.nvim_win_get_config(win).relative == '' then
@@ -50,6 +50,6 @@ if sock and #files > 0 then
 	end
 end
 
--- cquit y no os.exit: cquit hace el cierre normal de nvim, que borra el socket
--- de este nvim temporal.
+-- cquit, not os.exit: cquit runs nvim's normal shutdown, which removes this
+-- throwaway nvim's socket.
 vim.cmd("cquit " .. (delivered and 0 or 1))

@@ -1,9 +1,8 @@
--- Helpers compartidos por init.lua (lazygit) y claude.lua. Se carga con
--- require("util").
+-- Helpers shared by lazygit.lua and claude.lua. Loaded with require("util").
 
 local M = {}
 
--- Llama un método del terminal de un bloque (process, pwd, format, write...).
+-- Calls a terminal method on a block (process, pwd, format, write...).
 function M.terminal_call(ctx, block_id, method, args)
 	return rex.call("com.superlogical.terminal." .. method, {
 		session_id = ctx.session_id,
@@ -12,7 +11,7 @@ function M.terminal_call(ctx, block_id, method, args)
 	})
 end
 
--- La ventana (pestaña) y la capa que contienen un bloque.
+-- The window (tab) and layer that hold a block.
 function M.window_of(view, block_id)
 	for _, w in ipairs((view or {}).windows or {}) do
 		for _, layer in ipairs(w.layers or {}) do
@@ -25,7 +24,7 @@ function M.window_of(view, block_id)
 	end
 end
 
--- { block_id, pid, cwd } si el programa en primer plano del bloque es nvim.
+-- { block_id, pid, cwd } when the block's foreground program is nvim.
 function M.nvim_in(ctx, block_id)
 	local proc = M.terminal_call(ctx, block_id, "process")
 	local fg = proc and proc.foreground
@@ -34,9 +33,9 @@ function M.nvim_in(ctx, block_id)
 	end
 end
 
--- Pone la ventana de Rex a tamaño completo con yabai (lo mismo que hyper - l) si
--- no lo está. Nunca la devuelve a su tamaño, igual que kitty/fullscreen_zoom.sh.
--- Solo toca la ventana enfocada si es de Rex.
+-- Makes the Rex window full size with yabai (same as hyper - l) when it isn't.
+-- It's never shrunk back, same as kitty/fullscreen_zoom.sh. Only touches the
+-- focused window, and only if it belongs to Rex.
 local YABAI = "/opt/homebrew/bin/yabai"
 
 function M.ensure_fullscreen_zoom()
