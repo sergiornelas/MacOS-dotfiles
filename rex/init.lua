@@ -1,5 +1,14 @@
 -- Rex config: https://www.superlogical.com/rex/docs/customize/config
 
+local util = require("util")
+local terminal_call = util.terminal_call
+local window_of = util.window_of
+local nvim_in = util.nvim_in
+local ensure_fullscreen_zoom = util.ensure_fullscreen_zoom
+
+-- Claude Code en un split real de Rex, junto a nvim (ctrl+shift+space).
+require("claude")
+
 -- Pestañas
 rex.bind("ctrl+shift+t", "client.tab.new")
 
@@ -65,14 +74,6 @@ local function contains(list, value)
 	return false
 end
 
-local function terminal_call(ctx, block_id, method)
-	return rex.call("com.superlogical.terminal." .. method, {
-		session_id = ctx.session_id,
-		block_id = block_id,
-		args = {},
-	})
-end
-
 -- Directorio del panel: el del proceso en primer plano (nvim, fish...) y, si no
 -- se puede, el último que reportó la shell, que llega como file://host/ruta (OSC 7).
 local function cwd_of(ctx)
@@ -100,25 +101,6 @@ end
 local function lazygit_alive(ctx, block_id)
 	local proc = terminal_call(ctx, block_id, "process")
 	return proc ~= nil and proc.child ~= nil and proc.last_exit == nil
-end
-
--- Pone la ventana de Rex a tamaño completo con yabai (lo mismo que hyper - l) si
--- no lo está. Nunca la devuelve a su tamaño, igual que kitty/fullscreen_zoom.sh.
--- Solo toca la ventana enfocada si es de Rex.
-local YABAI = "/opt/homebrew/bin/yabai"
-
-local function ensure_fullscreen_zoom()
-	local r = rex.exec({ YABAI, "-m", "query", "--windows", "--window" }, { timeout = 2 })
-	if not (r and r.ok) then
-		return
-	end
-	local ok, win = pcall(rex.json.decode, r.stdout)
-	if not ok or type(win) ~= "table" or win.app ~= "Rex" or not win.id then
-		return
-	end
-	if win["has-fullscreen-zoom"] == false then
-		rex.exec({ YABAI, "-m", "window", string.format("%d", win.id), "--toggle", "zoom-fullscreen" }, { timeout = 2 })
-	end
 end
 
 local function find_lazygit_layer(window)
@@ -218,26 +200,6 @@ rex.bind("tab", "lazygit_toggle")
 -- (ctx.block_id es ese panel):
 --   rex do lazygit_editors              los nvim candidatos
 --   rex do lazygit_show_editor ...      minimizar lazygit y enfocar el editor
-
-local function window_of(view, block_id)
-	for _, w in ipairs(view.windows or {}) do
-		for _, layer in ipairs(w.layers or {}) do
-			for _, b in ipairs(layer.blocks or {}) do
-				if b.block_id == block_id then
-					return w, layer
-				end
-			end
-		end
-	end
-end
-
-local function nvim_in(ctx, block_id)
-	local proc = terminal_call(ctx, block_id, "process")
-	local fg = proc and proc.foreground
-	if fg and fg.name == "nvim" then
-		return { block_id = block_id, pid = fg.pid, cwd = fg.cwd }
-	end
-end
 
 rex.action({
 	name = "lazygit_editors",
