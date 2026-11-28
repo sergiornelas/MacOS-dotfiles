@@ -16,6 +16,8 @@ local nvim_in = util.nvim_in
 local ensure_fullscreen_zoom = util.ensure_fullscreen_zoom
 
 local LAZYGIT_LABEL = "lazygit"
+-- The float covers the whole Rex window ([x, y, w, h] fractions of the window).
+local LAZYGIT_BOUNDS = { 0, 0, 1, 1 }
 
 -- Origin pane of each lazygit, in one file per block: the action reads it on
 -- minimize and the wrapper on `q` (the config has no "program exited" event).
@@ -153,6 +155,8 @@ rex.action({
 					save_origin(lazygit_block, window.focused_block_id)
 				end
 				ensure_fullscreen_zoom()
+				-- Layers created with other bounds (or moved) go back to full size
+				rex.session.resize_layer({ layer_id = layer.layer_id, bounds = LAZYGIT_BOUNDS })
 				rex.session.set_layer_state({ layer_id = layer.layer_id, state = "normal", focus = true })
 			end
 			return
@@ -167,7 +171,7 @@ rex.action({
 		local origin = ctx.block_id or window.focused_block_id
 		local created, new_err = rex.session.new_layer({
 			window_id = window.window_id,
-			bounds = { 0.05, 0.05, 0.9, 0.9 },
+			bounds = LAZYGIT_BOUNDS,
 			focus = true,
 			layout = {
 				block = {

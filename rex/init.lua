@@ -13,13 +13,13 @@ require("scrollback")
 
 -- Tabs
 rex.bind("ctrl+shift+t", "client.tab.new")
+rex.bind("cmd+[", "client.tab.move.backward")
+rex.bind("cmd+]", "client.tab.move.forward")
 
 -- Panes. Like pane.focus_previous / pane.focus_next, but from the scrollback
 -- pager they close it and go to the pane next to the one under it (scrollback.lua)
 rex.bind("ctrl+shift+i", "focus_previous")
 rex.bind("ctrl+shift+o", "focus_next")
-rex.bind("cmd+[", "focus_previous")
-rex.bind("cmd+]", "focus_next")
 
 -- Floating lazygit (lazygit.lua). Inside the terminal, ctrl+i acts as <tab>.
 rex.bind("tab", "lazygit_toggle")
