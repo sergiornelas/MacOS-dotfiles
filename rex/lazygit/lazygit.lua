@@ -5,7 +5,8 @@
 -- pane's directory; if it already exists, it shows and focuses it, and if it's
 -- already focused, it minimizes it (it keeps running). Quitting lazygit with `q`
 -- closes the layer. On minimize or quit, focus returns to the pane it was
--- opened/shown from.
+-- opened/shown from. Opened or shown from an nvim whose file has changes (or
+-- is new), the Files panel lands on that file (lazygit-select.sh).
 -- Rex takes <tab>: inside the terminal use ctrl+i, which sends the same
 -- character (same as in kitty, see kitty/open_lazygit.py).
 
@@ -119,6 +120,32 @@ local function lazygit_alive(ctx, block_id)
 	return proc ~= nil and proc.child ~= nil and proc.last_exit == nil
 end
 
+-- lazygit's directory (lazygit is the shell block's foreground program).
+local function lazygit_cwd(ctx, block_id)
+	local proc = terminal_call(ctx, block_id, "process")
+	return proc and ((proc.foreground and proc.foreground.cwd) or (proc.child and proc.child.cwd))
+end
+
+-- If source_block holds an nvim, puts lazygit's Files panel on the file it's
+-- editing when git sees a change in it (rex/lazygit/lazygit-select.sh). Runs
+-- in the background: it waits for lazygit and types into it.
+local function select_file(ctx, lazygit_block, source_block, cwd, mode)
+	local nvim = source_block and nvim_in(ctx, source_block)
+	if not (nvim and cwd and cwd ~= "") then
+		return
+	end
+	rex.exec({
+		"sh",
+		"-c",
+		'sh "$HOME/.config/rex/lazygit/lazygit-select.sh" "$@" >/dev/null 2>&1 &',
+		"lazygit-select",
+		lazygit_block,
+		string.format("%d", nvim.pid),
+		cwd,
+		mode,
+	}, { timeout = 2 })
+end
+
 local function find_lazygit_layer(window)
 	for _, layer in ipairs(window.layers or {}) do
 		if layer.kind ~= "tiled" then
@@ -181,6 +208,8 @@ rex.action({
 				-- Layers created with other bounds (or moved) go back to full size
 				rex.session.resize_layer({ layer_id = layer.layer_id, bounds = LAZYGIT_BOUNDS })
 				rex.session.set_layer_state({ layer_id = layer.layer_id, state = "normal", focus = true })
+				local source = (not focused and window.focused_block_id) or read_origin(lazygit_block)
+				select_file(ctx, lazygit_block, source, lazygit_cwd(ctx, lazygit_block), "show")
 			end
 			return
 		end
@@ -214,6 +243,7 @@ rex.action({
 			if zoomed then
 				io.open(zoom_file(block), "w"):close()
 			end
+			select_file(ctx, block, origin, cwd, "new")
 		end
 	end,
 })
