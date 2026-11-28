@@ -1,7 +1,7 @@
-# lazygit's `e` inside Rex (os.edit in rex/lazygit.yml).
+# lazygit's `e` inside Rex (os.edit in rex/lazygit/lazygit.yml).
 #
 # Opens the files in the tab's nvim: first the one in the pane lazygit was
-# opened from, then any other (rex/lazygit.lua, lazygit_editors). Rex gives each
+# opened from, then any other (rex/lazygit/lazygit.lua, lazygit_editors). Rex gives each
 # nvim's pid, so its socket is known without asking the other nvims (a hung one
 # elsewhere can't freeze lazygit). Then it minimizes lazygit and focuses that
 # nvim; with no nvim in the tab, it opens one in a split.

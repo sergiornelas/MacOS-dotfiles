@@ -1,5 +1,5 @@
 -- Opens files in an nvim that's already running, through its socket. Used by
--- rex/lazygit-edit.fish:
+-- rex/lazygit/lazygit-edit.fish:
 --
 --   nvim -u NONE -l lazygit-open.lua <socket> [--line N] <file>...
 --

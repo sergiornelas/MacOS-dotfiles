@@ -1,4 +1,4 @@
--- Called from rex/scrollback.lua (ctrl+shift+y) with the file holding the pane's
+-- Called from rex/scrollback/scrollback.lua (ctrl+shift+y) with the file holding the pane's
 -- screen and scrollback as escape sequences and where its cursor was. Settings,
 -- colors and keymaps are in kitty/scrollback_init.lua (shared with kitty's
 -- pager); the apps in `selections` and the colors in `nvim_cleared_bgs` are

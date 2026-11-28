@@ -2,14 +2,25 @@
 --
 -- Only key bindings live here. Each feature's logic lives in its own module,
 -- which defines actions with rex.action:
---   lazygit.lua  lazygit_toggle, lazygit_editors, lazygit_show_editor
---   claude.lua   claude_toggle, claude_launch, claude_show, claude_close, claude_paste
---   scrollback.lua  scrollback_open, focus_next, focus_previous
---   util.lua     shared helpers
+--   lazygit/lazygit.lua        lazygit_toggle, lazygit_editors, lazygit_show_editor
+--   claude.lua                 claude_toggle, claude_launch, claude_show, claude_close, claude_paste
+--   scrollback/scrollback.lua  scrollback_open, focus_next, focus_previous
+--   sessions/sessions.lua      session_goto, session_last
+--   util.lua                   shared helpers
 
-require("lazygit")
+require("lazygit.lazygit")
 require("claude")
-require("scrollback")
+require("scrollback.scrollback")
+require("sessions.sessions")
+
+-- Sessions, like kitty's goto_session (sessions.lua). cmd+n replaces the
+-- default "New Session", which is still in the command palette.
+rex.bind("cmd+o", "session_goto", { name = "notes" })
+rex.bind("cmd+n", "session_goto", { name = "nvim" })
+rex.bind("cmd+s", "session_goto", { name = "config" })
+rex.bind("cmd+e", "session_goto", { name = "spreadsheet" })
+rex.bind("cmd+p", "session_goto", { name = "practice" })
+rex.bind("cmd+j", "session_last")
 
 -- Tabs
 rex.bind("ctrl+shift+t", "client.tab.new")

@@ -1,5 +1,5 @@
 -- Floating lazygit in Rex. Only defines actions; the key is bound in init.lua
--- (tab → lazygit_toggle). Loaded with require("lazygit").
+-- (tab → lazygit_toggle). Loaded with require("lazygit.lazygit").
 --
 -- One lazygit per tab, in a floating layer. The key opens it in the focused
 -- pane's directory; if it already exists, it shows and focuses it, and if it's
@@ -46,10 +46,10 @@ end
 -- Runs lazygit and, if it exits cleanly (`q`), focuses the origin pane before
 -- the layer closes, so Rex doesn't send focus to some other pane. If it fails,
 -- the exit code is kept and the pane stays open showing the error.
--- rex/lazygit.yml is loaded on top of the usual config.yml: it changes `e` to
--- open the file in the tab's nvim (rex/lazygit-edit.fish).
+-- rex/lazygit/lazygit.yml is loaded on top of the usual config.yml: it changes `e` to
+-- open the file in the tab's nvim (rex/lazygit/lazygit-edit.fish).
 local LAZYGIT_WRAPPER = [[
-lazygit --use-config-file "$(lazygit --print-config-dir)/config.yml,$HOME/.config/rex/lazygit.yml"
+lazygit --use-config-file "$(lazygit --print-config-dir)/config.yml,$HOME/.config/rex/lazygit/lazygit.yml"
 status=$?
 file="/tmp/rex-lazygit-${REX_BLOCK#block:}"
 if [ "$status" -eq 0 ] && [ -s "$file" ]; then
@@ -190,7 +190,7 @@ rex.action({
 })
 
 -- `e` in lazygit: open the file in the tab's nvim, not inside the float.
--- Used by rex/lazygit-edit.fish, which runs inside the lazygit pane
+-- Used by rex/lazygit/lazygit-edit.fish, which runs inside the lazygit pane
 -- (ctx.block_id is that pane):
 --   rex do lazygit_editors              the candidate nvims
 --   rex do lazygit_show_editor ...      minimize lazygit and focus the editor

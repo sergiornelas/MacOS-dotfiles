@@ -1,12 +1,12 @@
 -- kitty's show_scrollback (kitty_mod+y) in Rex. Only defines actions; the key
 -- is bound in init.lua (ctrl+shift+y → scrollback_open). Loaded with
--- require("scrollback").
+-- require("scrollback.scrollback").
 --
 -- Opens the focused pane's screen and scrollback, with its colors, in a minimal
 -- nvim that sits in a floating layer right on top of the pane. Yanking copies to
 -- the clipboard and closes it; `q` closes it without copying. Settings and
 -- keymaps are kitty/scrollback_init.lua's (shared with kitty), the rest is in
--- rex/scrollback_pager.lua.
+-- rex/scrollback/scrollback_pager.lua.
 --
 -- Unlike kitty, Rex doesn't say how far the pane was scrolled, so the pager
 -- always opens at the bottom, with the cursor where the pane had it.
@@ -25,7 +25,7 @@ local LABEL = "Copy 󰆏"
 -- $6 session, $7 origin block.
 local WRAPPER = [[
 nvim -u "$HOME/.config/kitty/scrollback_init.lua" \
-	-c "lua dofile(vim.fn.expand('~/.config/rex/scrollback_pager.lua'))('$1', $2, $3, $4, $5, '$6')" \
+	-c "lua dofile(vim.fn.expand('~/.config/rex/scrollback/scrollback_pager.lua'))('$1', $2, $3, $4, $5, '$6')" \
 	-c 'set readonly nolist'
 status=$?
 rm -f "$1" "/tmp/rex-scrollback-origin-${REX_BLOCK#block:}"
