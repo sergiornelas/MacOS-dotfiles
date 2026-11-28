@@ -13,15 +13,18 @@
 local HOME = os.getenv("HOME")
 
 local SESSIONS = {
-	notes = { title = "Notes 󱞂 ", cwd = HOME .. "/notes", cmd = "exec nvim" },
-	nvim = { title = "Neovim 󰢀 ", cwd = HOME .. "/.config/nvim", cmd = "exec nvim" },
-	config = { title = "Config 󱁤 ", cwd = HOME .. "/.config", cmd = "exec nvim" },
+	notes = { title = "Notes", cwd = HOME .. "/notes", cmd = "exec nvim" },
+	nvim = { title = "Neovim", cwd = HOME .. "/.config/nvim", cmd = "exec nvim" },
+	config = { title = "Config", cwd = HOME .. "/.config", cmd = "exec nvim" },
 	spreadsheet = {
-		title = "Spreadsheet 󰓱 ",
+		title = "Spreadsheet",
 		cwd = HOME .. "/notes/data",
 		cmd = "source ~/.config/rex/sessions/spreadsheet.fish",
 	},
-	practice = { title = "Practice  ", cwd = HOME .. "/Desktop/practice", cmd = "exec nvim" },
+	-- unbuffer (brew install expect) gives cal a tty, so it still highlights
+	-- today when piped to less. Quitting less with `q` ends the command and
+	-- closes the pane.
+	calendar = { title = "Calendar", cwd = HOME, cmd = "unbuffer cal -y | less -R" },
 }
 
 -- Survives `rex config reload`, same as lazygit.lua's origin files.
@@ -83,7 +86,7 @@ end
 rex.action({
 	name = "session_goto",
 	title = "Session: Go To",
-	description = "Goes to a fixed session (notes, nvim, config, spreadsheet, practice), creating it or its tab if needed.",
+	description = "Goes to a fixed session (notes, nvim, config, spreadsheet, calendar), creating it or its tab if needed.",
 	category = "Sessions",
 	args = { name = "string" },
 	run = function(ctx, args)

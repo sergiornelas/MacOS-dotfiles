@@ -19,7 +19,8 @@ rex.bind("cmd+o", "session_goto", { name = "notes" })
 rex.bind("cmd+n", "session_goto", { name = "nvim" })
 rex.bind("cmd+s", "session_goto", { name = "config" })
 rex.bind("cmd+e", "session_goto", { name = "spreadsheet" })
-rex.bind("cmd+p", "session_goto", { name = "practice" })
+-- Replaces copy, same as in kitty (use "Copy on selection" instead)
+rex.bind("cmd+c", "session_goto", { name = "calendar" })
 rex.bind("cmd+j", "session_last")
 
 -- Tabs
