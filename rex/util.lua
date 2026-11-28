@@ -34,8 +34,8 @@ function M.nvim_in(ctx, block_id)
 end
 
 -- Makes the Rex window full size with yabai (same as hyper - l) when it isn't.
--- It's never shrunk back, same as kitty/fullscreen_zoom.sh. Only touches the
--- focused window, and only if it belongs to Rex.
+-- Only touches the focused window, and only if it belongs to Rex. Returns true
+-- when it zoomed it, so the caller can shrink it back (lazygit.lua does).
 local YABAI = "/opt/homebrew/bin/yabai"
 
 function M.ensure_fullscreen_zoom()
@@ -49,6 +49,7 @@ function M.ensure_fullscreen_zoom()
 	end
 	if win["has-fullscreen-zoom"] == false then
 		rex.exec({ YABAI, "-m", "window", string.format("%d", win.id), "--toggle", "zoom-fullscreen" }, { timeout = 2 })
+		return true
 	end
 end
 

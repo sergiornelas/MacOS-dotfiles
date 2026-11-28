@@ -43,14 +43,36 @@ local function read_origin(lazygit_block)
 	return origin
 end
 
+-- Marker that lazygit made the Rex window full size: on minimize or quit it's
+-- shrunk back (the window is focused then, since the key was pressed in Rex).
+local function zoom_file(lazygit_block)
+	return "/tmp/rex-lazygit-zoom-" .. lazygit_block:gsub("^block:", "")
+end
+
+local function zoom(lazygit_block)
+	local f = ensure_fullscreen_zoom() and io.open(zoom_file(lazygit_block), "w")
+	if f then
+		f:close()
+	end
+end
+
+local function unzoom(lazygit_block)
+	if os.remove(zoom_file(lazygit_block)) then
+		rex.exec({ "/opt/homebrew/bin/yabai", "-m", "window", "--toggle", "zoom-fullscreen" }, { timeout = 2 })
+	end
+end
+
 -- Runs lazygit and, if it exits cleanly (`q`), focuses the origin pane before
 -- the layer closes, so Rex doesn't send focus to some other pane. If it fails,
--- the exit code is kept and the pane stays open showing the error.
+-- the exit code is kept and the pane stays open showing the error. In both
+-- cases the window is shrunk back if lazygit zoomed it.
 -- rex/lazygit/lazygit.yml is loaded on top of the usual config.yml: it changes `e` to
 -- open the file in the tab's nvim (rex/lazygit/lazygit-edit.fish).
 local LAZYGIT_WRAPPER = [[
 lazygit --use-config-file "$(lazygit --print-config-dir)/config.yml,$HOME/.config/rex/lazygit/lazygit.yml"
 status=$?
+zoom="/tmp/rex-lazygit-zoom-${REX_BLOCK#block:}"
+[ -f "$zoom" ] && rm -f "$zoom" && /opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen
 file="/tmp/rex-lazygit-${REX_BLOCK#block:}"
 if [ "$status" -eq 0 ] && [ -s "$file" ]; then
 	rex focus "$(cat "$file")" >/dev/null 2>&1
@@ -145,6 +167,7 @@ rex.action({
 			local focused = contains(block_ids, window.focused_block_id)
 			if layer.state ~= "minimized" and focused then
 				rex.session.set_layer_state({ layer_id = layer.layer_id, state = "minimized" })
+				unzoom(lazygit_block)
 				local origin = read_origin(lazygit_block)
 				if origin then
 					rex.session.focus_block({ block_id = origin })
@@ -154,7 +177,7 @@ rex.action({
 				if window.focused_block_id and not focused then
 					save_origin(lazygit_block, window.focused_block_id)
 				end
-				ensure_fullscreen_zoom()
+				zoom(lazygit_block)
 				-- Layers created with other bounds (or moved) go back to full size
 				rex.session.resize_layer({ layer_id = layer.layer_id, bounds = LAZYGIT_BOUNDS })
 				rex.session.set_layer_state({ layer_id = layer.layer_id, state = "normal", focus = true })
@@ -167,7 +190,7 @@ rex.action({
 		if cwd and cwd ~= "" then
 			options.cwd = cwd
 		end
-		ensure_fullscreen_zoom()
+		local zoomed = ensure_fullscreen_zoom()
 		local origin = ctx.block_id or window.focused_block_id
 		local created, new_err = rex.session.new_layer({
 			window_id = window.window_id,
@@ -183,8 +206,14 @@ rex.action({
 		})
 		if new_err then
 			rex.log("error", "lazygit_toggle: " .. tostring(new_err))
-		elseif origin and created.block_ids and created.block_ids[1] then
-			save_origin(created.block_ids[1], origin)
+		elseif created.block_ids and created.block_ids[1] then
+			local block = created.block_ids[1]
+			if origin then
+				save_origin(block, origin)
+			end
+			if zoomed then
+				io.open(zoom_file(block), "w"):close()
+			end
 		end
 	end,
 })
@@ -276,6 +305,7 @@ rex.action({
 
 		if layer.kind ~= "tiled" then
 			rex.session.set_layer_state({ layer_id = layer.layer_id, state = "minimized" })
+			unzoom(ctx.block_id)
 		end
 		if target then
 			rex.session.focus_block({ block_id = target })
